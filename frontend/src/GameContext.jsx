@@ -98,6 +98,10 @@ export const GameProvider = ({ children }) => {
             setGameState(lobby);
         });
 
+        newSocket.on('host_transferred', (data) => {
+            showToast(`👑 Игрок «${data.newHostName}» стал хостом комнаты!`, 'info');
+        });
+
         newSocket.on('lobby_closed', (data) => {
             setModal({
                 type: 'alert',

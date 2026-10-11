@@ -48,6 +48,26 @@ const Lobby = () => {
         });
     };
 
+    const handleTransferHost = async (targetPlayerId, targetNick) => {
+        if (!isHost) return;
+        const confirmed = await showConfirm(`Передать права хоста игроку «${targetNick}»?`, {
+            title: 'Передача прав хоста',
+            icon: '👑',
+            confirmText: 'Передать хоста',
+            cancelText: 'Отмена',
+            isDanger: false
+        });
+        if (confirmed) {
+            socket.emit('transfer_host', { lobbyId: gameState.id, targetPlayerId }, (res) => {
+                if (res?.success) {
+                    showToast(`Вы передали статус хоста игроку «${targetNick}»!`, 'success');
+                } else if (res?.message) {
+                    showToast(res.message, 'error');
+                }
+            });
+        }
+    };
+
     const handleKickPlayer = async (targetPlayerId, targetNick) => {
         if (!isHost) return;
         const confirmed = await showConfirm(`Исключить игрока ${targetNick ? `«${targetNick}»` : ''} из комнаты?`, {
@@ -211,7 +231,7 @@ const Lobby = () => {
                         🎯 Цель победы: <strong style={{ color: '#ffffff', fontWeight: 800 }}>{gameState.targetVP} ПО</strong>
                     </span>
                     <span style={{ color: 'var(--text-muted)', fontSize: '1.05rem' }}>
-                        👥 Игроки: <strong style={{ color: 'var(--accent-blue)', fontWeight: 800 }}>{gameState.players.length} / 10</strong>
+                        👥 Игроки: <strong style={{ color: 'var(--accent-blue)', fontWeight: 800 }}>{gameState.players.length} / 16</strong>
                     </span>
                 </div>
 
@@ -262,32 +282,66 @@ const Lobby = () => {
                             <div style={{ overflow: 'hidden', flex: 1 }}>
                                 <div style={{ fontWeight: '700', fontSize: '1.05rem', textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: 'nowrap', display: 'flex', alignItems: 'center', gap: '6px' }}>
                                     <span style={{ color: p.color, textShadow: `0 0 10px ${p.color}40` }}>{p.nickname}</span>
-                                    {p.id === gameState.host && <span title="Хост комнаты">👑</span>} 
+                                    {p.id === gameState.host && <span title="Хост комнаты (создатель)" style={{ fontSize: '1.1rem', filter: 'drop-shadow(0 0 8px rgba(255, 215, 0, 0.85))' }}>👑</span>} 
                                 </div>
                                 <div style={{ fontSize: '0.8rem', color: p.connected ? 'var(--text-muted)' : '#ff4d6d', display: 'flex', alignItems: 'center', gap: '4px' }}>
                                     {p.connected ? (p.id === gameState.host ? 'Хост лобби' : 'В игре') : 'Отключился'}
                                 </div>
                             </div>
 
-                            {/* Кнопка кика для хоста */}
-                            {isHost && p.id !== player?.id && (
-                                <button
-                                    onClick={() => handleKickPlayer(p.id, p.nickname)}
-                                    title="Исключить игрока из лобби"
-                                    style={{
-                                        background: 'rgba(255, 56, 100, 0.15)',
-                                        border: '1px solid rgba(255, 56, 100, 0.3)',
-                                        color: '#ff4d6d',
-                                        borderRadius: '8px',
-                                        padding: '4px 8px',
-                                        fontSize: '0.8rem',
-                                        cursor: 'pointer',
-                                        transition: 'all 0.2s'
-                                    }}
-                                >
-                                    ✕
-                                </button>
-                            )}
+                            {/* Кнопки управления хоста для других участников */}
+                            <div style={{ display: 'flex', gap: '6px', alignItems: 'center' }}>
+                                {/* Кнопка передачи хоста: серая корона с hover в золото */}
+                                {isHost && p.id !== player?.id && p.connected && (
+                                    <button
+                                        onClick={() => handleTransferHost(p.id, p.nickname)}
+                                        title={`Передать статус хоста игроку «${p.nickname}»`}
+                                        style={{
+                                            background: 'rgba(255, 215, 0, 0.08)',
+                                            border: '1px solid rgba(255, 215, 0, 0.25)',
+                                            color: '#e2e8f0',
+                                            borderRadius: '8px',
+                                            padding: '4px 8px',
+                                            fontSize: '0.95rem',
+                                            cursor: 'pointer',
+                                            transition: 'all 0.2s',
+                                            filter: 'grayscale(0.85) opacity(0.6)'
+                                        }}
+                                        onMouseEnter={(e) => {
+                                            e.currentTarget.style.filter = 'grayscale(0) opacity(1) drop-shadow(0 0 10px rgba(255, 215, 0, 0.9))';
+                                            e.currentTarget.style.transform = 'scale(1.15)';
+                                            e.currentTarget.style.borderColor = 'rgba(255, 215, 0, 0.8)';
+                                        }}
+                                        onMouseLeave={(e) => {
+                                            e.currentTarget.style.filter = 'grayscale(0.85) opacity(0.6)';
+                                            e.currentTarget.style.transform = 'scale(1)';
+                                            e.currentTarget.style.borderColor = 'rgba(255, 215, 0, 0.25)';
+                                        }}
+                                    >
+                                        👑
+                                    </button>
+                                )}
+
+                                {/* Кнопка кика для хоста */}
+                                {isHost && p.id !== player?.id && (
+                                    <button
+                                        onClick={() => handleKickPlayer(p.id, p.nickname)}
+                                        title="Исключить игрока из лобби"
+                                        style={{
+                                            background: 'rgba(255, 56, 100, 0.15)',
+                                            border: '1px solid rgba(255, 56, 100, 0.3)',
+                                            color: '#ff4d6d',
+                                            borderRadius: '8px',
+                                            padding: '4px 8px',
+                                            fontSize: '0.8rem',
+                                            cursor: 'pointer',
+                                            transition: 'all 0.2s'
+                                        }}
+                                    >
+                                        ✕
+                                    </button>
+                                )}
+                            </div>
                         </div>
                     ))}
                 </div>

@@ -1,3 +1,11 @@
+process.on('uncaughtException', (err) => {
+    console.error('[CRITICAL] Uncaught Exception:', err.stack || err);
+});
+
+process.on('unhandledRejection', (reason, promise) => {
+    console.error('[CRITICAL] Unhandled Rejection at:', promise, 'reason:', reason);
+});
+
 const express = require('express');
 const http = require('http');
 const { Server } = require('socket.io');
@@ -18,8 +26,8 @@ const io = new Server(server, {
     origin: "*",
     methods: ["GET", "POST"]
   },
-  pingInterval: 2500,
-  pingTimeout: 4000
+  pingInterval: 10000,
+  pingTimeout: 20000
 });
 
 // Хранилище лобби в памяти (для MVP)
@@ -75,6 +83,10 @@ function scheduleHostTransfer(lobby, lobbyId) {
                 lobby.hostGraceTimer = null;
                 console.log(`Host transferred to ${nextOnline.nickname} (${nextOnline.id}) in lobby ${lobbyId} after 30s timeout`);
                 io.to(lobbyId).emit('lobby_update', lobby);
+                io.to(lobbyId).emit('host_transferred', {
+                    newHostId: nextOnline.id,
+                    newHostName: nextOnline.nickname
+                });
             }
         }
     }, 30000);
@@ -243,7 +255,7 @@ io.on('connection', (socket) => {
             return callback({ success: false, message: 'Игра уже началась! Вход новых участников закрыт.' });
         }
 
-        if (lobby.players.length >= 10) return callback({ success: false, message: 'Лобби заполнено (макс. 10 игроков)' });
+        if (lobby.players.length >= 16) return callback({ success: false, message: 'Лобби заполнено (макс. 16 игроков)' });
 
         // Выбираем первый свободный цвет и его эмодзи из 16 вариантов
         const colorObj = COLORS.find(c => !lobby.players.some(p => p.color.toLowerCase() === c.hex.toLowerCase())) || COLORS[0];
@@ -516,6 +528,44 @@ io.on('connection', (socket) => {
         }
     });
 
+    // Ручная передача статуса хоста другому игроку (в лобби или во время матча)
+    socket.on('transfer_host', ({ lobbyId, targetPlayerId }, callback) => {
+        try {
+            const lobby = lobbies.get(lobbyId);
+            if (!lobby) {
+                if (callback) callback({ success: false, message: 'Лобби не найдено' });
+                return;
+            }
+            if (lobby.host !== socket.id) {
+                if (callback) callback({ success: false, message: 'Только текущий хост может передать права' });
+                return;
+            }
+
+            const targetPlayer = lobby.players.find(p => p.id === targetPlayerId && p.connected);
+            if (!targetPlayer) {
+                if (callback) callback({ success: false, message: 'Игрок не найден или отключен' });
+                return;
+            }
+
+            lobby.host = targetPlayer.id;
+            if (lobby.hostGraceTimer) {
+                clearTimeout(lobby.hostGraceTimer);
+                lobby.hostGraceTimer = null;
+            }
+
+            console.log(`[HOST TRANSFER] Хост лобби ${lobbyId} передан игроку ${targetPlayer.nickname} (${targetPlayer.id})`);
+            io.to(lobbyId).emit('lobby_update', lobby);
+            io.to(lobbyId).emit('host_transferred', {
+                newHostId: targetPlayer.id,
+                newHostName: targetPlayer.nickname
+            });
+            if (callback) callback({ success: true, newHostId: targetPlayer.id });
+        } catch (err) {
+            console.error('Error in transfer_host:', err);
+            if (callback) callback({ success: false, message: 'Ошибка сервера' });
+        }
+    });
+
     // Хост решает продолжить раунд без отключившегося игрока
     socket.on('dismiss_disconnect_pause', ({ lobbyId }) => {
         const lobby = lobbies.get(lobbyId);
@@ -559,7 +609,27 @@ io.on('connection', (socket) => {
     });
 });
 
-// Проксирование постеров TMDB
+// Периодическая очистка зомби-комнат (когда все вышли более 30 минут назад), предотвращает утечку памяти
+setInterval(() => {
+    const now = Date.now();
+    for (const [lobbyId, lobby] of lobbies.entries()) {
+        const allOffline = lobby.players.length === 0 || lobby.players.every(p => !p.connected);
+        if (allOffline) {
+            if (!lobby.allOfflineSince) {
+                lobby.allOfflineSince = now;
+            } else if (now - lobby.allOfflineSince > 30 * 60 * 1000) {
+                clearLobbyTimer(lobby);
+                if (lobby.hostGraceTimer) clearTimeout(lobby.hostGraceTimer);
+                lobbies.delete(lobbyId);
+                console.log(`[CLEANUP] Успешно удалена неактивная комната ${lobbyId}`);
+            }
+        } else {
+            lobby.allOfflineSince = null;
+        }
+    }
+}, 60000);
+
+// Высокопроизводительное кэширование и безопасное проксирование постеров TMDB
 const https = require('https');
 const tmdbAgent = new https.Agent({
     lookup: (hostname, opts, cb) => {
@@ -574,34 +644,68 @@ const tmdbAgent = new https.Agent({
     }
 });
 
+// Кэш постеров в оперативной памяти (хранит до 300 последних картинок)
+const posterCache = new Map();
+const MAX_POSTER_CACHE = 300;
+
 app.get('/api/poster/:file', async (req, res) => {
+    const file = req.params.file;
+    if (!file || !/^[\w\-\.]+$/.test(file)) {
+        return res.status(400).end();
+    }
+
+    if (posterCache.has(file)) {
+        const cached = posterCache.get(file);
+        res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+        res.setHeader('Content-Type', cached.contentType);
+        return res.send(cached.buffer);
+    }
+
     try {
-        const file = req.params.file;
         const tmdbUrl = `https://image.tmdb.org/t/p/w500/${file}`;
         const response = await axios.get(tmdbUrl, {
-            responseType: 'stream',
+            responseType: 'arraybuffer',
             timeout: 10000,
             httpsAgent: tmdbAgent,
             headers: { 'User-Agent': 'Mozilla/5.0' }
         });
+
+        const contentType = response.headers['content-type'] || 'image/jpeg';
+        const buffer = Buffer.from(response.data);
+
+        if (posterCache.size >= MAX_POSTER_CACHE) {
+            const oldestKey = posterCache.keys().next().value;
+            posterCache.delete(oldestKey);
+        }
+        posterCache.set(file, { buffer, contentType });
+
         res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
-        res.setHeader('Content-Type', response.headers['content-type'] || 'image/jpeg');
-        response.data.pipe(res);
+        res.setHeader('Content-Type', contentType);
+        res.send(buffer);
     } catch (e) {
-        res.redirect(`https://image.tmdb.org/t/p/w500/${req.params.file}`);
+        if (!res.headersSent) {
+            res.redirect(`https://image.tmdb.org/t/p/w500/${file}`);
+        }
     }
 });
+
+// Проверка жизнеспособности сервиса для Render и Nginx
+app.get('/healthz', (req, res) => res.status(200).send('OK'));
+app.get('/api/health', (req, res) => res.status(200).json({ status: 'ok', uptime: process.uptime() }));
 
 // Раздача статики собранного фронтенда
 const distPath = path.join(__dirname, '../frontend/dist');
 if (fs.existsSync(distPath)) {
     app.use(express.static(distPath));
-    app.use((req, res) => {
+    app.get('*', (req, res) => {
+        if (req.path.startsWith('/api') || req.path.startsWith('/socket.io')) {
+            return res.status(404).json({ error: 'Endpoint not found' });
+        }
         res.sendFile(path.join(distPath, 'index.html'));
     });
 }
 
 const PORT = process.env.PORT || 3001;
-server.listen(PORT, () => {
-    console.log(`Backend server running on port ${PORT}`);
+server.listen(PORT, '0.0.0.0', () => {
+    console.log(`Backend server running on port ${PORT} (0.0.0.0)`);
 });

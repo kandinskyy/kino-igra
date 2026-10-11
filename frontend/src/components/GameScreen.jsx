@@ -17,7 +17,29 @@ const GameScreen = () => {
     // Прогресс других игроков: { [playerId]: countOfRatedMovies }
     const [progress, setProgress] = useState({});
 
+    // Режим стримера (сохраняется в localStorage)
+    const [streamerMode, setStreamerMode] = useState(() => {
+        return localStorage.getItem('kino_streamer_mode') === 'true';
+    });
+
+    const toggleStreamerMode = () => {
+        setStreamerMode((prev) => {
+            const next = !prev;
+            localStorage.setItem('kino_streamer_mode', String(next));
+            showToast(next ? 'Режим стримера включён: буквы на постерах скрыты' : 'Режим стримера выключен', 'info');
+            return next;
+        });
+    };
+
     const isHost = gameState.host === player?.id;
+
+    // Динамическая сортировка игроков по очкам во время матча (топ 1 — самый левый / верхний)
+    const sortedPlayers = [...(gameState?.players || [])].sort((a, b) => {
+        if ((b.vp || 0) !== (a.vp || 0)) {
+            return (b.vp || 0) - (a.vp || 0);
+        }
+        return (a.nickname || '').localeCompare(b.nickname || '');
+    });
 
     // Синхронизация таймера и прогресса через сокеты
     useEffect(() => {
@@ -98,6 +120,27 @@ const GameScreen = () => {
         if (confirmed) {
             socket.emit('kick_player', { lobbyId: gameState.id, playerId: targetPlayerId });
             showToast('Игрок исключён из матча', 'info');
+        }
+    };
+
+    // Передача хоста во время матча
+    const handleTransferHost = async (targetPlayerId, targetNick) => {
+        if (!isHost) return;
+        const confirmed = await showConfirm(`Передать права хоста игроку «${targetNick}» во время матча?`, {
+            title: 'Передача прав хоста',
+            icon: '👑',
+            confirmText: 'Передать хоста',
+            cancelText: 'Отмена',
+            isDanger: false
+        });
+        if (confirmed) {
+            socket.emit('transfer_host', { lobbyId: gameState.id, targetPlayerId }, (res) => {
+                if (res?.success) {
+                    showToast(`Вы передали статус хоста игроку «${targetNick}»!`, 'success');
+                } else if (res?.message) {
+                    showToast(res.message, 'error');
+                }
+            });
         }
     };
 
@@ -307,25 +350,40 @@ const GameScreen = () => {
             {/* ВЕРХНЯЯ ПАНЕЛЬ: ИГРОКИ, ОЧКИ И УПРАВЛЕНИЕ ТАЙМЕРОМ */}
             <div className="glass-panel" style={{ padding: '1.2rem 1.8rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1.2rem' }}>
                 
-                {/* Список игроков с очками, статусом подключения и прогрессом */}
+                {/* Динамическая таблица игроков (отсортирована по набранным очкам: топ 1 — самый левый) */}
                 <div style={{ display: 'flex', gap: '0.8rem', alignItems: 'center', flexWrap: 'wrap' }}>
-                    {gameState.players.map(p => {
+                    {sortedPlayers.map((p, rankIdx) => {
                         const pRatedCount = progress[p.id] ?? (Object.keys(gameState.ratings?.[p.id] || {}).length);
                         const isAllDone = pRatedCount === 5;
+                        const isTop1 = rankIdx === 0 && (p.vp || 0) > 0;
+                        const isHostPlayer = p.id === gameState.host;
 
                         return (
                             <div key={p.id} style={{ 
                                 display: 'flex', 
                                 alignItems: 'center', 
                                 gap: '0.6rem', 
-                                background: 'rgba(3, 12, 24, 0.75)', 
+                                background: isTop1 ? 'linear-gradient(135deg, rgba(255, 215, 0, 0.12) 0%, rgba(3, 12, 24, 0.85) 100%)' : 'rgba(3, 12, 24, 0.75)', 
                                 padding: '8px 14px', 
                                 borderRadius: '14px', 
-                                border: `1px solid ${p.color}55`,
-                                boxShadow: `0 0 12px ${p.color}25`,
-                                opacity: p.connected ? 1 : 0.65
+                                border: isTop1 ? '1px solid rgba(255, 215, 0, 0.6)' : `1px solid ${p.color}55`,
+                                boxShadow: isTop1 ? '0 0 16px rgba(255, 215, 0, 0.35)' : `0 0 12px ${p.color}25`,
+                                opacity: p.connected ? 1 : 0.65,
+                                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
                             }}>
-                                {/* Точка подключения: изумрудный зеленый или бордовый красный */}
+                                {/* Бейдж места в рейтинге (#1, #2, #3...) */}
+                                <span style={{ 
+                                    fontSize: '0.78rem', 
+                                    fontWeight: 900, 
+                                    color: rankIdx === 0 ? '#ffd700' : rankIdx === 1 ? '#e2e8f0' : rankIdx === 2 ? '#cd7f32' : 'var(--text-muted)',
+                                    padding: '1px 5px',
+                                    borderRadius: '6px',
+                                    background: rankIdx === 0 ? 'rgba(255, 215, 0, 0.2)' : 'rgba(255,255,255,0.06)'
+                                }}>
+                                    #{rankIdx + 1}
+                                </span>
+
+                                {/* Точка подключения: зеленый изумруд или бордовый */}
                                 <div 
                                     title={p.connected ? 'В игре (онлайн)' : 'Отключился'}
                                     style={{ 
@@ -338,10 +396,42 @@ const GameScreen = () => {
                                     }} 
                                 />
 
-                                {/* Эмодзи цвета игрока и цветной ник */}
+                                {/* Эмодзи цвета игрока и цветной ник с короной хоста и кнопкой передачи */}
                                 <span style={{ fontSize: '1.15rem' }}>{p.emoji || '🌧️'}</span>
-                                <span style={{ fontWeight: 700, fontSize: '0.95rem', color: p.color, textShadow: `0 0 8px ${p.color}35` }}>
-                                    {p.nickname}
+                                <span style={{ fontWeight: 700, fontSize: '0.95rem', color: p.color, textShadow: `0 0 8px ${p.color}35`, display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+                                    <span>{p.nickname}</span>
+                                    {isHostPlayer && (
+                                        <span title="Хост лобби (ведущий/создатель)" style={{ fontSize: '1.1rem', filter: 'drop-shadow(0 0 6px rgba(255, 215, 0, 0.9))' }}>👑</span>
+                                    )}
+                                    {/* Серая корона: появляется у хоста при наведении на другого участника для передачи хоста */}
+                                    {isHost && !isHostPlayer && p.connected && (
+                                        <button
+                                            onClick={() => handleTransferHost(p.id, p.nickname)}
+                                            title={`Нажмите, чтобы передать статус хоста игроку «${p.nickname}»`}
+                                            style={{
+                                                background: 'transparent',
+                                                border: 'none',
+                                                cursor: 'pointer',
+                                                padding: '0 2px',
+                                                fontSize: '1rem',
+                                                filter: 'grayscale(0.85) opacity(0.55)',
+                                                transition: 'all 0.2s',
+                                                lineHeight: 1,
+                                                display: 'inline-flex',
+                                                alignItems: 'center'
+                                            }}
+                                            onMouseEnter={(e) => {
+                                                e.currentTarget.style.filter = 'grayscale(0) opacity(1) drop-shadow(0 0 8px rgba(255, 215, 0, 0.9))';
+                                                e.currentTarget.style.transform = 'scale(1.25)';
+                                            }}
+                                            onMouseLeave={(e) => {
+                                                e.currentTarget.style.filter = 'grayscale(0.85) opacity(0.55)';
+                                                e.currentTarget.style.transform = 'scale(1)';
+                                            }}
+                                        >
+                                            👑
+                                        </button>
+                                    )}
                                 </span>
                                 
                                 {gameState.state === 'round_start' && (
@@ -357,7 +447,7 @@ const GameScreen = () => {
                                     </span>
                                 )}
 
-                                <strong style={{ color: '#ffffff', padding: '2px 8px', background: 'rgba(255,255,255,0.08)', borderRadius: '8px', fontSize: '0.9rem' }}>
+                                <strong style={{ color: isTop1 ? '#ffd700' : '#ffffff', padding: '2px 8px', background: isTop1 ? 'rgba(255, 215, 0, 0.15)' : 'rgba(255,255,255,0.08)', borderRadius: '8px', fontSize: '0.9rem' }}>
                                     {p.vp} ПО
                                 </strong>
 
@@ -454,6 +544,29 @@ const GameScreen = () => {
                         </button>
                     )}
 
+                    {/* Переключатель "Режим стримера" в правом углу */}
+                    <button
+                        onClick={toggleStreamerMode}
+                        className="btn-secondary"
+                        style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '6px',
+                            padding: '8px 14px',
+                            fontSize: '0.88rem',
+                            fontWeight: 700,
+                            borderColor: streamerMode ? '#a855f7' : 'rgba(28, 160, 229, 0.3)',
+                            background: streamerMode ? 'rgba(168, 85, 247, 0.22)' : 'rgba(28, 160, 229, 0.08)',
+                            color: streamerMode ? '#d8b4fe' : 'var(--text-main)',
+                            boxShadow: streamerMode ? '0 0 16px rgba(168, 85, 247, 0.45)' : 'none',
+                            transition: 'all 0.25s'
+                        }}
+                        title={streamerMode ? 'Режим стримера активен: буквы ранга на постерах скрыты от зрителей' : 'Включить режим стримера (скроет буквы на постерах)'}
+                    >
+                        <span>{streamerMode ? '🟣' : '👁️'}</span>
+                        <span>Режим стримера: {streamerMode ? 'ВКЛ' : 'ВЫКЛ'}</span>
+                    </button>
+
                     {/* Кнопка закрытия комнаты хостом */}
                     {isHost && (
                         <button
@@ -512,8 +625,8 @@ const GameScreen = () => {
                             display: 'flex', 
                             flexDirection: 'column', 
                             padding: '1.1rem',
-                            border: currentRating ? `1px solid ${getRatingColor(currentRating)}` : '1px solid var(--surface-border)',
-                            boxShadow: currentRating ? `0 8px 30px ${getRatingColor(currentRating)}25` : '0 10px 30px rgba(0,0,0,0.5)',
+                            border: currentRating ? (streamerMode ? '1px solid rgba(168, 85, 247, 0.7)' : `1px solid ${getRatingColor(currentRating)}`) : '1px solid var(--surface-border)',
+                            boxShadow: currentRating ? (streamerMode ? '0 8px 30px rgba(168, 85, 247, 0.3)' : `0 8px 30px ${getRatingColor(currentRating)}25`) : '0 10px 30px rgba(0,0,0,0.5)',
                             transition: 'all 0.3s ease'
                         }}>
                             
@@ -537,26 +650,30 @@ const GameScreen = () => {
                                     style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover' }} 
                                 />
 
-                                {/* Выбранный бейдж ранга в углу постера */}
+                                {/* Выбранный бейдж ранга в углу постера (в режиме стримера буква скрыта от зрителей) */}
                                 {currentRating && (
-                                    <div style={{
-                                        position: 'absolute',
-                                        top: '10px',
-                                        right: '10px',
-                                        width: '42px',
-                                        height: '42px',
-                                        borderRadius: '12px',
-                                        background: getRatingColor(currentRating),
-                                        color: '#000',
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        justifyContent: 'center',
-                                        fontWeight: 800,
-                                        fontSize: '1.5rem',
-                                        boxShadow: `0 0 20px ${getRatingColor(currentRating)}`,
-                                        zIndex: 2
-                                    }}>
-                                        {currentRating}
+                                    <div 
+                                        style={{
+                                            position: 'absolute',
+                                            top: '10px',
+                                            right: '10px',
+                                            width: '42px',
+                                            height: '42px',
+                                            borderRadius: '12px',
+                                            background: streamerMode ? 'linear-gradient(135deg, #a855f7 0%, #7e22ce 100%)' : getRatingColor(currentRating),
+                                            color: streamerMode ? '#ffffff' : '#000',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'center',
+                                            fontWeight: 800,
+                                            fontSize: streamerMode ? '1.25rem' : '1.5rem',
+                                            boxShadow: streamerMode ? '0 0 20px rgba(168, 85, 247, 0.85)' : `0 0 20px ${getRatingColor(currentRating)}`,
+                                            zIndex: 2,
+                                            transition: 'all 0.2s'
+                                        }}
+                                        title={streamerMode ? 'Режим стримера: оценка выставлена, буква скрыта от зрителей' : `Выставлен ранг: ${currentRating}`}
+                                    >
+                                        {streamerMode ? '🔒' : currentRating}
                                     </div>
                                 )}
                             </div>
@@ -704,11 +821,14 @@ const GameScreen = () => {
                         🌧️ Раунд завершён! Очки начислены за все совпадения.
                     </h3>
                     <div style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem', flexWrap: 'wrap' }}>
-                        {gameState.players.map(p => (
+                        {sortedPlayers.map(p => (
                             <div key={p.id} style={{ fontSize: '1.05rem', display: 'flex', alignItems: 'center', gap: '6px' }}>
                                 <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: p.connected ? '#00e676' : '#8b0000', display: 'inline-block' }} />
                                 <span style={{ fontSize: '1.15rem' }}>{p.emoji || '🌧️'}</span>
-                                <span style={{ color: p.color, fontWeight: 700, textShadow: `0 0 8px ${p.color}35` }}>{p.nickname}: </span>
+                                <span style={{ color: p.color, fontWeight: 700, textShadow: `0 0 8px ${p.color}35`, display: 'inline-flex', alignItems: 'center', gap: '3px' }}>
+                                    {p.nickname}
+                                    {p.id === gameState.host && <span title="Хост лобби" style={{ fontSize: '1rem' }}>👑</span>}:
+                                </span>
                                 <strong style={{ color: '#00e676' }}>+{(gameState.roundPoints?.[p.id] || 0)} ПО</strong>
                                 <span style={{ color: 'var(--text-muted)' }}> (Всего: {p.vp})</span>
                             </div>
