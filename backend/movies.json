@@ -1,0 +1,3217 @@
+[
+  {
+    "id": "m1",
+    "title": "Весёлый маленький Бэтмен (2023)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FF66?text=%D0%92%D0%B5%D1%81%D1%91%D0%BB%D1%8B%D0%B9%20%0A%D0%BC%D0%B0%D0%BB%D0%B5%D0%BD%D1%8C%D0%BA%D0%B8%D0%B9%20%0A%D0%91%D1%8D%D1%82%D0%BC%D0%B5%D0%BD%20(2023)"
+  },
+  {
+    "id": "m2",
+    "title": "Страна ОЗ (2015)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF0055?text=%D0%A1%D1%82%D1%80%D0%B0%D0%BD%D0%B0%20%D0%9E%D0%97%20%0A(2015)"
+  },
+  {
+    "id": "m3",
+    "title": "Самоубийцы: История любви (2006)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/CC00FF?text=%D0%A1%D0%B0%D0%BC%D0%BE%D1%83%D0%B1%D0%B8%D0%B9%D1%86%D1%8B%3A%20%0A%D0%98%D1%81%D1%82%D0%BE%D1%80%D0%B8%D1%8F%20%D0%BB%D1%8E%D0%B1%D0%B2%D0%B8%20%0A(2006)"
+  },
+  {
+    "id": "m4",
+    "title": "Невероятные приключения Шурика (2025)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FFFF00?text=%D0%9D%D0%B5%D0%B2%D0%B5%D1%80%D0%BE%D1%8F%D1%82%D0%BD%D1%8B%D0%B5%20%0A%D0%BF%D1%80%D0%B8%D0%BA%D0%BB%D1%8E%D1%87%D0%B5%D0%BD%D0%B8%D1%8F%20%0A%D0%A8%D1%83%D1%80%D0%B8%D0%BA%D0%B0%20(2025)"
+  },
+  {
+    "id": "m5",
+    "title": "Объединённая зона безопасности (2000)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF3300?text=%D0%9E%D0%B1%D1%8A%D0%B5%D0%B4%D0%B8%D0%BD%D1%91%D0%BD%D0%BD%D0%B0%D1%8F%20%0A%D0%B7%D0%BE%D0%BD%D0%B0%20%0A%D0%B1%D0%B5%D0%B7%D0%BE%D0%BF%D0%B0%D1%81%D0%BD%D0%BE%D1%81%D1%82%D0%B8%20%0A(2000)"
+  },
+  {
+    "id": "m6",
+    "title": "Принцесса (2022)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF9900?text=%D0%9F%D1%80%D0%B8%D0%BD%D1%86%D0%B5%D1%81%D1%81%D0%B0%20%0A(2022)"
+  },
+  {
+    "id": "m7",
+    "title": "Отряд «Америка»: Всемирная полиция (2004)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=%D0%9E%D1%82%D1%80%D1%8F%D0%B4%20%0A%C2%AB%D0%90%D0%BC%D0%B5%D1%80%D0%B8%D0%BA%D0%B0%C2%BB%3A%20%0A%D0%92%D1%81%D0%B5%D0%BC%D0%B8%D1%80%D0%BD%D0%B0%D1%8F%20%0A%D0%BF%D0%BE%D0%BB%D0%B8%D1%86%D0%B8%D1%8F%20(2004)"
+  },
+  {
+    "id": "m8",
+    "title": "Лакомый кусок (2026)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%9B%D0%B0%D0%BA%D0%BE%D0%BC%D1%8B%D0%B9%20%D0%BA%D1%83%D1%81%D0%BE%D0%BA%20%0A(2026)"
+  },
+  {
+    "id": "m9",
+    "title": "Семья в аренду (2025)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/99FF00?text=%D0%A1%D0%B5%D0%BC%D1%8C%D1%8F%20%D0%B2%20%D0%B0%D1%80%D0%B5%D0%BD%D0%B4%D1%83%20%0A(2025)"
+  },
+  {
+    "id": "m10",
+    "title": "Хороший, плохой, злой (1966)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/99FF00?text=%D0%A5%D0%BE%D1%80%D0%BE%D1%88%D0%B8%D0%B9%2C%20%0A%D0%BF%D0%BB%D0%BE%D1%85%D0%BE%D0%B9%2C%20%D0%B7%D0%BB%D0%BE%D0%B9%20%0A(1966)"
+  },
+  {
+    "id": "m11",
+    "title": "Код 3 (2025)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=%D0%9A%D0%BE%D0%B4%203%20(2025)"
+  },
+  {
+    "id": "m12",
+    "title": "Анаконда (2026)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%90%D0%BD%D0%B0%D0%BA%D0%BE%D0%BD%D0%B4%D0%B0%20(2026)"
+  },
+  {
+    "id": "m13",
+    "title": "Тихоокеанский рубеж (2013)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%A2%D0%B8%D1%85%D0%BE%D0%BE%D0%BA%D0%B5%D0%B0%D0%BD%D1%81%D0%BA%D0%B8%D0%B9%20%0A%D1%80%D1%83%D0%B1%D0%B5%D0%B6%20(2013)"
+  },
+  {
+    "id": "m14",
+    "title": "Страх (1996)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF3300?text=%D0%A1%D1%82%D1%80%D0%B0%D1%85%20(1996)"
+  },
+  {
+    "id": "m15",
+    "title": "Опасный дуэт (2026)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FFFF?text=%D0%9E%D0%BF%D0%B0%D1%81%D0%BD%D1%8B%D0%B9%20%D0%B4%D1%83%D1%8D%D1%82%20%0A(2026)"
+  },
+  {
+    "id": "m16",
+    "title": "Белые цыпочки (2004)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%91%D0%B5%D0%BB%D1%8B%D0%B5%20%D1%86%D1%8B%D0%BF%D0%BE%D1%87%D0%BA%D0%B8%20%0A(2004)"
+  },
+  {
+    "id": "m17",
+    "title": "Сентиментальная ценность (2025)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/CC00FF?text=%D0%A1%D0%B5%D0%BD%D1%82%D0%B8%D0%BC%D0%B5%D0%BD%D1%82%D0%B0%D0%BB%D1%8C%D0%BD%D0%B0%D1%8F%20%0A%D1%86%D0%B5%D0%BD%D0%BD%D0%BE%D1%81%D1%82%D1%8C%20(2025)"
+  },
+  {
+    "id": "m18",
+    "title": "Горничная (2025)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FFFF00?text=%D0%93%D0%BE%D1%80%D0%BD%D0%B8%D1%87%D0%BD%D0%B0%D1%8F%20%0A(2025)"
+  },
+  {
+    "id": "m19",
+    "title": "Моя вина (2023)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/99FF00?text=%D0%9C%D0%BE%D1%8F%20%D0%B2%D0%B8%D0%BD%D0%B0%20(2023)"
+  },
+  {
+    "id": "m20",
+    "title": "Неадекватные люди (2010)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%9D%D0%B5%D0%B0%D0%B4%D0%B5%D0%BA%D0%B2%D0%B0%D1%82%D0%BD%D1%8B%D0%B5%20%0A%D0%BB%D1%8E%D0%B4%D0%B8%20(2010)"
+  },
+  {
+    "id": "m21",
+    "title": "Чего хотят женщины (2000)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF3300?text=%D0%A7%D0%B5%D0%B3%D0%BE%20%D1%85%D0%BE%D1%82%D1%8F%D1%82%20%0A%D0%B6%D0%B5%D0%BD%D1%89%D0%B8%D0%BD%D1%8B%20(2000)"
+  },
+  {
+    "id": "m22",
+    "title": "Назови меня своим именем (2017)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FF66?text=%D0%9D%D0%B0%D0%B7%D0%BE%D0%B2%D0%B8%20%D0%BC%D0%B5%D0%BD%D1%8F%20%0A%D1%81%D0%B2%D0%BE%D0%B8%D0%BC%20%D0%B8%D0%BC%D0%B5%D0%BD%D0%B5%D0%BC%20%0A(2017)"
+  },
+  {
+    "id": "m23",
+    "title": "Отпуск на двоих (2026)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/99FF00?text=%D0%9E%D1%82%D0%BF%D1%83%D1%81%D0%BA%20%D0%BD%D0%B0%20%D0%B4%D0%B2%D0%BE%D0%B8%D1%85%20%0A(2026)"
+  },
+  {
+    "id": "m24",
+    "title": "Валентинка (2010)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF9900?text=%D0%92%D0%B0%D0%BB%D0%B5%D0%BD%D1%82%D0%B8%D0%BD%D0%BA%D0%B0%20%0A(2010)"
+  },
+  {
+    "id": "m25",
+    "title": "Форма голоса (2016)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FFFF?text=%D0%A4%D0%BE%D1%80%D0%BC%D0%B0%20%D0%B3%D0%BE%D0%BB%D0%BE%D1%81%D0%B0%20%0A(2016)"
+  },
+  {
+    "id": "m26",
+    "title": "28 лет спустя: Часть II. Храм костей (2026)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF0055?text=28%20%D0%BB%D0%B5%D1%82%20%D1%81%D0%BF%D1%83%D1%81%D1%82%D1%8F%3A%20%0A%D0%A7%D0%B0%D1%81%D1%82%D1%8C%20II.%20%D0%A5%D1%80%D0%B0%D0%BC%20%0A%D0%BA%D0%BE%D1%81%D1%82%D0%B5%D0%B9%20(2026)"
+  },
+  {
+    "id": "m27",
+    "title": "Казнить нельзя помиловать (2026)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FFFF00?text=%D0%9A%D0%B0%D0%B7%D0%BD%D0%B8%D1%82%D1%8C%20%D0%BD%D0%B5%D0%BB%D1%8C%D0%B7%D1%8F%20%0A%D0%BF%D0%BE%D0%BC%D0%B8%D0%BB%D0%BE%D0%B2%D0%B0%D1%82%D1%8C%20%0A(2026)"
+  },
+  {
+    "id": "m28",
+    "title": "Храбрые перцем (2010)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/99FF00?text=%D0%A5%D1%80%D0%B0%D0%B1%D1%80%D1%8B%D0%B5%20%D0%BF%D0%B5%D1%80%D1%86%D0%B5%D0%BC%20%0A(2010)"
+  },
+  {
+    "id": "m29",
+    "title": "Твоя вина (2024)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/99FF00?text=%D0%A2%D0%B2%D0%BE%D1%8F%20%D0%B2%D0%B8%D0%BD%D0%B0%20%0A(2024)"
+  },
+  {
+    "id": "m30",
+    "title": "Марти Великолепный (2025)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FFFF?text=%D0%9C%D0%B0%D1%80%D1%82%D0%B8%20%0A%D0%92%D0%B5%D0%BB%D0%B8%D0%BA%D0%BE%D0%BB%D0%B5%D0%BF%D0%BD%D1%8B%D0%B9%20%0A(2025)"
+  },
+  {
+    "id": "m31",
+    "title": "Подводная лодка (1981)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%9F%D0%BE%D0%B4%D0%B2%D0%BE%D0%B4%D0%BD%D0%B0%D1%8F%20%D0%BB%D0%BE%D0%B4%D0%BA%D0%B0%20%0A(1981)"
+  },
+  {
+    "id": "m32",
+    "title": "Левша (2015)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FFFF00?text=%D0%9B%D0%B5%D0%B2%D1%88%D0%B0%20(2015)"
+  },
+  {
+    "id": "m33",
+    "title": "Суп из капусты (1981)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%A1%D1%83%D0%BF%20%D0%B8%D0%B7%20%D0%BA%D0%B0%D0%BF%D1%83%D1%81%D1%82%D1%8B%20%0A(1981)"
+  },
+  {
+    "id": "m34",
+    "title": "Апокалипсис (2006)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/99FF00?text=%D0%90%D0%BF%D0%BE%D0%BA%D0%B0%D0%BB%D0%B8%D0%BF%D1%81%D0%B8%D1%81%20%0A(2006)"
+  },
+  {
+    "id": "m35",
+    "title": "Убежище (2026)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/99FF00?text=%D0%A3%D0%B1%D0%B5%D0%B6%D0%B8%D1%89%D0%B5%20(2026)"
+  },
+  {
+    "id": "m36",
+    "title": "Мгла (2007)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/CC00FF?text=%D0%9C%D0%B3%D0%BB%D0%B0%20(2007)"
+  },
+  {
+    "id": "m37",
+    "title": "Черный рыцарь (2001)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FFFF00?text=%D0%A7%D0%B5%D1%80%D0%BD%D1%8B%D0%B9%20%D1%80%D1%8B%D1%86%D0%B0%D1%80%D1%8C%20%0A(2001)"
+  },
+  {
+    "id": "m38",
+    "title": "Дофус – Книга 1: Джулит (2015)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%94%D0%BE%D1%84%D1%83%D1%81%20%E2%80%93%20%D0%9A%D0%BD%D0%B8%D0%B3%D0%B0%20%0A1%3A%20%D0%94%D0%B6%D1%83%D0%BB%D0%B8%D1%82%20%0A(2015)"
+  },
+  {
+    "id": "m39",
+    "title": "Чёрная дыра (Чёрная дыра)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF3300?text=%D0%A7%D1%91%D1%80%D0%BD%D0%B0%D1%8F%20%D0%B4%D1%8B%D1%80%D0%B0%20%0A(%D0%A7%D1%91%D1%80%D0%BD%D0%B0%D1%8F%20%D0%B4%D1%8B%D1%80%D0%B0)"
+  },
+  {
+    "id": "m40",
+    "title": "Война миров (2025)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF3300?text=%D0%92%D0%BE%D0%B9%D0%BD%D0%B0%20%D0%BC%D0%B8%D1%80%D0%BE%D0%B2%20%0A(2025)"
+  },
+  {
+    "id": "m41",
+    "title": "Хищник 2 (1990)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FF66?text=%D0%A5%D0%B8%D1%89%D0%BD%D0%B8%D0%BA%202%20(1990)"
+  },
+  {
+    "id": "m42",
+    "title": "Хроники Риддика (2004)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/CC00FF?text=%D0%A5%D1%80%D0%BE%D0%BD%D0%B8%D0%BA%D0%B8%20%D0%A0%D0%B8%D0%B4%D0%B4%D0%B8%D0%BA%D0%B0%20%0A(2004)"
+  },
+  {
+    "id": "m43",
+    "title": "Беспредел (1989)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF3300?text=%D0%91%D0%B5%D1%81%D0%BF%D1%80%D0%B5%D0%B4%D0%B5%D0%BB%20%0A(1989)"
+  },
+  {
+    "id": "m44",
+    "title": "Я ругаюсь (2026)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FFFF00?text=%D0%AF%20%D1%80%D1%83%D0%B3%D0%B0%D1%8E%D1%81%D1%8C%20%0A(2026)"
+  },
+  {
+    "id": "m45",
+    "title": "Душа (2020)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=%D0%94%D1%83%D1%88%D0%B0%20(2020)"
+  },
+  {
+    "id": "m46",
+    "title": "Удачи, веселья, не сдохни (2025)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/CC00FF?text=%D0%A3%D0%B4%D0%B0%D1%87%D0%B8%2C%20%D0%B2%D0%B5%D1%81%D0%B5%D0%BB%D1%8C%D1%8F%2C%20%0A%D0%BD%D0%B5%20%D1%81%D0%B4%D0%BE%D1%85%D0%BD%D0%B8%20%0A(2025)"
+  },
+  {
+    "id": "m47",
+    "title": "Риддик (2013)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF3300?text=%D0%A0%D0%B8%D0%B4%D0%B4%D0%B8%D0%BA%20(2013)"
+  },
+  {
+    "id": "m48",
+    "title": "Такси (1998)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF0055?text=%D0%A2%D0%B0%D0%BA%D1%81%D0%B8%20(1998)"
+  },
+  {
+    "id": "m49",
+    "title": "На помощь! (2025)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF0055?text=%D0%9D%D0%B0%20%D0%BF%D0%BE%D0%BC%D0%BE%D1%89%D1%8C!%20%0A(2025)"
+  },
+  {
+    "id": "m50",
+    "title": "На игле 2 (2017)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/99FF00?text=%D0%9D%D0%B0%20%D0%B8%D0%B3%D0%BB%D0%B5%202%20%0A(2017)"
+  },
+  {
+    "id": "m51",
+    "title": "Храброе сердце (1995)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/99FF00?text=%D0%A5%D1%80%D0%B0%D0%B1%D1%80%D0%BE%D0%B5%20%D1%81%D0%B5%D1%80%D0%B4%D1%86%D0%B5%20%0A(1995)"
+  },
+  {
+    "id": "m52",
+    "title": "Ржевский против Наполеона (2012)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF0055?text=%D0%A0%D0%B6%D0%B5%D0%B2%D1%81%D0%BA%D0%B8%D0%B9%20%D0%BF%D1%80%D0%BE%D1%82%D0%B8%D0%B2%20%0A%D0%9D%D0%B0%D0%BF%D0%BE%D0%BB%D0%B5%D0%BE%D0%BD%D0%B0%20%0A(2012)"
+  },
+  {
+    "id": "m53",
+    "title": "Гитлер капут (2008)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FFFF?text=%D0%93%D0%B8%D1%82%D0%BB%D0%B5%D1%80%20%D0%BA%D0%B0%D0%BF%D1%83%D1%82%20%0A(2008)"
+  },
+  {
+    "id": "m54",
+    "title": "Грозовой перевал (2026)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%93%D1%80%D0%BE%D0%B7%D0%BE%D0%B2%D0%BE%D0%B9%20%0A%D0%BF%D0%B5%D1%80%D0%B5%D0%B2%D0%B0%D0%BB%20(2026)"
+  },
+  {
+    "id": "m55",
+    "title": "Останься (2005)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/99FF00?text=%D0%9E%D1%81%D1%82%D0%B0%D0%BD%D1%8C%D1%81%D1%8F%20(2005)"
+  },
+  {
+    "id": "m56",
+    "title": "Ночные игры (2018)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%9D%D0%BE%D1%87%D0%BD%D1%8B%D0%B5%20%D0%B8%D0%B3%D1%80%D1%8B%20%0A(2018)"
+  },
+  {
+    "id": "m57",
+    "title": "Я иду искать 2 (2026)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FF66?text=%D0%AF%20%D0%B8%D0%B4%D1%83%20%D0%B8%D1%81%D0%BA%D0%B0%D1%82%D1%8C%202%20%0A(2026)"
+  },
+  {
+    "id": "m58",
+    "title": "Как трусливый Роберт Форд убил Джесси Джеймса (2007)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF0055?text=%D0%9A%D0%B0%D0%BA%20%D1%82%D1%80%D1%83%D1%81%D0%BB%D0%B8%D0%B2%D1%8B%D0%B9%20%0A%D0%A0%D0%BE%D0%B1%D0%B5%D1%80%D1%82%20%D0%A4%D0%BE%D1%80%D0%B4%20%0A%D1%83%D0%B1%D0%B8%D0%BB%20%D0%94%D0%B6%D0%B5%D1%81%D1%81%D0%B8%20%0A%D0%94%D0%B6%D0%B5%D0%B9%D0%BC%D1%81%D0%B0%20(2007)"
+  },
+  {
+    "id": "m59",
+    "title": "Смертельная гонка (2008)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF3300?text=%D0%A1%D0%BC%D0%B5%D1%80%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%B0%D1%8F%20%0A%D0%B3%D0%BE%D0%BD%D0%BA%D0%B0%20(2008)"
+  },
+  {
+    "id": "m60",
+    "title": "Баллада Бастера Скраггса (2018)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FF66?text=%D0%91%D0%B0%D0%BB%D0%BB%D0%B0%D0%B4%D0%B0%20%D0%91%D0%B0%D1%81%D1%82%D0%B5%D1%80%D0%B0%20%0A%D0%A1%D0%BA%D1%80%D0%B0%D0%B3%D0%B3%D1%81%D0%B0%20(2018)"
+  },
+  {
+    "id": "m61",
+    "title": "Славные парни (2016)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF9900?text=%D0%A1%D0%BB%D0%B0%D0%B2%D0%BD%D1%8B%D0%B5%20%D0%BF%D0%B0%D1%80%D0%BD%D0%B8%20%0A(2016)"
+  },
+  {
+    "id": "m62",
+    "title": "Последний самурай (2003)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF0055?text=%D0%9F%D0%BE%D1%81%D0%BB%D0%B5%D0%B4%D0%BD%D0%B8%D0%B9%20%0A%D1%81%D0%B0%D0%BC%D1%83%D1%80%D0%B0%D0%B9%20(2003)"
+  },
+  {
+    "id": "m63",
+    "title": "Слепая ярость (1989)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF0055?text=%D0%A1%D0%BB%D0%B5%D0%BF%D0%B0%D1%8F%20%D1%8F%D1%80%D0%BE%D1%81%D1%82%D1%8C%20%0A(1989)"
+  },
+  {
+    "id": "m64",
+    "title": "Проект «Конец света» (2026)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FF66?text=%D0%9F%D1%80%D0%BE%D0%B5%D0%BA%D1%82%20%C2%AB%D0%9A%D0%BE%D0%BD%D0%B5%D1%86%20%0A%D1%81%D0%B2%D0%B5%D1%82%D0%B0%C2%BB%20(2026)"
+  },
+  {
+    "id": "m65",
+    "title": "13 (2010)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FF66?text=13%20(2010)"
+  },
+  {
+    "id": "m66",
+    "title": "Неоспоримый 2 (2006)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF9900?text=%D0%9D%D0%B5%D0%BE%D1%81%D0%BF%D0%BE%D1%80%D0%B8%D0%BC%D1%8B%D0%B9%202%20%0A(2006)"
+  },
+  {
+    "id": "m67",
+    "title": "Мачо и ботан (2012)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/CC00FF?text=%D0%9C%D0%B0%D1%87%D0%BE%20%D0%B8%20%D0%B1%D0%BE%D1%82%D0%B0%D0%BD%20%0A(2012)"
+  },
+  {
+    "id": "m68",
+    "title": "Шары вверх (2026)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%A8%D0%B0%D1%80%D1%8B%20%D0%B2%D0%B2%D0%B5%D1%80%D1%85%20%0A(2026)"
+  },
+  {
+    "id": "m69",
+    "title": "Банды Нью-Йорка (2002)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF3300?text=%D0%91%D0%B0%D0%BD%D0%B4%D1%8B%20%D0%9D%D1%8C%D1%8E-%D0%99%D0%BE%D1%80%D0%BA%D0%B0%20%0A(2002)"
+  },
+  {
+    "id": "m70",
+    "title": "Космические дальнобойщики (1996)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/99FF00?text=%D0%9A%D0%BE%D1%81%D0%BC%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B5%20%0A%D0%B4%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE%D0%B1%D0%BE%D0%B9%D1%89%D0%B8%D0%BA%D0%B8%20%0A(1996)"
+  },
+  {
+    "id": "m71",
+    "title": "Сорвиголова (2003)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FF66?text=%D0%A1%D0%BE%D1%80%D0%B2%D0%B8%D0%B3%D0%BE%D0%BB%D0%BE%D0%B2%D0%B0%20%0A(2003)"
+  },
+  {
+    "id": "m72",
+    "title": "Электра (2005)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FFFF?text=%D0%AD%D0%BB%D0%B5%D0%BA%D1%82%D1%80%D0%B0%20(2005)"
+  },
+  {
+    "id": "m73",
+    "title": "Наша вина (2025)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%9D%D0%B0%D1%88%D0%B0%20%D0%B2%D0%B8%D0%BD%D0%B0%20%0A(2025)"
+  },
+  {
+    "id": "m74",
+    "title": "Они придут за тобой (2026)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%9E%D0%BD%D0%B8%20%D0%BF%D1%80%D0%B8%D0%B4%D1%83%D1%82%20%D0%B7%D0%B0%20%0A%D1%82%D0%BE%D0%B1%D0%BE%D0%B9%20(2026)"
+  },
+  {
+    "id": "m75",
+    "title": "Вот это драма (2026)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF0055?text=%D0%92%D0%BE%D1%82%20%D1%8D%D1%82%D0%BE%20%D0%B4%D1%80%D0%B0%D0%BC%D0%B0%20%0A(2026)"
+  },
+  {
+    "id": "m76",
+    "title": "Каратель (2004)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=%D0%9A%D0%B0%D1%80%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%20(2004)"
+  },
+  {
+    "id": "m77",
+    "title": "Бахубали: Начало (2015)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FFFF?text=%D0%91%D0%B0%D1%85%D1%83%D0%B1%D0%B0%D0%BB%D0%B8%3A%20%0A%D0%9D%D0%B0%D1%87%D0%B0%D0%BB%D0%BE%20(2015)"
+  },
+  {
+    "id": "m78",
+    "title": "Каратель: Территория войны (2008)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%9A%D0%B0%D1%80%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%3A%20%0A%D0%A2%D0%B5%D1%80%D1%80%D0%B8%D1%82%D0%BE%D1%80%D0%B8%D1%8F%20%0A%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B%20(2008)"
+  },
+  {
+    "id": "m79",
+    "title": "На вершине (2026)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF9900?text=%D0%9D%D0%B0%20%D0%B2%D0%B5%D1%80%D1%88%D0%B8%D0%BD%D0%B5%20%0A(2026)"
+  },
+  {
+    "id": "m80",
+    "title": "Щегол (2019)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%A9%D0%B5%D0%B3%D0%BE%D0%BB%20(2019)"
+  },
+  {
+    "id": "m81",
+    "title": "Королёк моей любви (2026)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=%D0%9A%D0%BE%D1%80%D0%BE%D0%BB%D1%91%D0%BA%20%D0%BC%D0%BE%D0%B5%D0%B9%20%0A%D0%BB%D1%8E%D0%B1%D0%B2%D0%B8%20(2026)"
+  },
+  {
+    "id": "m82",
+    "title": "Скотный двор (1954)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FF66?text=%D0%A1%D0%BA%D0%BE%D1%82%D0%BD%D1%8B%D0%B9%20%D0%B4%D0%B2%D0%BE%D1%80%20%0A(1954)"
+  },
+  {
+    "id": "m83",
+    "title": "Лис и Пес (1981)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/99FF00?text=%D0%9B%D0%B8%D1%81%20%D0%B8%20%D0%9F%D0%B5%D1%81%20%0A(1981)"
+  },
+  {
+    "id": "m84",
+    "title": "Онг Бак (2003)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=%D0%9E%D0%BD%D0%B3%20%D0%91%D0%B0%D0%BA%20(2003)"
+  },
+  {
+    "id": "m85",
+    "title": "Король говорит! (2010)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/CC00FF?text=%D0%9A%D0%BE%D1%80%D0%BE%D0%BB%D1%8C%20%D0%B3%D0%BE%D0%B2%D0%BE%D1%80%D0%B8%D1%82!%20%0A(2010)"
+  },
+  {
+    "id": "m86",
+    "title": "Девушка с татуировкой дракона (2011)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%94%D0%B5%D0%B2%D1%83%D1%88%D0%BA%D0%B0%20%D1%81%20%0A%D1%82%D0%B0%D1%82%D1%83%D0%B8%D1%80%D0%BE%D0%B2%D0%BA%D0%BE%D0%B9%20%0A%D0%B4%D1%80%D0%B0%D0%BA%D0%BE%D0%BD%D0%B0%20(2011)"
+  },
+  {
+    "id": "m87",
+    "title": "Грязные деньги (2026)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%93%D1%80%D1%8F%D0%B7%D0%BD%D1%8B%D0%B5%20%D0%B4%D0%B5%D0%BD%D1%8C%D0%B3%D0%B8%20%0A(2026)"
+  },
+  {
+    "id": "m88",
+    "title": "Смешарики. Начало (2011)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/CC00FF?text=%D0%A1%D0%BC%D0%B5%D1%88%D0%B0%D1%80%D0%B8%D0%BA%D0%B8.%20%0A%D0%9D%D0%B0%D1%87%D0%B0%D0%BB%D0%BE%20(2011)"
+  },
+  {
+    "id": "m89",
+    "title": "Голгофа (2013)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF0055?text=%D0%93%D0%BE%D0%BB%D0%B3%D0%BE%D1%84%D0%B0%20(2013)"
+  },
+  {
+    "id": "m90",
+    "title": "Хокум (2026)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=%D0%A5%D0%BE%D0%BA%D1%83%D0%BC%20(2026)"
+  },
+  {
+    "id": "m91",
+    "title": "Приключения няни (1987)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF9900?text=%D0%9F%D1%80%D0%B8%D0%BA%D0%BB%D1%8E%D1%87%D0%B5%D0%BD%D0%B8%D1%8F%20%0A%D0%BD%D1%8F%D0%BD%D0%B8%20(1987)"
+  },
+  {
+    "id": "m92",
+    "title": "На цепи (2025)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF3300?text=%D0%9D%D0%B0%20%D1%86%D0%B5%D0%BF%D0%B8%20(2025)"
+  },
+  {
+    "id": "m93",
+    "title": "Искусственный разум (2001)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/CC00FF?text=%D0%98%D1%81%D0%BA%D1%83%D1%81%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9%20%0A%D1%80%D0%B0%D0%B7%D1%83%D0%BC%20(2001)"
+  },
+  {
+    "id": "m94",
+    "title": "Властелины вселенной (2026)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/99FF00?text=%D0%92%D0%BB%D0%B0%D1%81%D1%82%D0%B5%D0%BB%D0%B8%D0%BD%D1%8B%20%0A%D0%B2%D1%81%D0%B5%D0%BB%D0%B5%D0%BD%D0%BD%D0%BE%D0%B9%20%0A(2026)"
+  },
+  {
+    "id": "m95",
+    "title": "Последняя дуэль (2021)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF0055?text=%D0%9F%D0%BE%D1%81%D0%BB%D0%B5%D0%B4%D0%BD%D1%8F%D1%8F%20%D0%B4%D1%83%D1%8D%D0%BB%D1%8C%20%0A(2021)"
+  },
+  {
+    "id": "m96",
+    "title": "Следствие ведут овечки (2026)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%A1%D0%BB%D0%B5%D0%B4%D1%81%D1%82%D0%B2%D0%B8%D0%B5%20%D0%B2%D0%B5%D0%B4%D1%83%D1%82%20%0A%D0%BE%D0%B2%D0%B5%D1%87%D0%BA%D0%B8%20(2026)"
+  },
+  {
+    "id": "m97",
+    "title": "Обсессия (2026)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF9900?text=%D0%9E%D0%B1%D1%81%D0%B5%D1%81%D1%81%D0%B8%D1%8F%20(2026)"
+  },
+  {
+    "id": "m98",
+    "title": "Живая ярость (2025)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FF66?text=%D0%96%D0%B8%D0%B2%D0%B0%D1%8F%20%D1%8F%D1%80%D0%BE%D1%81%D1%82%D1%8C%20%0A(2025)"
+  },
+  {
+    "id": "m99",
+    "title": "Прыгуны (2026)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FFFF00?text=%D0%9F%D1%80%D1%8B%D0%B3%D1%83%D0%BD%D1%8B%20(2026)"
+  },
+  {
+    "id": "m100",
+    "title": "Монти Пайтон и Священный Грааль (1975)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/CC00FF?text=%D0%9C%D0%BE%D0%BD%D1%82%D0%B8%20%D0%9F%D0%B0%D0%B9%D1%82%D0%BE%D0%BD%20%D0%B8%20%0A%D0%A1%D0%B2%D1%8F%D1%89%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9%20%0A%D0%93%D1%80%D0%B0%D0%B0%D0%BB%D1%8C%20(1975)"
+  },
+  {
+    "id": "m101",
+    "title": "Закулисье реальности (2026)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FFFF00?text=%D0%97%D0%B0%D0%BA%D1%83%D0%BB%D0%B8%D1%81%D1%8C%D0%B5%20%0A%D1%80%D0%B5%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE%D1%81%D1%82%D0%B8%20%0A(2026)"
+  },
+  {
+    "id": "m102",
+    "title": "Воин ветра (2004)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=%D0%92%D0%BE%D0%B8%D0%BD%20%D0%B2%D0%B5%D1%82%D1%80%D0%B0%20%0A(2004)"
+  },
+  {
+    "id": "m103",
+    "title": "Заводной апельсин (1971)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF0055?text=%D0%97%D0%B0%D0%B2%D0%BE%D0%B4%D0%BD%D0%BE%D0%B9%20%0A%D0%B0%D0%BF%D0%B5%D0%BB%D1%8C%D1%81%D0%B8%D0%BD%20(1971)"
+  },
+  {
+    "id": "m104",
+    "title": "Братец медвежонок (2003)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF0055?text=%D0%91%D1%80%D0%B0%D1%82%D0%B5%D1%86%20%0A%D0%BC%D0%B5%D0%B4%D0%B2%D0%B5%D0%B6%D0%BE%D0%BD%D0%BE%D0%BA%20%0A(2003)"
+  },
+  {
+    "id": "m105",
+    "title": "Аватар Аанг: Последний маг воздуха (2026)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/CC00FF?text=%D0%90%D0%B2%D0%B0%D1%82%D0%B0%D1%80%20%D0%90%D0%B0%D0%BD%D0%B3%3A%20%0A%D0%9F%D0%BE%D1%81%D0%BB%D0%B5%D0%B4%D0%BD%D0%B8%D0%B9%20%D0%BC%D0%B0%D0%B3%20%0A%D0%B2%D0%BE%D0%B7%D0%B4%D1%83%D1%85%D0%B0%20(2026)"
+  },
+  {
+    "id": "m106",
+    "title": "Отчаянные псы (1982)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/99FF00?text=%D0%9E%D1%82%D1%87%D0%B0%D1%8F%D0%BD%D0%BD%D1%8B%D0%B5%20%D0%BF%D1%81%D1%8B%20%0A(1982)"
+  },
+  {
+    "id": "m107",
+    "title": "Вороны: Начало (2007)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=%D0%92%D0%BE%D1%80%D0%BE%D0%BD%D1%8B%3A%20%D0%9D%D0%B0%D1%87%D0%B0%D0%BB%D0%BE%20%0A(2007)"
+  },
+  {
+    "id": "m108",
+    "title": "Мальчишник в Вегасе (2009)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%9C%D0%B0%D0%BB%D1%8C%D1%87%D0%B8%D1%88%D0%BD%D0%B8%D0%BA%20%D0%B2%20%0A%D0%92%D0%B5%D0%B3%D0%B0%D1%81%D0%B5%20(2009)"
+  },
+  {
+    "id": "m109",
+    "title": "Хроника (2012)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/CC00FF?text=%D0%A5%D1%80%D0%BE%D0%BD%D0%B8%D0%BA%D0%B0%20(2012)"
+  },
+  {
+    "id": "m110",
+    "title": "Супергёрл (2026)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF9900?text=%D0%A1%D1%83%D0%BF%D0%B5%D1%80%D0%B3%D1%91%D1%80%D0%BB%20%0A(2026)"
+  },
+  {
+    "id": "m111",
+    "title": "Пираты Карибского моря: Проклятие Черной жемчужины (2003)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/CC00FF?text=%D0%9F%D0%B8%D1%80%D0%B0%D1%82%D1%8B%20%0A%D0%9A%D0%B0%D1%80%D0%B8%D0%B1%D1%81%D0%BA%D0%BE%D0%B3%D0%BE%20%0A%D0%BC%D0%BE%D1%80%D1%8F%3A%20%D0%9F%D1%80%D0%BE%D0%BA%D0%BB%D1%8F%D1%82%D0%B8%D0%B5%20%0A%D0%A7%D0%B5%D1%80%D0%BD%D0%BE%D0%B9%20..."
+  },
+  {
+    "id": "m112",
+    "title": "Зловещие мертвецы: Пекло (2026)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/99FF00?text=%D0%97%D0%BB%D0%BE%D0%B2%D0%B5%D1%89%D0%B8%D0%B5%20%0A%D0%BC%D0%B5%D1%80%D1%82%D0%B2%D0%B5%D1%86%D1%8B%3A%20%D0%9F%D0%B5%D0%BA%D0%BB%D0%BE%20%0A(2026)"
+  },
+  {
+    "id": "m113",
+    "title": "Хеллбой: Герой из пекла (2004)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF3300?text=%D0%A5%D0%B5%D0%BB%D0%BB%D0%B1%D0%BE%D0%B9%3A%20%D0%93%D0%B5%D1%80%D0%BE%D0%B9%20%0A%D0%B8%D0%B7%20%D0%BF%D0%B5%D0%BA%D0%BB%D0%B0%20(2004)"
+  },
+  {
+    "id": "m114",
+    "title": "Мальчишник 2: Из Вегаса в Бангкок (2011)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FFFF00?text=%D0%9C%D0%B0%D0%BB%D1%8C%D1%87%D0%B8%D1%88%D0%BD%D0%B8%D0%BA%202%3A%20%0A%D0%98%D0%B7%20%D0%92%D0%B5%D0%B3%D0%B0%D1%81%D0%B0%20%D0%B2%20%0A%D0%91%D0%B0%D0%BD%D0%B3%D0%BA%D0%BE%D0%BA%20(2011)"
+  },
+  {
+    "id": "m115",
+    "title": "Приглашение (2026)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FF66?text=%D0%9F%D1%80%D0%B8%D0%B3%D0%BB%D0%B0%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%0A(2026)"
+  },
+  {
+    "id": "m116",
+    "title": "Хеллбой II: Золотая армия (2008)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%A5%D0%B5%D0%BB%D0%BB%D0%B1%D0%BE%D0%B9%20II%3A%20%0A%D0%97%D0%BE%D0%BB%D0%BE%D1%82%D0%B0%D1%8F%20%D0%B0%D1%80%D0%BC%D0%B8%D1%8F%20%0A(2008)"
+  },
+  {
+    "id": "m117",
+    "title": "Пираты Карибского моря: Сундук мертвеца (2006)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF0055?text=%D0%9F%D0%B8%D1%80%D0%B0%D1%82%D1%8B%20%0A%D0%9A%D0%B0%D1%80%D0%B8%D0%B1%D1%81%D0%BA%D0%BE%D0%B3%D0%BE%20%0A%D0%BC%D0%BE%D1%80%D1%8F%3A%20%D0%A1%D1%83%D0%BD%D0%B4%D1%83%D0%BA%20%0A%D0%BC%D0%B5%D1%80%D1%82%D0%B2%D0%B5%D1%86%D0%B0%20(2006)"
+  },
+  {
+    "id": "m118",
+    "title": "Нирвана. Группа. Шоу. Фильм (2025)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FFFF00?text=%D0%9D%D0%B8%D1%80%D0%B2%D0%B0%D0%BD%D0%B0.%20%0A%D0%93%D1%80%D1%83%D0%BF%D0%BF%D0%B0.%20%D0%A8%D0%BE%D1%83.%20%0A%D0%A4%D0%B8%D0%BB%D1%8C%D0%BC%20(2025)"
+  },
+  {
+    "id": "m119",
+    "title": "Бесподобный мистер Фокс (2009)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/CC00FF?text=%D0%91%D0%B5%D1%81%D0%BF%D0%BE%D0%B4%D0%BE%D0%B1%D0%BD%D1%8B%D0%B9%20%0A%D0%BC%D0%B8%D1%81%D1%82%D0%B5%D1%80%20%D0%A4%D0%BE%D0%BA%D1%81%20%0A(2009)"
+  },
+  {
+    "id": "m120",
+    "title": "Хеллбой (2019)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%A5%D0%B5%D0%BB%D0%BB%D0%B1%D0%BE%D0%B9%20(2019)"
+  },
+  {
+    "id": "m121",
+    "title": "Миньоны и монстры (2026)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FF66?text=%D0%9C%D0%B8%D0%BD%D1%8C%D0%BE%D0%BD%D1%8B%20%D0%B8%20%0A%D0%BC%D0%BE%D0%BD%D1%81%D1%82%D1%80%D1%8B%20(2026)"
+  },
+  {
+    "id": "m122",
+    "title": "Пираты Карибского моря: На краю света (2007)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FF66?text=%D0%9F%D0%B8%D1%80%D0%B0%D1%82%D1%8B%20%0A%D0%9A%D0%B0%D1%80%D0%B8%D0%B1%D1%81%D0%BA%D0%BE%D0%B3%D0%BE%20%0A%D0%BC%D0%BE%D1%80%D1%8F%3A%20%D0%9D%D0%B0%20%D0%BA%D1%80%D0%B0%D1%8E%20%0A%D1%81%D0%B2%D0%B5%D1%82%D0%B0%20(2007)"
+  },
+  {
+    "id": "m123",
+    "title": "Хеллбой: Проклятие Горбуна (2024)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FFFF?text=%D0%A5%D0%B5%D0%BB%D0%BB%D0%B1%D0%BE%D0%B9%3A%20%0A%D0%9F%D1%80%D0%BE%D0%BA%D0%BB%D1%8F%D1%82%D0%B8%D0%B5%20%0A%D0%93%D0%BE%D1%80%D0%B1%D1%83%D0%BD%D0%B0%20(2024)"
+  },
+  {
+    "id": "m124",
+    "title": "Бэтмен: Падение рыцаря. Часть первая (2026)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/CC00FF?text=%D0%91%D1%8D%D1%82%D0%BC%D0%B5%D0%BD%3A%20%D0%9F%D0%B0%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5%20%0A%D1%80%D1%8B%D1%86%D0%B0%D1%80%D1%8F.%20%D0%A7%D0%B0%D1%81%D1%82%D1%8C%20%0A%D0%BF%D0%B5%D1%80%D0%B2%D0%B0%D1%8F%20(2026)"
+  },
+  {
+    "id": "m125",
+    "title": "Пираты Карибского моря: На странных берегах (2011)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%9F%D0%B8%D1%80%D0%B0%D1%82%D1%8B%20%0A%D0%9A%D0%B0%D1%80%D0%B8%D0%B1%D1%81%D0%BA%D0%BE%D0%B3%D0%BE%20%0A%D0%BC%D0%BE%D1%80%D1%8F%3A%20%D0%9D%D0%B0%20%0A%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%BD%D1%8B%D1%85%20..."
+  },
+  {
+    "id": "m126",
+    "title": "Не шутите с Зоханом! (2008)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FF66?text=%D0%9D%D0%B5%20%D1%88%D1%83%D1%82%D0%B8%D1%82%D0%B5%20%D1%81%20%0A%D0%97%D0%BE%D1%85%D0%B0%D0%BD%D0%BE%D0%BC!%20(2008)"
+  },
+  {
+    "id": "m127",
+    "title": "Хитрый койот (2026)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF3300?text=%D0%A5%D0%B8%D1%82%D1%80%D1%8B%D0%B9%20%D0%BA%D0%BE%D0%B9%D0%BE%D1%82%20%0A(2026)"
+  },
+  {
+    "id": "m128",
+    "title": "Пираты Карибского моря: Мертвецы не рассказывают сказки (2017)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/CC00FF?text=%D0%9F%D0%B8%D1%80%D0%B0%D1%82%D1%8B%20%0A%D0%9A%D0%B0%D1%80%D0%B8%D0%B1%D1%81%D0%BA%D0%BE%D0%B3%D0%BE%20%0A%D0%BC%D0%BE%D1%80%D1%8F%3A%20%D0%9C%D0%B5%D1%80%D1%82%D0%B2%D0%B5%D1%86%D1%8B%20%0A%D0%BD%D0%B5%20%D1%80%D0%B0%D1%81%D1%81%D0%BA%D0%B0%D0%B7%D1%8B%D0%B2%D0%B0%D1%8E%D1%82%20..."
+  },
+  {
+    "id": "m129",
+    "title": "Царство небесное (2005)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FFFF00?text=%D0%A6%D0%B0%D1%80%D1%81%D1%82%D0%B2%D0%BE%20%0A%D0%BD%D0%B5%D0%B1%D0%B5%D1%81%D0%BD%D0%BE%D0%B5%20(2005)"
+  },
+  {
+    "id": "m130",
+    "title": "Подарок на Рождество (1996)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF3300?text=%D0%9F%D0%BE%D0%B4%D0%B0%D1%80%D0%BE%D0%BA%20%D0%BD%D0%B0%20%0A%D0%A0%D0%BE%D0%B6%D0%B4%D0%B5%D1%81%D1%82%D0%B2%D0%BE%20%0A(1996)"
+  },
+  {
+    "id": "m131",
+    "title": "Эльф (2003)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FFFF00?text=%D0%AD%D0%BB%D1%8C%D1%84%20(2003)"
+  },
+  {
+    "id": "m132",
+    "title": "Интерстеллар (2014)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF3300?text=%D0%98%D0%BD%D1%82%D0%B5%D1%80%D1%81%D1%82%D0%B5%D0%BB%D0%BB%D0%B0%D1%80%20%0A(2014)"
+  },
+  {
+    "id": "m133",
+    "title": "Гарри Поттер и философский камень (2001)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FF66?text=%D0%93%D0%B0%D1%80%D1%80%D0%B8%20%D0%9F%D0%BE%D1%82%D1%82%D0%B5%D1%80%20%D0%B8%20%0A%D1%84%D0%B8%D0%BB%D0%BE%D1%81%D0%BE%D1%84%D1%81%D0%BA%D0%B8%D0%B9%20%0A%D0%BA%D0%B0%D0%BC%D0%B5%D0%BD%D1%8C%20(2001)"
+  },
+  {
+    "id": "m134",
+    "title": "Гарри Поттер и Тайная комната (2002)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%93%D0%B0%D1%80%D1%80%D0%B8%20%D0%9F%D0%BE%D1%82%D1%82%D0%B5%D1%80%20%D0%B8%20%0A%D0%A2%D0%B0%D0%B9%D0%BD%D0%B0%D1%8F%20%D0%BA%D0%BE%D0%BC%D0%BD%D0%B0%D1%82%D0%B0%20%0A(2002)"
+  },
+  {
+    "id": "m135",
+    "title": "Человек, который изменил всё (2011)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=%D0%A7%D0%B5%D0%BB%D0%BE%D0%B2%D0%B5%D0%BA%2C%20%0A%D0%BA%D0%BE%D1%82%D0%BE%D1%80%D1%8B%D0%B9%20%D0%B8%D0%B7%D0%BC%D0%B5%D0%BD%D0%B8%D0%BB%20%0A%D0%B2%D1%81%D1%91%20(2011)"
+  },
+  {
+    "id": "m136",
+    "title": "Покемон. Детектив Пикачу (2019)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/99FF00?text=%D0%9F%D0%BE%D0%BA%D0%B5%D0%BC%D0%BE%D0%BD.%20%0A%D0%94%D0%B5%D1%82%D0%B5%D0%BA%D1%82%D0%B8%D0%B2%20%D0%9F%D0%B8%D0%BA%D0%B0%D1%87%D1%83%20%0A(2019)"
+  },
+  {
+    "id": "m137",
+    "title": "Тетрадь смерти (2017)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%A2%D0%B5%D1%82%D1%80%D0%B0%D0%B4%D1%8C%20%D1%81%D0%BC%D0%B5%D1%80%D1%82%D0%B8%20%0A(2017)"
+  },
+  {
+    "id": "m138",
+    "title": "Гарри Поттер и узник Азкабана (2004)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF3300?text=%D0%93%D0%B0%D1%80%D1%80%D0%B8%20%D0%9F%D0%BE%D1%82%D1%82%D0%B5%D1%80%20%D0%B8%20%0A%D1%83%D0%B7%D0%BD%D0%B8%D0%BA%20%D0%90%D0%B7%D0%BA%D0%B0%D0%B1%D0%B0%D0%BD%D0%B0%20%0A(2004)"
+  },
+  {
+    "id": "m139",
+    "title": "Звёздные войны: Эпизод 1 – Скрытая угроза (1999)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=%D0%97%D0%B2%D1%91%D0%B7%D0%B4%D0%BD%D1%8B%D0%B5%20%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B%3A%20%0A%D0%AD%D0%BF%D0%B8%D0%B7%D0%BE%D0%B4%201%20%E2%80%93%20%0A%D0%A1%D0%BA%D1%80%D1%8B%D1%82%D0%B0%D1%8F%20%D1%83%D0%B3%D1%80%D0%BE%D0%B7%D0%B0%20%0A(1999)"
+  },
+  {
+    "id": "m140",
+    "title": "Индиана Джонс и Королевство хрустального черепа (2008)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF9900?text=%D0%98%D0%BD%D0%B4%D0%B8%D0%B0%D0%BD%D0%B0%20%D0%94%D0%B6%D0%BE%D0%BD%D1%81%20%D0%B8%20%0A%D0%9A%D0%BE%D1%80%D0%BE%D0%BB%D0%B5%D0%B2%D1%81%D1%82%D0%B2%D0%BE%20%0A%D1%85%D1%80%D1%83%D1%81%D1%82%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE%D0%B3%D0%BE%20%0A%D1%87%D0%B5%D1%80%D0%B5%D0%BF%D0%B0%20(2008)"
+  },
+  {
+    "id": "m141",
+    "title": "Потрошители (2009)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%9F%D0%BE%D1%82%D1%80%D0%BE%D1%88%D0%B8%D1%82%D0%B5%D0%BB%D0%B8%20%0A(2009)"
+  },
+  {
+    "id": "m142",
+    "title": "Индиана Джонс и колесо судьбы (2023)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/CC00FF?text=%D0%98%D0%BD%D0%B4%D0%B8%D0%B0%D0%BD%D0%B0%20%D0%94%D0%B6%D0%BE%D0%BD%D1%81%20%D0%B8%20%0A%D0%BA%D0%BE%D0%BB%D0%B5%D1%81%D0%BE%20%D1%81%D1%83%D0%B4%D1%8C%D0%B1%D1%8B%20%0A(2023)"
+  },
+  {
+    "id": "m143",
+    "title": "Гарри Поттер и Кубок огня (2005)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF9900?text=%D0%93%D0%B0%D1%80%D1%80%D0%B8%20%D0%9F%D0%BE%D1%82%D1%82%D0%B5%D1%80%20%D0%B8%20%0A%D0%9A%D1%83%D0%B1%D0%BE%D0%BA%20%D0%BE%D0%B3%D0%BD%D1%8F%20%0A(2005)"
+  },
+  {
+    "id": "m144",
+    "title": "Крейвен-охотник (2024)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF3300?text=%D0%9A%D1%80%D0%B5%D0%B9%D0%B2%D0%B5%D0%BD-%D0%BE%D1%85%D0%BE%D1%82%D0%BD%D0%B8%D0%BA%20%0A(2024)"
+  },
+  {
+    "id": "m145",
+    "title": "Звёздные войны: Эпизод 2 – Атака клонов (2002)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/99FF00?text=%D0%97%D0%B2%D1%91%D0%B7%D0%B4%D0%BD%D1%8B%D0%B5%20%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B%3A%20%0A%D0%AD%D0%BF%D0%B8%D0%B7%D0%BE%D0%B4%202%20%E2%80%93%20%0A%D0%90%D1%82%D0%B0%D0%BA%D0%B0%20%D0%BA%D0%BB%D0%BE%D0%BD%D0%BE%D0%B2%20%0A(2002)"
+  },
+  {
+    "id": "m146",
+    "title": "Солдаты неудачи (2008)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%A1%D0%BE%D0%BB%D0%B4%D0%B0%D1%82%D1%8B%20%D0%BD%D0%B5%D1%83%D0%B4%D0%B0%D1%87%D0%B8%20%0A(2008)"
+  },
+  {
+    "id": "m147",
+    "title": "Гарри Поттер и Орден Феникса (2007)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FF66?text=%D0%93%D0%B0%D1%80%D1%80%D0%B8%20%D0%9F%D0%BE%D1%82%D1%82%D0%B5%D1%80%20%D0%B8%20%0A%D0%9E%D1%80%D0%B4%D0%B5%D0%BD%20%D0%A4%D0%B5%D0%BD%D0%B8%D0%BA%D1%81%D0%B0%20%0A(2007)"
+  },
+  {
+    "id": "m148",
+    "title": "Соник в кино (2020)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/99FF00?text=%D0%A1%D0%BE%D0%BD%D0%B8%D0%BA%20%D0%B2%20%D0%BA%D0%B8%D0%BD%D0%BE%20%0A(2020)"
+  },
+  {
+    "id": "m149",
+    "title": "Звёздные войны: Эпизод 3 – Месть ситхов (2005)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF9900?text=%D0%97%D0%B2%D1%91%D0%B7%D0%B4%D0%BD%D1%8B%D0%B5%20%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B%3A%20%0A%D0%AD%D0%BF%D0%B8%D0%B7%D0%BE%D0%B4%203%20%E2%80%93%20%0A%D0%9C%D0%B5%D1%81%D1%82%D1%8C%20%D1%81%D0%B8%D1%82%D1%85%D0%BE%D0%B2%20%0A(2005)"
+  },
+  {
+    "id": "m150",
+    "title": "Трансформеры (2007)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%A2%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%BE%D1%80%D0%BC%D0%B5%D1%80%D1%8B%20%0A(2007)"
+  },
+  {
+    "id": "m151",
+    "title": "Гарри Поттер и Принц-полукровка (2009)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF9900?text=%D0%93%D0%B0%D1%80%D1%80%D0%B8%20%D0%9F%D0%BE%D1%82%D1%82%D0%B5%D1%80%20%D0%B8%20%0A%D0%9F%D1%80%D0%B8%D0%BD%D1%86-%D0%BF%D0%BE%D0%BB%D1%83%D0%BA%D1%80%D0%BE%D0%B2%D0%BA%D0%B0%20%0A(2009)"
+  },
+  {
+    "id": "m152",
+    "title": "Соник 2 в кино (2022)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=%D0%A1%D0%BE%D0%BD%D0%B8%D0%BA%202%20%D0%B2%20%D0%BA%D0%B8%D0%BD%D0%BE%20%0A(2022)"
+  },
+  {
+    "id": "m153",
+    "title": "Гарри Поттер и Дары Смерти: Часть I (2010)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FFFF00?text=%D0%93%D0%B0%D1%80%D1%80%D0%B8%20%D0%9F%D0%BE%D1%82%D1%82%D0%B5%D1%80%20%D0%B8%20%0A%D0%94%D0%B0%D1%80%D1%8B%20%D0%A1%D0%BC%D0%B5%D1%80%D1%82%D0%B8%3A%20%0A%D0%A7%D0%B0%D1%81%D1%82%D1%8C%20I%20(2010)"
+  },
+  {
+    "id": "m154",
+    "title": "Игра лжецов: Последний раунд (2010)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=%D0%98%D0%B3%D1%80%D0%B0%20%D0%BB%D0%B6%D0%B5%D1%86%D0%BE%D0%B2%3A%20%0A%D0%9F%D0%BE%D1%81%D0%BB%D0%B5%D0%B4%D0%BD%D0%B8%D0%B9%20%D1%80%D0%B0%D1%83%D0%BD%D0%B4%20%0A(2010)"
+  },
+  {
+    "id": "m155",
+    "title": "Мумия (1999)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=%D0%9C%D1%83%D0%BC%D0%B8%D1%8F%20(1999)"
+  },
+  {
+    "id": "m156",
+    "title": "Гарри Поттер и Дары Смерти: Часть II (2011)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/CC00FF?text=%D0%93%D0%B0%D1%80%D1%80%D0%B8%20%D0%9F%D0%BE%D1%82%D1%82%D0%B5%D1%80%20%D0%B8%20%0A%D0%94%D0%B0%D1%80%D1%8B%20%D0%A1%D0%BC%D0%B5%D1%80%D1%82%D0%B8%3A%20%0A%D0%A7%D0%B0%D1%81%D1%82%D1%8C%20II%20(2011)"
+  },
+  {
+    "id": "m157",
+    "title": "Три билборда на границе Эббинга, Миссури (2017)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF3300?text=%D0%A2%D1%80%D0%B8%20%D0%B1%D0%B8%D0%BB%D0%B1%D0%BE%D1%80%D0%B4%D0%B0%20%D0%BD%D0%B0%20%0A%D0%B3%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D0%B5%20%0A%D0%AD%D0%B1%D0%B1%D0%B8%D0%BD%D0%B3%D0%B0%2C%20%0A%D0%9C%D0%B8%D1%81%D1%81%D1%83%D1%80%D0%B8%20(2017)"
+  },
+  {
+    "id": "m158",
+    "title": "Исчезнувшая (2014)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/99FF00?text=%D0%98%D1%81%D1%87%D0%B5%D0%B7%D0%BD%D1%83%D0%B2%D1%88%D0%B0%D1%8F%20%0A(2014)"
+  },
+  {
+    "id": "m159",
+    "title": "Мумия возвращается (2001)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=%D0%9C%D1%83%D0%BC%D0%B8%D1%8F%20%0A%D0%B2%D0%BE%D0%B7%D0%B2%D1%80%D0%B0%D1%89%D0%B0%D0%B5%D1%82%D1%81%D1%8F%20%0A(2001)"
+  },
+  {
+    "id": "m160",
+    "title": "Фантастические твари и где они обитают (2016)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF3300?text=%D0%A4%D0%B0%D0%BD%D1%82%D0%B0%D1%81%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B5%20%0A%D1%82%D0%B2%D0%B0%D1%80%D0%B8%20%D0%B8%20%D0%B3%D0%B4%D0%B5%20%D0%BE%D0%BD%D0%B8%20%0A%D0%BE%D0%B1%D0%B8%D1%82%D0%B0%D1%8E%D1%82%20(2016)"
+  },
+  {
+    "id": "m161",
+    "title": "Соник 3 в кино (2024)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF3300?text=%D0%A1%D0%BE%D0%BD%D0%B8%D0%BA%203%20%D0%B2%20%D0%BA%D0%B8%D0%BD%D0%BE%20%0A(2024)"
+  },
+  {
+    "id": "m162",
+    "title": "Игра лжецов: Возрождение (2012)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF9900?text=%D0%98%D0%B3%D1%80%D0%B0%20%D0%BB%D0%B6%D0%B5%D1%86%D0%BE%D0%B2%3A%20%0A%D0%92%D0%BE%D0%B7%D1%80%D0%BE%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5%20%0A(2012)"
+  },
+  {
+    "id": "m163",
+    "title": "Американский психопат (2000)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FFFF00?text=%D0%90%D0%BC%D0%B5%D1%80%D0%B8%D0%BA%D0%B0%D0%BD%D1%81%D0%BA%D0%B8%D0%B9%20%0A%D0%BF%D1%81%D0%B8%D1%85%D0%BE%D0%BF%D0%B0%D1%82%20(2000)"
+  },
+  {
+    "id": "m164",
+    "title": "Тетрадь смерти (2006)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF0055?text=%D0%A2%D0%B5%D1%82%D1%80%D0%B0%D0%B4%D1%8C%20%D1%81%D0%BC%D0%B5%D1%80%D1%82%D0%B8%20%0A(2006)"
+  },
+  {
+    "id": "m165",
+    "title": "Криминальный город (2017)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FFFF00?text=%D0%9A%D1%80%D0%B8%D0%BC%D0%B8%D0%BD%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9%20%0A%D0%B3%D0%BE%D1%80%D0%BE%D0%B4%20(2017)"
+  },
+  {
+    "id": "m166",
+    "title": "Фантастические твари: Преступления Грин-де-Вальда (2018)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FF66?text=%D0%A4%D0%B0%D0%BD%D1%82%D0%B0%D1%81%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B5%20%0A%D1%82%D0%B2%D0%B0%D1%80%D0%B8%3A%20%0A%D0%9F%D1%80%D0%B5%D1%81%D1%82%D1%83%D0%BF%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%0A%D0%93%D1%80%D0%B8%D0%BD-%D0%B4%D0%B5-%D0%92%D0%B0%D0%BB%D1%8C%D0%B4%D0%B0%20..."
+  },
+  {
+    "id": "m167",
+    "title": "В поисках приключений (1996)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FF66?text=%D0%92%20%D0%BF%D0%BE%D0%B8%D1%81%D0%BA%D0%B0%D1%85%20%0A%D0%BF%D1%80%D0%B8%D0%BA%D0%BB%D1%8E%D1%87%D0%B5%D0%BD%D0%B8%D0%B9%20%0A(1996)"
+  },
+  {
+    "id": "m168",
+    "title": "Ущелье (2025)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FF66?text=%D0%A3%D1%89%D0%B5%D0%BB%D1%8C%D0%B5%20(2025)"
+  },
+  {
+    "id": "m169",
+    "title": "Привидение (1990)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B8%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5%20%0A(1990)"
+  },
+  {
+    "id": "m170",
+    "title": "Тетрадь смерти 2 (2006)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/99FF00?text=%D0%A2%D0%B5%D1%82%D1%80%D0%B0%D0%B4%D1%8C%20%D1%81%D0%BC%D0%B5%D1%80%D1%82%D0%B8%20%0A2%20(2006)"
+  },
+  {
+    "id": "m171",
+    "title": "Королевство полной луны (2012)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF0055?text=%D0%9A%D0%BE%D1%80%D0%BE%D0%BB%D0%B5%D0%B2%D1%81%D1%82%D0%B2%D0%BE%20%0A%D0%BF%D0%BE%D0%BB%D0%BD%D0%BE%D0%B9%20%D0%BB%D1%83%D0%BD%D1%8B%20%0A(2012)"
+  },
+  {
+    "id": "m172",
+    "title": "Фантастические твари: Тайны Дамблдора (2022)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FFFF?text=%D0%A4%D0%B0%D0%BD%D1%82%D0%B0%D1%81%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B5%20%0A%D1%82%D0%B2%D0%B0%D1%80%D0%B8%3A%20%D0%A2%D0%B0%D0%B9%D0%BD%D1%8B%20%0A%D0%94%D0%B0%D0%BC%D0%B1%D0%BB%D0%B4%D0%BE%D1%80%D0%B0%20%0A(2022)"
+  },
+  {
+    "id": "m173",
+    "title": "Рокки (1976)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FFFF00?text=%D0%A0%D0%BE%D0%BA%D0%BA%D0%B8%20(1976)"
+  },
+  {
+    "id": "m174",
+    "title": "1917 (2019)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FFFF?text=1917%20(2019)"
+  },
+  {
+    "id": "m175",
+    "title": "Хоббит (1977)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/99FF00?text=%D0%A5%D0%BE%D0%B1%D0%B1%D0%B8%D1%82%20(1977)"
+  },
+  {
+    "id": "m176",
+    "title": "Тетрадь смерти 3: \"Л\": изменить мир (2008)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FFFF00?text=%D0%A2%D0%B5%D1%82%D1%80%D0%B0%D0%B4%D1%8C%20%D1%81%D0%BC%D0%B5%D1%80%D1%82%D0%B8%20%0A3%3A%20%22%D0%9B%22%3A%20%0A%D0%B8%D0%B7%D0%BC%D0%B5%D0%BD%D0%B8%D1%82%D1%8C%20%D0%BC%D0%B8%D1%80%20%0A(2008)"
+  },
+  {
+    "id": "m177",
+    "title": "Проект х: Дорвались (2012)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/CC00FF?text=%D0%9F%D1%80%D0%BE%D0%B5%D0%BA%D1%82%20%D1%85%3A%20%0A%D0%94%D0%BE%D1%80%D0%B2%D0%B0%D0%BB%D0%B8%D1%81%D1%8C%20%0A(2012)"
+  },
+  {
+    "id": "m178",
+    "title": "Властелин колец (1978)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%92%D0%BB%D0%B0%D1%81%D1%82%D0%B5%D0%BB%D0%B8%D0%BD%20%D0%BA%D0%BE%D0%BB%D0%B5%D1%86%20%0A(1978)"
+  },
+  {
+    "id": "m179",
+    "title": "Искупление (2007)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/CC00FF?text=%D0%98%D1%81%D0%BA%D1%83%D0%BF%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%0A(2007)"
+  },
+  {
+    "id": "m180",
+    "title": "Настоящая боль (2024)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FFFF?text=%D0%9D%D0%B0%D1%81%D1%82%D0%BE%D1%8F%D1%89%D0%B0%D1%8F%20%D0%B1%D0%BE%D0%BB%D1%8C%20%0A(2024)"
+  },
+  {
+    "id": "m181",
+    "title": "Кобра (1986)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=%D0%9A%D0%BE%D0%B1%D1%80%D0%B0%20(1986)"
+  },
+  {
+    "id": "m182",
+    "title": "Тетрадь смерти: Зажги новый мир (2016)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF0055?text=%D0%A2%D0%B5%D1%82%D1%80%D0%B0%D0%B4%D1%8C%20%D1%81%D0%BC%D0%B5%D1%80%D1%82%D0%B8%3A%20%0A%D0%97%D0%B0%D0%B6%D0%B3%D0%B8%20%D0%BD%D0%BE%D0%B2%D1%8B%D0%B9%20%D0%BC%D0%B8%D1%80%20%0A(2016)"
+  },
+  {
+    "id": "m183",
+    "title": "Час пик (1998)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FF66?text=%D0%A7%D0%B0%D1%81%20%D0%BF%D0%B8%D0%BA%20(1998)"
+  },
+  {
+    "id": "m184",
+    "title": "Маска (1994)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FFFF?text=%D0%9C%D0%B0%D1%81%D0%BA%D0%B0%20(1994)"
+  },
+  {
+    "id": "m185",
+    "title": "Возвращение Короля (1980)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/99FF00?text=%D0%92%D0%BE%D0%B7%D0%B2%D1%80%D0%B0%D1%89%D0%B5%D0%BD%D0%B8%D0%B5%20%0A%D0%9A%D0%BE%D1%80%D0%BE%D0%BB%D1%8F%20(1980)"
+  },
+  {
+    "id": "m186",
+    "title": "Идеальный шторм (2000)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FF66?text=%D0%98%D0%B4%D0%B5%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9%20%D1%88%D1%82%D0%BE%D1%80%D0%BC%20%0A(2000)"
+  },
+  {
+    "id": "m187",
+    "title": "Электрический штат (2025)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF0055?text=%D0%AD%D0%BB%D0%B5%D0%BA%D1%82%D1%80%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9%20%0A%D1%88%D1%82%D0%B0%D1%82%20(2025)"
+  },
+  {
+    "id": "m188",
+    "title": "Криминальный город 2 (2022)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/CC00FF?text=%D0%9A%D1%80%D0%B8%D0%BC%D0%B8%D0%BD%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9%20%0A%D0%B3%D0%BE%D1%80%D0%BE%D0%B4%202%20(2022)"
+  },
+  {
+    "id": "m189",
+    "title": "Властелин колец: Братство кольца (2001)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FFFF00?text=%D0%92%D0%BB%D0%B0%D1%81%D1%82%D0%B5%D0%BB%D0%B8%D0%BD%20%0A%D0%BA%D0%BE%D0%BB%D0%B5%D1%86%3A%20%D0%91%D1%80%D0%B0%D1%82%D1%81%D1%82%D0%B2%D0%BE%20%0A%D0%BA%D0%BE%D0%BB%D1%8C%D1%86%D0%B0%20(2001)"
+  },
+  {
+    "id": "m190",
+    "title": "Капитан Америка дивный новый мир (2025)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FFFF?text=%D0%9A%D0%B0%D0%BF%D0%B8%D1%82%D0%B0%D0%BD%20%D0%90%D0%BC%D0%B5%D1%80%D0%B8%D0%BA%D0%B0%20%0A%D0%B4%D0%B8%D0%B2%D0%BD%D1%8B%D0%B9%20%D0%BD%D0%BE%D0%B2%D1%8B%D0%B9%20%0A%D0%BC%D0%B8%D1%80%20(2025)"
+  },
+  {
+    "id": "m191",
+    "title": "Час пик 2 (2001)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF3300?text=%D0%A7%D0%B0%D1%81%20%D0%BF%D0%B8%D0%BA%202%20%0A(2001)"
+  },
+  {
+    "id": "m192",
+    "title": "Час пик 3 (2007)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF0055?text=%D0%A7%D0%B0%D1%81%20%D0%BF%D0%B8%D0%BA%203%20%0A(2007)"
+  },
+  {
+    "id": "m193",
+    "title": "Маска зорро (1998)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/99FF00?text=%D0%9C%D0%B0%D1%81%D0%BA%D0%B0%20%D0%B7%D0%BE%D1%80%D1%80%D0%BE%20%0A(1998)"
+  },
+  {
+    "id": "m194",
+    "title": "Властелин колец: Две крепости (2002)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/CC00FF?text=%D0%92%D0%BB%D0%B0%D1%81%D1%82%D0%B5%D0%BB%D0%B8%D0%BD%20%0A%D0%BA%D0%BE%D0%BB%D0%B5%D1%86%3A%20%D0%94%D0%B2%D0%B5%20%0A%D0%BA%D1%80%D0%B5%D0%BF%D0%BE%D1%81%D1%82%D0%B8%20(2002)"
+  },
+  {
+    "id": "m195",
+    "title": "Воскрешая мертвецов (1999)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FFFF00?text=%D0%92%D0%BE%D1%81%D0%BA%D1%80%D0%B5%D1%88%D0%B0%D1%8F%20%0A%D0%BC%D0%B5%D1%80%D1%82%D0%B2%D0%B5%D1%86%D0%BE%D0%B2%20%0A(1999)"
+  },
+  {
+    "id": "m196",
+    "title": "Никто (2021)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF9900?text=%D0%9D%D0%B8%D0%BA%D1%82%D0%BE%20(2021)"
+  },
+  {
+    "id": "m197",
+    "title": "Троя (2004)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF0055?text=%D0%A2%D1%80%D0%BE%D1%8F%20(2004)"
+  },
+  {
+    "id": "m198",
+    "title": "Властелин колец: возвращение короля (2003)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FF66?text=%D0%92%D0%BB%D0%B0%D1%81%D1%82%D0%B5%D0%BB%D0%B8%D0%BD%20%0A%D0%BA%D0%BE%D0%BB%D0%B5%D1%86%3A%20%0A%D0%B2%D0%BE%D0%B7%D0%B2%D1%80%D0%B0%D1%89%D0%B5%D0%BD%D0%B8%D0%B5%20%0A%D0%BA%D0%BE%D1%80%D0%BE%D0%BB%D1%8F%20(2003)"
+  },
+  {
+    "id": "m199",
+    "title": "Смертельная битва (1995)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FFFF00?text=%D0%A1%D0%BC%D0%B5%D1%80%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%B0%D1%8F%20%0A%D0%B1%D0%B8%D1%82%D0%B2%D0%B0%20(1995)"
+  },
+  {
+    "id": "m200",
+    "title": "Мистер Крутой (1996)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FFFF00?text=%D0%9C%D0%B8%D1%81%D1%82%D0%B5%D1%80%20%D0%9A%D1%80%D1%83%D1%82%D0%BE%D0%B9%20%0A(1996)"
+  },
+  {
+    "id": "m201",
+    "title": "Хоббит: Нежданное путешествие (2012)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=%D0%A5%D0%BE%D0%B1%D0%B1%D0%B8%D1%82%3A%20%0A%D0%9D%D0%B5%D0%B6%D0%B4%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%0A%D0%BF%D1%83%D1%82%D0%B5%D1%88%D0%B5%D1%81%D1%82%D0%B2%D0%B8%D0%B5%20%0A(2012)"
+  },
+  {
+    "id": "m202",
+    "title": "Хоббит: Пустошь Смауга (2013)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FFFF?text=%D0%A5%D0%BE%D0%B1%D0%B1%D0%B8%D1%82%3A%20%D0%9F%D1%83%D1%81%D1%82%D0%BE%D1%88%D1%8C%20%0A%D0%A1%D0%BC%D0%B0%D1%83%D0%B3%D0%B0%20(2013)"
+  },
+  {
+    "id": "m203",
+    "title": "Смертельная Битва 2: Истребление (1997)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/99FF00?text=%D0%A1%D0%BC%D0%B5%D1%80%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%B0%D1%8F%20%0A%D0%91%D0%B8%D1%82%D0%B2%D0%B0%202%3A%20%0A%D0%98%D1%81%D1%82%D1%80%D0%B5%D0%B1%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%0A(1997)"
+  },
+  {
+    "id": "m204",
+    "title": "Мики 17 (2025)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF0055?text=%D0%9C%D0%B8%D0%BA%D0%B8%2017%20(2025)"
+  },
+  {
+    "id": "m205",
+    "title": "Новокаин (2025)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/99FF00?text=%D0%9D%D0%BE%D0%B2%D0%BE%D0%BA%D0%B0%D0%B8%D0%BD%20(2025)"
+  },
+  {
+    "id": "m206",
+    "title": "Губка Боб – квадратные штаны (2004)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%93%D1%83%D0%B1%D0%BA%D0%B0%20%D0%91%D0%BE%D0%B1%20%E2%80%93%20%0A%D0%BA%D0%B2%D0%B0%D0%B4%D1%80%D0%B0%D1%82%D0%BD%D1%8B%D0%B5%20%0A%D1%88%D1%82%D0%B0%D0%BD%D1%8B%20(2004)"
+  },
+  {
+    "id": "m207",
+    "title": "Хоббит: Битва Пяти Воинств (2014)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF0055?text=%D0%A5%D0%BE%D0%B1%D0%B1%D0%B8%D1%82%3A%20%D0%91%D0%B8%D1%82%D0%B2%D0%B0%20%0A%D0%9F%D1%8F%D1%82%D0%B8%20%D0%92%D0%BE%D0%B8%D0%BD%D1%81%D1%82%D0%B2%20%0A(2014)"
+  },
+  {
+    "id": "m208",
+    "title": "Компаньон (2025)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FFFF?text=%D0%9A%D0%BE%D0%BC%D0%BF%D0%B0%D0%BD%D1%8C%D0%BE%D0%BD%20%0A(2025)"
+  },
+  {
+    "id": "m209",
+    "title": "Рейс навылет (2025)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FFFF00?text=%D0%A0%D0%B5%D0%B9%D1%81%20%D0%BD%D0%B0%D0%B2%D1%8B%D0%BB%D0%B5%D1%82%20%0A(2025)"
+  },
+  {
+    "id": "m210",
+    "title": "Большая двадцатка (2025)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%91%D0%BE%D0%BB%D1%8C%D1%88%D0%B0%D1%8F%20%0A%D0%B4%D0%B2%D0%B0%D0%B4%D1%86%D0%B0%D1%82%D0%BA%D0%B0%20%0A(2025)"
+  },
+  {
+    "id": "m211",
+    "title": "Опустошение (2025)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FFFF?text=%D0%9E%D0%BF%D1%83%D1%81%D1%82%D0%BE%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%0A(2025)"
+  },
+  {
+    "id": "m212",
+    "title": "Ловушка (2024)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF3300?text=%D0%9B%D0%BE%D0%B2%D1%83%D1%88%D0%BA%D0%B0%20(2024)"
+  },
+  {
+    "id": "m213",
+    "title": "Властелин колец: Война рохирримов (2024)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FF66?text=%D0%92%D0%BB%D0%B0%D1%81%D1%82%D0%B5%D0%BB%D0%B8%D0%BD%20%0A%D0%BA%D0%BE%D0%BB%D0%B5%D1%86%3A%20%D0%92%D0%BE%D0%B9%D0%BD%D0%B0%20%0A%D1%80%D0%BE%D1%85%D0%B8%D1%80%D1%80%D0%B8%D0%BC%D0%BE%D0%B2%20%0A(2024)"
+  },
+  {
+    "id": "m214",
+    "title": "Легенды «Смертельной битвы»: Месть Скорпиона (2020)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=%D0%9B%D0%B5%D0%B3%D0%B5%D0%BD%D0%B4%D1%8B%20%0A%C2%AB%D0%A1%D0%BC%D0%B5%D1%80%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D0%B9%20%0A%D0%B1%D0%B8%D1%82%D0%B2%D1%8B%C2%BB%3A%20%D0%9C%D0%B5%D1%81%D1%82%D1%8C%20%0A%D0%A1%D0%BA%D0%BE%D1%80%D0%BF%D0%B8%D0%BE%D0%BD%D0%B0%20..."
+  },
+  {
+    "id": "m215",
+    "title": "Смерть единорога (2025)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/99FF00?text=%D0%A1%D0%BC%D0%B5%D1%80%D1%82%D1%8C%20%0A%D0%B5%D0%B4%D0%B8%D0%BD%D0%BE%D1%80%D0%BE%D0%B3%D0%B0%20%0A(2025)"
+  },
+  {
+    "id": "m216",
+    "title": "Миссия: невыполнима 3 (2006)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/99FF00?text=%D0%9C%D0%B8%D1%81%D1%81%D0%B8%D1%8F%3A%20%0A%D0%BD%D0%B5%D0%B2%D1%8B%D0%BF%D0%BE%D0%BB%D0%BD%D0%B8%D0%BC%D0%B0%203%20%0A(2006)"
+  },
+  {
+    "id": "m217",
+    "title": "Дикие истории (2024)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/CC00FF?text=%D0%94%D0%B8%D0%BA%D0%B8%D0%B5%20%D0%B8%D1%81%D1%82%D0%BE%D1%80%D0%B8%D0%B8%20%0A(2024)"
+  },
+  {
+    "id": "m218",
+    "title": "Миссия «Серенити» (2005)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF3300?text=%D0%9C%D0%B8%D1%81%D1%81%D0%B8%D1%8F%20%0A%C2%AB%D0%A1%D0%B5%D1%80%D0%B5%D0%BD%D0%B8%D1%82%D0%B8%C2%BB%20%0A(2005)"
+  },
+  {
+    "id": "m219",
+    "title": "Криминальный город: Разборки в Пусане (2023)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=%D0%9A%D1%80%D0%B8%D0%BC%D0%B8%D0%BD%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9%20%0A%D0%B3%D0%BE%D1%80%D0%BE%D0%B4%3A%20%D0%A0%D0%B0%D0%B7%D0%B1%D0%BE%D1%80%D0%BA%D0%B8%20%0A%D0%B2%20%D0%9F%D1%83%D1%81%D0%B0%D0%BD%D0%B5%20(2023)"
+  },
+  {
+    "id": "m220",
+    "title": "Убить Билла (2003)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF9900?text=%D0%A3%D0%B1%D0%B8%D1%82%D1%8C%20%D0%91%D0%B8%D0%BB%D0%BB%D0%B0%20%0A(2003)"
+  },
+  {
+    "id": "m221",
+    "title": "Непрощённая (2021)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF9900?text=%D0%9D%D0%B5%D0%BF%D1%80%D0%BE%D1%89%D1%91%D0%BD%D0%BD%D0%B0%D1%8F%20%0A(2021)"
+  },
+  {
+    "id": "m222",
+    "title": "Легенды «Смертельной битвы»: Битва миров (2021)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%9B%D0%B5%D0%B3%D0%B5%D0%BD%D0%B4%D1%8B%20%0A%C2%AB%D0%A1%D0%BC%D0%B5%D1%80%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D0%B9%20%0A%D0%B1%D0%B8%D1%82%D0%B2%D1%8B%C2%BB%3A%20%D0%91%D0%B8%D1%82%D0%B2%D0%B0%20%0A%D0%BC%D0%B8%D1%80%D0%BE%D0%B2%20(2021)"
+  },
+  {
+    "id": "m223",
+    "title": "Настоящие детективы (2025)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF0055?text=%D0%9D%D0%B0%D1%81%D1%82%D0%BE%D1%8F%D1%89%D0%B8%D0%B5%20%0A%D0%B4%D0%B5%D1%82%D0%B5%D0%BA%D1%82%D0%B8%D0%B2%D1%8B%20%0A(2025)"
+  },
+  {
+    "id": "m224",
+    "title": "Миссия невыполнима: Протокол Фантом (2011)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF9900?text=%D0%9C%D0%B8%D1%81%D1%81%D0%B8%D1%8F%20%0A%D0%BD%D0%B5%D0%B2%D1%8B%D0%BF%D0%BE%D0%BB%D0%BD%D0%B8%D0%BC%D0%B0%3A%20%0A%D0%9F%D1%80%D0%BE%D1%82%D0%BE%D0%BA%D0%BE%D0%BB%20%D0%A4%D0%B0%D0%BD%D1%82%D0%BE%D0%BC%20%0A(2011)"
+  },
+  {
+    "id": "m225",
+    "title": "Уцелевший (2013)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/CC00FF?text=%D0%A3%D1%86%D0%B5%D0%BB%D0%B5%D0%B2%D1%88%D0%B8%D0%B9%20%0A(2013)"
+  },
+  {
+    "id": "m226",
+    "title": "Люди в черном (1997)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%9B%D1%8E%D0%B4%D0%B8%20%D0%B2%20%D1%87%D0%B5%D1%80%D0%BD%D0%BE%D0%BC%20%0A(1997)"
+  },
+  {
+    "id": "m227",
+    "title": "Убить Билла 2 (2004)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF9900?text=%D0%A3%D0%B1%D0%B8%D1%82%D1%8C%20%D0%91%D0%B8%D0%BB%D0%BB%D0%B0%202%20%0A(2004)"
+  },
+  {
+    "id": "m228",
+    "title": "Миссия невыполнима: племя изгоев (2015)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FFFF?text=%D0%9C%D0%B8%D1%81%D1%81%D0%B8%D1%8F%20%0A%D0%BD%D0%B5%D0%B2%D1%8B%D0%BF%D0%BE%D0%BB%D0%BD%D0%B8%D0%BC%D0%B0%3A%20%0A%D0%BF%D0%BB%D0%B5%D0%BC%D1%8F%20%D0%B8%D0%B7%D0%B3%D0%BE%D0%B5%D0%B2%20%0A(2015)"
+  },
+  {
+    "id": "m229",
+    "title": "Minecraft в кино (2025)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FFFF?text=Minecraft%20%D0%B2%20%0A%D0%BA%D0%B8%D0%BD%D0%BE%20(2025)"
+  },
+  {
+    "id": "m230",
+    "title": "Легенды Мортал Комбат: Снежная слепота (2022)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF0055?text=%D0%9B%D0%B5%D0%B3%D0%B5%D0%BD%D0%B4%D1%8B%20%D0%9C%D0%BE%D1%80%D1%82%D0%B0%D0%BB%20%0A%D0%9A%D0%BE%D0%BC%D0%B1%D0%B0%D1%82%3A%20%D0%A1%D0%BD%D0%B5%D0%B6%D0%BD%D0%B0%D1%8F%20%0A%D1%81%D0%BB%D0%B5%D0%BF%D0%BE%D1%82%D0%B0%20(2022)"
+  },
+  {
+    "id": "m231",
+    "title": "Изгой-один: Звёздные войны (2016)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FFFF?text=%D0%98%D0%B7%D0%B3%D0%BE%D0%B9-%D0%BE%D0%B4%D0%B8%D0%BD%3A%20%0A%D0%97%D0%B2%D1%91%D0%B7%D0%B4%D0%BD%D1%8B%D0%B5%20%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B%20%0A(2016)"
+  },
+  {
+    "id": "m232",
+    "title": "Легенды «Смертельной битвы»: Матч Кейджа (2023)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF9900?text=%D0%9B%D0%B5%D0%B3%D0%B5%D0%BD%D0%B4%D1%8B%20%0A%C2%AB%D0%A1%D0%BC%D0%B5%D1%80%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D0%B9%20%0A%D0%B1%D0%B8%D1%82%D0%B2%D1%8B%C2%BB%3A%20%D0%9C%D0%B0%D1%82%D1%87%20%0A%D0%9A%D0%B5%D0%B9%D0%B4%D0%B6%D0%B0%20(2023)"
+  },
+  {
+    "id": "m233",
+    "title": "Миссия невыполнима: Последствия (2018)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FFFF00?text=%D0%9C%D0%B8%D1%81%D1%81%D0%B8%D1%8F%20%0A%D0%BD%D0%B5%D0%B2%D1%8B%D0%BF%D0%BE%D0%BB%D0%BD%D0%B8%D0%BC%D0%B0%3A%20%0A%D0%9F%D0%BE%D1%81%D0%BB%D0%B5%D0%B4%D1%81%D1%82%D0%B2%D0%B8%D1%8F%20%0A(2018)"
+  },
+  {
+    "id": "m234",
+    "title": "Полицейская академия (1984)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FFFF?text=%D0%9F%D0%BE%D0%BB%D0%B8%D1%86%D0%B5%D0%B9%D1%81%D0%BA%D0%B0%D1%8F%20%0A%D0%B0%D0%BA%D0%B0%D0%B4%D0%B5%D0%BC%D0%B8%D1%8F%20(1984)"
+  },
+  {
+    "id": "m235",
+    "title": "Очи (2025)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=%D0%9E%D1%87%D0%B8%20(2025)"
+  },
+  {
+    "id": "m236",
+    "title": "Том и Джерри: Фильм (1992)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FFFF00?text=%D0%A2%D0%BE%D0%BC%20%D0%B8%20%D0%94%D0%B6%D0%B5%D1%80%D1%80%D0%B8%3A%20%0A%D0%A4%D0%B8%D0%BB%D1%8C%D0%BC%20(1992)"
+  },
+  {
+    "id": "m237",
+    "title": "Миссия невыполнима: Смертельная расплата (2023)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/99FF00?text=%D0%9C%D0%B8%D1%81%D1%81%D0%B8%D1%8F%20%0A%D0%BD%D0%B5%D0%B2%D1%8B%D0%BF%D0%BE%D0%BB%D0%BD%D0%B8%D0%BC%D0%B0%3A%20%0A%D0%A1%D0%BC%D0%B5%D1%80%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%B0%D1%8F%20%0A%D1%80%D0%B0%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%B0%20(2023)"
+  },
+  {
+    "id": "m238",
+    "title": "Криминальный город: Возмездие (2024)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF9900?text=%D0%9A%D1%80%D0%B8%D0%BC%D0%B8%D0%BD%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9%20%0A%D0%B3%D0%BE%D1%80%D0%BE%D0%B4%3A%20%0A%D0%92%D0%BE%D0%B7%D0%BC%D0%B5%D0%B7%D0%B4%D0%B8%D0%B5%20%0A(2024)"
+  },
+  {
+    "id": "m239",
+    "title": "Доспехи Бога (1986)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF3300?text=%D0%94%D0%BE%D1%81%D0%BF%D0%B5%D1%85%D0%B8%20%D0%91%D0%BE%D0%B3%D0%B0%20%0A(1986)"
+  },
+  {
+    "id": "m240",
+    "title": "С меня хватит! (1992)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/CC00FF?text=%D0%A1%20%D0%BC%D0%B5%D0%BD%D1%8F%20%D1%85%D0%B2%D0%B0%D1%82%D0%B8%D1%82!%20%0A(1992)"
+  },
+  {
+    "id": "m241",
+    "title": "Грешники (2025)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF0055?text=%D0%93%D1%80%D0%B5%D1%88%D0%BD%D0%B8%D0%BA%D0%B8%20(2025)"
+  },
+  {
+    "id": "m242",
+    "title": "Халк (2003)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/99FF00?text=%D0%A5%D0%B0%D0%BB%D0%BA%20(2003)"
+  },
+  {
+    "id": "m243",
+    "title": "Последнее завтра (2025)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/99FF00?text=%D0%9F%D0%BE%D1%81%D0%BB%D0%B5%D0%B4%D0%BD%D0%B5%D0%B5%20%0A%D0%B7%D0%B0%D0%B2%D1%82%D1%80%D0%B0%20(2025)"
+  },
+  {
+    "id": "m244",
+    "title": "На Западном фронте без перемен (2024)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FF66?text=%D0%9D%D0%B0%20%D0%97%D0%B0%D0%BF%D0%B0%D0%B4%D0%BD%D0%BE%D0%BC%20%0A%D1%84%D1%80%D0%BE%D0%BD%D1%82%D0%B5%20%D0%B1%D0%B5%D0%B7%20%0A%D0%BF%D0%B5%D1%80%D0%B5%D0%BC%D0%B5%D0%BD%20(2024)"
+  },
+  {
+    "id": "m245",
+    "title": "Доспехи Бога 2 (1991)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FF66?text=%D0%94%D0%BE%D1%81%D0%BF%D0%B5%D1%85%D0%B8%20%D0%91%D0%BE%D0%B3%D0%B0%202%20%0A(1991)"
+  },
+  {
+    "id": "m246",
+    "title": "(НЕ)идеальный мужчина (2019)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=(%D0%9D%D0%95)%D0%B8%D0%B4%D0%B5%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9%20%0A%D0%BC%D1%83%D0%B6%D1%87%D0%B8%D0%BD%D0%B0%20(2019)"
+  },
+  {
+    "id": "m247",
+    "title": "Расплата (2016)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FFFF00?text=%D0%A0%D0%B0%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%B0%20(2016)"
+  },
+  {
+    "id": "m248",
+    "title": "Расплата 2 (2025)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=%D0%A0%D0%B0%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%B0%202%20%0A(2025)"
+  },
+  {
+    "id": "m249",
+    "title": "Ярость (2014)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/CC00FF?text=%D0%AF%D1%80%D0%BE%D1%81%D1%82%D1%8C%20(2014)"
+  },
+  {
+    "id": "m250",
+    "title": "Под огнём (2025)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF3300?text=%D0%9F%D0%BE%D0%B4%20%D0%BE%D0%B3%D0%BD%D1%91%D0%BC%20%0A(2025)"
+  },
+  {
+    "id": "m251",
+    "title": "Кей-поп-охотницы на демонов (2025)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=%D0%9A%D0%B5%D0%B9-%D0%BF%D0%BE%D0%BF-%D0%BE%D1%85%D0%BE%D1%82%D0%BD%D0%B8%D1%86%D1%8B%20%0A%D0%BD%D0%B0%20%D0%B4%D0%B5%D0%BC%D0%BE%D0%BD%D0%BE%D0%B2%20%0A(2025)"
+  },
+  {
+    "id": "m252",
+    "title": "Невидимый гость (2016)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/99FF00?text=%D0%9D%D0%B5%D0%B2%D0%B8%D0%B4%D0%B8%D0%BC%D1%8B%D0%B9%20%D0%B3%D0%BE%D1%81%D1%82%D1%8C%20%0A(2016)"
+  },
+  {
+    "id": "m253",
+    "title": "Суини Тодд, демон-парикмахер с Флит-стрит (2007)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/CC00FF?text=%D0%A1%D1%83%D0%B8%D0%BD%D0%B8%20%D0%A2%D0%BE%D0%B4%D0%B4%2C%20%0A%D0%B4%D0%B5%D0%BC%D0%BE%D0%BD-%D0%BF%D0%B0%D1%80%D0%B8%D0%BA%D0%BC%D0%B0%D1%85%D0%B5%D1%80%20%0A%D1%81%20%D0%A4%D0%BB%D0%B8%D1%82-%D1%81%D1%82%D1%80%D0%B8%D1%82%20%0A(2007)"
+  },
+  {
+    "id": "m254",
+    "title": "Громовержцы* (2025)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FF66?text=%D0%93%D1%80%D0%BE%D0%BC%D0%BE%D0%B2%D0%B5%D1%80%D0%B6%D1%86%D1%8B*%20%0A(2025)"
+  },
+  {
+    "id": "m255",
+    "title": "Балерина (2025)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/99FF00?text=%D0%91%D0%B0%D0%BB%D0%B5%D1%80%D0%B8%D0%BD%D0%B0%20(2025)"
+  },
+  {
+    "id": "m256",
+    "title": "Авария (1997)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF0055?text=%D0%90%D0%B2%D0%B0%D1%80%D0%B8%D1%8F%20(1997)"
+  },
+  {
+    "id": "m257",
+    "title": "Полицейская история (1985)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FF66?text=%D0%9F%D0%BE%D0%BB%D0%B8%D1%86%D0%B5%D0%B9%D1%81%D0%BA%D0%B0%D1%8F%20%0A%D0%B8%D1%81%D1%82%D0%BE%D1%80%D0%B8%D1%8F%20(1985)"
+  },
+  {
+    "id": "m258",
+    "title": "Прорваться в НБА (2022)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FFFF?text=%D0%9F%D1%80%D0%BE%D1%80%D0%B2%D0%B0%D1%82%D1%8C%D1%81%D1%8F%20%D0%B2%20%0A%D0%9D%D0%91%D0%90%20(2022)"
+  },
+  {
+    "id": "m259",
+    "title": "Рестлер (2008)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=%D0%A0%D0%B5%D1%81%D1%82%D0%BB%D0%B5%D1%80%20(2008)"
+  },
+  {
+    "id": "m260",
+    "title": "Жажда славы (2023)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FFFF?text=%D0%96%D0%B0%D0%B6%D0%B4%D0%B0%20%D1%81%D0%BB%D0%B0%D0%B2%D1%8B%20%0A(2023)"
+  },
+  {
+    "id": "m261",
+    "title": "Игра в Пусане (2023)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FF66?text=%D0%98%D0%B3%D1%80%D0%B0%20%D0%B2%20%D0%9F%D1%83%D1%81%D0%B0%D0%BD%D0%B5%20%0A(2023)"
+  },
+  {
+    "id": "m262",
+    "title": "Малышка на миллион (2004)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/99FF00?text=%D0%9C%D0%B0%D0%BB%D1%8B%D1%88%D0%BA%D0%B0%20%D0%BD%D0%B0%20%0A%D0%BC%D0%B8%D0%BB%D0%BB%D0%B8%D0%BE%D0%BD%20(2004)"
+  },
+  {
+    "id": "m263",
+    "title": "Никогда не сдавайся (2008)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF3300?text=%D0%9D%D0%B8%D0%BA%D0%BE%D0%B3%D0%B4%D0%B0%20%D0%BD%D0%B5%20%0A%D1%81%D0%B4%D0%B0%D0%B2%D0%B0%D0%B9%D1%81%D1%8F%20(2008)"
+  },
+  {
+    "id": "m264",
+    "title": "История рыцаря (2001)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FFFF?text=%D0%98%D1%81%D1%82%D0%BE%D1%80%D0%B8%D1%8F%20%D1%80%D1%8B%D1%86%D0%B0%D1%80%D1%8F%20%0A(2001)"
+  },
+  {
+    "id": "m265",
+    "title": "Претенденты (2024)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=%D0%9F%D1%80%D0%B5%D1%82%D0%B5%D0%BD%D0%B4%D0%B5%D0%BD%D1%82%D1%8B%20%0A(2024)"
+  },
+  {
+    "id": "m266",
+    "title": "Интервью с вампиром (1994)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%98%D0%BD%D1%82%D0%B5%D1%80%D0%B2%D1%8C%D1%8E%20%D1%81%20%0A%D0%B2%D0%B0%D0%BC%D0%BF%D0%B8%D1%80%D0%BE%D0%BC%20(1994)"
+  },
+  {
+    "id": "m267",
+    "title": "Супермен (1978)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF0055?text=%D0%A1%D1%83%D0%BF%D0%B5%D1%80%D0%BC%D0%B5%D0%BD%20(1978)"
+  },
+  {
+    "id": "m268",
+    "title": "Полицейская история 2 (1988)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=%D0%9F%D0%BE%D0%BB%D0%B8%D1%86%D0%B5%D0%B9%D1%81%D0%BA%D0%B0%D1%8F%20%0A%D0%B8%D1%81%D1%82%D0%BE%D1%80%D0%B8%D1%8F%202%20%0A(1988)"
+  },
+  {
+    "id": "m269",
+    "title": "Битва Титанов (2010)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%91%D0%B8%D1%82%D0%B2%D0%B0%20%D0%A2%D0%B8%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%20%0A(2010)"
+  },
+  {
+    "id": "m270",
+    "title": "Лило и Стич (2025)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/99FF00?text=%D0%9B%D0%B8%D0%BB%D0%BE%20%D0%B8%20%D0%A1%D1%82%D0%B8%D1%87%20%0A(2025)"
+  },
+  {
+    "id": "m271",
+    "title": "Дракула (1992)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF3300?text=%D0%94%D1%80%D0%B0%D0%BA%D1%83%D0%BB%D0%B0%20(1992)"
+  },
+  {
+    "id": "m272",
+    "title": "Полицейская история 3: Суперполицейский",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/99FF00?text=%D0%9F%D0%BE%D0%BB%D0%B8%D1%86%D0%B5%D0%B9%D1%81%D0%BA%D0%B0%D1%8F%20%0A%D0%B8%D1%81%D1%82%D0%BE%D1%80%D0%B8%D1%8F%203%3A%20%0A%D0%A1%D1%83%D0%BF%D0%B5%D1%80%D0%BF%D0%BE%D0%BB%D0%B8%D1%86%D0%B5%D0%B9%D1%81%D0%BA%D0%B8%D0%B9"
+  },
+  {
+    "id": "m273",
+    "title": "Три метра над уровнем неба (2010)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF9900?text=%D0%A2%D1%80%D0%B8%20%D0%BC%D0%B5%D1%82%D1%80%D0%B0%20%D0%BD%D0%B0%D0%B4%20%0A%D1%83%D1%80%D0%BE%D0%B2%D0%BD%D0%B5%D0%BC%20%D0%BD%D0%B5%D0%B1%D0%B0%20%0A(2010)"
+  },
+  {
+    "id": "m274",
+    "title": "Материалистка (2025)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/CC00FF?text=%D0%9C%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D0%B8%D1%81%D1%82%D0%BA%D0%B0%20%0A(2025)"
+  },
+  {
+    "id": "m275",
+    "title": "Как приручить дракона (2025)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF3300?text=%D0%9A%D0%B0%D0%BA%20%D0%BF%D1%80%D0%B8%D1%80%D1%83%D1%87%D0%B8%D1%82%D1%8C%20%0A%D0%B4%D1%80%D0%B0%D0%BA%D0%BE%D0%BD%D0%B0%20(2025)"
+  },
+  {
+    "id": "m276",
+    "title": "Новичок (2025)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=%D0%9D%D0%BE%D0%B2%D0%B8%D1%87%D0%BE%D0%BA%20(2025)"
+  },
+  {
+    "id": "m277",
+    "title": "Скала (1996)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF0055?text=%D0%A1%D0%BA%D0%B0%D0%BB%D0%B0%20(1996)"
+  },
+  {
+    "id": "m278",
+    "title": "28 лет спустя (2025)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FFFF?text=28%20%D0%BB%D0%B5%D1%82%20%D1%81%D0%BF%D1%83%D1%81%D1%82%D1%8F%20%0A(2025)"
+  },
+  {
+    "id": "m279",
+    "title": "На гребне волны (1991)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=%D0%9D%D0%B0%20%D0%B3%D1%80%D0%B5%D0%B1%D0%BD%D0%B5%20%D0%B2%D0%BE%D0%BB%D0%BD%D1%8B%20%0A(1991)"
+  },
+  {
+    "id": "m280",
+    "title": "Видок (2001)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/CC00FF?text=%D0%92%D0%B8%D0%B4%D0%BE%D0%BA%20(2001)"
+  },
+  {
+    "id": "m281",
+    "title": "Сладкий ноябрь (2001)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/CC00FF?text=%D0%A1%D0%BB%D0%B0%D0%B4%D0%BA%D0%B8%D0%B9%20%D0%BD%D0%BE%D1%8F%D0%B1%D1%80%D1%8C%20%0A(2001)"
+  },
+  {
+    "id": "m282",
+    "title": "Мир Юрского периода: Возрождение (2025)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF9900?text=%D0%9C%D0%B8%D1%80%20%D0%AE%D1%80%D1%81%D0%BA%D0%BE%D0%B3%D0%BE%20%0A%D0%BF%D0%B5%D1%80%D0%B8%D0%BE%D0%B4%D0%B0%3A%20%0A%D0%92%D0%BE%D0%B7%D1%80%D0%BE%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5%20%0A(2025)"
+  },
+  {
+    "id": "m283",
+    "title": "Ренфилд (2023)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF0055?text=%D0%A0%D0%B5%D0%BD%D1%84%D0%B8%D0%BB%D0%B4%20(2023)"
+  },
+  {
+    "id": "m284",
+    "title": "Суперполицейский 2 (1993)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF3300?text=%D0%A1%D1%83%D0%BF%D0%B5%D1%80%D0%BF%D0%BE%D0%BB%D0%B8%D1%86%D0%B5%D0%B9%D1%81%D0%BA%D0%B8%D0%B9%20%0A2%20(1993)"
+  },
+  {
+    "id": "m285",
+    "title": "Изгой (2000)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF0055?text=%D0%98%D0%B7%D0%B3%D0%BE%D0%B9%20(2000)"
+  },
+  {
+    "id": "m286",
+    "title": "Супермен (2025)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%A1%D1%83%D0%BF%D0%B5%D1%80%D0%BC%D0%B5%D0%BD%20(2025)"
+  },
+  {
+    "id": "m287",
+    "title": "Миссия невыполнима: Финальная расплата (2025)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/CC00FF?text=%D0%9C%D0%B8%D1%81%D1%81%D0%B8%D1%8F%20%0A%D0%BD%D0%B5%D0%B2%D1%8B%D0%BF%D0%BE%D0%BB%D0%BD%D0%B8%D0%BC%D0%B0%3A%20%0A%D0%A4%D0%B8%D0%BD%D0%B0%D0%BB%D1%8C%D0%BD%D0%B0%D1%8F%20%0A%D1%80%D0%B0%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%B0%20(2025)"
+  },
+  {
+    "id": "m288",
+    "title": "Военный ныряльщик (2000)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=%D0%92%D0%BE%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9%20%0A%D0%BD%D1%8B%D1%80%D1%8F%D0%BB%D1%8C%D1%89%D0%B8%D0%BA%20%0A(2000)"
+  },
+  {
+    "id": "m289",
+    "title": "Нечего терять (1997)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%9D%D0%B5%D1%87%D0%B5%D0%B3%D0%BE%20%D1%82%D0%B5%D1%80%D1%8F%D1%82%D1%8C%20%0A(1997)"
+  },
+  {
+    "id": "m290",
+    "title": "Самый лучший фильм 2 (2009)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FF66?text=%D0%A1%D0%B0%D0%BC%D1%8B%D0%B9%20%D0%BB%D1%83%D1%87%D1%88%D0%B8%D0%B9%20%0A%D1%84%D0%B8%D0%BB%D1%8C%D0%BC%202%20(2009)"
+  },
+  {
+    "id": "m291",
+    "title": "Отряд самоубийц: миссия навылет (2021)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/CC00FF?text=%D0%9E%D1%82%D1%80%D1%8F%D0%B4%20%0A%D1%81%D0%B0%D0%BC%D0%BE%D1%83%D0%B1%D0%B8%D0%B9%D1%86%3A%20%0A%D0%BC%D0%B8%D1%81%D1%81%D0%B8%D1%8F%20%D0%BD%D0%B0%D0%B2%D1%8B%D0%BB%D0%B5%D1%82%20%0A(2021)"
+  },
+  {
+    "id": "m292",
+    "title": "Брат (1997)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF3300?text=%D0%91%D1%80%D0%B0%D1%82%20(1997)"
+  },
+  {
+    "id": "m293",
+    "title": "Первый удар (1996)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF3300?text=%D0%9F%D0%B5%D1%80%D0%B2%D1%8B%D0%B9%20%D1%83%D0%B4%D0%B0%D1%80%20%0A(1996)"
+  },
+  {
+    "id": "m294",
+    "title": "F1 (2025)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF9900?text=F1%20(2025)"
+  },
+  {
+    "id": "m295",
+    "title": "Каспер (1995)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF9900?text=%D0%9A%D0%B0%D1%81%D0%BF%D0%B5%D1%80%20(1995)"
+  },
+  {
+    "id": "m296",
+    "title": "Невероятная жизнь Уолтера Митти (2013)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/CC00FF?text=%D0%9D%D0%B5%D0%B2%D0%B5%D1%80%D0%BE%D1%8F%D1%82%D0%BD%D0%B0%D1%8F%20%0A%D0%B6%D0%B8%D0%B7%D0%BD%D1%8C%20%D0%A3%D0%BE%D0%BB%D1%82%D0%B5%D1%80%D0%B0%20%0A%D0%9C%D0%B8%D1%82%D1%82%D0%B8%20(2013)"
+  },
+  {
+    "id": "m297",
+    "title": "Никто 2 (2025)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FFFF00?text=%D0%9D%D0%B8%D0%BA%D1%82%D0%BE%202%20(2025)"
+  },
+  {
+    "id": "m298",
+    "title": "Экипаж (2012)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=%D0%AD%D0%BA%D0%B8%D0%BF%D0%B0%D0%B6%20(2012)"
+  },
+  {
+    "id": "m299",
+    "title": "Новая полицейская история (2004)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF0055?text=%D0%9D%D0%BE%D0%B2%D0%B0%D1%8F%20%0A%D0%BF%D0%BE%D0%BB%D0%B8%D1%86%D0%B5%D0%B9%D1%81%D0%BA%D0%B0%D1%8F%20%0A%D0%B8%D1%81%D1%82%D0%BE%D1%80%D0%B8%D1%8F%20(2004)"
+  },
+  {
+    "id": "m300",
+    "title": "Васаби (2001)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=%D0%92%D0%B0%D1%81%D0%B0%D0%B1%D0%B8%20(2001)"
+  },
+  {
+    "id": "m301",
+    "title": "Голый пистолет (2025)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/99FF00?text=%D0%93%D0%BE%D0%BB%D1%8B%D0%B9%20%D0%BF%D0%B8%D1%81%D1%82%D0%BE%D0%BB%D0%B5%D1%82%20%0A(2025)"
+  },
+  {
+    "id": "m302",
+    "title": "Орудие (2025)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF0055?text=%D0%9E%D1%80%D1%83%D0%B4%D0%B8%D0%B5%20(2025)"
+  },
+  {
+    "id": "m303",
+    "title": "12 обезьян (1995)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF3300?text=12%20%D0%BE%D0%B1%D0%B5%D0%B7%D1%8C%D1%8F%D0%BD%20%0A(1995)"
+  },
+  {
+    "id": "m304",
+    "title": "Полицейская история 2013",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%9F%D0%BE%D0%BB%D0%B8%D1%86%D0%B5%D0%B9%D1%81%D0%BA%D0%B0%D1%8F%20%0A%D0%B8%D1%81%D1%82%D0%BE%D1%80%D0%B8%D1%8F%202013"
+  },
+  {
+    "id": "m305",
+    "title": "Три метра над уровнем неба: Я тебя хочу (2012)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF9900?text=%D0%A2%D1%80%D0%B8%20%D0%BC%D0%B5%D1%82%D1%80%D0%B0%20%D0%BD%D0%B0%D0%B4%20%0A%D1%83%D1%80%D0%BE%D0%B2%D0%BD%D0%B5%D0%BC%20%D0%BD%D0%B5%D0%B1%D0%B0%3A%20%D0%AF%20%0A%D1%82%D0%B5%D0%B1%D1%8F%20%D1%85%D0%BE%D1%87%D1%83%20%0A(2012)"
+  },
+  {
+    "id": "m306",
+    "title": "После заката (2004)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF0055?text=%D0%9F%D0%BE%D1%81%D0%BB%D0%B5%20%D0%B7%D0%B0%D0%BA%D0%B0%D1%82%D0%B0%20%0A(2004)"
+  },
+  {
+    "id": "m307",
+    "title": "Хани, не надо! (2025)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FFFF?text=%D0%A5%D0%B0%D0%BD%D0%B8%2C%20%D0%BD%D0%B5%20%D0%BD%D0%B0%D0%B4%D0%BE!%20%0A(2025)"
+  },
+  {
+    "id": "m308",
+    "title": "Таинственный лес (2004)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF9900?text=%D0%A2%D0%B0%D0%B8%D0%BD%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9%20%0A%D0%BB%D0%B5%D1%81%20(2004)"
+  },
+  {
+    "id": "m309",
+    "title": "Основатель (2016)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF3300?text=%D0%9E%D1%81%D0%BD%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%20%0A(2016)"
+  },
+  {
+    "id": "m310",
+    "title": "Американская история X (1998)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%90%D0%BC%D0%B5%D1%80%D0%B8%D0%BA%D0%B0%D0%BD%D1%81%D0%BA%D0%B0%D1%8F%20%0A%D0%B8%D1%81%D1%82%D0%BE%D1%80%D0%B8%D1%8F%20X%20%0A(1998)"
+  },
+  {
+    "id": "m311",
+    "title": "Фантастическая Четвёрка: Первые шаги (2025)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/CC00FF?text=%D0%A4%D0%B0%D0%BD%D1%82%D0%B0%D1%81%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B0%D1%8F%20%0A%D0%A7%D0%B5%D1%82%D0%B2%D1%91%D1%80%D0%BA%D0%B0%3A%20%0A%D0%9F%D0%B5%D1%80%D0%B2%D1%8B%D0%B5%20%D1%88%D0%B0%D0%B3%D0%B8%20%0A(2025)"
+  },
+  {
+    "id": "m312",
+    "title": "Знаки (2002)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/99FF00?text=%D0%97%D0%BD%D0%B0%D0%BA%D0%B8%20(2002)"
+  },
+  {
+    "id": "m313",
+    "title": "Ширли-мырли (1995)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FFFF00?text=%D0%A8%D0%B8%D1%80%D0%BB%D0%B8-%D0%BC%D1%8B%D1%80%D0%BB%D0%B8%20%0A(1995)"
+  },
+  {
+    "id": "m314",
+    "title": "Брат 2 (2000)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/CC00FF?text=%D0%91%D1%80%D0%B0%D1%82%202%20(2000)"
+  },
+  {
+    "id": "m315",
+    "title": "Пойман с поличным (2025)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/99FF00?text=%D0%9F%D0%BE%D0%B9%D0%BC%D0%B0%D0%BD%20%D1%81%20%0A%D0%BF%D0%BE%D0%BB%D0%B8%D1%87%D0%BD%D1%8B%D0%BC%20(2025)"
+  },
+  {
+    "id": "m316",
+    "title": "Банши инишерина (2022)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FF66?text=%D0%91%D0%B0%D0%BD%D1%88%D0%B8%20%D0%B8%D0%BD%D0%B8%D1%88%D0%B5%D1%80%D0%B8%D0%BD%D0%B0%20%0A(2022)"
+  },
+  {
+    "id": "m317",
+    "title": "Стритрейсеры (2008)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF0055?text=%D0%A1%D1%82%D1%80%D0%B8%D1%82%D1%80%D0%B5%D0%B9%D1%81%D0%B5%D1%80%D1%8B%20%0A(2008)"
+  },
+  {
+    "id": "m318",
+    "title": "Донни Браско (1997)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF0055?text=%D0%94%D0%BE%D0%BD%D0%BD%D0%B8%20%D0%91%D1%80%D0%B0%D1%81%D0%BA%D0%BE%20%0A(1997)"
+  },
+  {
+    "id": "m319",
+    "title": "Монстры на каникулах (2012)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/99FF00?text=%D0%9C%D0%BE%D0%BD%D1%81%D1%82%D1%80%D1%8B%20%D0%BD%D0%B0%20%0A%D0%BA%D0%B0%D0%BD%D0%B8%D0%BA%D1%83%D0%BB%D0%B0%D1%85%20%0A(2012)"
+  },
+  {
+    "id": "m320",
+    "title": "Стив (2025)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%A1%D1%82%D0%B8%D0%B2%20(2025)"
+  },
+  {
+    "id": "m321",
+    "title": "Невозможное (2012)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF9900?text=%D0%9D%D0%B5%D0%B2%D0%BE%D0%B7%D0%BC%D0%BE%D0%B6%D0%BD%D0%BE%D0%B5%20%0A(2012)"
+  },
+  {
+    "id": "m322",
+    "title": "Назад в будущее (1985)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/CC00FF?text=%D0%9D%D0%B0%D0%B7%D0%B0%D0%B4%20%D0%B2%20%D0%B1%D1%83%D0%B4%D1%83%D1%89%D0%B5%D0%B5%20%0A(1985)"
+  },
+  {
+    "id": "m323",
+    "title": "Школьный Автобус (2025)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/99FF00?text=%D0%A8%D0%BA%D0%BE%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9%20%0A%D0%90%D0%B2%D1%82%D0%BE%D0%B1%D1%83%D1%81%20(2025)"
+  },
+  {
+    "id": "m324",
+    "title": "Коралина в Стране Кошма (2009)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/99FF00?text=%D0%9A%D0%BE%D1%80%D0%B0%D0%BB%D0%B8%D0%BD%D0%B0%20%D0%B2%20%0A%D0%A1%D1%82%D1%80%D0%B0%D0%BD%D0%B5%20%D0%9A%D0%BE%D1%88%D0%BC%D0%B0%20%0A(2009)"
+  },
+  {
+    "id": "m325",
+    "title": "Нападение помидоров-убийц (1978)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF9900?text=%D0%9D%D0%B0%D0%BF%D0%B0%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5%20%0A%D0%BF%D0%BE%D0%BC%D0%B8%D0%B4%D0%BE%D1%80%D0%BE%D0%B2-%D1%83%D0%B1%D0%B8%D0%B9%D1%86%20%0A(1978)"
+  },
+  {
+    "id": "m326",
+    "title": "Забавные игры (1997)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF0055?text=%D0%97%D0%B0%D0%B1%D0%B0%D0%B2%D0%BD%D1%8B%D0%B5%20%D0%B8%D0%B3%D1%80%D1%8B%20%0A(1997)"
+  },
+  {
+    "id": "m327",
+    "title": "Реальные упыри (2025)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF9900?text=%D0%A0%D0%B5%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B5%20%D1%83%D0%BF%D1%8B%D1%80%D0%B8%20%0A(2025)"
+  },
+  {
+    "id": "m328",
+    "title": "Джиперс Криперс (2001)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/CC00FF?text=%D0%94%D0%B6%D0%B8%D0%BF%D0%B5%D1%80%D1%81%20%D0%9A%D1%80%D0%B8%D0%BF%D0%B5%D1%80%D1%81%20%0A(2001)"
+  },
+  {
+    "id": "m329",
+    "title": "Дожить до рассвета (2025)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/CC00FF?text=%D0%94%D0%BE%D0%B6%D0%B8%D1%82%D1%8C%20%D0%B4%D0%BE%20%0A%D1%80%D0%B0%D1%81%D1%81%D0%B2%D0%B5%D1%82%D0%B0%20(2025)"
+  },
+  {
+    "id": "m330",
+    "title": "Верни её из мёртвых (2025)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF9900?text=%D0%92%D0%B5%D1%80%D0%BD%D0%B8%20%D0%B5%D1%91%20%D0%B8%D0%B7%20%0A%D0%BC%D1%91%D1%80%D1%82%D0%B2%D1%8B%D1%85%20(2025)"
+  },
+  {
+    "id": "m331",
+    "title": "Обезьяна (2025)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=%D0%9E%D0%B1%D0%B5%D0%B7%D1%8C%D1%8F%D0%BD%D0%B0%20(2025)"
+  },
+  {
+    "id": "m332",
+    "title": "Два, три, демон, приди! (2022)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/CC00FF?text=%D0%94%D0%B2%D0%B0%2C%20%D1%82%D1%80%D0%B8%2C%20%0A%D0%B4%D0%B5%D0%BC%D0%BE%D0%BD%2C%20%D0%BF%D1%80%D0%B8%D0%B4%D0%B8!%20%0A(2022)"
+  },
+  {
+    "id": "m333",
+    "title": "Упырь (1997)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FFFF00?text=%D0%A3%D0%BF%D1%8B%D1%80%D1%8C%20(1997)"
+  },
+  {
+    "id": "m334",
+    "title": "Девочка-пулемет (2008)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=%D0%94%D0%B5%D0%B2%D0%BE%D1%87%D0%BA%D0%B0-%D0%BF%D1%83%D0%BB%D0%B5%D0%BC%D0%B5%D1%82%20%0A(2008)"
+  },
+  {
+    "id": "m335",
+    "title": "Ральф (2012)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FF66?text=%D0%A0%D0%B0%D0%BB%D1%8C%D1%84%20(2012)"
+  },
+  {
+    "id": "m336",
+    "title": "Долгая прогулка (2025)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/CC00FF?text=%D0%94%D0%BE%D0%BB%D0%B3%D0%B0%D1%8F%20%D0%BF%D1%80%D0%BE%D0%B3%D1%83%D0%BB%D0%BA%D0%B0%20%0A(2025)"
+  },
+  {
+    "id": "m337",
+    "title": "Назад в будущее 2 (1989)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FF66?text=%D0%9D%D0%B0%D0%B7%D0%B0%D0%B4%20%D0%B2%20%D0%B1%D1%83%D0%B4%D1%83%D1%89%D0%B5%D0%B5%20%0A2%20(1989)"
+  },
+  {
+    "id": "m338",
+    "title": "Лего Фильм: Бэтмен (2017)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FFFF00?text=%D0%9B%D0%B5%D0%B3%D0%BE%20%D0%A4%D0%B8%D0%BB%D1%8C%D0%BC%3A%20%0A%D0%91%D1%8D%D1%82%D0%BC%D0%B5%D0%BD%20(2017)"
+  },
+  {
+    "id": "m339",
+    "title": "Назад в будущее 3 (1990)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%9D%D0%B0%D0%B7%D0%B0%D0%B4%20%D0%B2%20%D0%B1%D1%83%D0%B4%D1%83%D1%89%D0%B5%D0%B5%20%0A3%20(1990)"
+  },
+  {
+    "id": "m340",
+    "title": "Франкенштейн (2025)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=%D0%A4%D1%80%D0%B0%D0%BD%D0%BA%D0%B5%D0%BD%D1%88%D1%82%D0%B5%D0%B9%D0%BD%20%0A(2025)"
+  },
+  {
+    "id": "m341",
+    "title": "Рататуй (2007)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF3300?text=%D0%A0%D0%B0%D1%82%D0%B0%D1%82%D1%83%D0%B9%20(2007)"
+  },
+  {
+    "id": "m342",
+    "title": "Скуби-Ду и упорный оборотень (1988)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FFFF00?text=%D0%A1%D0%BA%D1%83%D0%B1%D0%B8-%D0%94%D1%83%20%D0%B8%20%0A%D1%83%D0%BF%D0%BE%D1%80%D0%BD%D1%8B%D0%B9%20%0A%D0%BE%D0%B1%D0%BE%D1%80%D0%BE%D1%82%D0%B5%D0%BD%D1%8C%20%0A(1988)"
+  },
+  {
+    "id": "m343",
+    "title": "Битва за битвой (2025)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FFFF00?text=%D0%91%D0%B8%D1%82%D0%B2%D0%B0%20%D0%B7%D0%B0%20%D0%B1%D0%B8%D1%82%D0%B2%D0%BE%D0%B9%20%0A(2025)"
+  },
+  {
+    "id": "m344",
+    "title": "Смерть ей к лицу (1992)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/99FF00?text=%D0%A1%D0%BC%D0%B5%D1%80%D1%82%D1%8C%20%D0%B5%D0%B9%20%D0%BA%20%0A%D0%BB%D0%B8%D1%86%D1%83%20(1992)"
+  },
+  {
+    "id": "m345",
+    "title": "Князь Владимир (2006)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FFFF00?text=%D0%9A%D0%BD%D1%8F%D0%B7%D1%8C%20%D0%92%D0%BB%D0%B0%D0%B4%D0%B8%D0%BC%D0%B8%D1%80%20%0A(2006)"
+  },
+  {
+    "id": "m346",
+    "title": "ДМБ (2000)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=%D0%94%D0%9C%D0%91%20(2000)"
+  },
+  {
+    "id": "m347",
+    "title": "Крушащая машина (2025)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FFFF?text=%D0%9A%D1%80%D1%83%D1%88%D0%B0%D1%89%D0%B0%D1%8F%20%D0%BC%D0%B0%D1%88%D0%B8%D0%BD%D0%B0%20%0A(2025)"
+  },
+  {
+    "id": "m348",
+    "title": "Д/ф \"Я Ведаю, так что и вам придётся\" (2023)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=%D0%94%2F%D1%84%20%22%D0%AF%20%D0%92%D0%B5%D0%B4%D0%B0%D1%8E%2C%20%0A%D1%82%D0%B0%D0%BA%20%D1%87%D1%82%D0%BE%20%D0%B8%20%D0%B2%D0%B0%D0%BC%20%0A%D0%BF%D1%80%D0%B8%D0%B4%D1%91%D1%82%D1%81%D1%8F%22%20%0A(2023)"
+  },
+  {
+    "id": "m349",
+    "title": "ДМБ 2 (2000)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/99FF00?text=%D0%94%D0%9C%D0%91%202%20(2000)"
+  },
+  {
+    "id": "m350",
+    "title": "Терминал (2004)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FF66?text=%D0%A2%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D0%B0%D0%BB%20(2004)"
+  },
+  {
+    "id": "m351",
+    "title": "Бугония (2025)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF9900?text=%D0%91%D1%83%D0%B3%D0%BE%D0%BD%D0%B8%D1%8F%20(2025)"
+  },
+  {
+    "id": "m352",
+    "title": "Хищник: Планета смерти (2025)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF0055?text=%D0%A5%D0%B8%D1%89%D0%BD%D0%B8%D0%BA%3A%20%D0%9F%D0%BB%D0%B0%D0%BD%D0%B5%D1%82%D0%B0%20%0A%D1%81%D0%BC%D0%B5%D1%80%D1%82%D0%B8%20(2025)"
+  },
+  {
+    "id": "m353",
+    "title": "Достать ножи: Воскрешение покойника (2025)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF0055?text=%D0%94%D0%BE%D1%81%D1%82%D0%B0%D1%82%D1%8C%20%D0%BD%D0%BE%D0%B6%D0%B8%3A%20%0A%D0%92%D0%BE%D1%81%D0%BA%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%0A%D0%BF%D0%BE%D0%BA%D0%BE%D0%B9%D0%BD%D0%B8%D0%BA%D0%B0%20%0A(2025)"
+  },
+  {
+    "id": "m354",
+    "title": "Десять негритят (1987)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=%D0%94%D0%B5%D1%81%D1%8F%D1%82%D1%8C%20%D0%BD%D0%B5%D0%B3%D1%80%D0%B8%D1%82%D1%8F%D1%82%20%0A(1987)"
+  },
+  {
+    "id": "m355",
+    "title": "Вниз (2025)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF9900?text=%D0%92%D0%BD%D0%B8%D0%B7%20(2025)"
+  },
+  {
+    "id": "m356",
+    "title": "Сущность (2025)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF0055?text=%D0%A1%D1%83%D1%89%D0%BD%D0%BE%D1%81%D1%82%D1%8C%20(2025)"
+  },
+  {
+    "id": "m357",
+    "title": "Самый лучший фильм 3-ДЭ\" (2011)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FFFF00?text=%D0%A1%D0%B0%D0%BC%D1%8B%D0%B9%20%D0%BB%D1%83%D1%87%D1%88%D0%B8%D0%B9%20%0A%D1%84%D0%B8%D0%BB%D1%8C%D0%BC%203-%D0%94%D0%AD%22%20%0A(2011)"
+  },
+  {
+    "id": "m358",
+    "title": "Клаус (2019)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/CC00FF?text=%D0%9A%D0%BB%D0%B0%D1%83%D1%81%20(2019)"
+  },
+  {
+    "id": "m359",
+    "title": "Полярный экспресс (2004)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF3300?text=%D0%9F%D0%BE%D0%BB%D1%8F%D1%80%D0%BD%D1%8B%D0%B9%20%0A%D1%8D%D0%BA%D1%81%D0%BF%D1%80%D0%B5%D1%81%D1%81%20(2004)"
+  },
+  {
+    "id": "m360",
+    "title": "Кошмар перед Рождеством (1993)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FFFF00?text=%D0%9A%D0%BE%D1%88%D0%BC%D0%B0%D1%80%20%D0%BF%D0%B5%D1%80%D0%B5%D0%B4%20%0A%D0%A0%D0%BE%D0%B6%D0%B4%D0%B5%D1%81%D1%82%D0%B2%D0%BE%D0%BC%20%0A(1993)"
+  },
+  {
+    "id": "m361",
+    "title": "Рождественские Хроники (2018)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF9900?text=%D0%A0%D0%BE%D0%B6%D0%B4%D0%B5%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D1%81%D0%BA%D0%B8%D0%B5%20%0A%D0%A5%D1%80%D0%BE%D0%BD%D0%B8%D0%BA%D0%B8%20(2018)"
+  },
+  {
+    "id": "m362",
+    "title": "Малхолланд драйв (2001)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%9C%D0%B0%D0%BB%D1%85%D0%BE%D0%BB%D0%BB%D0%B0%D0%BD%D0%B4%20%0A%D0%B4%D1%80%D0%B0%D0%B9%D0%B2%20(2001)"
+  },
+  {
+    "id": "m363",
+    "title": "Семь (1995)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/99FF00?text=%D0%A1%D0%B5%D0%BC%D1%8C%20(1995)"
+  },
+  {
+    "id": "m364",
+    "title": "Дедпул (2016)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF9900?text=%D0%94%D0%B5%D0%B4%D0%BF%D1%83%D0%BB%20(2016)"
+  },
+  {
+    "id": "m365",
+    "title": "Кто подставил кролика Роджера (1988)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF9900?text=%D0%9A%D1%82%D0%BE%20%D0%BF%D0%BE%D0%B4%D1%81%D1%82%D0%B0%D0%B2%D0%B8%D0%BB%20%0A%D0%BA%D1%80%D0%BE%D0%BB%D0%B8%D0%BA%D0%B0%20%D0%A0%D0%BE%D0%B4%D0%B6%D0%B5%D1%80%D0%B0%20%0A(1988)"
+  },
+  {
+    "id": "m366",
+    "title": "Оставленные (2023)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF0055?text=%D0%9E%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%BD%D1%8B%D0%B5%20%0A(2023)"
+  },
+  {
+    "id": "m367",
+    "title": "Люди Икс: Апокалипсис (2016)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%9B%D1%8E%D0%B4%D0%B8%20%D0%98%D0%BA%D1%81%3A%20%0A%D0%90%D0%BF%D0%BE%D0%BA%D0%B0%D0%BB%D0%B8%D0%BF%D1%81%D0%B8%D1%81%20%0A(2016)"
+  },
+  {
+    "id": "m368",
+    "title": "Схватка (1995)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF3300?text=%D0%A1%D1%85%D0%B2%D0%B0%D1%82%D0%BA%D0%B0%20(1995)"
+  },
+  {
+    "id": "m369",
+    "title": "Санта Клаус завоевывает марсиан (1965)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=%D0%A1%D0%B0%D0%BD%D1%82%D0%B0%20%D0%9A%D0%BB%D0%B0%D1%83%D1%81%20%0A%D0%B7%D0%B0%D0%B2%D0%BE%D0%B5%D0%B2%D1%8B%D0%B2%D0%B0%D0%B5%D1%82%20%0A%D0%BC%D0%B0%D1%80%D1%81%D0%B8%D0%B0%D0%BD%20(1965)"
+  },
+  {
+    "id": "m370",
+    "title": "Логан (2017)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=%D0%9B%D0%BE%D0%B3%D0%B0%D0%BD%20(2017)"
+  },
+  {
+    "id": "m371",
+    "title": "Игра (1997)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FF66?text=%D0%98%D0%B3%D1%80%D0%B0%20(1997)"
+  },
+  {
+    "id": "m372",
+    "title": "Акулакенштейн (2016)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FFFF?text=%D0%90%D0%BA%D1%83%D0%BB%D0%B0%D0%BA%D0%B5%D0%BD%D1%88%D1%82%D0%B5%D0%B9%D0%BD%20%0A(2016)"
+  },
+  {
+    "id": "m373",
+    "title": "Дэдпул 2 (2018)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/99FF00?text=%D0%94%D1%8D%D0%B4%D0%BF%D1%83%D0%BB%202%20(2018)"
+  },
+  {
+    "id": "m374",
+    "title": "Говард-утка (1986)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=%D0%93%D0%BE%D0%B2%D0%B0%D1%80%D0%B4-%D1%83%D1%82%D0%BA%D0%B0%20%0A(1986)"
+  },
+  {
+    "id": "m375",
+    "title": "В эфире (2022)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF9900?text=%D0%92%20%D1%8D%D1%84%D0%B8%D1%80%D0%B5%20(2022)"
+  },
+  {
+    "id": "m376",
+    "title": "Люди Икс: Тёмный Феникс (2019)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FFFF?text=%D0%9B%D1%8E%D0%B4%D0%B8%20%D0%98%D0%BA%D1%81%3A%20%0A%D0%A2%D1%91%D0%BC%D0%BD%D1%8B%D0%B9%20%D0%A4%D0%B5%D0%BD%D0%B8%D0%BA%D1%81%20%0A(2019)"
+  },
+  {
+    "id": "m377",
+    "title": "Большая Жратва (2005)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FFFF00?text=%D0%91%D0%BE%D0%BB%D1%8C%D1%88%D0%B0%D1%8F%20%D0%96%D1%80%D0%B0%D1%82%D0%B2%D0%B0%20%0A(2005)"
+  },
+  {
+    "id": "m378",
+    "title": "Дюна (2021)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=%D0%94%D1%8E%D0%BD%D0%B0%20(2021)"
+  },
+  {
+    "id": "m379",
+    "title": "Догвиль (2003)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/CC00FF?text=%D0%94%D0%BE%D0%B3%D0%B2%D0%B8%D0%BB%D1%8C%20(2003)"
+  },
+  {
+    "id": "m380",
+    "title": "Новые Мутанты (2020)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF9900?text=%D0%9D%D0%BE%D0%B2%D1%8B%D0%B5%20%D0%9C%D1%83%D1%82%D0%B0%D0%BD%D1%82%D1%8B%20%0A(2020)"
+  },
+  {
+    "id": "m381",
+    "title": "Полицейский из Беверли-Хиллз (1984)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=%D0%9F%D0%BE%D0%BB%D0%B8%D1%86%D0%B5%D0%B9%D1%81%D0%BA%D0%B8%D0%B9%20%D0%B8%D0%B7%20%0A%D0%91%D0%B5%D0%B2%D0%B5%D1%80%D0%BB%D0%B8-%D0%A5%D0%B8%D0%BB%D0%BB%D0%B7%20%0A(1984)"
+  },
+  {
+    "id": "m382",
+    "title": "Пятый Элемент (1997)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/CC00FF?text=%D0%9F%D1%8F%D1%82%D1%8B%D0%B9%20%D0%AD%D0%BB%D0%B5%D0%BC%D0%B5%D0%BD%D1%82%20%0A(1997)"
+  },
+  {
+    "id": "m383",
+    "title": "Олдбой (2003)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%9E%D0%BB%D0%B4%D0%B1%D0%BE%D0%B9%20(2003)"
+  },
+  {
+    "id": "m384",
+    "title": "Отступники (2006)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF9900?text=%D0%9E%D1%82%D1%81%D1%82%D1%83%D0%BF%D0%BD%D0%B8%D0%BA%D0%B8%20%0A(2006)"
+  },
+  {
+    "id": "m385",
+    "title": "Заложница (2007)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/CC00FF?text=%D0%97%D0%B0%D0%BB%D0%BE%D0%B6%D0%BD%D0%B8%D1%86%D0%B0%20%0A(2007)"
+  },
+  {
+    "id": "m386",
+    "title": "Рок-н-рольщик (2008)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FFFF00?text=%D0%A0%D0%BE%D0%BA-%D0%BD-%D1%80%D0%BE%D0%BB%D1%8C%D1%89%D0%B8%D0%BA%20%0A(2008)"
+  },
+  {
+    "id": "m387",
+    "title": "Путь Карлито (1993)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%9F%D1%83%D1%82%D1%8C%20%D0%9A%D0%B0%D1%80%D0%BB%D0%B8%D1%82%D0%BE%20%0A(1993)"
+  },
+  {
+    "id": "m388",
+    "title": "Кролик Джоджо (2019)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FF66?text=%D0%9A%D1%80%D0%BE%D0%BB%D0%B8%D0%BA%20%D0%94%D0%B6%D0%BE%D0%B4%D0%B6%D0%BE%20%0A(2019)"
+  },
+  {
+    "id": "m389",
+    "title": "Хищник (1987)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/CC00FF?text=%D0%A5%D0%B8%D1%89%D0%BD%D0%B8%D0%BA%20(1987)"
+  },
+  {
+    "id": "m390",
+    "title": "Жизнь прекрасна (1997)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF3300?text=%D0%96%D0%B8%D0%B7%D0%BD%D1%8C%20%D0%BF%D1%80%D0%B5%D0%BA%D1%80%D0%B0%D1%81%D0%BD%D0%B0%20%0A(1997)"
+  },
+  {
+    "id": "m391",
+    "title": "Джентльмены (2019)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF9900?text=%D0%94%D0%B6%D0%B5%D0%BD%D1%82%D0%BB%D1%8C%D0%BC%D0%B5%D0%BD%D1%8B%20%0A(2019)"
+  },
+  {
+    "id": "m392",
+    "title": "Голый Пистолет (1988)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FFFF00?text=%D0%93%D0%BE%D0%BB%D1%8B%D0%B9%20%D0%9F%D0%B8%D1%81%D1%82%D0%BE%D0%BB%D0%B5%D1%82%20%0A(1988)"
+  },
+  {
+    "id": "m393",
+    "title": "Командос (1985)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/CC00FF?text=%D0%9A%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D0%BE%D1%81%20(1985)"
+  },
+  {
+    "id": "m394",
+    "title": "Миссия невыполнима 1 (1996)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/CC00FF?text=%D0%9C%D0%B8%D1%81%D1%81%D0%B8%D1%8F%20%0A%D0%BD%D0%B5%D0%B2%D1%8B%D0%BF%D0%BE%D0%BB%D0%BD%D0%B8%D0%BC%D0%B0%201%20%0A(1996)"
+  },
+  {
+    "id": "m395",
+    "title": "Оппенгеймер (2023)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=%D0%9E%D0%BF%D0%BF%D0%B5%D0%BD%D0%B3%D0%B5%D0%B9%D0%BC%D0%B5%D1%80%20%0A(2023)"
+  },
+  {
+    "id": "m396",
+    "title": "Голый пистолет 2 1/2: Запах страха (1991)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=%D0%93%D0%BE%D0%BB%D1%8B%D0%B9%20%D0%BF%D0%B8%D1%81%D1%82%D0%BE%D0%BB%D0%B5%D1%82%20%0A2%201%2F2%3A%20%D0%97%D0%B0%D0%BF%D0%B0%D1%85%20%0A%D1%81%D1%82%D1%80%D0%B0%D1%85%D0%B0%20(1991)"
+  },
+  {
+    "id": "m397",
+    "title": "Голый пистолет 33 1/3: Последний выпад (1994)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=%D0%93%D0%BE%D0%BB%D1%8B%D0%B9%20%D0%BF%D0%B8%D1%81%D1%82%D0%BE%D0%BB%D0%B5%D1%82%20%0A33%201%2F3%3A%20%0A%D0%9F%D0%BE%D1%81%D0%BB%D0%B5%D0%B4%D0%BD%D0%B8%D0%B9%20%D0%B2%D1%8B%D0%BF%D0%B0%D0%B4%20%0A(1994)"
+  },
+  {
+    "id": "m398",
+    "title": "Жизнь Пи (2012)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=%D0%96%D0%B8%D0%B7%D0%BD%D1%8C%20%D0%9F%D0%B8%20(2012)"
+  },
+  {
+    "id": "m399",
+    "title": "Красная жара (1988)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/99FF00?text=%D0%9A%D1%80%D0%B0%D1%81%D0%BD%D0%B0%D1%8F%20%D0%B6%D0%B0%D1%80%D0%B0%20%0A(1988)"
+  },
+  {
+    "id": "m400",
+    "title": "Из Парижа с любовью (2009)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF9900?text=%D0%98%D0%B7%20%D0%9F%D0%B0%D1%80%D0%B8%D0%B6%D0%B0%20%D1%81%20%0A%D0%BB%D1%8E%D0%B1%D0%BE%D0%B2%D1%8C%D1%8E%20(2009)"
+  },
+  {
+    "id": "m401",
+    "title": "Остров проклятых (2009)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/99FF00?text=%D0%9E%D1%81%D1%82%D1%80%D0%BE%D0%B2%20%0A%D0%BF%D1%80%D0%BE%D0%BA%D0%BB%D1%8F%D1%82%D1%8B%D1%85%20%0A(2009)"
+  },
+  {
+    "id": "m402",
+    "title": "Приключения Тинтина: Тайна единорога (2011)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FF66?text=%D0%9F%D1%80%D0%B8%D0%BA%D0%BB%D1%8E%D1%87%D0%B5%D0%BD%D0%B8%D1%8F%20%0A%D0%A2%D0%B8%D0%BD%D1%82%D0%B8%D0%BD%D0%B0%3A%20%D0%A2%D0%B0%D0%B9%D0%BD%D0%B0%20%0A%D0%B5%D0%B4%D0%B8%D0%BD%D0%BE%D1%80%D0%BE%D0%B3%D0%B0%20%0A(2011)"
+  },
+  {
+    "id": "m403",
+    "title": "Ослепленный желаниями (2000)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF9900?text=%D0%9E%D1%81%D0%BB%D0%B5%D0%BF%D0%BB%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9%20%0A%D0%B6%D0%B5%D0%BB%D0%B0%D0%BD%D0%B8%D1%8F%D0%BC%D0%B8%20%0A(2000)"
+  },
+  {
+    "id": "m404",
+    "title": "Ангел А (2005)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF3300?text=%D0%90%D0%BD%D0%B3%D0%B5%D0%BB%20%D0%90%20(2005)"
+  },
+  {
+    "id": "m405",
+    "title": "На игле (1995)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF3300?text=%D0%9D%D0%B0%20%D0%B8%D0%B3%D0%BB%D0%B5%20(1995)"
+  },
+  {
+    "id": "m406",
+    "title": "Сноуден (2016)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF9900?text=%D0%A1%D0%BD%D0%BE%D1%83%D0%B4%D0%B5%D0%BD%20(2016)"
+  },
+  {
+    "id": "m407",
+    "title": "Властелин колец: Братва и кольцо",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%92%D0%BB%D0%B0%D1%81%D1%82%D0%B5%D0%BB%D0%B8%D0%BD%20%0A%D0%BA%D0%BE%D0%BB%D0%B5%D1%86%3A%20%D0%91%D1%80%D0%B0%D1%82%D0%B2%D0%B0%20%D0%B8%20%0A%D0%BA%D0%BE%D0%BB%D1%8C%D1%86%D0%BE"
+  },
+  {
+    "id": "m408",
+    "title": "Остров собак (2018)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FFFF?text=%D0%9E%D1%81%D1%82%D1%80%D0%BE%D0%B2%20%D1%81%D0%BE%D0%B1%D0%B0%D0%BA%20%0A(2018)"
+  },
+  {
+    "id": "m409",
+    "title": "Новые парни турбо (2010)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=%D0%9D%D0%BE%D0%B2%D1%8B%D0%B5%20%D0%BF%D0%B0%D1%80%D0%BD%D0%B8%20%0A%D1%82%D1%83%D1%80%D0%B1%D0%BE%20(2010)"
+  },
+  {
+    "id": "m410",
+    "title": "2001 год: Космическая одиссея (1968)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FFFF?text=2001%20%D0%B3%D0%BE%D0%B4%3A%20%0A%D0%9A%D0%BE%D1%81%D0%BC%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B0%D1%8F%20%0A%D0%BE%D0%B4%D0%B8%D1%81%D1%81%D0%B5%D1%8F%20(1968)"
+  },
+  {
+    "id": "m411",
+    "title": "Святые из Бундока (1999)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FF66?text=%D0%A1%D0%B2%D1%8F%D1%82%D1%8B%D0%B5%20%D0%B8%D0%B7%20%0A%D0%91%D1%83%D0%BD%D0%B4%D0%BE%D0%BA%D0%B0%20(1999)"
+  },
+  {
+    "id": "m412",
+    "title": "Универсальный солдат (1992)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FFFF00?text=%D0%A3%D0%BD%D0%B8%D0%B2%D0%B5%D1%80%D1%81%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9%20%0A%D1%81%D0%BE%D0%BB%D0%B4%D0%B0%D1%82%20(1992)"
+  },
+  {
+    "id": "m413",
+    "title": "Сталкер (1979)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF0055?text=%D0%A1%D1%82%D0%B0%D0%BB%D0%BA%D0%B5%D1%80%20(1979)"
+  },
+  {
+    "id": "m414",
+    "title": "Суперсемейка (2004)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FF66?text=%D0%A1%D1%83%D0%BF%D0%B5%D1%80%D1%81%D0%B5%D0%BC%D0%B5%D0%B9%D0%BA%D0%B0%20%0A(2004)"
+  },
+  {
+    "id": "m415",
+    "title": "Синий Жук (2023)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%A1%D0%B8%D0%BD%D0%B8%D0%B9%20%D0%96%D1%83%D0%BA%20%0A(2023)"
+  },
+  {
+    "id": "m416",
+    "title": "Аквамен и потерянное царство (2023)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF0055?text=%D0%90%D0%BA%D0%B2%D0%B0%D0%BC%D0%B5%D0%BD%20%D0%B8%20%0A%D0%BF%D0%BE%D1%82%D0%B5%D1%80%D1%8F%D0%BD%D0%BD%D0%BE%D0%B5%20%0A%D1%86%D0%B0%D1%80%D1%81%D1%82%D0%B2%D0%BE%20(2023)"
+  },
+  {
+    "id": "m417",
+    "title": "Чудо (2017)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF9900?text=%D0%A7%D1%83%D0%B4%D0%BE%20(2017)"
+  },
+  {
+    "id": "m418",
+    "title": "Отель Гранд Будапешт (2014)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FFFF?text=%D0%9E%D1%82%D0%B5%D0%BB%D1%8C%20%D0%93%D1%80%D0%B0%D0%BD%D0%B4%20%0A%D0%91%D1%83%D0%B4%D0%B0%D0%BF%D0%B5%D1%88%D1%82%20(2014)"
+  },
+  {
+    "id": "m419",
+    "title": "Матрица (1999)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FFFF?text=%D0%9C%D0%B0%D1%82%D1%80%D0%B8%D1%86%D0%B0%20(1999)"
+  },
+  {
+    "id": "m420",
+    "title": "Охотники за привидениями (1984)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%9E%D1%85%D0%BE%D1%82%D0%BD%D0%B8%D0%BA%D0%B8%20%D0%B7%D0%B0%20%0A%D0%BF%D1%80%D0%B8%D0%B2%D0%B8%D0%B4%D0%B5%D0%BD%D0%B8%D1%8F%D0%BC%D0%B8%20%0A(1984)"
+  },
+  {
+    "id": "m421",
+    "title": "Последние дни на Марсе (2013)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FFFF00?text=%D0%9F%D0%BE%D1%81%D0%BB%D0%B5%D0%B4%D0%BD%D0%B8%D0%B5%20%D0%B4%D0%BD%D0%B8%20%0A%D0%BD%D0%B0%20%D0%9C%D0%B0%D1%80%D1%81%D0%B5%20(2013)"
+  },
+  {
+    "id": "m422",
+    "title": "Черепашки ниндзя (1990)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF9900?text=%D0%A7%D0%B5%D1%80%D0%B5%D0%BF%D0%B0%D1%88%D0%BA%D0%B8%20%0A%D0%BD%D0%B8%D0%BD%D0%B4%D0%B7%D1%8F%20(1990)"
+  },
+  {
+    "id": "m423",
+    "title": "Матрица: Перезагрузка",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/99FF00?text=%D0%9C%D0%B0%D1%82%D1%80%D0%B8%D1%86%D0%B0%3A%20%0A%D0%9F%D0%B5%D1%80%D0%B5%D0%B7%D0%B0%D0%B3%D1%80%D1%83%D0%B7%D0%BA%D0%B0"
+  },
+  {
+    "id": "m424",
+    "title": "Бешеные псы (1991)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=%D0%91%D0%B5%D1%88%D0%B5%D0%BD%D1%8B%D0%B5%20%D0%BF%D1%81%D1%8B%20%0A(1991)"
+  },
+  {
+    "id": "m425",
+    "title": "12 Разгневанных мужчин (1957)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=12%20%D0%A0%D0%B0%D0%B7%D0%B3%D0%BD%D0%B5%D0%B2%D0%B0%D0%BD%D0%BD%D1%8B%D1%85%20%0A%D0%BC%D1%83%D0%B6%D1%87%D0%B8%D0%BD%20(1957)"
+  },
+  {
+    "id": "m426",
+    "title": "Матрица: Революция (2003)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FFFF?text=%D0%9C%D0%B0%D1%82%D1%80%D0%B8%D1%86%D0%B0%3A%20%0A%D0%A0%D0%B5%D0%B2%D0%BE%D0%BB%D1%8E%D1%86%D0%B8%D1%8F%20%0A(2003)"
+  },
+  {
+    "id": "m427",
+    "title": "Звёздные войны: Эпизод 4 – Новая надежда",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=%D0%97%D0%B2%D1%91%D0%B7%D0%B4%D0%BD%D1%8B%D0%B5%20%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B%3A%20%0A%D0%AD%D0%BF%D0%B8%D0%B7%D0%BE%D0%B4%204%20%E2%80%93%20%0A%D0%9D%D0%BE%D0%B2%D0%B0%D1%8F%20%D0%BD%D0%B0%D0%B4%D0%B5%D0%B6%D0%B4%D0%B0"
+  },
+  {
+    "id": "m428",
+    "title": "Дюна: Часть вторая (2024)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/99FF00?text=%D0%94%D1%8E%D0%BD%D0%B0%3A%20%D0%A7%D0%B0%D1%81%D1%82%D1%8C%20%0A%D0%B2%D1%82%D0%BE%D1%80%D0%B0%D1%8F%20(2024)"
+  },
+  {
+    "id": "m429",
+    "title": "Разрушитель (1993)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FF66?text=%D0%A0%D0%B0%D0%B7%D1%80%D1%83%D1%88%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%20%0A(1993)"
+  },
+  {
+    "id": "m430",
+    "title": "Стрингер (2013)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF3300?text=%D0%A1%D1%82%D1%80%D0%B8%D0%BD%D0%B3%D0%B5%D1%80%20(2013)"
+  },
+  {
+    "id": "m431",
+    "title": "Варкрафт (2016)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=%D0%92%D0%B0%D1%80%D0%BA%D1%80%D0%B0%D1%84%D1%82%20(2016)"
+  },
+  {
+    "id": "m432",
+    "title": "Блэйд (1998)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF0055?text=%D0%91%D0%BB%D1%8D%D0%B9%D0%B4%20(1998)"
+  },
+  {
+    "id": "m433",
+    "title": "Напролом (2011)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF3300?text=%D0%9D%D0%B0%D0%BF%D1%80%D0%BE%D0%BB%D0%BE%D0%BC%20(2011)"
+  },
+  {
+    "id": "m434",
+    "title": "Воспоминания об убийстве (2003)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/99FF00?text=%D0%92%D0%BE%D1%81%D0%BF%D0%BE%D0%BC%D0%B8%D0%BD%D0%B0%D0%BD%D0%B8%D1%8F%20%D0%BE%D0%B1%20%0A%D1%83%D0%B1%D0%B8%D0%B9%D1%81%D1%82%D0%B2%D0%B5%20(2003)"
+  },
+  {
+    "id": "m435",
+    "title": "Неуязвимый (2000)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/CC00FF?text=%D0%9D%D0%B5%D1%83%D1%8F%D0%B7%D0%B2%D0%B8%D0%BC%D1%8B%D0%B9%20%0A(2000)"
+  },
+  {
+    "id": "m436",
+    "title": "Матрица: Воскрешение (2021)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/CC00FF?text=%D0%9C%D0%B0%D1%82%D1%80%D0%B8%D1%86%D0%B0%3A%20%0A%D0%92%D0%BE%D1%81%D0%BA%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%0A(2021)"
+  },
+  {
+    "id": "m437",
+    "title": "По ту сторону изгороди (2014)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF0055?text=%D0%9F%D0%BE%20%D1%82%D1%83%20%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D1%83%20%0A%D0%B8%D0%B7%D0%B3%D0%BE%D1%80%D0%BE%D0%B4%D0%B8%20(2014)"
+  },
+  {
+    "id": "m438",
+    "title": "Сплит (2017)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF0055?text=%D0%A1%D0%BF%D0%BB%D0%B8%D1%82%20(2017)"
+  },
+  {
+    "id": "m439",
+    "title": "Тайна Келлс (2008)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FFFF00?text=%D0%A2%D0%B0%D0%B9%D0%BD%D0%B0%20%D0%9A%D0%B5%D0%BB%D0%BB%D1%81%20%0A(2008)"
+  },
+  {
+    "id": "m440",
+    "title": "Стекло (2019)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF0055?text=%D0%A1%D1%82%D0%B5%D0%BA%D0%BB%D0%BE%20(2019)"
+  },
+  {
+    "id": "m441",
+    "title": "Блейд 2",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF0055?text=%D0%91%D0%BB%D0%B5%D0%B9%D0%B4%202"
+  },
+  {
+    "id": "m442",
+    "title": "Дети Дождя (2003)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=%D0%94%D0%B5%D1%82%D0%B8%20%D0%94%D0%BE%D0%B6%D0%B4%D1%8F%20%0A(2003)"
+  },
+  {
+    "id": "m443",
+    "title": "Крестный отец 2 (1974)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%9A%D1%80%D0%B5%D1%81%D1%82%D0%BD%D1%8B%D0%B9%20%D0%BE%D1%82%D0%B5%D1%86%202%20%0A(1974)"
+  },
+  {
+    "id": "m444",
+    "title": "Крестный отец 3 (1990)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/99FF00?text=%D0%9A%D1%80%D0%B5%D1%81%D1%82%D0%BD%D1%8B%D0%B9%20%D0%BE%D1%82%D0%B5%D1%86%203%20%0A(1990)"
+  },
+  {
+    "id": "m445",
+    "title": "Не смотри вверх (2021)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF9900?text=%D0%9D%D0%B5%20%D1%81%D0%BC%D0%BE%D1%82%D1%80%D0%B8%20%D0%B2%D0%B2%D0%B5%D1%80%D1%85%20%0A(2021)"
+  },
+  {
+    "id": "m446",
+    "title": "Славные парни (1990)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF3300?text=%D0%A1%D0%BB%D0%B0%D0%B2%D0%BD%D1%8B%D0%B5%20%D0%BF%D0%B0%D1%80%D0%BD%D0%B8%20%0A(1990)"
+  },
+  {
+    "id": "m447",
+    "title": "Район №9 (2009)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FF66?text=%D0%A0%D0%B0%D0%B9%D0%BE%D0%BD%20%E2%84%969%20(2009)"
+  },
+  {
+    "id": "m448",
+    "title": "Отец (2020)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FFFF?text=%D0%9E%D1%82%D0%B5%D1%86%20(2020)"
+  },
+  {
+    "id": "m449",
+    "title": "Ненависть (1995)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF3300?text=%D0%9D%D0%B5%D0%BD%D0%B0%D0%B2%D0%B8%D1%81%D1%82%D1%8C%20%0A(1995)"
+  },
+  {
+    "id": "m450",
+    "title": "Рейд (2011)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF9900?text=%D0%A0%D0%B5%D0%B9%D0%B4%20(2011)"
+  },
+  {
+    "id": "m451",
+    "title": "Ярость (2008)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/CC00FF?text=%D0%AF%D1%80%D0%BE%D1%81%D1%82%D1%8C%20(2008)"
+  },
+  {
+    "id": "m452",
+    "title": "Идиократия (2005)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF0055?text=%D0%98%D0%B4%D0%B8%D0%BE%D0%BA%D1%80%D0%B0%D1%82%D0%B8%D1%8F%20%0A(2005)"
+  },
+  {
+    "id": "m453",
+    "title": "Добытчица (2017)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF3300?text=%D0%94%D0%BE%D0%B1%D1%8B%D1%82%D1%87%D0%B8%D1%86%D0%B0%20%0A(2017)"
+  },
+  {
+    "id": "m454",
+    "title": "Патруль (2012)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/CC00FF?text=%D0%9F%D0%B0%D1%82%D1%80%D1%83%D0%BB%D1%8C%20(2012)"
+  },
+  {
+    "id": "m455",
+    "title": "Рейд 2 (2013)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%A0%D0%B5%D0%B9%D0%B4%202%20(2013)"
+  },
+  {
+    "id": "m456",
+    "title": "Планета Халка (2010)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FF66?text=%D0%9F%D0%BB%D0%B0%D0%BD%D0%B5%D1%82%D0%B0%20%D0%A5%D0%B0%D0%BB%D0%BA%D0%B0%20%0A(2010)"
+  },
+  {
+    "id": "m457",
+    "title": "Шанхайские рыцари (2003)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FFFF00?text=%D0%A8%D0%B0%D0%BD%D1%85%D0%B0%D0%B9%D1%81%D0%BA%D0%B8%D0%B5%20%0A%D1%80%D1%8B%D1%86%D0%B0%D1%80%D0%B8%20(2003)"
+  },
+  {
+    "id": "m458",
+    "title": "Геркулес (1997)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF9900?text=%D0%93%D0%B5%D1%80%D0%BA%D1%83%D0%BB%D0%B5%D1%81%20(1997)"
+  },
+  {
+    "id": "m459",
+    "title": "Список Шиндлера (1993)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA%20%D0%A8%D0%B8%D0%BD%D0%B4%D0%BB%D0%B5%D1%80%D0%B0%20%0A(1993)"
+  },
+  {
+    "id": "m460",
+    "title": "Фуриоса: Хроники Безумного Макса (2024)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%A4%D1%83%D1%80%D0%B8%D0%BE%D1%81%D0%B0%3A%20%0A%D0%A5%D1%80%D0%BE%D0%BD%D0%B8%D0%BA%D0%B8%20%0A%D0%91%D0%B5%D0%B7%D1%83%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%20%D0%9C%D0%B0%D0%BA%D1%81%D0%B0%20%0A(2024)"
+  },
+  {
+    "id": "m461",
+    "title": "Трасса 60 (2002)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FFFF00?text=%D0%A2%D1%80%D0%B0%D1%81%D1%81%D0%B0%2060%20%0A(2002)"
+  },
+  {
+    "id": "m462",
+    "title": "Шестое чувство (1999)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF9900?text=%D0%A8%D0%B5%D1%81%D1%82%D0%BE%D0%B5%20%D1%87%D1%83%D0%B2%D1%81%D1%82%D0%B2%D0%BE%20%0A(1999)"
+  },
+  {
+    "id": "m463",
+    "title": "Жадность (1994)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/99FF00?text=%D0%96%D0%B0%D0%B4%D0%BD%D0%BE%D1%81%D1%82%D1%8C%20(1994)"
+  },
+  {
+    "id": "m464",
+    "title": "Всегда говори ДА (2008)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/99FF00?text=%D0%92%D1%81%D0%B5%D0%B3%D0%B4%D0%B0%20%D0%B3%D0%BE%D0%B2%D0%BE%D1%80%D0%B8%20%0A%D0%94%D0%90%20(2008)"
+  },
+  {
+    "id": "m465",
+    "title": "Тихое место (2018)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF9900?text=%D0%A2%D0%B8%D1%85%D0%BE%D0%B5%20%D0%BC%D0%B5%D1%81%D1%82%D0%BE%20%0A(2018)"
+  },
+  {
+    "id": "m466",
+    "title": "Мегамозг (2010)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FFFF00?text=%D0%9C%D0%B5%D0%B3%D0%B0%D0%BC%D0%BE%D0%B7%D0%B3%20(2010)"
+  },
+  {
+    "id": "m467",
+    "title": "Легенда о волках (2020)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%9B%D0%B5%D0%B3%D0%B5%D0%BD%D0%B4%D0%B0%20%D0%BE%20%0A%D0%B2%D0%BE%D0%BB%D0%BA%D0%B0%D1%85%20(2020)"
+  },
+  {
+    "id": "m468",
+    "title": "Вспомнить всё (1990)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FFFF00?text=%D0%92%D1%81%D0%BF%D0%BE%D0%BC%D0%BD%D0%B8%D1%82%D1%8C%20%D0%B2%D1%81%D1%91%20%0A(1990)"
+  },
+  {
+    "id": "m469",
+    "title": "Мадам Паутина (2024)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/99FF00?text=%D0%9C%D0%B0%D0%B4%D0%B0%D0%BC%20%D0%9F%D0%B0%D1%83%D1%82%D0%B8%D0%BD%D0%B0%20%0A(2024)"
+  },
+  {
+    "id": "m470",
+    "title": "Шоу Трумана (1998)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FF66?text=%D0%A8%D0%BE%D1%83%20%D0%A2%D1%80%D1%83%D0%BC%D0%B0%D0%BD%D0%B0%20%0A(1998)"
+  },
+  {
+    "id": "m471",
+    "title": "Король Лев (2019)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FFFF00?text=%D0%9A%D0%BE%D1%80%D0%BE%D0%BB%D1%8C%20%D0%9B%D0%B5%D0%B2%20%0A(2019)"
+  },
+  {
+    "id": "m472",
+    "title": "Скотт Пилигрим против всех (2010)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%A1%D0%BA%D0%BE%D1%82%D1%82%20%D0%9F%D0%B8%D0%BB%D0%B8%D0%B3%D1%80%D0%B8%D0%BC%20%0A%D0%BF%D1%80%D0%BE%D1%82%D0%B8%D0%B2%20%D0%B2%D1%81%D0%B5%D1%85%20%0A(2010)"
+  },
+  {
+    "id": "m473",
+    "title": "Адвокат дьявола (1997)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/99FF00?text=%D0%90%D0%B4%D0%B2%D0%BE%D0%BA%D0%B0%D1%82%20%D0%B4%D1%8C%D1%8F%D0%B2%D0%BE%D0%BB%D0%B0%20%0A(1997)"
+  },
+  {
+    "id": "m474",
+    "title": "Рэмбо: Первая кровь (1982)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/99FF00?text=%D0%A0%D1%8D%D0%BC%D0%B1%D0%BE%3A%20%D0%9F%D0%B5%D1%80%D0%B2%D0%B0%D1%8F%20%0A%D0%BA%D1%80%D0%BE%D0%B2%D1%8C%20(1982)"
+  },
+  {
+    "id": "m475",
+    "title": "Не может быть (1975)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/CC00FF?text=%D0%9D%D0%B5%20%D0%BC%D0%BE%D0%B6%D0%B5%D1%82%20%D0%B1%D1%8B%D1%82%D1%8C%20%0A(1975)"
+  },
+  {
+    "id": "m476",
+    "title": "Ты — мне, я — тебе (1976)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/CC00FF?text=%D0%A2%D1%8B%20%E2%80%94%20%D0%BC%D0%BD%D0%B5%2C%20%D1%8F%20%E2%80%94%20%0A%D1%82%D0%B5%D0%B1%D0%B5%20(1976)"
+  },
+  {
+    "id": "m477",
+    "title": "Дэдпул и Росомаха (2024)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/99FF00?text=%D0%94%D1%8D%D0%B4%D0%BF%D1%83%D0%BB%20%D0%B8%20%0A%D0%A0%D0%BE%D1%81%D0%BE%D0%BC%D0%B0%D1%85%D0%B0%20(2024)"
+  },
+  {
+    "id": "m478",
+    "title": "Пипец (2010)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FFFF00?text=%D0%9F%D0%B8%D0%BF%D0%B5%D1%86%20(2010)"
+  },
+  {
+    "id": "m479",
+    "title": "Жизнь дерьмо (1991)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF0055?text=%D0%96%D0%B8%D0%B7%D0%BD%D1%8C%20%D0%B4%D0%B5%D1%80%D1%8C%D0%BC%D0%BE%20%0A(1991)"
+  },
+  {
+    "id": "m480",
+    "title": "28 дней спустя (2002)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FFFF00?text=28%20%D0%B4%D0%BD%D0%B5%D0%B9%20%D1%81%D0%BF%D1%83%D1%81%D1%82%D1%8F%20%0A(2002)"
+  },
+  {
+    "id": "m481",
+    "title": "Высший пилотаж (2005)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FFFF00?text=%D0%92%D1%8B%D1%81%D1%88%D0%B8%D0%B9%20%D0%BF%D0%B8%D0%BB%D0%BE%D1%82%D0%B0%D0%B6%20%0A(2005)"
+  },
+  {
+    "id": "m482",
+    "title": "Пипец 2 (2013)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=%D0%9F%D0%B8%D0%BF%D0%B5%D1%86%202%20(2013)"
+  },
+  {
+    "id": "m483",
+    "title": "Планета сокровищ (2002)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF0055?text=%D0%9F%D0%BB%D0%B0%D0%BD%D0%B5%D1%82%D0%B0%20%0A%D1%81%D0%BE%D0%BA%D1%80%D0%BE%D0%B2%D0%B8%D1%89%20(2002)"
+  },
+  {
+    "id": "m484",
+    "title": "Жанна д'Арк (1999)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%96%D0%B0%D0%BD%D0%BD%D0%B0%20%D0%B4'%D0%90%D1%80%D0%BA%20%0A(1999)"
+  },
+  {
+    "id": "m485",
+    "title": "Братья (2009)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/99FF00?text=%D0%91%D1%80%D0%B0%D1%82%D1%8C%D1%8F%20(2009)"
+  },
+  {
+    "id": "m486",
+    "title": "Мизери (1990)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=%D0%9C%D0%B8%D0%B7%D0%B5%D1%80%D0%B8%20(1990)"
+  },
+  {
+    "id": "m487",
+    "title": "Адреналин (2006)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FF66?text=%D0%90%D0%B4%D1%80%D0%B5%D0%BD%D0%B0%D0%BB%D0%B8%D0%BD%20%0A(2006)"
+  },
+  {
+    "id": "m488",
+    "title": "Адреналин: Высокое напряжение (2009)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%90%D0%B4%D1%80%D0%B5%D0%BD%D0%B0%D0%BB%D0%B8%D0%BD%3A%20%0A%D0%92%D1%8B%D1%81%D0%BE%D0%BA%D0%BE%D0%B5%20%0A%D0%BD%D0%B0%D0%BF%D1%80%D1%8F%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5%20%0A(2009)"
+  },
+  {
+    "id": "m489",
+    "title": "Законопослушный гражданин (2009)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF0055?text=%D0%97%D0%B0%D0%BA%D0%BE%D0%BD%D0%BE%D0%BF%D0%BE%D1%81%D0%BB%D1%83%D1%88%D0%BD%D1%8B%D0%B9%20%0A%D0%B3%D1%80%D0%B0%D0%B6%D0%B4%D0%B0%D0%BD%D0%B8%D0%BD%20%0A(2009)"
+  },
+  {
+    "id": "m490",
+    "title": "Лжец Лжец (1997)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF9900?text=%D0%9B%D0%B6%D0%B5%D1%86%20%D0%9B%D0%B6%D0%B5%D1%86%20%0A(1997)"
+  },
+  {
+    "id": "m491",
+    "title": "Таинственная река (2003)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FFFF00?text=%D0%A2%D0%B0%D0%B8%D0%BD%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D0%B0%D1%8F%20%0A%D1%80%D0%B5%D0%BA%D0%B0%20(2003)"
+  },
+  {
+    "id": "m492",
+    "title": "Город грехов (2005)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF3300?text=%D0%93%D0%BE%D1%80%D0%BE%D0%B4%20%D0%B3%D1%80%D0%B5%D1%85%D0%BE%D0%B2%20%0A(2005)"
+  },
+  {
+    "id": "m493",
+    "title": "Город грехов 2: Женщина, ради которой стоит убивать (2014)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF9900?text=%D0%93%D0%BE%D1%80%D0%BE%D0%B4%20%D0%B3%D1%80%D0%B5%D1%85%D0%BE%D0%B2%202%3A%20%0A%D0%96%D0%B5%D0%BD%D1%89%D0%B8%D0%BD%D0%B0%2C%20%D1%80%D0%B0%D0%B4%D0%B8%20%0A%D0%BA%D0%BE%D1%82%D0%BE%D1%80%D0%BE%D0%B9%20%D1%81%D1%82%D0%BE%D0%B8%D1%82%20%0A%D1%83%D0%B1%D0%B8%D0%B2%D0%B0%D1%82%D1%8C%20(2014)"
+  },
+  {
+    "id": "m494",
+    "title": "Отель Мумбаи: Противостояние (2018)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FF66?text=%D0%9E%D1%82%D0%B5%D0%BB%D1%8C%20%D0%9C%D1%83%D0%BC%D0%B1%D0%B0%D0%B8%3A%20%0A%D0%9F%D1%80%D0%BE%D1%82%D0%B8%D0%B2%D0%BE%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B5%20%0A(2018)"
+  },
+  {
+    "id": "m495",
+    "title": "Остров (2005)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF9900?text=%D0%9E%D1%81%D1%82%D1%80%D0%BE%D0%B2%20(2005)"
+  },
+  {
+    "id": "m496",
+    "title": "Иностранец (2017)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF3300?text=%D0%98%D0%BD%D0%BE%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%B5%D1%86%20%0A(2017)"
+  },
+  {
+    "id": "m497",
+    "title": "Звук свободы (2023)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF9900?text=%D0%97%D0%B2%D1%83%D0%BA%20%D1%81%D0%B2%D0%BE%D0%B1%D0%BE%D0%B4%D1%8B%20%0A(2023)"
+  },
+  {
+    "id": "m498",
+    "title": "Запретное царство (2008)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=%D0%97%D0%B0%D0%BF%D1%80%D0%B5%D1%82%D0%BD%D0%BE%D0%B5%20%0A%D1%86%D0%B0%D1%80%D1%81%D1%82%D0%B2%D0%BE%20(2008)"
+  },
+  {
+    "id": "m499",
+    "title": "Пожизненно (1999)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/CC00FF?text=%D0%9F%D0%BE%D0%B6%D0%B8%D0%B7%D0%BD%D0%B5%D0%BD%D0%BD%D0%BE%20%0A(1999)"
+  },
+  {
+    "id": "m500",
+    "title": "Морпехи (2005)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF3300?text=%D0%9C%D0%BE%D1%80%D0%BF%D0%B5%D1%85%D0%B8%20(2005)"
+  },
+  {
+    "id": "m501",
+    "title": "Большая прогулка (1966)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/CC00FF?text=%D0%91%D0%BE%D0%BB%D1%8C%D1%88%D0%B0%D1%8F%20%0A%D0%BF%D1%80%D0%BE%D0%B3%D1%83%D0%BB%D0%BA%D0%B0%20(1966)"
+  },
+  {
+    "id": "m502",
+    "title": "Профессионал (1981)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FF66?text=%D0%9F%D1%80%D0%BE%D1%84%D0%B5%D1%81%D1%81%D0%B8%D0%BE%D0%BD%D0%B0%D0%BB%20%0A(1981)"
+  },
+  {
+    "id": "m503",
+    "title": "Бордерлендс (2024)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%91%D0%BE%D1%80%D0%B4%D0%B5%D1%80%D0%BB%D0%B5%D0%BD%D0%B4%D1%81%20%0A(2024)"
+  },
+  {
+    "id": "m504",
+    "title": "Зелёный Шершень (2011)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%97%D0%B5%D0%BB%D1%91%D0%BD%D1%8B%D0%B9%20%D0%A8%D0%B5%D1%80%D1%88%D0%B5%D0%BD%D1%8C%20%0A(2011)"
+  },
+  {
+    "id": "m505",
+    "title": "Без чуств (1998)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF3300?text=%D0%91%D0%B5%D0%B7%20%D1%87%D1%83%D1%81%D1%82%D0%B2%20%0A(1998)"
+  },
+  {
+    "id": "m506",
+    "title": "Тренировочный день (2001)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/99FF00?text=%D0%A2%D1%80%D0%B5%D0%BD%D0%B8%D1%80%D0%BE%D0%B2%D0%BE%D1%87%D0%BD%D1%8B%D0%B9%20%0A%D0%B4%D0%B5%D0%BD%D1%8C%20(2001)"
+  },
+  {
+    "id": "m507",
+    "title": "Бэтмен: Год первый (2011)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%91%D1%8D%D1%82%D0%BC%D0%B5%D0%BD%3A%20%D0%93%D0%BE%D0%B4%20%0A%D0%BF%D0%B5%D1%80%D0%B2%D1%8B%D0%B9%20(2011)"
+  },
+  {
+    "id": "m508",
+    "title": "Миссия Дарвина (2009)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FF66?text=%D0%9C%D0%B8%D1%81%D1%81%D0%B8%D1%8F%20%D0%94%D0%B0%D1%80%D0%B2%D0%B8%D0%BD%D0%B0%20%0A(2009)"
+  },
+  {
+    "id": "m509",
+    "title": "Счастливое число Слевина (2005)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF9900?text=%D0%A1%D1%87%D0%B0%D1%81%D1%82%D0%BB%D0%B8%D0%B2%D0%BE%D0%B5%20%0A%D1%87%D0%B8%D1%81%D0%BB%D0%BE%20%D0%A1%D0%BB%D0%B5%D0%B2%D0%B8%D0%BD%D0%B0%20%0A(2005)"
+  },
+  {
+    "id": "m510",
+    "title": "Последний бойскаут (1991)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF3300?text=%D0%9F%D0%BE%D1%81%D0%BB%D0%B5%D0%B4%D0%BD%D0%B8%D0%B9%20%0A%D0%B1%D0%BE%D0%B9%D1%81%D0%BA%D0%B0%D1%83%D1%82%20(1991)"
+  },
+  {
+    "id": "m511",
+    "title": "Майор Пэйн (1995)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/CC00FF?text=%D0%9C%D0%B0%D0%B9%D0%BE%D1%80%20%D0%9F%D1%8D%D0%B9%D0%BD%20%0A(1995)"
+  },
+  {
+    "id": "m512",
+    "title": "Шерлок Холмс (2009)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=%D0%A8%D0%B5%D1%80%D0%BB%D0%BE%D0%BA%20%D0%A5%D0%BE%D0%BB%D0%BC%D1%81%20%0A(2009)"
+  },
+  {
+    "id": "m513",
+    "title": "Не грози Южному централу, попивая сок у себя в квартале (1995)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF9900?text=%D0%9D%D0%B5%20%D0%B3%D1%80%D0%BE%D0%B7%D0%B8%20%D0%AE%D0%B6%D0%BD%D0%BE%D0%BC%D1%83%20%0A%D1%86%D0%B5%D0%BD%D1%82%D1%80%D0%B0%D0%BB%D1%83%2C%20%0A%D0%BF%D0%BE%D0%BF%D0%B8%D0%B2%D0%B0%D1%8F%20%D1%81%D0%BE%D0%BA%20%D1%83%20%0A%D1%81%D0%B5%D0%B1%D1%8F%20%D0%B2%20%D0%BA%D0%B2%D0%B0%D1%80%D1%82%D0%B0%D0%BB%D0%B5%20..."
+  },
+  {
+    "id": "m514",
+    "title": "По соображениям совести (2016)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/99FF00?text=%D0%9F%D0%BE%20%D1%81%D0%BE%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F%D0%BC%20%0A%D1%81%D0%BE%D0%B2%D0%B5%D1%81%D1%82%D0%B8%20(2016)"
+  },
+  {
+    "id": "m515",
+    "title": "Донни Дарко (2001)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FF66?text=%D0%94%D0%BE%D0%BD%D0%BD%D0%B8%20%D0%94%D0%B0%D1%80%D0%BA%D0%BE%20%0A(2001)"
+  },
+  {
+    "id": "m516",
+    "title": "Зверополис (2016)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=%D0%97%D0%B2%D0%B5%D1%80%D0%BE%D0%BF%D0%BE%D0%BB%D0%B8%D1%81%20%0A(2016)"
+  },
+  {
+    "id": "m517",
+    "title": "Гладиатор (2000)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FFFF00?text=%D0%93%D0%BB%D0%B0%D0%B4%D0%B8%D0%B0%D1%82%D0%BE%D1%80%20%0A(2000)"
+  },
+  {
+    "id": "m518",
+    "title": "Середина 90-х",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FFFF?text=%D0%A1%D0%B5%D1%80%D0%B5%D0%B4%D0%B8%D0%BD%D0%B0%2090-%D1%85"
+  },
+  {
+    "id": "m519",
+    "title": "Сумерки. Сага. Новолуние (2009)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FF66?text=%D0%A1%D1%83%D0%BC%D0%B5%D1%80%D0%BA%D0%B8.%20%D0%A1%D0%B0%D0%B3%D0%B0.%20%0A%D0%9D%D0%BE%D0%B2%D0%BE%D0%BB%D1%83%D0%BD%D0%B8%D0%B5%20%0A(2009)"
+  },
+  {
+    "id": "m520",
+    "title": "8 Миля (2002)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF9900?text=8%20%D0%9C%D0%B8%D0%BB%D1%8F%20(2002)"
+  },
+  {
+    "id": "m521",
+    "title": "Звонок (2002)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/99FF00?text=%D0%97%D0%B2%D0%BE%D0%BD%D0%BE%D0%BA%20(2002)"
+  },
+  {
+    "id": "m522",
+    "title": "Звонок 2 (2005)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/CC00FF?text=%D0%97%D0%B2%D0%BE%D0%BD%D0%BE%D0%BA%202%20(2005)"
+  },
+  {
+    "id": "m523",
+    "title": "От заката до рассвета (1995)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/99FF00?text=%D0%9E%D1%82%20%D0%B7%D0%B0%D0%BA%D0%B0%D1%82%D0%B0%20%D0%B4%D0%BE%20%0A%D1%80%D0%B0%D1%81%D1%81%D0%B2%D0%B5%D1%82%D0%B0%20(1995)"
+  },
+  {
+    "id": "m524",
+    "title": "Страна чудес Вилли (2020)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF3300?text=%D0%A1%D1%82%D1%80%D0%B0%D0%BD%D0%B0%20%D1%87%D1%83%D0%B4%D0%B5%D1%81%20%0A%D0%92%D0%B8%D0%BB%D0%BB%D0%B8%20(2020)"
+  },
+  {
+    "id": "m525",
+    "title": "Я иду искать (2019)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=%D0%AF%20%D0%B8%D0%B4%D1%83%20%D0%B8%D1%81%D0%BA%D0%B0%D1%82%D1%8C%20%0A(2019)"
+  },
+  {
+    "id": "m526",
+    "title": "Разделитель (2011)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF0055?text=%D0%A0%D0%B0%D0%B7%D0%B4%D0%B5%D0%BB%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%20%0A(2011)"
+  },
+  {
+    "id": "m527",
+    "title": "Я видел дьявола (2010)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF9900?text=%D0%AF%20%D0%B2%D0%B8%D0%B4%D0%B5%D0%BB%20%D0%B4%D1%8C%D1%8F%D0%B2%D0%BE%D0%BB%D0%B0%20%0A(2010)"
+  },
+  {
+    "id": "m528",
+    "title": "Пила: Игра на выживание (2004)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/CC00FF?text=%D0%9F%D0%B8%D0%BB%D0%B0%3A%20%D0%98%D0%B3%D1%80%D0%B0%20%D0%BD%D0%B0%20%0A%D0%B2%D1%8B%D0%B6%D0%B8%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5%20%0A(2004)"
+  },
+  {
+    "id": "m529",
+    "title": "Однажды в... Голливуде (2019)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/CC00FF?text=%D0%9E%D0%B4%D0%BD%D0%B0%D0%B6%D0%B4%D1%8B%20%D0%B2...%20%0A%D0%93%D0%BE%D0%BB%D0%BB%D0%B8%D0%B2%D1%83%D0%B4%D0%B5%20%0A(2019)"
+  },
+  {
+    "id": "m530",
+    "title": "Сумерки. Сага. Затмение (2010)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=%D0%A1%D1%83%D0%BC%D0%B5%D1%80%D0%BA%D0%B8.%20%D0%A1%D0%B0%D0%B3%D0%B0.%20%0A%D0%97%D0%B0%D1%82%D0%BC%D0%B5%D0%BD%D0%B8%D0%B5%20(2010)"
+  },
+  {
+    "id": "m531",
+    "title": "1+1 (2011)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/CC00FF?text=1%2B1%20(2011)"
+  },
+  {
+    "id": "m532",
+    "title": "Большой Стэн (2007)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FFFF?text=%D0%91%D0%BE%D0%BB%D1%8C%D1%88%D0%BE%D0%B9%20%D0%A1%D1%82%D1%8D%D0%BD%20%0A(2007)"
+  },
+  {
+    "id": "m533",
+    "title": "Гатака (1997)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%93%D0%B0%D1%82%D0%B0%D0%BA%D0%B0%20(1997)"
+  },
+  {
+    "id": "m534",
+    "title": "За пивом! (2022)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF9900?text=%D0%97%D0%B0%20%D0%BF%D0%B8%D0%B2%D0%BE%D0%BC!%20%0A(2022)"
+  },
+  {
+    "id": "m535",
+    "title": "Атлантида: Затерянный мир",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF3300?text=%D0%90%D1%82%D0%BB%D0%B0%D0%BD%D1%82%D0%B8%D0%B4%D0%B0%3A%20%0A%D0%97%D0%B0%D1%82%D0%B5%D1%80%D1%8F%D0%BD%D0%BD%D1%8B%D0%B9%20%D0%BC%D0%B8%D1%80"
+  },
+  {
+    "id": "m536",
+    "title": "Сумерки. Сага. Рассвет: Часть 1",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF0055?text=%D0%A1%D1%83%D0%BC%D0%B5%D1%80%D0%BA%D0%B8.%20%D0%A1%D0%B0%D0%B3%D0%B0.%20%0A%D0%A0%D0%B0%D1%81%D1%81%D0%B2%D0%B5%D1%82%3A%20%D0%A7%D0%B0%D1%81%D1%82%D1%8C%20%0A1"
+  },
+  {
+    "id": "m537",
+    "title": "Сумерки. Сага. Рассвет: Часть 2",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%A1%D1%83%D0%BC%D0%B5%D1%80%D0%BA%D0%B8.%20%D0%A1%D0%B0%D0%B3%D0%B0.%20%0A%D0%A0%D0%B0%D1%81%D1%81%D0%B2%D0%B5%D1%82%3A%20%D0%A7%D0%B0%D1%81%D1%82%D1%8C%20%0A2"
+  },
+  {
+    "id": "m538",
+    "title": "Джокер (2019)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FFFF?text=%D0%94%D0%B6%D0%BE%D0%BA%D0%B5%D1%80%20(2019)"
+  },
+  {
+    "id": "m539",
+    "title": "Джокер: Безумие на двоих (2024)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%94%D0%B6%D0%BE%D0%BA%D0%B5%D1%80%3A%20%D0%91%D0%B5%D0%B7%D1%83%D0%BC%D0%B8%D0%B5%20%0A%D0%BD%D0%B0%20%D0%B4%D0%B2%D0%BE%D0%B8%D1%85%20(2024)"
+  },
+  {
+    "id": "m540",
+    "title": "Еще по одной (2020)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF9900?text=%D0%95%D1%89%D0%B5%20%D0%BF%D0%BE%20%D0%BE%D0%B4%D0%BD%D0%BE%D0%B9%20%0A(2020)"
+  },
+  {
+    "id": "m541",
+    "title": "Курьер (1986)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/CC00FF?text=%D0%9A%D1%83%D1%80%D1%8C%D0%B5%D1%80%20(1986)"
+  },
+  {
+    "id": "m542",
+    "title": "Призраки Гойи (2006)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF0055?text=%D0%9F%D1%80%D0%B8%D0%B7%D1%80%D0%B0%D0%BA%D0%B8%20%D0%93%D0%BE%D0%B9%D0%B8%20%0A(2006)"
+  },
+  {
+    "id": "m543",
+    "title": "Человек из стали (2013)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=%D0%A7%D0%B5%D0%BB%D0%BE%D0%B2%D0%B5%D0%BA%20%D0%B8%D0%B7%20%0A%D1%81%D1%82%D0%B0%D0%BB%D0%B8%20(2013)"
+  },
+  {
+    "id": "m544",
+    "title": "Одержимость (2013)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=%D0%9E%D0%B4%D0%B5%D1%80%D0%B6%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D1%8C%20%0A(2013)"
+  },
+  {
+    "id": "m545",
+    "title": "Бросок кобры (2009)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=%D0%91%D1%80%D0%BE%D1%81%D0%BE%D0%BA%20%D0%BA%D0%BE%D0%B1%D1%80%D1%8B%20%0A(2009)"
+  },
+  {
+    "id": "m546",
+    "title": "Запах женщины (1992)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF0055?text=%D0%97%D0%B0%D0%BF%D0%B0%D1%85%20%D0%B6%D0%B5%D0%BD%D1%89%D0%B8%D0%BD%D1%8B%20%0A(1992)"
+  },
+  {
+    "id": "m547",
+    "title": "Эквилибриум (2002)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FFFF?text=%D0%AD%D0%BA%D0%B2%D0%B8%D0%BB%D0%B8%D0%B1%D1%80%D0%B8%D1%83%D0%BC%20%0A(2002)"
+  },
+  {
+    "id": "m548",
+    "title": "Бэтмен против Супермена: На заре справедливости (2016)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF3300?text=%D0%91%D1%8D%D1%82%D0%BC%D0%B5%D0%BD%20%D0%BF%D1%80%D0%BE%D1%82%D0%B8%D0%B2%20%0A%D0%A1%D1%83%D0%BF%D0%B5%D1%80%D0%BC%D0%B5%D0%BD%D0%B0%3A%20%D0%9D%D0%B0%20%0A%D0%B7%D0%B0%D1%80%D0%B5%20%0A%D1%81%D0%BF%D1%80%D0%B0%D0%B2%D0%B5%D0%B4%D0%BB%D0%B8%D0%B2%D0%BE%D1%81%D1%82%D0%B8%20..."
+  },
+  {
+    "id": "m549",
+    "title": "Ю-571 (2000)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/CC00FF?text=%D0%AE-571%20(2000)"
+  },
+  {
+    "id": "m550",
+    "title": "Водный Мир (1995)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF0055?text=%D0%92%D0%BE%D0%B4%D0%BD%D1%8B%D0%B9%20%D0%9C%D0%B8%D1%80%20%0A(1995)"
+  },
+  {
+    "id": "m551",
+    "title": "Мост в Терабитию (2006)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF9900?text=%D0%9C%D0%BE%D1%81%D1%82%20%D0%B2%20%0A%D0%A2%D0%B5%D1%80%D0%B0%D0%B1%D0%B8%D1%82%D0%B8%D1%8E%20%0A(2006)"
+  },
+  {
+    "id": "m552",
+    "title": "Лига справедливости Зака Снайдера (2021)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/99FF00?text=%D0%9B%D0%B8%D0%B3%D0%B0%20%0A%D1%81%D0%BF%D1%80%D0%B0%D0%B2%D0%B5%D0%B4%D0%BB%D0%B8%D0%B2%D0%BE%D1%81%D1%82%D0%B8%20%0A%D0%97%D0%B0%D0%BA%D0%B0%20%D0%A1%D0%BD%D0%B0%D0%B9%D0%B4%D0%B5%D1%80%D0%B0%20%0A(2021)"
+  },
+  {
+    "id": "m553",
+    "title": "Лиля навсегда (2002)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/99FF00?text=%D0%9B%D0%B8%D0%BB%D1%8F%20%D0%BD%D0%B0%D0%B2%D1%81%D0%B5%D0%B3%D0%B4%D0%B0%20%0A(2002)"
+  },
+  {
+    "id": "m554",
+    "title": "Хардкор (2015)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FFFF00?text=%D0%A5%D0%B0%D1%80%D0%B4%D0%BA%D0%BE%D1%80%20(2015)"
+  },
+  {
+    "id": "m555",
+    "title": "Индиана Джонс: В поисках утраченного ковчега (1981)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF0055?text=%D0%98%D0%BD%D0%B4%D0%B8%D0%B0%D0%BD%D0%B0%20%D0%94%D0%B6%D0%BE%D0%BD%D1%81%3A%20%0A%D0%92%20%D0%BF%D0%BE%D0%B8%D1%81%D0%BA%D0%B0%D1%85%20%0A%D1%83%D1%82%D1%80%D0%B0%D1%87%D0%B5%D0%BD%D0%BD%D0%BE%D0%B3%D0%BE%20%0A%D0%BA%D0%BE%D0%B2%D1%87%D0%B5%D0%B3%D0%B0%20(1981)"
+  },
+  {
+    "id": "m556",
+    "title": "Нефть (2007)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF3300?text=%D0%9D%D0%B5%D1%84%D1%82%D1%8C%20(2007)"
+  },
+  {
+    "id": "m557",
+    "title": "Одержимость (2004)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FFFF?text=%D0%9E%D0%B4%D0%B5%D1%80%D0%B6%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D1%8C%20%0A(2004)"
+  },
+  {
+    "id": "m558",
+    "title": "Звёздные войны: Эпизод 5 – Империя наносит ответный удар (1980)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FFFF00?text=%D0%97%D0%B2%D1%91%D0%B7%D0%B4%D0%BD%D1%8B%D0%B5%20%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B%3A%20%0A%D0%AD%D0%BF%D0%B8%D0%B7%D0%BE%D0%B4%205%20%E2%80%93%20%0A%D0%98%D0%BC%D0%BF%D0%B5%D1%80%D0%B8%D1%8F%20%D0%BD%D0%B0%D0%BD%D0%BE%D1%81%D0%B8%D1%82%20%0A%D0%BE%D1%82%D0%B2%D0%B5%D1%82%D0%BD%D1%8B%D0%B9%20%D1%83%D0%B4%D0%B0%D1%80%20..."
+  },
+  {
+    "id": "m559",
+    "title": "Веном: Последний танец (2024)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FFFF00?text=%D0%92%D0%B5%D0%BD%D0%BE%D0%BC%3A%20%0A%D0%9F%D0%BE%D1%81%D0%BB%D0%B5%D0%B4%D0%BD%D0%B8%D0%B9%20%D1%82%D0%B0%D0%BD%D0%B5%D1%86%20%0A(2024)"
+  },
+  {
+    "id": "m560",
+    "title": "Индиана Джонс и храм судьбы (1984)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%98%D0%BD%D0%B4%D0%B8%D0%B0%D0%BD%D0%B0%20%D0%94%D0%B6%D0%BE%D0%BD%D1%81%20%D0%B8%20%0A%D1%85%D1%80%D0%B0%D0%BC%20%D1%81%D1%83%D0%B4%D1%8C%D0%B1%D1%8B%20%0A(1984)"
+  },
+  {
+    "id": "m561",
+    "title": "Сталкер (2023)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF9900?text=%D0%A1%D1%82%D0%B0%D0%BB%D0%BA%D0%B5%D1%80%20(2023)"
+  },
+  {
+    "id": "m562",
+    "title": "Хранители (2009)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%A5%D1%80%D0%B0%D0%BD%D0%B8%D1%82%D0%B5%D0%BB%D0%B8%20%0A(2009)"
+  },
+  {
+    "id": "m563",
+    "title": "Звездные войны: Эпизод 6 - Возвращение джедая (1983)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF0055?text=%D0%97%D0%B2%D0%B5%D0%B7%D0%B4%D0%BD%D1%8B%D0%B5%20%D0%B2%D0%BE%D0%B9%D0%BD%D1%8B%3A%20%0A%D0%AD%D0%BF%D0%B8%D0%B7%D0%BE%D0%B4%206%20-%20%0A%D0%92%D0%BE%D0%B7%D0%B2%D1%80%D0%B0%D1%89%D0%B5%D0%BD%D0%B8%D0%B5%20%0A%D0%B4%D0%B6%D0%B5%D0%B4%D0%B0%D1%8F%20(1983)"
+  },
+  {
+    "id": "m564",
+    "title": "Индиана Джонс и последний крестовый поход (1989)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FFFF?text=%D0%98%D0%BD%D0%B4%D0%B8%D0%B0%D0%BD%D0%B0%20%D0%94%D0%B6%D0%BE%D0%BD%D1%81%20%D0%B8%20%0A%D0%BF%D0%BE%D1%81%D0%BB%D0%B5%D0%B4%D0%BD%D0%B8%D0%B9%20%0A%D0%BA%D1%80%D0%B5%D1%81%D1%82%D0%BE%D0%B2%D1%8B%D0%B9%20%D0%BF%D0%BE%D1%85%D0%BE%D0%B4%20%0A(1989)"
+  },
+  {
+    "id": "m565",
+    "title": "Фарго (1995)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FFFF?text=%D0%A4%D0%B0%D1%80%D0%B3%D0%BE%20(1995)"
+  },
+  {
+    "id": "m566",
+    "title": "Семьянин (2000)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FF66?text=%D0%A1%D0%B5%D0%BC%D1%8C%D1%8F%D0%BD%D0%B8%D0%BD%20(2000)"
+  },
+  {
+    "id": "m567",
+    "title": "Плохой Санта (2016)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%9F%D0%BB%D0%BE%D1%85%D0%BE%D0%B9%20%D0%A1%D0%B0%D0%BD%D1%82%D0%B0%20%0A(2016)"
+  },
+  {
+    "id": "m568",
+    "title": "Один дома (1990)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FFFF00?text=%D0%9E%D0%B4%D0%B8%D0%BD%20%D0%B4%D0%BE%D0%BC%D0%B0%20%0A(1990)"
+  },
+  {
+    "id": "m569",
+    "title": "Грязь. (2013)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF3300?text=%D0%93%D1%80%D1%8F%D0%B7%D1%8C.%20(2013)"
+  },
+  {
+    "id": "m570",
+    "title": "Стражи Галактики 3. (2023)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%A1%D1%82%D1%80%D0%B0%D0%B6%D0%B8%20%0A%D0%93%D0%B0%D0%BB%D0%B0%D0%BA%D1%82%D0%B8%D0%BA%D0%B8%203.%20%0A(2023)"
+  },
+  {
+    "id": "m571",
+    "title": "Пролетая над гнездом кукушки. (1975)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FFFF00?text=%D0%9F%D1%80%D0%BE%D0%BB%D0%B5%D1%82%D0%B0%D1%8F%20%D0%BD%D0%B0%D0%B4%20%0A%D0%B3%D0%BD%D0%B5%D0%B7%D0%B4%D0%BE%D0%BC%20%0A%D0%BA%D1%83%D0%BA%D1%83%D1%88%D0%BA%D0%B8.%20(1975)"
+  },
+  {
+    "id": "m572",
+    "title": "Чёрный телефон (2021)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF0055?text=%D0%A7%D1%91%D1%80%D0%BD%D1%8B%D0%B9%20%D1%82%D0%B5%D0%BB%D0%B5%D1%84%D0%BE%D0%BD%20%0A(2021)"
+  },
+  {
+    "id": "m573",
+    "title": "Флэш (2023)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FF66?text=%D0%A4%D0%BB%D1%8D%D1%88%20(2023)"
+  },
+  {
+    "id": "m574",
+    "title": "Лига справедливости: Парадокс источника конфликта (2013)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/CC00FF?text=%D0%9B%D0%B8%D0%B3%D0%B0%20%0A%D1%81%D0%BF%D1%80%D0%B0%D0%B2%D0%B5%D0%B4%D0%BB%D0%B8%D0%B2%D0%BE%D1%81%D1%82%D0%B8%3A%20%0A%D0%9F%D0%B0%D1%80%D0%B0%D0%B4%D0%BE%D0%BA%D1%81%20%0A%D0%B8%D1%81%D1%82%D0%BE%D1%87%D0%BD%D0%B8%D0%BA%D0%B0%20..."
+  },
+  {
+    "id": "m575",
+    "title": "Горбатая Гора (2005)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%93%D0%BE%D1%80%D0%B1%D0%B0%D1%82%D0%B0%D1%8F%20%D0%93%D0%BE%D1%80%D0%B0%20%0A(2005)"
+  },
+  {
+    "id": "m576",
+    "title": "Невероятный Халк (2008)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%9D%D0%B5%D0%B2%D0%B5%D1%80%D0%BE%D1%8F%D1%82%D0%BD%D1%8B%D0%B9%20%0A%D0%A5%D0%B0%D0%BB%D0%BA%20(2008)"
+  },
+  {
+    "id": "m577",
+    "title": "Форрест Гамп (1994)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF0055?text=%D0%A4%D0%BE%D1%80%D1%80%D0%B5%D1%81%D1%82%20%D0%93%D0%B0%D0%BC%D0%BF%20%0A(1994)"
+  },
+  {
+    "id": "m578",
+    "title": "Семь жизней (2008)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/CC00FF?text=%D0%A1%D0%B5%D0%BC%D1%8C%20%D0%B6%D0%B8%D0%B7%D0%BD%D0%B5%D0%B9%20%0A(2008)"
+  },
+  {
+    "id": "m579",
+    "title": "Побег из шоушенка (1994)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF3300?text=%D0%9F%D0%BE%D0%B1%D0%B5%D0%B3%20%D0%B8%D0%B7%20%0A%D1%88%D0%BE%D1%83%D1%88%D0%B5%D0%BD%D0%BA%D0%B0%20(1994)"
+  },
+  {
+    "id": "m580",
+    "title": "Человек-паук: Через Вселенные (2018)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FF66?text=%D0%A7%D0%B5%D0%BB%D0%BE%D0%B2%D0%B5%D0%BA-%D0%BF%D0%B0%D1%83%D0%BA%3A%20%0A%D0%A7%D0%B5%D1%80%D0%B5%D0%B7%20%D0%92%D1%81%D0%B5%D0%BB%D0%B5%D0%BD%D0%BD%D1%8B%D0%B5%20%0A(2018)"
+  },
+  {
+    "id": "m581",
+    "title": "Человек-Паук: Паутина вселенных\" (2023)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF0055?text=%D0%A7%D0%B5%D0%BB%D0%BE%D0%B2%D0%B5%D0%BA-%D0%9F%D0%B0%D1%83%D0%BA%3A%20%0A%D0%9F%D0%B0%D1%83%D1%82%D0%B8%D0%BD%D0%B0%20%0A%D0%B2%D1%81%D0%B5%D0%BB%D0%B5%D0%BD%D0%BD%D1%8B%D1%85%22%20%0A(2023)"
+  },
+  {
+    "id": "m582",
+    "title": "Бэтмен: Карающий рок над Готэмом (2023)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FFFF?text=%D0%91%D1%8D%D1%82%D0%BC%D0%B5%D0%BD%3A%20%0A%D0%9A%D0%B0%D1%80%D0%B0%D1%8E%D1%89%D0%B8%D0%B9%20%D1%80%D0%BE%D0%BA%20%0A%D0%BD%D0%B0%D0%B4%20%D0%93%D0%BE%D1%82%D1%8D%D0%BC%D0%BE%D0%BC%20%0A(2023)"
+  },
+  {
+    "id": "m583",
+    "title": "Драйв (2011)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/99FF00?text=%D0%94%D1%80%D0%B0%D0%B9%D0%B2%20(2011)"
+  },
+  {
+    "id": "m584",
+    "title": "Зависнуть в Палм-Спрингс (2020)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%97%D0%B0%D0%B2%D0%B8%D1%81%D0%BD%D1%83%D1%82%D1%8C%20%D0%B2%20%0A%D0%9F%D0%B0%D0%BB%D0%BC-%D0%A1%D0%BF%D1%80%D0%B8%D0%BD%D0%B3%D1%81%20%0A(2020)"
+  },
+  {
+    "id": "m585",
+    "title": "Омерзительная восьмерка (2015)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FFFF00?text=%D0%9E%D0%BC%D0%B5%D1%80%D0%B7%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%B0%D1%8F%20%0A%D0%B2%D0%BE%D1%81%D1%8C%D0%BC%D0%B5%D1%80%D0%BA%D0%B0%20%0A(2015)"
+  },
+  {
+    "id": "m586",
+    "title": "Москва слезам не верит (1979)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF0055?text=%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%20%D1%81%D0%BB%D0%B5%D0%B7%D0%B0%D0%BC%20%0A%D0%BD%D0%B5%20%D0%B2%D0%B5%D1%80%D0%B8%D1%82%20(1979)"
+  },
+  {
+    "id": "m587",
+    "title": "Криминальное чтиво (1994)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF0055?text=%D0%9A%D1%80%D0%B8%D0%BC%D0%B8%D0%BD%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%0A%D1%87%D1%82%D0%B8%D0%B2%D0%BE%20(1994)"
+  },
+  {
+    "id": "m588",
+    "title": "Джанго освобожденный (2012)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/99FF00?text=%D0%94%D0%B6%D0%B0%D0%BD%D0%B3%D0%BE%20%0A%D0%BE%D1%81%D0%B2%D0%BE%D0%B1%D0%BE%D0%B6%D0%B4%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9%20%0A(2012)"
+  },
+  {
+    "id": "m589",
+    "title": "Бойцовский клуб (1999)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FFFF00?text=%D0%91%D0%BE%D0%B9%D1%86%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9%20%D0%BA%D0%BB%D1%83%D0%B1%20%0A(1999)"
+  },
+  {
+    "id": "m590",
+    "title": "Бегущий по лезвию (1982)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF9900?text=%D0%91%D0%B5%D0%B3%D1%83%D1%89%D0%B8%D0%B9%20%D0%BF%D0%BE%20%0A%D0%BB%D0%B5%D0%B7%D0%B2%D0%B8%D1%8E%20(1982)"
+  },
+  {
+    "id": "m591",
+    "title": "Бесславные ублюдки (2009)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=%D0%91%D0%B5%D1%81%D1%81%D0%BB%D0%B0%D0%B2%D0%BD%D1%8B%D0%B5%20%0A%D1%83%D0%B1%D0%BB%D1%8E%D0%B4%D0%BA%D0%B8%20(2009)"
+  },
+  {
+    "id": "m592",
+    "title": "Лабиринт Фавна (2006)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FFFF00?text=%D0%9B%D0%B0%D0%B1%D0%B8%D1%80%D0%B8%D0%BD%D1%82%20%D0%A4%D0%B0%D0%B2%D0%BD%D0%B0%20%0A(2006)"
+  },
+  {
+    "id": "m593",
+    "title": "Ночной оборотень",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=%D0%9D%D0%BE%D1%87%D0%BD%D0%BE%D0%B9%20%0A%D0%BE%D0%B1%D0%BE%D1%80%D0%BE%D1%82%D0%B5%D0%BD%D1%8C"
+  },
+  {
+    "id": "m594",
+    "title": "Блеф (1976)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF9900?text=%D0%91%D0%BB%D0%B5%D1%84%20(1976)"
+  },
+  {
+    "id": "m595",
+    "title": "Джей и Молчаливый Боб наносят ответный удар (2001)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FF66?text=%D0%94%D0%B6%D0%B5%D0%B9%20%D0%B8%20%0A%D0%9C%D0%BE%D0%BB%D1%87%D0%B0%D0%BB%D0%B8%D0%B2%D1%8B%D0%B9%20%D0%91%D0%BE%D0%B1%20%0A%D0%BD%D0%B0%D0%BD%D0%BE%D1%81%D1%8F%D1%82%20%0A%D0%BE%D1%82%D0%B2%D0%B5%D1%82%D0%BD%D1%8B%D0%B9%20%D1%83%D0%B4%D0%B0%D1%80%20..."
+  },
+  {
+    "id": "m596",
+    "title": "Джон Уик (2014)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FFFF00?text=%D0%94%D0%B6%D0%BE%D0%BD%20%D0%A3%D0%B8%D0%BA%20(2014)"
+  },
+  {
+    "id": "m597",
+    "title": "Горе-творец (2017)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/CC00FF?text=%D0%93%D0%BE%D1%80%D0%B5-%D1%82%D0%B2%D0%BE%D1%80%D0%B5%D1%86%20%0A(2017)"
+  },
+  {
+    "id": "m598",
+    "title": "Зеленая миля (1999) 1 часть записи",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/CC00FF?text=%D0%97%D0%B5%D0%BB%D0%B5%D0%BD%D0%B0%D1%8F%20%D0%BC%D0%B8%D0%BB%D1%8F%20%0A(1999)%201%20%D1%87%D0%B0%D1%81%D1%82%D1%8C%20%0A%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D0%B8"
+  },
+  {
+    "id": "m599",
+    "title": "RRR: Рядом ревёт революция (2022)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF3300?text=RRR%3A%20%D0%A0%D1%8F%D0%B4%D0%BE%D0%BC%20%0A%D1%80%D0%B5%D0%B2%D1%91%D1%82%20%D1%80%D0%B5%D0%B2%D0%BE%D0%BB%D1%8E%D1%86%D0%B8%D1%8F%20%0A(2022)"
+  },
+  {
+    "id": "m600",
+    "title": "Быстрее пули (2022)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FFFF00?text=%D0%91%D1%8B%D1%81%D1%82%D1%80%D0%B5%D0%B5%20%D0%BF%D1%83%D0%BB%D0%B8%20%0A(2022)"
+  },
+  {
+    "id": "m601",
+    "title": "Лицо со шрамом (1983)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FFFF00?text=%D0%9B%D0%B8%D1%86%D0%BE%20%D1%81%D0%BE%20%D1%88%D1%80%D0%B0%D0%BC%D0%BE%D0%BC%20%0A(1983)"
+  },
+  {
+    "id": "m602",
+    "title": "Терминатор (1984)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%A2%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D0%B0%D1%82%D0%BE%D1%80%20%0A(1984)"
+  },
+  {
+    "id": "m603",
+    "title": "Терминатор 2: Судный день (1991)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF3300?text=%D0%A2%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D0%B0%D1%82%D0%BE%D1%80%202%3A%20%0A%D0%A1%D1%83%D0%B4%D0%BD%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C%20%0A(1991)"
+  },
+  {
+    "id": "m604",
+    "title": "Молчание ягнят (1990)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=%D0%9C%D0%BE%D0%BB%D1%87%D0%B0%D0%BD%D0%B8%D0%B5%20%D1%8F%D0%B3%D0%BD%D1%8F%D1%82%20%0A(1990)"
+  },
+  {
+    "id": "m605",
+    "title": "Барби (2023)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FF66?text=%D0%91%D0%B0%D1%80%D0%B1%D0%B8%20(2023)"
+  },
+  {
+    "id": "m606",
+    "title": "Рассвет мертвецов (2002)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%A0%D0%B0%D1%81%D1%81%D0%B2%D0%B5%D1%82%20%0A%D0%BC%D0%B5%D1%80%D1%82%D0%B2%D0%B5%D1%86%D0%BE%D0%B2%20%0A(2002)"
+  },
+  {
+    "id": "m607",
+    "title": "Зловещие мертвецы 2 (1987)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FFFF?text=%D0%97%D0%BB%D0%BE%D0%B2%D0%B5%D1%89%D0%B8%D0%B5%20%0A%D0%BC%D0%B5%D1%80%D1%82%D0%B2%D0%B5%D1%86%D1%8B%202%20%0A(1987)"
+  },
+  {
+    "id": "m608",
+    "title": "Нечто (1982)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FF66?text=%D0%9D%D0%B5%D1%87%D1%82%D0%BE%20(1982)"
+  },
+  {
+    "id": "m609",
+    "title": "Восставший из ада (1987)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/99FF00?text=%D0%92%D0%BE%D1%81%D1%81%D1%82%D0%B0%D0%B2%D1%88%D0%B8%D0%B9%20%D0%B8%D0%B7%20%0A%D0%B0%D0%B4%D0%B0%20(1987)"
+  },
+  {
+    "id": "m610",
+    "title": "Красный Дракон (2002)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%9A%D1%80%D0%B0%D1%81%D0%BD%D1%8B%D0%B9%20%D0%94%D1%80%D0%B0%D0%BA%D0%BE%D0%BD%20%0A(2002)"
+  },
+  {
+    "id": "m611",
+    "title": "Прометей (2012)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=%D0%9F%D1%80%D0%BE%D0%BC%D0%B5%D1%82%D0%B5%D0%B9%20(2012)"
+  },
+  {
+    "id": "m612",
+    "title": "Мальчик в полосатой пижаме (2008)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%9C%D0%B0%D0%BB%D1%8C%D1%87%D0%B8%D0%BA%20%D0%B2%20%0A%D0%BF%D0%BE%D0%BB%D0%BE%D1%81%D0%B0%D1%82%D0%BE%D0%B9%20%0A%D0%BF%D0%B8%D0%B6%D0%B0%D0%BC%D0%B5%20(2008)"
+  },
+  {
+    "id": "m613",
+    "title": "Бегущий по лезвию 2049 (2017)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF3300?text=%D0%91%D0%B5%D0%B3%D1%83%D1%89%D0%B8%D0%B9%20%D0%BF%D0%BE%20%0A%D0%BB%D0%B5%D0%B7%D0%B2%D0%B8%D1%8E%202049%20%0A(2017)"
+  },
+  {
+    "id": "m614",
+    "title": "Пленницы",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/CC00FF?text=%D0%9F%D0%BB%D0%B5%D0%BD%D0%BD%D0%B8%D1%86%D1%8B"
+  },
+  {
+    "id": "m615",
+    "title": "Хэллоуин убивает (2021)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%A5%D1%8D%D0%BB%D0%BB%D0%BE%D1%83%D0%B8%D0%BD%20%0A%D1%83%D0%B1%D0%B8%D0%B2%D0%B0%D0%B5%D1%82%20(2021)"
+  },
+  {
+    "id": "m616",
+    "title": "Легенда (2015)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%9B%D0%B5%D0%B3%D0%B5%D0%BD%D0%B4%D0%B0%20(2015)"
+  },
+  {
+    "id": "m617",
+    "title": "Люди Икс (2000)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=%D0%9B%D1%8E%D0%B4%D0%B8%20%D0%98%D0%BA%D1%81%20(2000)"
+  },
+  {
+    "id": "m618",
+    "title": "Убийца (2015)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%A3%D0%B1%D0%B8%D0%B9%D1%86%D0%B0%20(2015)"
+  },
+  {
+    "id": "m619",
+    "title": "Прогулка (2015)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FFFF00?text=%D0%9F%D1%80%D0%BE%D0%B3%D1%83%D0%BB%D0%BA%D0%B0%20(2015)"
+  },
+  {
+    "id": "m620",
+    "title": "Люди Х 2 (2003)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/CC00FF?text=%D0%9B%D1%8E%D0%B4%D0%B8%20%D0%A5%202%20(2003)"
+  },
+  {
+    "id": "m621",
+    "title": "Робокоп (1987)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FFFF00?text=%D0%A0%D0%BE%D0%B1%D0%BE%D0%BA%D0%BE%D0%BF%20(1987)"
+  },
+  {
+    "id": "m622",
+    "title": "Бэтмен (2022)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=%D0%91%D1%8D%D1%82%D0%BC%D0%B5%D0%BD%20(2022)"
+  },
+  {
+    "id": "m623",
+    "title": "Люди Икс: Последняя битва (2006)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FFFF00?text=%D0%9B%D1%8E%D0%B4%D0%B8%20%D0%98%D0%BA%D1%81%3A%20%0A%D0%9F%D0%BE%D1%81%D0%BB%D0%B5%D0%B4%D0%BD%D1%8F%D1%8F%20%D0%B1%D0%B8%D1%82%D0%B2%D0%B0%20%0A(2006)"
+  },
+  {
+    "id": "m624",
+    "title": "Грань будущего (2014)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/CC00FF?text=%D0%93%D1%80%D0%B0%D0%BD%D1%8C%20%D0%B1%D1%83%D0%B4%D1%83%D1%89%D0%B5%D0%B3%D0%BE%20%0A(2014)"
+  },
+  {
+    "id": "m625",
+    "title": "Сломленные (2012)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%A1%D0%BB%D0%BE%D0%BC%D0%BB%D0%B5%D0%BD%D0%BD%D1%8B%D0%B5%20%0A(2012)"
+  },
+  {
+    "id": "m626",
+    "title": "Люди Икс: Начало. Росомаха (2009)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FFFF00?text=%D0%9B%D1%8E%D0%B4%D0%B8%20%D0%98%D0%BA%D1%81%3A%20%0A%D0%9D%D0%B0%D1%87%D0%B0%D0%BB%D0%BE.%20%0A%D0%A0%D0%BE%D1%81%D0%BE%D0%BC%D0%B0%D1%85%D0%B0%20(2009)"
+  },
+  {
+    "id": "m627",
+    "title": "Близнецы-Драконы (1991)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%91%D0%BB%D0%B8%D0%B7%D0%BD%D0%B5%D1%86%D1%8B-%D0%94%D1%80%D0%B0%D0%BA%D0%BE%D0%BD%D1%8B%20%0A(1991)"
+  },
+  {
+    "id": "m628",
+    "title": "Судья Дред (1995)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF00CC?text=%D0%A1%D1%83%D0%B4%D1%8C%D1%8F%20%D0%94%D1%80%D0%B5%D0%B4%20%0A(1995)"
+  },
+  {
+    "id": "m629",
+    "title": "Афоня (1975)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=%D0%90%D1%84%D0%BE%D0%BD%D1%8F%20(1975)"
+  },
+  {
+    "id": "m630",
+    "title": "Люди Икс: Первый Класс (2011)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FF66?text=%D0%9B%D1%8E%D0%B4%D0%B8%20%D0%98%D0%BA%D1%81%3A%20%0A%D0%9F%D0%B5%D1%80%D0%B2%D1%8B%D0%B9%20%D0%9A%D0%BB%D0%B0%D1%81%D1%81%20%0A(2011)"
+  },
+  {
+    "id": "m631",
+    "title": "Капитан Марвел 2 (2023)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=%D0%9A%D0%B0%D0%BF%D0%B8%D1%82%D0%B0%D0%BD%20%D0%9C%D0%B0%D1%80%D0%B2%D0%B5%D0%BB%20%0A2%20(2023)"
+  },
+  {
+    "id": "m632",
+    "title": "МАМИНО (1977)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FFFF00?text=%D0%9C%D0%90%D0%9C%D0%98%D0%9D%D0%9E%20(1977)"
+  },
+  {
+    "id": "m633",
+    "title": "Росомаха: Бессмертный (2013)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=%D0%A0%D0%BE%D1%81%D0%BE%D0%BC%D0%B0%D1%85%D0%B0%3A%20%0A%D0%91%D0%B5%D1%81%D1%81%D0%BC%D0%B5%D1%80%D1%82%D0%BD%D1%8B%D0%B9%20%0A(2013)"
+  },
+  {
+    "id": "m634",
+    "title": "Безумный Макс: Дорога ярости (2015)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=%D0%91%D0%B5%D0%B7%D1%83%D0%BC%D0%BD%D1%8B%D0%B9%20%D0%9C%D0%B0%D0%BA%D1%81%3A%20%0A%D0%94%D0%BE%D1%80%D0%BE%D0%B3%D0%B0%20%D1%8F%D1%80%D0%BE%D1%81%D1%82%D0%B8%20%0A(2015)"
+  },
+  {
+    "id": "m635",
+    "title": "Амели (2001)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/99FF00?text=%D0%90%D0%BC%D0%B5%D0%BB%D0%B8%20(2001)"
+  },
+  {
+    "id": "m636",
+    "title": "Бэтмен: Маска Фантазма (1993)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF9900?text=%D0%91%D1%8D%D1%82%D0%BC%D0%B5%D0%BD%3A%20%D0%9C%D0%B0%D1%81%D0%BA%D0%B0%20%0A%D0%A4%D0%B0%D0%BD%D1%82%D0%B0%D0%B7%D0%BC%D0%B0%20(1993)"
+  },
+  {
+    "id": "m637",
+    "title": "Люди Икс: Дни минувшего будущего (2014)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FFFF00?text=%D0%9B%D1%8E%D0%B4%D0%B8%20%D0%98%D0%BA%D1%81%3A%20%D0%94%D0%BD%D0%B8%20%0A%D0%BC%D0%B8%D0%BD%D1%83%D0%B2%D1%88%D0%B5%D0%B3%D0%BE%20%0A%D0%B1%D1%83%D0%B4%D1%83%D1%89%D0%B5%D0%B3%D0%BE%20(2014)"
+  },
+  {
+    "id": "m638",
+    "title": "Крепкий орешек (1988)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00CCFF?text=%D0%9A%D1%80%D0%B5%D0%BF%D0%BA%D0%B8%D0%B9%20%D0%BE%D1%80%D0%B5%D1%88%D0%B5%D0%BA%20%0A(1988)"
+  },
+  {
+    "id": "m639",
+    "title": "Плохой Санта (2003)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FF66?text=%D0%9F%D0%BB%D0%BE%D1%85%D0%BE%D0%B9%20%D0%A1%D0%B0%D0%BD%D1%82%D0%B0%20%0A(2003)"
+  },
+  {
+    "id": "m640",
+    "title": "День Сурка (1993)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/00FF66?text=%D0%94%D0%B5%D0%BD%D1%8C%20%D0%A1%D1%83%D1%80%D0%BA%D0%B0%20%0A(1993)"
+  },
+  {
+    "id": "m641",
+    "title": "Бэтмен (1989)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/CC00FF?text=%D0%91%D1%8D%D1%82%D0%BC%D0%B5%D0%BD%20(1989)"
+  },
+  {
+    "id": "m642",
+    "title": "Бэтмен возвращается (1992)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/99FF00?text=%D0%91%D1%8D%D1%82%D0%BC%D0%B5%D0%BD%20%0A%D0%B2%D0%BE%D0%B7%D0%B2%D1%80%D0%B0%D1%89%D0%B0%D0%B5%D1%82%D1%81%D1%8F%20%0A(1992)"
+  },
+  {
+    "id": "m643",
+    "title": "Семейный обмен (2023)",
+    "posterUrl": "https://placehold.co/400x600/0b0f19/FF3300?text=%D0%A1%D0%B5%D0%BC%D0%B5%D0%B9%D0%BD%D1%8B%D0%B9%20%D0%BE%D0%B1%D0%BC%D0%B5%D0%BD%20%0A(2023)"
+  }
+]

@@ -5,6 +5,7 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const axios = require('axios');
 const fs = require('fs');
+const path = require('path');
 
 dotenv.config();
 
@@ -25,7 +26,8 @@ const lobbies = new Map();
 // Загрузка фильмов
 let ALL_MOVIES = [];
 try {
-    const data = fs.readFileSync('movies.json', 'utf8');
+    const moviesPath = path.join(__dirname, 'movies.json');
+    const data = fs.readFileSync(moviesPath, 'utf8');
     const parsed = JSON.parse(data);
     ALL_MOVIES = parsed.map((m, index) => ({
         id: m.id || (m.url ? m.url.split('/')[2] : `m-${index}`),
@@ -139,6 +141,15 @@ io.on('connection', (socket) => {
         }
     });
 });
+
+// Раздача статики собранного фронтенда
+const distPath = path.join(__dirname, '../frontend/dist');
+if (fs.existsSync(distPath)) {
+    app.use(express.static(distPath));
+    app.use((req, res) => {
+        res.sendFile(path.join(distPath, 'index.html'));
+    });
+}
 
 const PORT = process.env.PORT || 3001;
 server.listen(PORT, () => {

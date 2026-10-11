@@ -12,8 +12,8 @@ export const GameProvider = ({ children }) => {
     const [isConnected, setIsConnected] = useState(false);
 
     useEffect(() => {
-        const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3001';
-        const newSocket = io(backendUrl);
+        const backendUrl = import.meta.env.VITE_BACKEND_URL || (import.meta.env.DEV ? 'http://localhost:3001' : undefined);
+        const newSocket = backendUrl ? io(backendUrl) : io();
         setSocket(newSocket);
 
         newSocket.on('connect', () => {
