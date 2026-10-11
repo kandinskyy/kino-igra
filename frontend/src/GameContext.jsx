@@ -46,7 +46,28 @@ export const GameProvider = ({ children }) => {
             setGameState(lobby);
         });
 
-        return () => newSocket.close();
+        newSocket.on('lobby_closed', (data) => {
+            alert(data?.message || 'Комната была закрыта хостом');
+            localStorage.removeItem('kino_lobbyId');
+            localStorage.removeItem('kino_sessionToken');
+            setGameState(null);
+            setPlayer(null);
+        });
+
+        const handleUnload = () => {
+            const currentLobbyId = localStorage.getItem('kino_lobbyId');
+            if (newSocket && currentLobbyId) {
+                newSocket.emit('leave_lobby', { lobbyId: currentLobbyId });
+            }
+        };
+        window.addEventListener('beforeunload', handleUnload);
+        window.addEventListener('pagehide', handleUnload);
+
+        return () => {
+            window.removeEventListener('beforeunload', handleUnload);
+            window.removeEventListener('pagehide', handleUnload);
+            newSocket.close();
+        };
     }, []);
 
     const leaveGame = () => {
@@ -69,6 +90,16 @@ export const GameProvider = ({ children }) => {
         setPlayer(null);
     };
 
+    const closeLobby = () => {
+        if (socket && gameState?.id) {
+            socket.emit('close_lobby', { lobbyId: gameState.id });
+        }
+        localStorage.removeItem('kino_lobbyId');
+        localStorage.removeItem('kino_sessionToken');
+        setGameState(null);
+        setPlayer(null);
+    };
+
     const value = {
         socket,
         gameState,
@@ -76,7 +107,8 @@ export const GameProvider = ({ children }) => {
         player,
         setPlayer,
         isConnected,
-        leaveGame
+        leaveGame,
+        closeLobby
     };
 
     return (

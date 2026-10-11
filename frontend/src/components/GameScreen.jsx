@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useGame } from '../GameContext';
 
 const GameScreen = () => {
-    const { socket, gameState, player, leaveGame } = useGame();
+    const { socket, gameState, player, leaveGame, closeLobby } = useGame();
+    const [copiedCode, setCopiedCode] = useState(false);
     
     // Локальное состояние таймера (синхронизируется с сокетами)
     const [timeLeft, setTimeLeft] = useState(gameState?.timeLeft ?? 60);
@@ -47,6 +48,9 @@ const GameScreen = () => {
             setTimerRunning(gameState.timerRunning ?? false);
             if (gameState.ratings?.[player?.id]) {
                 setMyRatings(gameState.ratings[player.id]);
+            } else if (gameState.state === 'round_start' && Object.keys(gameState.ratings || {}).length === 0) {
+                setMyRatings({});
+                setProgress({});
             }
         }
     }, [gameState, player?.id]);
@@ -89,13 +93,21 @@ const GameScreen = () => {
     // Следующий раунд (хост)
     const handleNextRound = () => {
         setMyRatings({});
+        setProgress({});
         socket.emit('next_round', gameState.id);
     };
 
     // Перезапуск игры (хост)
     const handleRestartGame = () => {
         setMyRatings({});
+        setProgress({});
         socket.emit('restart_game', gameState.id);
+    };
+
+    const handleCopyCode = () => {
+        navigator.clipboard.writeText(gameState.id);
+        setCopiedCode(true);
+        setTimeout(() => setCopiedCode(false), 2000);
     };
 
     // Выставление / изменение оценки с защитой от миссклика
@@ -408,6 +420,22 @@ const GameScreen = () => {
                         </button>
                     )}
 
+                    {/* Кнопка закрытия комнаты хостом */}
+                    {isHost && (
+                        <button
+                            className="btn-secondary"
+                            onClick={() => {
+                                if (window.confirm('Вы действительно хотите закрыть комнату для всех?')) {
+                                    closeLobby();
+                                }
+                            }}
+                            title="Закрыть и распустить комнату"
+                            style={{ borderColor: 'rgba(255, 56, 100, 0.45)', color: '#ff4d6d', padding: '8px 14px', fontSize: '0.9rem' }}
+                        >
+                            🛑 Закрыть комнату
+                        </button>
+                    )}
+
                     {/* Кнопка выхода в главное меню */}
                     <button
                         className="btn-secondary"
@@ -647,6 +675,36 @@ const GameScreen = () => {
                     </div>
                 </div>
             )}
+
+            {/* Плашка снизу с кодом комнаты для быстрого копирования */}
+            <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0 1.5rem' }}>
+                <button
+                    onClick={handleCopyCode}
+                    className="glass-panel"
+                    style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '8px',
+                        padding: '10px 22px',
+                        borderRadius: '30px',
+                        cursor: 'pointer',
+                        border: copiedCode ? '1px solid #00e676' : '1px solid rgba(28, 160, 229, 0.4)',
+                        color: copiedCode ? '#00e676' : 'var(--accent-blue)',
+                        background: 'rgba(3, 10, 24, 0.85)',
+                        boxShadow: copiedCode ? '0 0 20px rgba(0, 230, 118, 0.35)' : '0 4px 20px rgba(0, 0, 0, 0.45)',
+                        fontSize: '0.95rem',
+                        fontWeight: 700,
+                        transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
+                        outline: 'none'
+                    }}
+                    title="Нажмите, чтобы скопировать код комнаты"
+                >
+                    <span>{copiedCode ? '✓ СКОПИРОВАНО!' : '📋 КОД КОМНАТЫ:'}</span>
+                    <span style={{ color: '#ffffff', letterSpacing: '2px', fontWeight: 800, textShadow: '0 0 12px rgba(28, 160, 229, 0.5)' }}>
+                        {gameState.id}
+                    </span>
+                </button>
+            </div>
         </div>
     );
 };

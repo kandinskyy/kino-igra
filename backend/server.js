@@ -17,7 +17,9 @@ const io = new Server(server, {
   cors: {
     origin: "*",
     methods: ["GET", "POST"]
-  }
+  },
+  pingInterval: 2500,
+  pingTimeout: 4000
 });
 
 // Хранилище лобби в памяти (для MVP)
@@ -42,25 +44,41 @@ try {
 // Генерация случайного кода из 6 символов
 const generateCode = () => Math.random().toString(36).substring(2, 8).toUpperCase();
 
-// 16 контрастных цветов с красивыми подходящими эмодзи (лавандовый обязателен)
+// 16 контрастных цветов с уникальными и красивыми эмодзи
 const COLORS = [
-    { hex: '#B57EDC', emoji: '🪻', name: 'Лавандовый' },
+    { hex: '#B57EDC', emoji: '☂️', name: 'Лавандовый' },
     { hex: '#1CA0E5', emoji: '💧', name: 'Неоновый голубой' },
     { hex: '#00E676', emoji: '🍀', name: 'Изумрудный' },
     { hex: '#FF007F', emoji: '🌸', name: 'Фуксия' },
     { hex: '#FFB300', emoji: '⚡', name: 'Янтарный' },
     { hex: '#8A2BE2', emoji: '🔮', name: 'Фиолетовый' },
-    { hex: '#FF3864', emoji: '❤️‍🔥', name: 'Коралловый' },
+    { hex: '#FF3864', emoji: '🪸', name: 'Коралловый' },
     { hex: '#00F5D4', emoji: '🫧', name: 'Мятный' },
     { hex: '#FF6D00', emoji: '🦊', name: 'Оранжевый' },
     { hex: '#AEEA00', emoji: '🍏', name: 'Лайм' },
     { hex: '#0091EA', emoji: '🌊', name: 'Лазурный' },
-    { hex: '#FF1493', emoji: '💖', name: 'Hot Pink' },
+    { hex: '#FF1493', emoji: '🦩', name: 'Hot Pink' },
     { hex: '#FFD600', emoji: '☀️', name: 'Золотой' },
     { hex: '#00B4D8', emoji: '💎', name: 'Аквамарин' },
-    { hex: '#7B2CBF', emoji: '🌌', name: 'Ультрафиолет' },
+    { hex: '#7B2CBF', emoji: '🪐', name: 'Ультрафиолет' },
     { hex: '#D8B4FE', emoji: '🌙', name: 'Сиреневый' }
 ];
+
+function scheduleHostTransfer(lobby, lobbyId) {
+    if (lobby.hostGraceTimer) clearTimeout(lobby.hostGraceTimer);
+    lobby.hostGraceTimer = setTimeout(() => {
+        const currentHost = lobby.players.find(p => p.id === lobby.host);
+        if (!currentHost || !currentHost.connected) {
+            const nextOnline = lobby.players.find(p => p.connected);
+            if (nextOnline) {
+                lobby.host = nextOnline.id;
+                lobby.hostGraceTimer = null;
+                console.log(`Host transferred to ${nextOnline.nickname} (${nextOnline.id}) in lobby ${lobbyId} after 30s timeout`);
+                io.to(lobbyId).emit('lobby_update', lobby);
+            }
+        }
+    }, 30000);
+}
 
 function clearLobbyTimer(lobby) {
     if (lobby.timerInterval) {
@@ -150,7 +168,8 @@ io.on('connection', (socket) => {
             winner: null,
             pausedDueToDisconnect: false,
             disconnectedPlayerName: null,
-            disconnectedPlayerId: null
+            disconnectedPlayerId: null,
+            hostGraceTimer: null
         });
         socket.join(lobbyId);
         callback({ success: true, lobbyId });
@@ -199,8 +218,12 @@ io.on('connection', (socket) => {
                 delete lobby.ratings[oldSocketId];
             }
 
-            // Если хост переподключился
-            if (lobby.host === oldSocketId || lobby.host === existingPlayer.previousSocketId) {
+            // Если хост переподключился (отменяем 30-секундный таймер передачи хоста)
+            if (lobby.host === oldSocketId || lobby.host === existingPlayer.previousSocketId || lobby.host === existingPlayer.id) {
+                if (lobby.hostGraceTimer) {
+                    clearTimeout(lobby.hostGraceTimer);
+                    lobby.hostGraceTimer = null;
+                }
                 lobby.host = socket.id;
             }
 
@@ -263,6 +286,11 @@ io.on('connection', (socket) => {
             const shuffled = [...ALL_MOVIES].sort(() => 0.5 - Math.random());
             lobby.movies = shuffled.slice(0, 5);
             
+            // Сбрасываем счетчики выбора фильмов
+            const resetProgress = {};
+            lobby.players.forEach(p => { resetProgress[p.id] = 0; });
+            io.to(lobbyId).emit('ratings_progress', resetProgress);
+
             io.to(lobbyId).emit('lobby_update', lobby);
         }
     });
@@ -368,6 +396,11 @@ io.on('connection', (socket) => {
             const shuffled = [...ALL_MOVIES].sort(() => 0.5 - Math.random());
             lobby.movies = shuffled.slice(0, 5);
             
+            // Сбрасываем счетчики выбора фильмов при старте нового раунда
+            const resetProgress = {};
+            lobby.players.forEach(p => { resetProgress[p.id] = 0; });
+            io.to(lobbyId).emit('ratings_progress', resetProgress);
+
             io.to(lobbyId).emit('lobby_update', lobby);
         }
     });
@@ -431,15 +464,30 @@ io.on('connection', (socket) => {
                 io.to(lobbyId).emit('timer_tick', { timeLeft: lobby.timeLeft, isRunning: false });
             }
 
-            // Если вышел хост, передаем права следующему онлайн
+            // Если вышел хост, даем 30 секунд на возврат перед передачей хоста
             if (lobby.host === socket.id) {
-                const nextOnline = lobby.players.find(p => p.connected);
-                if (nextOnline) lobby.host = nextOnline.id;
+                scheduleHostTransfer(lobby, lobbyId);
             }
 
             io.to(lobbyId).emit('lobby_update', lobby);
             if (callback) callback({ success: true });
         }
+    });
+
+    // Закрытие / роспуск лобби хостом (во время матча или в комнате ожидания)
+    socket.on('close_lobby', ({ lobbyId }, callback) => {
+        const lobby = lobbies.get(lobbyId);
+        if (!lobby || lobby.host !== socket.id) return;
+
+        clearLobbyTimer(lobby);
+        if (lobby.hostGraceTimer) {
+            clearTimeout(lobby.hostGraceTimer);
+            lobby.hostGraceTimer = null;
+        }
+
+        io.to(lobbyId).emit('lobby_closed', { message: 'Хост закрыл комнату.' });
+        lobbies.delete(lobbyId);
+        if (callback) callback({ success: true });
     });
 
     // Исключение игрока хостом / продолжение игры без него
@@ -495,12 +543,9 @@ io.on('connection', (socket) => {
                     io.to(lobbyId).emit('timer_tick', { timeLeft: lobby.timeLeft, isRunning: false });
                 }
 
-                // Если отключился хост, передаем права следующему активному игроку
+                // Если отключился хост, запускаем 30-секундный таймер передачи хоста
                 if (lobby.host === socket.id) {
-                    const nextOnline = lobby.players.find(p => p.connected);
-                    if (nextOnline) {
-                        lobby.host = nextOnline.id;
-                    }
+                    scheduleHostTransfer(lobby, lobbyId);
                 }
                 
                 // Если все отключились, чистим таймер

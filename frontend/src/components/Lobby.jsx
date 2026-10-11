@@ -2,26 +2,26 @@ import React, { useState } from 'react';
 import { useGame } from '../GameContext';
 
 const ALL_16_COLORS = [
-    { hex: '#B57EDC', emoji: '🪻', name: 'Лавандовый' },
+    { hex: '#B57EDC', emoji: '☂️', name: 'Лавандовый' },
     { hex: '#1CA0E5', emoji: '💧', name: 'Неоновый голубой' },
     { hex: '#00E676', emoji: '🍀', name: 'Изумрудный' },
     { hex: '#FF007F', emoji: '🌸', name: 'Фуксия' },
     { hex: '#FFB300', emoji: '⚡', name: 'Янтарный' },
     { hex: '#8A2BE2', emoji: '🔮', name: 'Фиолетовый' },
-    { hex: '#FF3864', emoji: '❤️‍🔥', name: 'Коралловый' },
+    { hex: '#FF3864', emoji: '🪸', name: 'Коралловый' },
     { hex: '#00F5D4', emoji: '🫧', name: 'Мятный' },
     { hex: '#FF6D00', emoji: '🦊', name: 'Оранжевый' },
     { hex: '#AEEA00', emoji: '🍏', name: 'Лайм' },
     { hex: '#0091EA', emoji: '🌊', name: 'Лазурный' },
-    { hex: '#FF1493', emoji: '💖', name: 'Hot Pink' },
+    { hex: '#FF1493', emoji: '🦩', name: 'Hot Pink' },
     { hex: '#FFD600', emoji: '☀️', name: 'Золотой' },
     { hex: '#00B4D8', emoji: '💎', name: 'Аквамарин' },
-    { hex: '#7B2CBF', emoji: '🌌', name: 'Ультрафиолет' },
+    { hex: '#7B2CBF', emoji: '🪐', name: 'Ультрафиолет' },
     { hex: '#D8B4FE', emoji: '🌙', name: 'Сиреневый' }
 ];
 
 const Lobby = () => {
-    const { socket, gameState, player, leaveGame } = useGame();
+    const { socket, gameState, player, leaveGame, closeLobby } = useGame();
     const [showRules, setShowRules] = useState(false);
     const [copied, setCopied] = useState(false);
 
@@ -68,7 +68,7 @@ const Lobby = () => {
                     </div>
                 </div>
 
-                <div style={{ display: 'flex', gap: '0.8rem', alignItems: 'center' }}>
+                <div style={{ display: 'flex', gap: '0.8rem', alignItems: 'center', flexWrap: 'wrap' }}>
                     <button 
                         className="btn-secondary" 
                         onClick={handleCopy} 
@@ -76,6 +76,21 @@ const Lobby = () => {
                     >
                         {copied ? '✓ СКОПИРОВАНО!' : '📋 Скопировать код'}
                     </button>
+
+                    {isHost && (
+                        <button
+                            className="btn-secondary"
+                            onClick={() => {
+                                if (window.confirm('Вы действительно хотите закрыть комнату для всех?')) {
+                                    closeLobby();
+                                }
+                            }}
+                            title="Закрыть и распустить комнату"
+                            style={{ borderColor: 'rgba(255, 56, 100, 0.45)', color: '#ff4d6d' }}
+                        >
+                            🛑 Закрыть комнату
+                        </button>
+                    )}
 
                     <button
                         className="btn-secondary"
