@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useGame } from '../GameContext';
 
 const GameScreen = () => {
-    const { socket, gameState, player, leaveGame, closeLobby } = useGame();
+    const { socket, gameState, player, leaveGame, closeLobby, showConfirm, showToast } = useGame();
     const [copiedCode, setCopiedCode] = useState(false);
     
     // Локальное состояние таймера (синхронизируется с сокетами)
@@ -72,14 +72,47 @@ const GameScreen = () => {
     };
 
     // Быстрое досрочное завершение раунда (хост)
-    const handleEndRoundEarly = () => {
-        socket.emit('end_round_early', gameState.id);
+    const handleEndRoundEarly = async () => {
+        const confirmed = await showConfirm('Завершить раунд досрочно и сразу вскрыть оценки всех игроков?', {
+            title: 'Досрочное завершение',
+            icon: '⚡',
+            confirmText: 'Завершить раунд',
+            cancelText: 'Продолжить оценку',
+            isDanger: false
+        });
+        if (confirmed) {
+            socket.emit('end_round_early', gameState.id);
+        }
     };
 
     // Исключить игрока из матча (хост)
-    const handleKickPlayer = (targetPlayerId) => {
+    const handleKickPlayer = async (targetPlayerId, targetNick) => {
         if (!isHost) return;
-        socket.emit('kick_player', { lobbyId: gameState.id, playerId: targetPlayerId });
+        const confirmed = await showConfirm(`Исключить игрока ${targetNick ? `«${targetNick}»` : ''} из матча?`, {
+            title: 'Исключение игрока',
+            icon: '🛑',
+            confirmText: 'Исключить',
+            cancelText: 'Отмена',
+            isDanger: true
+        });
+        if (confirmed) {
+            socket.emit('kick_player', { lobbyId: gameState.id, playerId: targetPlayerId });
+            showToast('Игрок исключён из матча', 'info');
+        }
+    };
+
+    // Выход в главное меню с подтверждением
+    const handleLeaveGame = async () => {
+        const confirmed = await showConfirm('Вы действительно хотите выйти в главное меню? Вы сможете вернуться по тому же нику в любой момент.', {
+            title: 'Выход из матча',
+            icon: '🚪',
+            confirmText: 'Выйти в меню',
+            cancelText: 'Остаться в игре',
+            isDanger: false
+        });
+        if (confirmed) {
+            leaveGame();
+        }
     };
 
     // Снять паузу отключения и продолжить без него
@@ -107,6 +140,7 @@ const GameScreen = () => {
     const handleCopyCode = () => {
         navigator.clipboard.writeText(gameState.id);
         setCopiedCode(true);
+        showToast(`Код комнаты скопирован: ${gameState.id}`, 'success');
         setTimeout(() => setCopiedCode(false), 2000);
     };
 
@@ -259,7 +293,7 @@ const GameScreen = () => {
                             {gameState.disconnectedPlayerId && (
                                 <button 
                                     className="btn-secondary" 
-                                    onClick={() => handleKickPlayer(gameState.disconnectedPlayerId)}
+                                    onClick={() => handleKickPlayer(gameState.disconnectedPlayerId, gameState.disconnectedPlayerName)}
                                     style={{ color: '#ff4d6d', borderColor: 'rgba(255, 77, 109, 0.4)' }}
                                 >
                                     ❌ Исключить из матча
@@ -330,7 +364,7 @@ const GameScreen = () => {
                                 {/* Для хоста: кнопка исключить отключившегося игрока */}
                                 {isHost && !p.connected && (
                                     <button
-                                        onClick={() => handleKickPlayer(p.id)}
+                                        onClick={() => handleKickPlayer(p.id, p.nickname)}
                                         title="Исключить игрока из матча"
                                         style={{
                                             background: 'transparent',
@@ -424,8 +458,15 @@ const GameScreen = () => {
                     {isHost && (
                         <button
                             className="btn-secondary"
-                            onClick={() => {
-                                if (window.confirm('Вы действительно хотите закрыть комнату для всех?')) {
+                            onClick={async () => {
+                                const confirmed = await showConfirm('Вы действительно хотите закрыть комнату для всех участников?', {
+                                    title: 'Закрыть комнату',
+                                    icon: '🛑',
+                                    confirmText: 'Да, закрыть',
+                                    cancelText: 'Отмена',
+                                    isDanger: true
+                                });
+                                if (confirmed) {
                                     closeLobby();
                                 }
                             }}
@@ -439,7 +480,7 @@ const GameScreen = () => {
                     {/* Кнопка выхода в главное меню */}
                     <button
                         className="btn-secondary"
-                        onClick={leaveGame}
+                        onClick={handleLeaveGame}
                         title="Выйти в главное меню (вы сможете вернуться в этот матч в любой момент по тому же нику)"
                         style={{ borderColor: 'rgba(255, 77, 109, 0.35)', color: '#ff6b81', padding: '8px 14px', fontSize: '0.9rem' }}
                     >

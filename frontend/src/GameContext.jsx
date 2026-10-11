@@ -10,6 +10,58 @@ export const GameProvider = ({ children }) => {
     const [gameState, setGameState] = useState(null);
     const [player, setPlayer] = useState(null);
     const [isConnected, setIsConnected] = useState(false);
+    const [modal, setModal] = useState(null);
+    const [toast, setToast] = useState(null);
+
+    const closeModal = (result = false) => {
+        setModal((currentModal) => {
+            if (currentModal?.resolve) {
+                currentModal.resolve(result);
+            }
+            return null;
+        });
+    };
+
+    const showAlert = (message, options = {}) => {
+        const opts = typeof options === 'string' ? { title: options } : options;
+        return new Promise((resolve) => {
+            setModal({
+                type: 'alert',
+                message,
+                title: opts.title || 'Внимание',
+                icon: opts.icon || '🌧️',
+                confirmText: opts.confirmText || 'Понятно',
+                resolve
+            });
+        });
+    };
+
+    const showConfirm = (message, options = {}) => {
+        return new Promise((resolve) => {
+            setModal({
+                type: 'confirm',
+                message,
+                title: options.title || 'Подтверждение',
+                icon: options.icon || (options.isDanger ? '🛑' : '⚠️'),
+                confirmText: options.confirmText || 'Подтвердить',
+                cancelText: options.cancelText || 'Отмена',
+                isDanger: options.isDanger || false,
+                resolve
+            });
+        });
+    };
+
+    const showToast = (message, type = 'info') => {
+        setToast({ message, type });
+    };
+
+    useEffect(() => {
+        if (!toast) return;
+        const timer = setTimeout(() => {
+            setToast(null);
+        }, 3200);
+        return () => clearTimeout(timer);
+    }, [toast]);
 
     useEffect(() => {
         const backendUrl = import.meta.env.VITE_BACKEND_URL || (import.meta.env.DEV ? 'http://localhost:3001' : undefined);
@@ -47,7 +99,14 @@ export const GameProvider = ({ children }) => {
         });
 
         newSocket.on('lobby_closed', (data) => {
-            alert(data?.message || 'Комната была закрыта хостом');
+            setModal({
+                type: 'alert',
+                title: 'Комната закрыта',
+                message: data?.message || 'Комната была закрыта хостом',
+                icon: '🛑',
+                confirmText: 'Понятно',
+                resolve: () => {}
+            });
             localStorage.removeItem('kino_lobbyId');
             localStorage.removeItem('kino_sessionToken');
             setGameState(null);
@@ -108,7 +167,13 @@ export const GameProvider = ({ children }) => {
         setPlayer,
         isConnected,
         leaveGame,
-        closeLobby
+        closeLobby,
+        modal,
+        toast,
+        showAlert,
+        showConfirm,
+        showToast,
+        closeModal
     };
 
     return (

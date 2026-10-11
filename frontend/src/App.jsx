@@ -5,6 +5,8 @@ import Lobby from './components/Lobby';
 import GameScreen from './components/GameScreen';
 import RainBackground from './components/RainBackground';
 
+import ModalDialog from './components/ModalDialog';
+
 function App() {
     const { gameState, isConnected } = useGame();
 
@@ -12,6 +14,7 @@ function App() {
         return (
             <>
                 <RainBackground />
+                <ModalDialog />
                 <div className="app-container" style={{ justifyContent: 'center', alignItems: 'center' }}>
                     <div className="glass-panel" style={{ padding: '2rem 3rem', textAlign: 'center' }}>
                         <div className="cloud-logo" style={{ fontSize: '3rem', marginBottom: '1rem' }}>🌧️</div>
@@ -26,6 +29,7 @@ function App() {
     return (
         <>
             <RainBackground />
+            <ModalDialog />
             <div className="app-container">
                 {!gameState && <MainMenu />}
                 {gameState?.state === 'lobby' && <Lobby />}

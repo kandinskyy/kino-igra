@@ -2,13 +2,15 @@ import React, { useState } from 'react';
 import { useGame } from '../GameContext';
 
 const MainMenu = () => {
-    const { socket, setPlayer } = useGame();
+    const { socket, setPlayer, showToast } = useGame();
     const [nickname, setNickname] = useState(() => localStorage.getItem('kino_lastNickname') || '');
     const [lobbyCode, setLobbyCode] = useState(() => localStorage.getItem('kino_lastLobbyId') || '');
     const [targetVP, setTargetVP] = useState(30);
 
     const handleCreateLobby = () => {
-        if (!nickname.trim()) return alert('Введите ваш никнейм!');
+        if (!nickname.trim()) {
+            return showToast('Введите ваш никнейм!', 'error');
+        }
         
         socket.emit('create_lobby', { targetVP }, (response) => {
             if (response.success) {
@@ -20,8 +22,12 @@ const MainMenu = () => {
     const handleJoinLobby = (codeToJoin = lobbyCode) => {
         const cleanNick = nickname.trim();
         const cleanCode = (codeToJoin || '').trim().toUpperCase();
-        if (!cleanNick) return alert('Введите ваш никнейм!');
-        if (!cleanCode) return alert('Введите код лобби!');
+        if (!cleanNick) {
+            return showToast('Введите ваш никнейм!', 'error');
+        }
+        if (!cleanCode) {
+            return showToast('Введите код лобби!', 'error');
+        }
 
         const lastToken = localStorage.getItem('kino_lastSessionToken');
 
@@ -34,7 +40,7 @@ const MainMenu = () => {
                 localStorage.setItem('kino_lastNickname', cleanNick);
                 localStorage.setItem('kino_lastSessionToken', response.player.sessionToken);
             } else {
-                alert(response.message || 'Ошибка подключения к лобби');
+                showToast(response.message || 'Ошибка подключения к лобби', 'error');
             }
         });
     };

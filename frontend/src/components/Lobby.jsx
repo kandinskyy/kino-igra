@@ -21,7 +21,7 @@ const ALL_16_COLORS = [
 ];
 
 const Lobby = () => {
-    const { socket, gameState, player, leaveGame, closeLobby } = useGame();
+    const { socket, gameState, player, leaveGame, closeLobby, showConfirm, showToast } = useGame();
     const [showRules, setShowRules] = useState(false);
     const [copied, setCopied] = useState(false);
 
@@ -31,6 +31,7 @@ const Lobby = () => {
     const handleCopy = () => {
         navigator.clipboard.writeText(gameState.id);
         setCopied(true);
+        showToast(`Код скопирован: ${gameState.id}`, 'success');
         setTimeout(() => setCopied(false), 2000);
     };
 
@@ -42,14 +43,24 @@ const Lobby = () => {
         if (!socket || !gameState?.id) return;
         socket.emit('change_color', { lobbyId: gameState.id, color: colorHex }, (res) => {
             if (!res?.success && res?.message) {
-                alert(res.message);
+                showToast(res.message, 'error');
             }
         });
     };
 
-    const handleKickPlayer = (targetPlayerId) => {
+    const handleKickPlayer = async (targetPlayerId, targetNick) => {
         if (!isHost) return;
-        socket.emit('kick_player', { lobbyId: gameState.id, playerId: targetPlayerId });
+        const confirmed = await showConfirm(`Исключить игрока ${targetNick ? `«${targetNick}»` : ''} из комнаты?`, {
+            title: 'Исключение игрока',
+            icon: '🛑',
+            confirmText: 'Исключить',
+            cancelText: 'Отмена',
+            isDanger: true
+        });
+        if (confirmed) {
+            socket.emit('kick_player', { lobbyId: gameState.id, playerId: targetPlayerId });
+            showToast('Игрок исключён из комнаты', 'info');
+        }
     };
 
     return (
@@ -79,8 +90,15 @@ const Lobby = () => {
                     {isHost && (
                         <button
                             className="btn-secondary"
-                            onClick={() => {
-                                if (window.confirm('Вы действительно хотите закрыть комнату для всех?')) {
+                            onClick={async () => {
+                                const confirmed = await showConfirm('Вы действительно хотите закрыть комнату для всех участников?', {
+                                    title: 'Закрыть комнату',
+                                    icon: '🛑',
+                                    confirmText: 'Да, закрыть',
+                                    cancelText: 'Отмена',
+                                    isDanger: true
+                                });
+                                if (confirmed) {
                                     closeLobby();
                                 }
                             }}
@@ -254,7 +272,7 @@ const Lobby = () => {
                             {/* Кнопка кика для хоста */}
                             {isHost && p.id !== player?.id && (
                                 <button
-                                    onClick={() => handleKickPlayer(p.id)}
+                                    onClick={() => handleKickPlayer(p.id, p.nickname)}
                                     title="Исключить игрока из лобби"
                                     style={{
                                         background: 'rgba(255, 56, 100, 0.15)',
