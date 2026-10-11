@@ -42,10 +42,24 @@ try {
 // Генерация случайного кода из 6 символов
 const generateCode = () => Math.random().toString(36).substring(2, 8).toUpperCase();
 
-// Хайповые цвета
+// 16 контрастных цветов (лавандовый обязателен)
 const COLORS = [
-    '#FF0055', '#00FF66', '#00CCFF', '#FF9900', '#CC00FF', 
-    '#FFFF00', '#FF00CC', '#00FFFF', '#99FF00', '#FF3300'
+    '#B57EDC', // 1. Лавандовый (Lavender)
+    '#1CA0E5', // 2. Неоновый голубой
+    '#00E676', // 3. Изумрудный зеленый
+    '#FF007F', // 4. Малиновый / Фуксия
+    '#FFB300', // 5. Янтарный / Золотой
+    '#8A2BE2', // 6. Электрический фиолетовый
+    '#FF3864', // 7. Кораллово-красный
+    '#00F5D4', // 8. Мятная бирюза
+    '#FF6D00', // 9. Яркий оранжевый
+    '#AEEA00', // 10. Неоновый лайм
+    '#0091EA', // 11. Лазурный
+    '#FF1493', // 12. Hot Pink
+    '#FFD600', // 13. Яркий желтый
+    '#00B4D8', // 14. Аквамарин
+    '#7B2CBF', // 15. Королевский ультрафиолет
+    '#D8B4FE'  // 16. Светло-сиреневый
 ];
 
 function clearLobbyTimer(lobby) {
@@ -125,7 +139,7 @@ io.on('connection', (socket) => {
             players: [],
             targetVP: targetVP || 30,
             state: 'lobby', // lobby, round_start, reveal, game_over
-            availableColors: [...COLORS],
+            allColors: [...COLORS],
             movies: [],
             ratings: {}, // { playerId: { movieId: 'S', ... } }
             timeLeft: 60,
@@ -133,7 +147,10 @@ io.on('connection', (socket) => {
             timerInterval: null,
             roundPoints: {},
             roundDetails: {},
-            winner: null
+            winner: null,
+            pausedDueToDisconnect: false,
+            disconnectedPlayerName: null,
+            disconnectedPlayerId: null
         });
         socket.join(lobbyId);
         callback({ success: true, lobbyId });
@@ -156,6 +173,13 @@ io.on('connection', (socket) => {
                 lobby.host = socket.id;
             }
 
+            // Если игра стояла на паузе из-за этого игрока, снимаем статус паузы
+            if (lobby.disconnectedPlayerId === existingPlayer.previousSocketId || lobby.disconnectedPlayerName === existingPlayer.nickname) {
+                lobby.pausedDueToDisconnect = false;
+                lobby.disconnectedPlayerName = null;
+                lobby.disconnectedPlayerId = null;
+            }
+
             io.to(lobbyId).emit('lobby_update', lobby);
             return callback({ success: true, player: existingPlayer, lobby });
         }
@@ -163,7 +187,8 @@ io.on('connection', (socket) => {
         if (lobby.state !== 'lobby') return callback({ success: false, message: 'Игра уже началась' });
         if (lobby.players.length >= 10) return callback({ success: false, message: 'Лобби заполнено (макс. 10)' });
 
-        const color = lobby.availableColors.pop() || '#1ca0e5';
+        // Выбираем первый свободный цвет из 16 цветов
+        const color = COLORS.find(c => !lobby.players.some(p => p.color.toLowerCase() === c.toLowerCase())) || COLORS[0];
         const newToken = Math.random().toString(36).substring(2, 15);
         const newPlayer = {
             id: socket.id,
@@ -328,6 +353,62 @@ io.on('connection', (socket) => {
         }
     });
 
+    // Смена цвета игроком в лобби (выбор из 16 контрастных цветов)
+    socket.on('change_color', ({ lobbyId, color }, callback) => {
+        const lobby = lobbies.get(lobbyId);
+        if (!lobby || lobby.state !== 'lobby') return;
+        
+        // Проверяем, не занят ли цвет другим игроком
+        const isTaken = lobby.players.some(p => p.id !== socket.id && p.color.toLowerCase() === color.toLowerCase());
+        if (isTaken) {
+            if (callback) callback({ success: false, message: 'Этот цвет уже занят' });
+            return;
+        }
+
+        const player = lobby.players.find(p => p.id === socket.id);
+        if (player) {
+            player.color = color;
+            io.to(lobbyId).emit('lobby_update', lobby);
+            if (callback) callback({ success: true, color });
+        }
+    });
+
+    // Исключение игрока хостом / продолжение игры без него
+    socket.on('kick_player', ({ lobbyId, playerId }, callback) => {
+        const lobby = lobbies.get(lobbyId);
+        if (!lobby || lobby.host !== socket.id) return;
+
+        const index = lobby.players.findIndex(p => p.id === playerId);
+        if (index !== -1) {
+            const removed = lobby.players.splice(index, 1)[0];
+            
+            // Удаляем оценки исключенного игрока
+            if (lobby.ratings[playerId]) {
+                delete lobby.ratings[playerId];
+            }
+
+            // Если игра стояла на паузе из-за этого игрока, снимаем паузу
+            if (lobby.disconnectedPlayerId === playerId || lobby.disconnectedPlayerName === removed.nickname) {
+                lobby.pausedDueToDisconnect = false;
+                lobby.disconnectedPlayerName = null;
+                lobby.disconnectedPlayerId = null;
+            }
+
+            io.to(lobbyId).emit('lobby_update', lobby);
+            if (callback) callback({ success: true });
+        }
+    });
+
+    // Хост решает продолжить раунд без отключившегося игрока
+    socket.on('dismiss_disconnect_pause', ({ lobbyId }) => {
+        const lobby = lobbies.get(lobbyId);
+        if (!lobby || lobby.host !== socket.id) return;
+        lobby.pausedDueToDisconnect = false;
+        lobby.disconnectedPlayerName = null;
+        lobby.disconnectedPlayerId = null;
+        io.to(lobbyId).emit('lobby_update', lobby);
+    });
+
     // Отключение
     socket.on('disconnect', () => {
         for (let [lobbyId, lobby] of lobbies.entries()) {
@@ -335,6 +416,23 @@ io.on('connection', (socket) => {
             if (player) {
                 player.connected = false;
                 player.previousSocketId = socket.id;
+
+                // Если идет раунд и таймер тикал -> ставим на паузу!
+                if (lobby.state === 'round_start' && lobby.timerRunning) {
+                    clearLobbyTimer(lobby);
+                    lobby.pausedDueToDisconnect = true;
+                    lobby.disconnectedPlayerName = player.nickname;
+                    lobby.disconnectedPlayerId = player.id;
+                    io.to(lobbyId).emit('timer_tick', { timeLeft: lobby.timeLeft, isRunning: false });
+                }
+
+                // Если отключился хост, передаем права следующему активному игроку
+                if (lobby.host === socket.id) {
+                    const nextOnline = lobby.players.find(p => p.connected);
+                    if (nextOnline) {
+                        lobby.host = nextOnline.id;
+                    }
+                }
                 
                 // Если все отключились, чистим таймер
                 if (lobby.players.every(p => !p.connected)) {

@@ -1,12 +1,32 @@
 import React, { useState } from 'react';
 import { useGame } from '../GameContext';
 
+const ALL_16_COLORS = [
+    { hex: '#B57EDC', name: 'Лавандовый' },
+    { hex: '#1CA0E5', name: 'Неоновый голубой' },
+    { hex: '#00E676', name: 'Изумрудный' },
+    { hex: '#FF007F', name: 'Фуксия' },
+    { hex: '#FFB300', name: 'Янтарный' },
+    { hex: '#8A2BE2', name: 'Фиолетовый' },
+    { hex: '#FF3864', name: 'Коралловый' },
+    { hex: '#00F5D4', name: 'Мятный' },
+    { hex: '#FF6D00', name: 'Оранжевый' },
+    { hex: '#AEEA00', name: 'Лайм' },
+    { hex: '#0091EA', name: 'Лазурный' },
+    { hex: '#FF1493', name: 'Hot Pink' },
+    { hex: '#FFD600', name: 'Золотой' },
+    { hex: '#00B4D8', name: 'Аквамарин' },
+    { hex: '#7B2CBF', name: 'Ультрафиолет' },
+    { hex: '#D8B4FE', name: 'Сиреневый' }
+];
+
 const Lobby = () => {
     const { socket, gameState, player } = useGame();
     const [showRules, setShowRules] = useState(false);
     const [copied, setCopied] = useState(false);
 
     const isHost = gameState.host === player?.id;
+    const myPlayer = gameState.players.find(p => p.id === player?.id) || player;
 
     const handleCopy = () => {
         navigator.clipboard.writeText(gameState.id);
@@ -18,10 +38,24 @@ const Lobby = () => {
         socket.emit('launch_game', gameState.id);
     };
 
+    const handleSelectColor = (colorHex) => {
+        if (!socket || !gameState?.id) return;
+        socket.emit('change_color', { lobbyId: gameState.id, color: colorHex }, (res) => {
+            if (!res?.success && res?.message) {
+                alert(res.message);
+            }
+        });
+    };
+
+    const handleKickPlayer = (targetPlayerId) => {
+        if (!isHost) return;
+        socket.emit('kick_player', { lobbyId: gameState.id, playerId: targetPlayerId });
+    };
+
     return (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', width: '100%', maxWidth: '850px', margin: '0 auto', marginTop: '3vh' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.8rem', width: '100%', maxWidth: '880px', margin: '0 auto', marginTop: '2vh' }}>
             
-            {/* Верхняя плашка с кодом */}
+            {/* Верхняя плашка с кодом лобби */}
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
                     <span className="cloud-logo" style={{ fontSize: '2.4rem' }}>🌧️</span>
@@ -42,9 +76,60 @@ const Lobby = () => {
                 </button>
             </div>
 
+            {/* Палитра выбора 16 цветов для игрока */}
+            <div className="glass-panel" style={{ padding: '1.4rem 1.8rem' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+                        <span style={{ fontSize: '1.2rem' }}>🎨</span>
+                        <span style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--text-main)' }}>ВЫБОР ЦВЕТА ИГРОКА (16 ОТТЕНКОВ):</span>
+                    </div>
+                    <span style={{ fontSize: '0.85rem', color: myPlayer?.color, fontWeight: 700 }}>
+                        Текущий: {ALL_16_COLORS.find(c => c.hex.toLowerCase() === (myPlayer?.color || '').toLowerCase())?.name || myPlayer?.color}
+                    </span>
+                </div>
+
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(42px, 1fr))', gap: '0.75rem', justifyContent: 'center' }}>
+                    {ALL_16_COLORS.map(c => {
+                        const isMyColor = myPlayer?.color?.toLowerCase() === c.hex.toLowerCase();
+                        const takenBy = gameState.players.find(p => p.id !== player?.id && p.color?.toLowerCase() === c.hex.toLowerCase());
+
+                        return (
+                            <button
+                                key={c.hex}
+                                onClick={() => !takenBy && handleSelectColor(c.hex)}
+                                disabled={Boolean(takenBy)}
+                                title={isMyColor ? `${c.name} (Ваш цвет)` : takenBy ? `${c.name} (Занят: ${takenBy.nickname})` : `Выбрать: ${c.name}`}
+                                style={{
+                                    width: '42px',
+                                    height: '42px',
+                                    borderRadius: '50%',
+                                    backgroundColor: c.hex,
+                                    border: isMyColor ? '3px solid #ffffff' : '2px solid rgba(255,255,255,0.2)',
+                                    boxShadow: isMyColor ? `0 0 16px ${c.hex}, 0 0 25px ${c.hex}` : `0 2px 8px rgba(0,0,0,0.4)`,
+                                    cursor: takenBy ? 'not-allowed' : 'pointer',
+                                    opacity: takenBy ? 0.25 : 1,
+                                    transform: isMyColor ? 'scale(1.15)' : 'scale(1)',
+                                    transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    color: '#000000',
+                                    fontWeight: 900,
+                                    fontSize: '1rem',
+                                    outline: 'none',
+                                    padding: 0
+                                }}
+                            >
+                                {isMyColor ? '✓' : takenBy ? '✕' : ''}
+                            </button>
+                        );
+                    })}
+                </div>
+            </div>
+
             {/* Карточка участников */}
-            <div className="glass-panel" style={{ padding: '2.2rem' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid var(--surface-border)', paddingBottom: '1.2rem', marginBottom: '1.8rem' }}>
+            <div className="glass-panel" style={{ padding: '2rem' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid var(--surface-border)', paddingBottom: '1.2rem', marginBottom: '1.6rem' }}>
                     <span style={{ color: 'var(--text-muted)', fontSize: '1.05rem' }}>
                         🎯 Цель победы: <strong style={{ color: '#ffffff', fontWeight: 800 }}>{gameState.targetVP} ПО</strong>
                     </span>
@@ -53,57 +138,93 @@ const Lobby = () => {
                     </span>
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))', gap: '1.1rem' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '1.1rem' }}>
                     {gameState.players.map((p, idx) => (
-                        <div key={idx} style={{ 
-                            background: 'rgba(3, 10, 22, 0.65)', 
+                        <div key={p.id || idx} style={{ 
+                            background: 'rgba(3, 10, 22, 0.7)', 
                             padding: '1.1rem', 
                             borderRadius: '14px', 
                             display: 'flex', 
                             alignItems: 'center', 
-                            gap: '1rem',
-                            border: `1px solid ${p.color}40`,
+                            gap: '0.9rem',
+                            border: `1px solid ${p.color}45`,
                             borderLeft: `5px solid ${p.color}`,
-                            opacity: p.connected ? 1 : 0.5,
+                            opacity: p.connected ? 1 : 0.65,
                             transition: 'all 0.3s',
                             boxShadow: `0 4px 15px rgba(0,0,0,0.3)`
                         }}>
+                            {/* Индикатор онлайн-статуса: изумрудный зеленый или бордовый красный */}
+                            <div 
+                                title={p.connected ? 'В сети (в игре)' : 'Отключился'}
+                                style={{
+                                    width: '12px',
+                                    height: '12px',
+                                    borderRadius: '50%',
+                                    backgroundColor: p.connected ? '#00e676' : '#8b0000',
+                                    boxShadow: p.connected ? '0 0 10px #00e676' : '0 0 10px #8b0000',
+                                    flexShrink: 0
+                                }}
+                            />
+
+                            {/* Кружок с цветом игрока */}
                             <div style={{ 
-                                width: '28px', 
-                                height: '28px', 
+                                width: '30px', 
+                                height: '30px', 
                                 borderRadius: '50%', 
                                 backgroundColor: p.color, 
-                                boxShadow: `0 0 14px ${p.color}`,
+                                boxShadow: `0 0 12px ${p.color}`,
                                 display: 'flex',
                                 alignItems: 'center',
                                 justifyContent: 'center',
-                                fontSize: '0.8rem',
+                                fontSize: '0.85rem',
                                 color: '#000',
-                                fontWeight: 800
+                                fontWeight: 800,
+                                flexShrink: 0
                             }}>
                                 {idx + 1}
                             </div>
-                            <div style={{ overflow: 'hidden' }}>
-                                <div style={{ fontWeight: '700', fontSize: '1.1rem', textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: 'nowrap', color: '#ffffff' }}>
+
+                            <div style={{ overflow: 'hidden', flex: 1 }}>
+                                <div style={{ fontWeight: '700', fontSize: '1.05rem', textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: 'nowrap', color: '#ffffff' }}>
                                     {p.nickname} {p.id === gameState.host && '👑'} 
                                 </div>
-                                <div style={{ fontSize: '0.8rem', color: p.connected ? 'var(--accent-blue)' : 'var(--text-muted)' }}>
-                                    {p.connected ? (p.id === gameState.host ? 'Хост лобби' : 'Готов к игре') : 'Отключился'}
+                                <div style={{ fontSize: '0.8rem', color: p.connected ? 'var(--text-muted)' : '#ff4d6d', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                                    {p.connected ? (p.id === gameState.host ? 'Хост лобби' : 'В игре') : 'Отключился'}
                                 </div>
                             </div>
+
+                            {/* Кнопка кика для хоста */}
+                            {isHost && p.id !== player?.id && (
+                                <button
+                                    onClick={() => handleKickPlayer(p.id)}
+                                    title="Исключить игрока из лобби"
+                                    style={{
+                                        background: 'rgba(255, 56, 100, 0.15)',
+                                        border: '1px solid rgba(255, 56, 100, 0.3)',
+                                        color: '#ff4d6d',
+                                        borderRadius: '8px',
+                                        padding: '4px 8px',
+                                        fontSize: '0.8rem',
+                                        cursor: 'pointer',
+                                        transition: 'all 0.2s'
+                                    }}
+                                >
+                                    ✕
+                                </button>
+                            )}
                         </div>
                     ))}
                 </div>
 
                 {gameState.players.length < 2 && (
-                    <div style={{ marginTop: '2.2rem', textAlign: 'center', color: 'var(--accent-c)', fontWeight: '600', fontSize: '1.05rem', background: 'rgba(255, 179, 0, 0.08)', padding: '12px', borderRadius: '12px', border: '1px solid rgba(255, 179, 0, 0.25)' }}>
+                    <div style={{ marginTop: '2rem', textAlign: 'center', color: 'var(--accent-c)', fontWeight: '600', fontSize: '1.05rem', background: 'rgba(255, 179, 0, 0.08)', padding: '12px', borderRadius: '12px', border: '1px solid rgba(255, 179, 0, 0.25)' }}>
                         ⏳ Ожидаем участников: нужно минимум 2 игрока для начала (ещё {2 - gameState.players.length}).
                     </div>
                 )}
             </div>
 
             {/* Кнопки управления */}
-            <div style={{ display: 'flex', justifyContent: 'center', gap: '1.2rem', marginTop: '0.5rem' }}>
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '1.2rem', marginTop: '0.2rem' }}>
                 <button 
                     className="btn-secondary" 
                     onClick={() => setShowRules(true)}
@@ -140,9 +261,10 @@ const Lobby = () => {
                         <ul style={{ display: 'flex', flexDirection: 'column', gap: '1.1rem', lineHeight: '1.6', color: '#e2e8f0', fontSize: '1.05rem', listStyle: 'none', padding: 0 }}>
                             <li>🎬 В каждом раунде показывается <strong>5 случайных фильмов</strong>.</li>
                             <li>⏱️ У вас есть 60 секунд на расстановку рангов от <strong>S</strong> (шедевр) до <strong>D</strong> (худший).</li>
-                            <li>⚠️ Каждая буква (S, A, B, C, D) используется <strong>строго один раз</strong>.</li>
-                            <li>🔄 Ошиблись? Просто нажмите на другую букву или нажмите повторно, чтобы снять выбор!</li>
-                            <li>🎯 <strong style={{ color: 'var(--accent-blue)' }}>Цель игры:</strong> Поставить фильму такую же букву, как и ваши друзья.</li>
+                            <li>🎨 До старта матча вы можете выбрать любой из <strong>16 цветов</strong> (включая лавандовый).</li>
+                            <li>🟢 <strong>Зелёная точка</strong> — игрок онлайн в матче, 🔴 <strong>бордовая</strong> — отключился.</li>
+                            <li>⏸️ При отключении игрока таймер автоматически ставится на паузу. Хост может продолжить без него или исключить.</li>
+                            <li>🔄 Ошиблись в ранге? Кликните на другую букву или нажмите повторно, чтобы снять выбор!</li>
                             <li>✨ За каждое совпадение оценки с другим игроком вы получаете <strong>+1 ПО</strong>.</li>
                             <li>🏆 Побеждает тот, кто первым наберёт <strong>{gameState.targetVP} ПО</strong>!</li>
                         </ul>

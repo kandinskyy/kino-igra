@@ -61,12 +61,29 @@ const GameScreen = () => {
     };
 
     const handleResumeTimer = () => {
+        if (gameState.pausedDueToDisconnect) {
+            socket.emit('dismiss_disconnect_pause', { lobbyId: gameState.id });
+        }
         socket.emit('resume_timer', gameState.id);
     };
 
     // Быстрое досрочное завершение раунда (хост)
     const handleEndRoundEarly = () => {
         socket.emit('end_round_early', gameState.id);
+    };
+
+    // Исключить игрока из матча (хост)
+    const handleKickPlayer = (targetPlayerId) => {
+        if (!isHost) return;
+        socket.emit('kick_player', { lobbyId: gameState.id, playerId: targetPlayerId });
+    };
+
+    // Снять паузу отключения и продолжить без него
+    const handleDismissPause = () => {
+        socket.emit('dismiss_disconnect_pause', { lobbyId: gameState.id });
+        if (timeLeft > 0) {
+            socket.emit('resume_timer', gameState.id);
+        }
     };
 
     // Следующий раунд (хост)
@@ -155,7 +172,8 @@ const GameScreen = () => {
                                 borderRadius: '12px',
                                 border: idx === 0 ? '1px solid var(--accent-blue)' : '1px solid var(--surface-border)'
                             }}>
-                                <span style={{ fontWeight: 700, fontSize: '1.1rem', color: idx === 0 ? 'var(--accent-blue)' : '#ffffff' }}>
+                                <span style={{ fontWeight: 700, fontSize: '1.1rem', color: idx === 0 ? 'var(--accent-blue)' : '#ffffff', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                    <span style={{ width: '10px', height: '10px', borderRadius: '50%', backgroundColor: p.connected ? '#00e676' : '#8b0000', display: 'inline-block' }} />
                                     {idx + 1}. {p.nickname} {idx === 0 && '👑'}
                                 </span>
                                 <strong style={{ fontSize: '1.2rem', color: 'var(--accent-a)' }}>{p.vp} ПО</strong>
@@ -179,10 +197,58 @@ const GameScreen = () => {
     return (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', width: '100%', maxWidth: '1440px', margin: '0 auto', marginTop: '1vh' }}>
             
+            {/* ПЛАШКА ПАУЗЫ ИЗ-ЗА ОТКЛЮЧЕНИЯ ИГРОКА */}
+            {gameState.pausedDueToDisconnect && (
+                <div className="glass-panel" style={{ 
+                    padding: '1rem 1.6rem', 
+                    background: 'rgba(139, 0, 0, 0.25)', 
+                    border: '1px solid #8b0000', 
+                    boxShadow: '0 0 25px rgba(139, 0, 0, 0.35)',
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    flexWrap: 'wrap',
+                    gap: '1rem'
+                }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
+                        <span style={{ fontSize: '1.4rem' }}>⚠️</span>
+                        <div>
+                            <div style={{ color: '#ff6b81', fontWeight: 800, fontSize: '1.05rem' }}>
+                                Игрок «{gameState.disconnectedPlayerName}» отключился!
+                            </div>
+                            <div style={{ color: 'var(--text-muted)', fontSize: '0.85rem' }}>
+                                Таймер автоматически поставлен на паузу. Вы можете продолжить игру без него.
+                            </div>
+                        </div>
+                    </div>
+
+                    {isHost && (
+                        <div style={{ display: 'flex', gap: '0.8rem', alignItems: 'center' }}>
+                            <button 
+                                className="btn-primary" 
+                                onClick={handleDismissPause}
+                                style={{ background: 'linear-gradient(135deg, #00e676 0%, #00b359 100%)', boxShadow: '0 0 15px rgba(0, 230, 118, 0.4)' }}
+                            >
+                                ▶️ Продолжить без него
+                            </button>
+                            {gameState.disconnectedPlayerId && (
+                                <button 
+                                    className="btn-secondary" 
+                                    onClick={() => handleKickPlayer(gameState.disconnectedPlayerId)}
+                                    style={{ color: '#ff4d6d', borderColor: 'rgba(255, 77, 109, 0.4)' }}
+                                >
+                                    ❌ Исключить из матча
+                                </button>
+                            )}
+                        </div>
+                    )}
+                </div>
+            )}
+
             {/* ВЕРХНЯЯ ПАНЕЛЬ: ИГРОКИ, ОЧКИ И УПРАВЛЕНИЕ ТАЙМЕРОМ */}
             <div className="glass-panel" style={{ padding: '1.2rem 1.8rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1.2rem' }}>
                 
-                {/* Список игроков с очками и индикатором готовности */}
+                {/* Список игроков с очками, статусом подключения и прогрессом */}
                 <div style={{ display: 'flex', gap: '0.8rem', alignItems: 'center', flexWrap: 'wrap' }}>
                     {gameState.players.map(p => {
                         const pRatedCount = progress[p.id] ?? (Object.keys(gameState.ratings?.[p.id] || {}).length);
@@ -197,8 +263,23 @@ const GameScreen = () => {
                                 padding: '8px 14px', 
                                 borderRadius: '14px', 
                                 border: `1px solid ${p.color}55`,
-                                boxShadow: `0 0 12px ${p.color}25` 
+                                boxShadow: `0 0 12px ${p.color}25`,
+                                opacity: p.connected ? 1 : 0.65
                             }}>
+                                {/* Точка подключения: изумрудный зеленый или бордовый красный */}
+                                <div 
+                                    title={p.connected ? 'В игре (онлайн)' : 'Отключился'}
+                                    style={{ 
+                                        width: '10px', 
+                                        height: '10px', 
+                                        borderRadius: '50%', 
+                                        backgroundColor: p.connected ? '#00e676' : '#8b0000', 
+                                        boxShadow: p.connected ? '0 0 8px #00e676' : '0 0 8px #8b0000',
+                                        flexShrink: 0
+                                    }} 
+                                />
+
+                                {/* Цветной индикатор игрока */}
                                 <div style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: p.color, boxShadow: `0 0 8px ${p.color}` }}></div>
                                 <span style={{ fontWeight: 600, fontSize: '0.95rem' }}>{p.nickname}</span>
                                 
@@ -218,6 +299,24 @@ const GameScreen = () => {
                                 <strong style={{ color: '#ffffff', padding: '2px 8px', background: 'rgba(255,255,255,0.08)', borderRadius: '8px', fontSize: '0.9rem' }}>
                                     {p.vp} ПО
                                 </strong>
+
+                                {/* Для хоста: кнопка исключить отключившегося игрока */}
+                                {isHost && !p.connected && (
+                                    <button
+                                        onClick={() => handleKickPlayer(p.id)}
+                                        title="Исключить игрока из матча"
+                                        style={{
+                                            background: 'transparent',
+                                            border: 'none',
+                                            color: '#ff4d6d',
+                                            cursor: 'pointer',
+                                            padding: '0 2px',
+                                            fontSize: '0.85rem'
+                                        }}
+                                    >
+                                        ✕
+                                    </button>
+                                )}
                             </div>
                         );
                     })}
@@ -324,7 +423,7 @@ const GameScreen = () => {
                             transition: 'all 0.3s ease'
                         }}>
                             
-                            {/* Постер фильма с аккуратным соотношением 2:3 */}
+                            {/* Постер фильма с соотношением 2:3 */}
                             <div style={{ 
                                 position: 'relative', 
                                 paddingTop: '148%', 
@@ -504,7 +603,8 @@ const GameScreen = () => {
                     </h3>
                     <div style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem', flexWrap: 'wrap' }}>
                         {gameState.players.map(p => (
-                            <div key={p.id} style={{ fontSize: '1.05rem' }}>
+                            <div key={p.id} style={{ fontSize: '1.05rem', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                                <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: p.connected ? '#00e676' : '#8b0000', display: 'inline-block' }} />
                                 <span style={{ color: 'var(--text-muted)' }}>{p.nickname}: </span>
                                 <strong style={{ color: '#00e676' }}>+{(gameState.roundPoints?.[p.id] || 0)} ПО</strong>
                                 <span style={{ color: 'var(--text-muted)' }}> (Всего: {p.vp})</span>
