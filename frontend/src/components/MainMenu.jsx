@@ -3,8 +3,8 @@ import { useGame } from '../GameContext';
 
 const MainMenu = () => {
     const { socket, setPlayer } = useGame();
-    const [nickname, setNickname] = useState('');
-    const [lobbyCode, setLobbyCode] = useState('');
+    const [nickname, setNickname] = useState(() => localStorage.getItem('kino_lastNickname') || '');
+    const [lobbyCode, setLobbyCode] = useState(() => localStorage.getItem('kino_lastLobbyId') || '');
     const [targetVP, setTargetVP] = useState(30);
 
     const handleCreateLobby = () => {
@@ -18,14 +18,21 @@ const MainMenu = () => {
     };
 
     const handleJoinLobby = (codeToJoin = lobbyCode) => {
-        if (!nickname.trim()) return alert('Введите ваш никнейм!');
-        if (!codeToJoin.trim()) return alert('Введите код лобби!');
+        const cleanNick = nickname.trim();
+        const cleanCode = (codeToJoin || '').trim().toUpperCase();
+        if (!cleanNick) return alert('Введите ваш никнейм!');
+        if (!cleanCode) return alert('Введите код лобби!');
 
-        socket.emit('join_lobby', { lobbyId: codeToJoin.toUpperCase(), nickname }, (response) => {
+        const lastToken = localStorage.getItem('kino_lastSessionToken');
+
+        socket.emit('join_lobby', { lobbyId: cleanCode, nickname: cleanNick, sessionToken: lastToken }, (response) => {
             if (response.success) {
                 setPlayer(response.player);
-                localStorage.setItem('kino_lobbyId', codeToJoin.toUpperCase());
+                localStorage.setItem('kino_lobbyId', cleanCode);
                 localStorage.setItem('kino_sessionToken', response.player.sessionToken);
+                localStorage.setItem('kino_lastLobbyId', cleanCode);
+                localStorage.setItem('kino_lastNickname', cleanNick);
+                localStorage.setItem('kino_lastSessionToken', response.player.sessionToken);
             } else {
                 alert(response.message || 'Ошибка подключения к лобби');
             }

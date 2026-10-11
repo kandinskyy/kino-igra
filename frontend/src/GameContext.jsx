@@ -49,12 +49,34 @@ export const GameProvider = ({ children }) => {
         return () => newSocket.close();
     }, []);
 
+    const leaveGame = () => {
+        if (socket && gameState?.id) {
+            socket.emit('leave_lobby', { lobbyId: gameState.id });
+        }
+        if (gameState?.id) {
+            localStorage.setItem('kino_lastLobbyId', gameState.id);
+        }
+        if (player?.nickname) {
+            localStorage.setItem('kino_lastNickname', player.nickname);
+        }
+        if (player?.sessionToken) {
+            localStorage.setItem('kino_lastSessionToken', player.sessionToken);
+        }
+        localStorage.removeItem('kino_lobbyId');
+        localStorage.removeItem('kino_sessionToken');
+
+        setGameState(null);
+        setPlayer(null);
+    };
+
     const value = {
         socket,
         gameState,
+        setGameState,
         player,
         setPlayer,
-        isConnected
+        isConnected,
+        leaveGame
     };
 
     return (

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useGame } from '../GameContext';
 
 const GameScreen = () => {
-    const { socket, gameState, player } = useGame();
+    const { socket, gameState, player, leaveGame } = useGame();
     
     // Локальное состояние таймера (синхронизируется с сокетами)
     const [timeLeft, setTimeLeft] = useState(gameState?.timeLeft ?? 60);
@@ -156,7 +156,8 @@ const GameScreen = () => {
                 <div className="glass-panel" style={{ padding: '3rem', border: '2px solid var(--accent-blue)', boxShadow: '0 0 50px rgba(28, 160, 229, 0.4)' }}>
                     <div style={{ fontSize: '4.5rem', marginBottom: '1rem', animation: 'floatCloud 3s ease-in-out infinite' }}>🏆</div>
                     <div style={{ color: 'var(--accent-blue)', fontSize: '1.2rem', fontWeight: 800, letterSpacing: '2px' }}>ПОБЕДИТЕЛЬ ИГРЫ!</div>
-                    <h1 style={{ fontSize: '3rem', margin: '0.5rem 0 1.5rem', color: '#ffffff', textShadow: '0 0 20px rgba(28, 160, 229, 0.6)' }}>
+                    <h1 style={{ fontSize: '3rem', margin: '0.5rem 0 1.5rem', color: winner?.color || '#ffffff', textShadow: `0 0 25px ${winner?.color || '#1ca0e5'}70` }}>
+                        <span style={{ fontSize: '2.5rem', marginRight: '8px' }}>{winner?.emoji || '🌧️'}</span>
                         {winner?.nickname} <span style={{ fontSize: '1.8rem', color: 'var(--accent-a)' }}>({winner?.vp} ПО)</span>
                     </h1>
 
@@ -170,22 +171,34 @@ const GameScreen = () => {
                                 padding: '12px 20px',
                                 background: idx === 0 ? 'rgba(28, 160, 229, 0.15)' : 'rgba(3, 10, 22, 0.5)',
                                 borderRadius: '12px',
-                                border: idx === 0 ? '1px solid var(--accent-blue)' : '1px solid var(--surface-border)'
+                                border: idx === 0 ? `1px solid ${p.color}` : '1px solid var(--surface-border)'
                             }}>
-                                <span style={{ fontWeight: 700, fontSize: '1.1rem', color: idx === 0 ? 'var(--accent-blue)' : '#ffffff', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                <span style={{ fontWeight: 700, fontSize: '1.1rem', color: p.color, display: 'flex', alignItems: 'center', gap: '8px' }}>
                                     <span style={{ width: '10px', height: '10px', borderRadius: '50%', backgroundColor: p.connected ? '#00e676' : '#8b0000', display: 'inline-block' }} />
-                                    {idx + 1}. {p.nickname} {idx === 0 && '👑'}
+                                    <span>{idx + 1}.</span>
+                                    <span style={{ fontSize: '1.2rem' }}>{p.emoji || '🌧️'}</span>
+                                    <span style={{ textShadow: `0 0 10px ${p.color}40` }}>{p.nickname}</span>
+                                    {idx === 0 && <span>👑</span>}
                                 </span>
                                 <strong style={{ fontSize: '1.2rem', color: 'var(--accent-a)' }}>{p.vp} ПО</strong>
                             </div>
                         ))}
                     </div>
 
-                    {isHost && (
-                        <button className="btn-primary" onClick={handleRestartGame} style={{ padding: '16px 36px', fontSize: '1.2rem' }}>
-                            🌧️ Начать новую игру
+                    <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
+                        {isHost && (
+                            <button className="btn-primary" onClick={handleRestartGame} style={{ padding: '16px 36px', fontSize: '1.2rem' }}>
+                                🌧️ Начать новую игру
+                            </button>
+                        )}
+                        <button 
+                            className="btn-secondary" 
+                            onClick={leaveGame} 
+                            style={{ padding: '16px 28px', fontSize: '1.2rem', borderColor: 'rgba(255, 77, 109, 0.4)', color: '#ff6b81' }}
+                        >
+                            🚪 Выйти в меню
                         </button>
-                    )}
+                    </div>
                 </div>
             </div>
         );
@@ -274,14 +287,16 @@ const GameScreen = () => {
                                         height: '10px', 
                                         borderRadius: '50%', 
                                         backgroundColor: p.connected ? '#00e676' : '#8b0000', 
-                                        boxShadow: p.connected ? '0 0 8px #00e676' : '0 0 8px #8b0000',
+                                        boxShadow: p.connected ? '0 0 8px #00e676' : '0 0 8px #8b0000', 
                                         flexShrink: 0
                                     }} 
                                 />
 
-                                {/* Цветной индикатор игрока */}
-                                <div style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: p.color, boxShadow: `0 0 8px ${p.color}` }}></div>
-                                <span style={{ fontWeight: 600, fontSize: '0.95rem' }}>{p.nickname}</span>
+                                {/* Эмодзи цвета игрока и цветной ник */}
+                                <span style={{ fontSize: '1.15rem' }}>{p.emoji || '🌧️'}</span>
+                                <span style={{ fontWeight: 700, fontSize: '0.95rem', color: p.color, textShadow: `0 0 8px ${p.color}35` }}>
+                                    {p.nickname}
+                                </span>
                                 
                                 {gameState.state === 'round_start' && (
                                     <span style={{ 
@@ -392,6 +407,16 @@ const GameScreen = () => {
                             🌧️ Следующий раунд ➔
                         </button>
                     )}
+
+                    {/* Кнопка выхода в главное меню */}
+                    <button
+                        className="btn-secondary"
+                        onClick={leaveGame}
+                        title="Выйти в главное меню (вы сможете вернуться в этот матч в любой момент по тому же нику)"
+                        style={{ borderColor: 'rgba(255, 77, 109, 0.35)', color: '#ff6b81', padding: '8px 14px', fontSize: '0.9rem' }}
+                    >
+                        🚪 Выйти в меню
+                    </button>
                 </div>
             </div>
 
@@ -567,15 +592,23 @@ const GameScreen = () => {
                                                 }}>
                                                     {r}:
                                                 </span>
-                                                <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap', alignItems: 'center' }}>
+                                                <div style={{ display: 'flex', gap: '0.45rem', flexWrap: 'wrap', alignItems: 'center' }}>
                                                     {playersList.map(p => (
                                                         <span key={p.id} style={{ 
-                                                            fontSize: '0.85rem', 
-                                                            color: '#ffffff', 
-                                                            fontWeight: 600,
-                                                            borderBottom: `2px solid ${p.color}` 
+                                                            fontSize: '0.88rem', 
+                                                            color: p.color, 
+                                                            fontWeight: 700,
+                                                            display: 'inline-flex',
+                                                            alignItems: 'center',
+                                                            gap: '4px',
+                                                            background: `${p.color}18`,
+                                                            border: `1px solid ${p.color}44`,
+                                                            padding: '2px 8px',
+                                                            borderRadius: '6px',
+                                                            boxShadow: `0 0 8px ${p.color}20`
                                                         }}>
-                                                            {p.nickname}
+                                                            <span style={{ fontSize: '1rem' }}>{p.emoji || '🌧️'}</span>
+                                                            <span>{p.nickname}</span>
                                                         </span>
                                                     ))}
                                                     {hasMatch && (
@@ -605,7 +638,8 @@ const GameScreen = () => {
                         {gameState.players.map(p => (
                             <div key={p.id} style={{ fontSize: '1.05rem', display: 'flex', alignItems: 'center', gap: '6px' }}>
                                 <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: p.connected ? '#00e676' : '#8b0000', display: 'inline-block' }} />
-                                <span style={{ color: 'var(--text-muted)' }}>{p.nickname}: </span>
+                                <span style={{ fontSize: '1.15rem' }}>{p.emoji || '🌧️'}</span>
+                                <span style={{ color: p.color, fontWeight: 700, textShadow: `0 0 8px ${p.color}35` }}>{p.nickname}: </span>
                                 <strong style={{ color: '#00e676' }}>+{(gameState.roundPoints?.[p.id] || 0)} ПО</strong>
                                 <span style={{ color: 'var(--text-muted)' }}> (Всего: {p.vp})</span>
                             </div>

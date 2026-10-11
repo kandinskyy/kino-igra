@@ -2,31 +2,32 @@ import React, { useState } from 'react';
 import { useGame } from '../GameContext';
 
 const ALL_16_COLORS = [
-    { hex: '#B57EDC', name: 'Лавандовый' },
-    { hex: '#1CA0E5', name: 'Неоновый голубой' },
-    { hex: '#00E676', name: 'Изумрудный' },
-    { hex: '#FF007F', name: 'Фуксия' },
-    { hex: '#FFB300', name: 'Янтарный' },
-    { hex: '#8A2BE2', name: 'Фиолетовый' },
-    { hex: '#FF3864', name: 'Коралловый' },
-    { hex: '#00F5D4', name: 'Мятный' },
-    { hex: '#FF6D00', name: 'Оранжевый' },
-    { hex: '#AEEA00', name: 'Лайм' },
-    { hex: '#0091EA', name: 'Лазурный' },
-    { hex: '#FF1493', name: 'Hot Pink' },
-    { hex: '#FFD600', name: 'Золотой' },
-    { hex: '#00B4D8', name: 'Аквамарин' },
-    { hex: '#7B2CBF', name: 'Ультрафиолет' },
-    { hex: '#D8B4FE', name: 'Сиреневый' }
+    { hex: '#B57EDC', emoji: '🪻', name: 'Лавандовый' },
+    { hex: '#1CA0E5', emoji: '💧', name: 'Неоновый голубой' },
+    { hex: '#00E676', emoji: '🍀', name: 'Изумрудный' },
+    { hex: '#FF007F', emoji: '🌸', name: 'Фуксия' },
+    { hex: '#FFB300', emoji: '⚡', name: 'Янтарный' },
+    { hex: '#8A2BE2', emoji: '🔮', name: 'Фиолетовый' },
+    { hex: '#FF3864', emoji: '❤️‍🔥', name: 'Коралловый' },
+    { hex: '#00F5D4', emoji: '🫧', name: 'Мятный' },
+    { hex: '#FF6D00', emoji: '🦊', name: 'Оранжевый' },
+    { hex: '#AEEA00', emoji: '🍏', name: 'Лайм' },
+    { hex: '#0091EA', emoji: '🌊', name: 'Лазурный' },
+    { hex: '#FF1493', emoji: '💖', name: 'Hot Pink' },
+    { hex: '#FFD600', emoji: '☀️', name: 'Золотой' },
+    { hex: '#00B4D8', emoji: '💎', name: 'Аквамарин' },
+    { hex: '#7B2CBF', emoji: '🌌', name: 'Ультрафиолет' },
+    { hex: '#D8B4FE', emoji: '🌙', name: 'Сиреневый' }
 ];
 
 const Lobby = () => {
-    const { socket, gameState, player } = useGame();
+    const { socket, gameState, player, leaveGame } = useGame();
     const [showRules, setShowRules] = useState(false);
     const [copied, setCopied] = useState(false);
 
     const isHost = gameState.host === player?.id;
     const myPlayer = gameState.players.find(p => p.id === player?.id) || player;
+    const myColorObj = ALL_16_COLORS.find(c => c.hex.toLowerCase() === (myPlayer?.color || '').toLowerCase());
 
     const handleCopy = () => {
         navigator.clipboard.writeText(gameState.id);
@@ -55,7 +56,7 @@ const Lobby = () => {
     return (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1.8rem', width: '100%', maxWidth: '880px', margin: '0 auto', marginTop: '2vh' }}>
             
-            {/* Верхняя плашка с кодом лобби */}
+            {/* Верхняя плашка с кодом лобби и кнопками */}
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
                     <span className="cloud-logo" style={{ fontSize: '2.4rem' }}>🌧️</span>
@@ -67,13 +68,24 @@ const Lobby = () => {
                     </div>
                 </div>
 
-                <button 
-                    className="btn-secondary" 
-                    onClick={handleCopy} 
-                    style={{ borderColor: copied ? '#00e676' : 'rgba(28, 160, 229, 0.4)', color: copied ? '#00e676' : 'var(--accent-blue)' }}
-                >
-                    {copied ? '✓ СКОПИРОВАНО!' : '📋 Скопировать код'}
-                </button>
+                <div style={{ display: 'flex', gap: '0.8rem', alignItems: 'center' }}>
+                    <button 
+                        className="btn-secondary" 
+                        onClick={handleCopy} 
+                        style={{ borderColor: copied ? '#00e676' : 'rgba(28, 160, 229, 0.4)', color: copied ? '#00e676' : 'var(--accent-blue)' }}
+                    >
+                        {copied ? '✓ СКОПИРОВАНО!' : '📋 Скопировать код'}
+                    </button>
+
+                    <button
+                        className="btn-secondary"
+                        onClick={leaveGame}
+                        title="Выйти в меню (вы сможете вернуться в любой момент по тому же нику)"
+                        style={{ borderColor: 'rgba(255, 77, 109, 0.35)', color: '#ff6b81' }}
+                    >
+                        🚪 Выйти в меню
+                    </button>
+                </div>
             </div>
 
             {/* Палитра выбора 16 цветов для игрока */}
@@ -81,14 +93,14 @@ const Lobby = () => {
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
                         <span style={{ fontSize: '1.2rem' }}>🎨</span>
-                        <span style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--text-main)' }}>ВЫБОР ЦВЕТА ИГРОКА (16 ОТТЕНКОВ):</span>
+                        <span style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--text-main)' }}>ВЫБОР ЦВЕТА И ЭМОДЗИ (16 ВАРИАНТОВ):</span>
                     </div>
-                    <span style={{ fontSize: '0.85rem', color: myPlayer?.color, fontWeight: 700 }}>
-                        Текущий: {ALL_16_COLORS.find(c => c.hex.toLowerCase() === (myPlayer?.color || '').toLowerCase())?.name || myPlayer?.color}
+                    <span style={{ fontSize: '0.85rem', color: myPlayer?.color, fontWeight: 700, display: 'flex', alignItems: 'center', gap: '6px' }}>
+                        Текущий: {myColorObj?.emoji || myPlayer?.emoji} {myColorObj?.name || myPlayer?.color}
                     </span>
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(42px, 1fr))', gap: '0.75rem', justifyContent: 'center' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(46px, 1fr))', gap: '0.85rem', justifyContent: 'center' }}>
                     {ALL_16_COLORS.map(c => {
                         const isMyColor = myPlayer?.color?.toLowerCase() === c.hex.toLowerCase();
                         const takenBy = gameState.players.find(p => p.id !== player?.id && p.color?.toLowerCase() === c.hex.toLowerCase());
@@ -98,29 +110,67 @@ const Lobby = () => {
                                 key={c.hex}
                                 onClick={() => !takenBy && handleSelectColor(c.hex)}
                                 disabled={Boolean(takenBy)}
-                                title={isMyColor ? `${c.name} (Ваш цвет)` : takenBy ? `${c.name} (Занят: ${takenBy.nickname})` : `Выбрать: ${c.name}`}
+                                title={isMyColor ? `${c.emoji} ${c.name} (Ваш выбор)` : takenBy ? `${c.emoji} ${c.name} (Занят: ${takenBy.nickname})` : `Выбрать: ${c.emoji} ${c.name}`}
                                 style={{
-                                    width: '42px',
-                                    height: '42px',
+                                    width: '46px',
+                                    height: '46px',
                                     borderRadius: '50%',
                                     backgroundColor: c.hex,
                                     border: isMyColor ? '3px solid #ffffff' : '2px solid rgba(255,255,255,0.2)',
                                     boxShadow: isMyColor ? `0 0 16px ${c.hex}, 0 0 25px ${c.hex}` : `0 2px 8px rgba(0,0,0,0.4)`,
                                     cursor: takenBy ? 'not-allowed' : 'pointer',
-                                    opacity: takenBy ? 0.25 : 1,
-                                    transform: isMyColor ? 'scale(1.15)' : 'scale(1)',
+                                    opacity: takenBy ? 0.3 : 1,
+                                    transform: isMyColor ? 'scale(1.18)' : 'scale(1)',
                                     transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
                                     display: 'flex',
                                     alignItems: 'center',
                                     justifyContent: 'center',
-                                    color: '#000000',
-                                    fontWeight: 900,
-                                    fontSize: '1rem',
+                                    fontSize: '1.25rem',
                                     outline: 'none',
-                                    padding: 0
+                                    padding: 0,
+                                    position: 'relative'
                                 }}
                             >
-                                {isMyColor ? '✓' : takenBy ? '✕' : ''}
+                                <span style={{ filter: takenBy ? 'grayscale(1)' : 'none' }}>{c.emoji}</span>
+                                {isMyColor && (
+                                    <span style={{ 
+                                        position: 'absolute', 
+                                        bottom: '-3px', 
+                                        right: '-3px', 
+                                        background: '#ffffff', 
+                                        color: '#000000', 
+                                        borderRadius: '50%', 
+                                        width: '16px', 
+                                        height: '16px', 
+                                        fontSize: '10px', 
+                                        fontWeight: 900, 
+                                        display: 'flex', 
+                                        alignItems: 'center', 
+                                        justifyContent: 'center',
+                                        boxShadow: '0 0 6px rgba(0,0,0,0.5)'
+                                    }}>
+                                        ✓
+                                    </span>
+                                )}
+                                {takenBy && (
+                                    <span style={{
+                                        position: 'absolute',
+                                        top: 0,
+                                        left: 0,
+                                        right: 0,
+                                        bottom: 0,
+                                        borderRadius: '50%',
+                                        background: 'rgba(0,0,0,0.55)',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        color: '#ff4d6d',
+                                        fontSize: '0.9rem',
+                                        fontWeight: 900
+                                    }}>
+                                        ✕
+                                    </span>
+                                )}
                             </button>
                         );
                     })}
@@ -166,27 +216,26 @@ const Lobby = () => {
                                 }}
                             />
 
-                            {/* Кружок с цветом игрока */}
+                            {/* Кружок с эмодзи и цветом игрока */}
                             <div style={{ 
-                                width: '30px', 
-                                height: '30px', 
+                                width: '34px', 
+                                height: '34px', 
                                 borderRadius: '50%', 
                                 backgroundColor: p.color, 
                                 boxShadow: `0 0 12px ${p.color}`,
                                 display: 'flex',
                                 alignItems: 'center',
                                 justifyContent: 'center',
-                                fontSize: '0.85rem',
-                                color: '#000',
-                                fontWeight: 800,
+                                fontSize: '1.15rem',
                                 flexShrink: 0
                             }}>
-                                {idx + 1}
+                                {p.emoji || '🌧️'}
                             </div>
 
                             <div style={{ overflow: 'hidden', flex: 1 }}>
-                                <div style={{ fontWeight: '700', fontSize: '1.05rem', textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: 'nowrap', color: '#ffffff' }}>
-                                    {p.nickname} {p.id === gameState.host && '👑'} 
+                                <div style={{ fontWeight: '700', fontSize: '1.05rem', textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: 'nowrap', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                                    <span style={{ color: p.color, textShadow: `0 0 10px ${p.color}40` }}>{p.nickname}</span>
+                                    {p.id === gameState.host && <span title="Хост комнаты">👑</span>} 
                                 </div>
                                 <div style={{ fontSize: '0.8rem', color: p.connected ? 'var(--text-muted)' : '#ff4d6d', display: 'flex', alignItems: 'center', gap: '4px' }}>
                                     {p.connected ? (p.id === gameState.host ? 'Хост лобби' : 'В игре') : 'Отключился'}

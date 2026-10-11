@@ -42,24 +42,24 @@ try {
 // Генерация случайного кода из 6 символов
 const generateCode = () => Math.random().toString(36).substring(2, 8).toUpperCase();
 
-// 16 контрастных цветов (лавандовый обязателен)
+// 16 контрастных цветов с красивыми подходящими эмодзи (лавандовый обязателен)
 const COLORS = [
-    '#B57EDC', // 1. Лавандовый (Lavender)
-    '#1CA0E5', // 2. Неоновый голубой
-    '#00E676', // 3. Изумрудный зеленый
-    '#FF007F', // 4. Малиновый / Фуксия
-    '#FFB300', // 5. Янтарный / Золотой
-    '#8A2BE2', // 6. Электрический фиолетовый
-    '#FF3864', // 7. Кораллово-красный
-    '#00F5D4', // 8. Мятная бирюза
-    '#FF6D00', // 9. Яркий оранжевый
-    '#AEEA00', // 10. Неоновый лайм
-    '#0091EA', // 11. Лазурный
-    '#FF1493', // 12. Hot Pink
-    '#FFD600', // 13. Яркий желтый
-    '#00B4D8', // 14. Аквамарин
-    '#7B2CBF', // 15. Королевский ультрафиолет
-    '#D8B4FE'  // 16. Светло-сиреневый
+    { hex: '#B57EDC', emoji: '🪻', name: 'Лавандовый' },
+    { hex: '#1CA0E5', emoji: '💧', name: 'Неоновый голубой' },
+    { hex: '#00E676', emoji: '🍀', name: 'Изумрудный' },
+    { hex: '#FF007F', emoji: '🌸', name: 'Фуксия' },
+    { hex: '#FFB300', emoji: '⚡', name: 'Янтарный' },
+    { hex: '#8A2BE2', emoji: '🔮', name: 'Фиолетовый' },
+    { hex: '#FF3864', emoji: '❤️‍🔥', name: 'Коралловый' },
+    { hex: '#00F5D4', emoji: '🫧', name: 'Мятный' },
+    { hex: '#FF6D00', emoji: '🦊', name: 'Оранжевый' },
+    { hex: '#AEEA00', emoji: '🍏', name: 'Лайм' },
+    { hex: '#0091EA', emoji: '🌊', name: 'Лазурный' },
+    { hex: '#FF1493', emoji: '💖', name: 'Hot Pink' },
+    { hex: '#FFD600', emoji: '☀️', name: 'Золотой' },
+    { hex: '#00B4D8', emoji: '💎', name: 'Аквамарин' },
+    { hex: '#7B2CBF', emoji: '🌌', name: 'Ультрафиолет' },
+    { hex: '#D8B4FE', emoji: '🌙', name: 'Сиреневый' }
 ];
 
 function clearLobbyTimer(lobby) {
@@ -157,24 +157,55 @@ io.on('connection', (socket) => {
         console.log(`Lobby ${lobbyId} created by ${socket.id}`);
     });
 
-    // Подключение к лобби
+    // Подключение к лобби (с защитой по IP, уникальностью ников и запретом входа новых во время матча)
     socket.on('join_lobby', ({ lobbyId, nickname, sessionToken }, callback) => {
         const lobby = lobbies.get(lobbyId);
         if (!lobby) return callback({ success: false, message: 'Лобби не найдено' });
-        
-        // Логика переподключения (если игрок обновил вкладку)
-        const existingPlayer = lobby.players.find(p => p.sessionToken === sessionToken);
+
+        const trimmedNick = (nickname || '').trim();
+        if (!trimmedNick) return callback({ success: false, message: 'Введите никнейм' });
+
+        // Определение IP адреса клиента
+        const clientIp = socket.handshake.headers['x-forwarded-for']?.split(',')[0]?.trim() || socket.handshake.address;
+
+        // Поиск существующего игрока (по сессии или по никнейму)
+        const existingByToken = sessionToken ? lobby.players.find(p => p.sessionToken === sessionToken) : null;
+        const existingByNick = lobby.players.find(p => p.nickname.toLowerCase() === trimmedNick.toLowerCase());
+
+        const existingPlayer = existingByToken || existingByNick;
+
         if (existingPlayer) {
+            // Если игрок с таким ником уже ОНЛАЙН, но пытается зайти с другого браузера/устройства
+            if (existingPlayer.connected && existingPlayer.sessionToken !== sessionToken && existingPlayer.ip !== clientIp) {
+                return callback({ success: false, message: 'Игрок с таким ником уже в игре! Выберите другой никнейм.' });
+            }
+
+            // Если игрок оффлайн, но кто-то пытается занять его ник с другого IP и без правильного токена
+            if (!existingPlayer.connected && existingPlayer.sessionToken && sessionToken && existingPlayer.sessionToken !== sessionToken && existingPlayer.ip && existingPlayer.ip !== clientIp) {
+                return callback({ success: false, message: 'Этот никнейм уже занят другим игроком в этом лобби.' });
+            }
+
+            // Это владелец переподключается!
+            const oldSocketId = existingPlayer.id;
+            existingPlayer.previousSocketId = oldSocketId;
             existingPlayer.id = socket.id;
             existingPlayer.connected = true;
+            existingPlayer.ip = clientIp; // обновляем IP
             socket.join(lobbyId);
-            
-            if (lobby.host === existingPlayer.previousSocketId) {
+
+            // Переносим текущие оценки раунда со старого socket.id на новый
+            if (oldSocketId && lobby.ratings[oldSocketId]) {
+                lobby.ratings[socket.id] = lobby.ratings[oldSocketId];
+                delete lobby.ratings[oldSocketId];
+            }
+
+            // Если хост переподключился
+            if (lobby.host === oldSocketId || lobby.host === existingPlayer.previousSocketId) {
                 lobby.host = socket.id;
             }
 
             // Если игра стояла на паузе из-за этого игрока, снимаем статус паузы
-            if (lobby.disconnectedPlayerId === existingPlayer.previousSocketId || lobby.disconnectedPlayerName === existingPlayer.nickname) {
+            if (lobby.disconnectedPlayerId === oldSocketId || lobby.disconnectedPlayerId === existingPlayer.previousSocketId || lobby.disconnectedPlayerName === existingPlayer.nickname) {
                 lobby.pausedDueToDisconnect = false;
                 lobby.disconnectedPlayerName = null;
                 lobby.disconnectedPlayerId = null;
@@ -184,16 +215,22 @@ io.on('connection', (socket) => {
             return callback({ success: true, player: existingPlayer, lobby });
         }
 
-        if (lobby.state !== 'lobby') return callback({ success: false, message: 'Игра уже началась' });
-        if (lobby.players.length >= 10) return callback({ success: false, message: 'Лобби заполнено (макс. 10)' });
+        // Если это НОВЫЙ игрок, но игра уже началась -> вход закрыт!
+        if (lobby.state !== 'lobby') {
+            return callback({ success: false, message: 'Игра уже началась! Вход новых участников закрыт.' });
+        }
 
-        // Выбираем первый свободный цвет из 16 цветов
-        const color = COLORS.find(c => !lobby.players.some(p => p.color.toLowerCase() === c.toLowerCase())) || COLORS[0];
+        if (lobby.players.length >= 10) return callback({ success: false, message: 'Лобби заполнено (макс. 10 игроков)' });
+
+        // Выбираем первый свободный цвет и его эмодзи из 16 вариантов
+        const colorObj = COLORS.find(c => !lobby.players.some(p => p.color.toLowerCase() === c.hex.toLowerCase())) || COLORS[0];
         const newToken = Math.random().toString(36).substring(2, 15);
         const newPlayer = {
             id: socket.id,
-            nickname,
-            color,
+            nickname: trimmedNick,
+            color: colorObj.hex,
+            emoji: colorObj.emoji,
+            ip: clientIp,
             vp: 0,
             connected: true,
             sessionToken: newToken
@@ -365,11 +402,43 @@ io.on('connection', (socket) => {
             return;
         }
 
+        const colorObj = COLORS.find(c => c.hex.toLowerCase() === color.toLowerCase()) || { hex: color, emoji: '🌧️' };
         const player = lobby.players.find(p => p.id === socket.id);
         if (player) {
-            player.color = color;
+            player.color = colorObj.hex;
+            player.emoji = colorObj.emoji;
             io.to(lobbyId).emit('lobby_update', lobby);
-            if (callback) callback({ success: true, color });
+            if (callback) callback({ success: true, color: colorObj.hex, emoji: colorObj.emoji });
+        }
+    });
+
+    // Добровольный выход игрока в главное меню (с сохранением его прогресса на случай возвращения)
+    socket.on('leave_lobby', ({ lobbyId }, callback) => {
+        const lobby = lobbies.get(lobbyId);
+        if (!lobby) return;
+
+        const player = lobby.players.find(p => p.id === socket.id);
+        if (player) {
+            player.connected = false;
+            socket.leave(lobbyId);
+
+            // Если идет раунд и таймер был запущен -> ставим на паузу
+            if (lobby.state === 'round_start' && lobby.timerRunning) {
+                clearLobbyTimer(lobby);
+                lobby.pausedDueToDisconnect = true;
+                lobby.disconnectedPlayerName = player.nickname;
+                lobby.disconnectedPlayerId = player.id;
+                io.to(lobbyId).emit('timer_tick', { timeLeft: lobby.timeLeft, isRunning: false });
+            }
+
+            // Если вышел хост, передаем права следующему онлайн
+            if (lobby.host === socket.id) {
+                const nextOnline = lobby.players.find(p => p.connected);
+                if (nextOnline) lobby.host = nextOnline.id;
+            }
+
+            io.to(lobbyId).emit('lobby_update', lobby);
+            if (callback) callback({ success: true });
         }
     });
 
