@@ -64,8 +64,17 @@ const GameScreen = () => {
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '2rem', marginTop: '1rem' }}>
                 {gameState.movies?.map((movie) => (
                     <div key={movie.id} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                        <div style={{ position: 'relative', paddingTop: '150%', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 15px 30px rgba(0,0,0,0.6)', border: '1px solid rgba(255,255,255,0.1)' }}>
-                            <img src={movie.posterUrl} alt={movie.title} style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
+                        <div style={{ position: 'relative', paddingTop: '150%', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 15px 30px rgba(0,0,0,0.6)', border: '1px solid rgba(255,255,255,0.1)', background: '#111827' }}>
+                            <img 
+                                src={movie.posterUrl} 
+                                alt={movie.title} 
+                                loading="lazy"
+                                onError={(e) => {
+                                    e.target.onerror = null;
+                                    e.target.src = `https://placehold.co/400x600/0b0f19/FF0055?text=${encodeURIComponent(movie.title)}`;
+                                }}
+                                style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover' }} 
+                            />
                         </div>
                         <h4 style={{ textAlign: 'center', margin: 0, fontSize: '1.1rem', minHeight: '2.8rem', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>{movie.title}</h4>
                         

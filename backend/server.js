@@ -117,6 +117,9 @@ io.on('connection', (socket) => {
     socket.on('launch_game', (lobbyId) => {
         const lobby = lobbies.get(lobbyId);
         if (lobby && lobby.host === socket.id) {
+            if (lobby.players.length < 2) {
+                return socket.emit('error_message', 'Для старта игры нужно минимум 2 игрока');
+            }
             lobby.state = 'round_start';
             lobby.ratings = {};
             lobby.revealedMovieIndex = -1;
@@ -140,6 +143,39 @@ io.on('connection', (socket) => {
             }
         }
     });
+});
+
+// Проксирование постеров TMDB
+const https = require('https');
+const tmdbAgent = new https.Agent({
+    lookup: (hostname, opts, cb) => {
+        if (hostname.includes('tmdb.org')) {
+            const ip = '99.84.152.32';
+            if (typeof opts === 'function') opts(null, ip, 4);
+            else if (opts.all) cb(null, [{ address: ip, family: 4 }]);
+            else cb(null, ip, 4);
+        } else {
+            require('dns').lookup(hostname, opts, cb);
+        }
+    }
+});
+
+app.get('/api/poster/:file', async (req, res) => {
+    try {
+        const file = req.params.file;
+        const tmdbUrl = `https://image.tmdb.org/t/p/w500/${file}`;
+        const response = await axios.get(tmdbUrl, {
+            responseType: 'stream',
+            timeout: 10000,
+            httpsAgent: tmdbAgent,
+            headers: { 'User-Agent': 'Mozilla/5.0' }
+        });
+        res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+        res.setHeader('Content-Type', response.headers['content-type'] || 'image/jpeg');
+        response.data.pipe(res);
+    } catch (e) {
+        res.redirect(`https://image.tmdb.org/t/p/w500/${req.params.file}`);
+    }
 });
 
 // Раздача статики собранного фронтенда

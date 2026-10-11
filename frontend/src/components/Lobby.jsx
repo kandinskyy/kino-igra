@@ -60,9 +60,9 @@ const Lobby = () => {
                     ))}
                 </div>
 
-                {gameState.players.length < 5 && (
-                    <div style={{ marginTop: '2rem', textAlign: 'center', color: 'var(--accent-s)', fontWeight: '600' }}>
-                        Для старта игры нужно минимум 5 игроков. (Еще {5 - gameState.players.length})
+                {gameState.players.length < 2 && (
+                    <div style={{ marginTop: '2rem', textAlign: 'center', color: 'var(--accent-s)', fontWeight: '600', fontSize: '1.05rem' }}>
+                        Ожидаем участников: для старта игры нужно минимум 2 игрока (ещё {2 - gameState.players.length}).
                     </div>
                 )}
             </div>
@@ -80,9 +80,13 @@ const Lobby = () => {
                     <button 
                         className="btn-primary" 
                         onClick={handleLaunch}
-                        // Для тестов я временно уберу блокировку кнопки, чтобы мы могли тестить одному/вдвоем
-                        // disabled={gameState.players.length < 5} 
-                        // style={{ opacity: gameState.players.length < 5 ? 0.5 : 1, cursor: gameState.players.length < 5 ? 'not-allowed' : 'pointer' }}
+                        disabled={gameState.players.length < 2}
+                        title={gameState.players.length < 2 ? 'Нужно минимум 2 игрока для старта' : 'Запустить раунд!'}
+                        style={{ 
+                            opacity: gameState.players.length < 2 ? 0.45 : 1, 
+                            cursor: gameState.players.length < 2 ? 'not-allowed' : 'pointer',
+                            filter: gameState.players.length < 2 ? 'grayscale(0.6)' : 'none'
+                        }}
                     >
                         Запуск
                     </button>
