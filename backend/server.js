@@ -48,6 +48,71 @@ const COLORS = [
     '#FFFF00', '#FF00CC', '#00FFFF', '#99FF00', '#FF3300'
 ];
 
+function clearLobbyTimer(lobby) {
+    if (lobby.timerInterval) {
+        clearInterval(lobby.timerInterval);
+        lobby.timerInterval = null;
+    }
+    lobby.timerRunning = false;
+}
+
+function endRound(lobbyId) {
+    const lobby = lobbies.get(lobbyId);
+    if (!lobby || lobby.state !== 'round_start') return;
+    
+    clearLobbyTimer(lobby);
+
+    // Подсчет очков за совпадения
+    const roundPoints = {};
+    lobby.players.forEach(p => {
+        roundPoints[p.id] = 0;
+    });
+
+    const roundDetails = {}; // movieId -> { [rating]: [playerId] }
+
+    lobby.movies.forEach(movie => {
+        const ratingGroups = { S: [], A: [], B: [], C: [], D: [] };
+        lobby.players.forEach(p => {
+            const userRating = lobby.ratings[p.id]?.[movie.id];
+            if (userRating && ratingGroups[userRating]) {
+                ratingGroups[userRating].push(p.id);
+            }
+        });
+
+        roundDetails[movie.id] = ratingGroups;
+
+        // За каждое совпадение с другим игроком: +1 ПО
+        Object.entries(ratingGroups).forEach(([rating, playerIds]) => {
+            if (playerIds.length >= 2) {
+                const pts = playerIds.length - 1;
+                playerIds.forEach(pId => {
+                    roundPoints[pId] = (roundPoints[pId] || 0) + pts;
+                });
+            }
+        });
+    });
+
+    // Начисляем очки игрокам
+    lobby.players.forEach(p => {
+        p.vp = (p.vp || 0) + (roundPoints[p.id] || 0);
+    });
+
+    lobby.roundPoints = roundPoints;
+    lobby.roundDetails = roundDetails;
+
+    // Проверяем победителя
+    const reachedTarget = lobby.players.filter(p => p.vp >= lobby.targetVP);
+    if (reachedTarget.length > 0) {
+        reachedTarget.sort((a, b) => b.vp - a.vp);
+        lobby.winner = reachedTarget[0];
+        lobby.state = 'game_over';
+    } else {
+        lobby.state = 'reveal';
+    }
+
+    io.to(lobbyId).emit('lobby_update', lobby);
+}
+
 io.on('connection', (socket) => {
     console.log('User connected:', socket.id);
 
@@ -59,12 +124,16 @@ io.on('connection', (socket) => {
             host: socket.id,
             players: [],
             targetVP: targetVP || 30,
-            state: 'lobby', // lobby, round_start, rating, reveal, results
+            state: 'lobby', // lobby, round_start, reveal, game_over
             availableColors: [...COLORS],
             movies: [],
             ratings: {}, // { playerId: { movieId: 'S', ... } }
-            revealedMovieIndex: -1,
-            timerEnd: null
+            timeLeft: 60,
+            timerRunning: false,
+            timerInterval: null,
+            roundPoints: {},
+            roundDetails: {},
+            winner: null
         });
         socket.join(lobbyId);
         callback({ success: true, lobbyId });
@@ -76,14 +145,13 @@ io.on('connection', (socket) => {
         const lobby = lobbies.get(lobbyId);
         if (!lobby) return callback({ success: false, message: 'Лобби не найдено' });
         
-        // Логика переподключения (если игрок закрыл вкладку)
+        // Логика переподключения (если игрок обновил вкладку)
         const existingPlayer = lobby.players.find(p => p.sessionToken === sessionToken);
         if (existingPlayer) {
-            existingPlayer.id = socket.id; // обновляем сокет
+            existingPlayer.id = socket.id;
             existingPlayer.connected = true;
             socket.join(lobbyId);
             
-            // Если хост переподключился
             if (lobby.host === existingPlayer.previousSocketId) {
                 lobby.host = socket.id;
             }
@@ -93,9 +161,9 @@ io.on('connection', (socket) => {
         }
 
         if (lobby.state !== 'lobby') return callback({ success: false, message: 'Игра уже началась' });
-        if (lobby.players.length >= 10) return callback({ success: false, message: 'Лобби заполнено' });
+        if (lobby.players.length >= 10) return callback({ success: false, message: 'Лобби заполнено (макс. 10)' });
 
-        const color = lobby.availableColors.pop(); // выдаем цвет
+        const color = lobby.availableColors.pop() || '#1ca0e5';
         const newToken = Math.random().toString(36).substring(2, 15);
         const newPlayer = {
             id: socket.id,
@@ -113,20 +181,148 @@ io.on('connection', (socket) => {
         callback({ success: true, player: newPlayer, lobby });
     });
 
-    // Хост запускает лобби (переход в пустое поле перед фильмами)
+    // Хост запускает игру
     socket.on('launch_game', (lobbyId) => {
         const lobby = lobbies.get(lobbyId);
         if (lobby && lobby.host === socket.id) {
             if (lobby.players.length < 2) {
                 return socket.emit('error_message', 'Для старта игры нужно минимум 2 игрока');
             }
+            clearLobbyTimer(lobby);
             lobby.state = 'round_start';
             lobby.ratings = {};
-            lobby.revealedMovieIndex = -1;
+            lobby.timeLeft = 60;
+            lobby.timerRunning = false;
+            lobby.roundPoints = {};
+            lobby.roundDetails = {};
+            lobby.winner = null;
             
             // Выбираем 5 случайных фильмов
             const shuffled = [...ALL_MOVIES].sort(() => 0.5 - Math.random());
             lobby.movies = shuffled.slice(0, 5);
+            
+            io.to(lobbyId).emit('lobby_update', lobby);
+        }
+    });
+
+    // Запуск таймера хостом
+    socket.on('start_timer', (lobbyId) => {
+        const lobby = lobbies.get(lobbyId);
+        if (lobby && lobby.host === socket.id && lobby.state === 'round_start') {
+            if (lobby.timerRunning) return;
+            lobby.timerRunning = true;
+            io.to(lobbyId).emit('timer_tick', { timeLeft: lobby.timeLeft, isRunning: true });
+            io.to(lobbyId).emit('lobby_update', lobby);
+
+            lobby.timerInterval = setInterval(() => {
+                lobby.timeLeft--;
+                if (lobby.timeLeft <= 0) {
+                    endRound(lobbyId);
+                } else {
+                    io.to(lobbyId).emit('timer_tick', { timeLeft: lobby.timeLeft, isRunning: true });
+                }
+            }, 1000);
+        }
+    });
+
+    // Пауза таймера хостом
+    socket.on('pause_timer', (lobbyId) => {
+        const lobby = lobbies.get(lobbyId);
+        if (lobby && lobby.host === socket.id && lobby.state === 'round_start') {
+            clearLobbyTimer(lobby);
+            io.to(lobbyId).emit('timer_tick', { timeLeft: lobby.timeLeft, isRunning: false });
+            io.to(lobbyId).emit('lobby_update', lobby);
+        }
+    });
+
+    // Возобновление таймера хостом
+    socket.on('resume_timer', (lobbyId) => {
+        const lobby = lobbies.get(lobbyId);
+        if (lobby && lobby.host === socket.id && lobby.state === 'round_start') {
+            if (lobby.timerRunning || lobby.timeLeft <= 0) return;
+            lobby.timerRunning = true;
+            io.to(lobbyId).emit('timer_tick', { timeLeft: lobby.timeLeft, isRunning: true });
+            io.to(lobbyId).emit('lobby_update', lobby);
+
+            lobby.timerInterval = setInterval(() => {
+                lobby.timeLeft--;
+                if (lobby.timeLeft <= 0) {
+                    endRound(lobbyId);
+                } else {
+                    io.to(lobbyId).emit('timer_tick', { timeLeft: lobby.timeLeft, isRunning: true });
+                }
+            }, 1000);
+        }
+    });
+
+    // Досрочное завершение раунда хостом (без ожидания таймера)
+    socket.on('end_round_early', (lobbyId) => {
+        const lobby = lobbies.get(lobbyId);
+        if (lobby && lobby.host === socket.id && lobby.state === 'round_start') {
+            endRound(lobbyId);
+        }
+    });
+
+    // Выставление / изменение оценки (с защитой от миссклика)
+    socket.on('submit_rating', ({ lobbyId, movieId, rating }, callback) => {
+        const lobby = lobbies.get(lobbyId);
+        if (!lobby || lobby.state !== 'round_start') return;
+        if (!lobby.ratings[socket.id]) lobby.ratings[socket.id] = {};
+        
+        const userRatings = lobby.ratings[socket.id];
+        // Если кликнули на ту же оценку того же фильма -> снимаем оценку (сброс миссклика)
+        if (userRatings[movieId] === rating) {
+            delete userRatings[movieId];
+        } else {
+            // Если эта буква уже была у другого фильма -> снимаем с того фильма
+            for (const [mId, r] of Object.entries(userRatings)) {
+                if (r === rating) delete userRatings[mId];
+            }
+            userRatings[movieId] = rating;
+        }
+
+        // Отправляем прогресс готовности игроков (сколько фильмов оценено) без раскрытия букв
+        const progress = {};
+        lobby.players.forEach(p => {
+            progress[p.id] = Object.keys(lobby.ratings[p.id] || {}).length;
+        });
+        io.to(lobbyId).emit('ratings_progress', progress);
+
+        if (callback) callback({ success: true, myRatings: userRatings });
+    });
+
+    // Следующий раунд
+    socket.on('next_round', (lobbyId) => {
+        const lobby = lobbies.get(lobbyId);
+        if (lobby && lobby.host === socket.id) {
+            clearLobbyTimer(lobby);
+            lobby.state = 'round_start';
+            lobby.ratings = {};
+            lobby.timeLeft = 60;
+            lobby.timerRunning = false;
+            lobby.roundPoints = {};
+            lobby.roundDetails = {};
+            
+            const shuffled = [...ALL_MOVIES].sort(() => 0.5 - Math.random());
+            lobby.movies = shuffled.slice(0, 5);
+            
+            io.to(lobbyId).emit('lobby_update', lobby);
+        }
+    });
+
+    // Перезапуск игры с нуля
+    socket.on('restart_game', (lobbyId) => {
+        const lobby = lobbies.get(lobbyId);
+        if (lobby && lobby.host === socket.id) {
+            clearLobbyTimer(lobby);
+            lobby.state = 'lobby';
+            lobby.ratings = {};
+            lobby.timeLeft = 60;
+            lobby.timerRunning = false;
+            lobby.winner = null;
+            lobby.roundPoints = {};
+            lobby.roundDetails = {};
+            lobby.players.forEach(p => p.vp = 0);
             
             io.to(lobbyId).emit('lobby_update', lobby);
         }
@@ -138,7 +334,13 @@ io.on('connection', (socket) => {
             const player = lobby.players.find(p => p.id === socket.id);
             if (player) {
                 player.connected = false;
-                player.previousSocketId = socket.id; // чтобы хост мог вернуть права
+                player.previousSocketId = socket.id;
+                
+                // Если все отключились, чистим таймер
+                if (lobby.players.every(p => !p.connected)) {
+                    clearLobbyTimer(lobby);
+                }
+                
                 io.to(lobbyId).emit('lobby_update', lobby);
             }
         }
