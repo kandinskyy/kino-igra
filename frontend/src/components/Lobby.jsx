@@ -27,7 +27,6 @@ const Lobby = () => {
 
     const isHost = gameState.host === player?.id;
     const myPlayer = gameState.players.find(p => p.id === player?.id) || player;
-    const myColorObj = ALL_16_COLORS.find(c => c.hex.toLowerCase() === (myPlayer?.color || '').toLowerCase());
 
     const handleCopy = () => {
         navigator.clipboard.writeText(gameState.id);
@@ -105,14 +104,9 @@ const Lobby = () => {
 
             {/* Палитра выбора 16 цветов для игрока */}
             <div className="glass-panel" style={{ padding: '1.4rem 1.8rem' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-                        <span style={{ fontSize: '1.2rem' }}>🎨</span>
-                        <span style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--text-main)' }}>ВЫБОР ЦВЕТА И ЭМОДЗИ (16 ВАРИАНТОВ):</span>
-                    </div>
-                    <span style={{ fontSize: '0.85rem', color: myPlayer?.color, fontWeight: 700, display: 'flex', alignItems: 'center', gap: '6px' }}>
-                        Текущий: {myColorObj?.emoji || myPlayer?.emoji} {myColorObj?.name || myPlayer?.color}
-                    </span>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1rem' }}>
+                    <span style={{ fontSize: '1.2rem' }}>🎨</span>
+                    <span style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--text-main)' }}>ВЫБОР ЦВЕТА И ЭМОДЗИ (16 ВАРИАНТОВ):</span>
                 </div>
 
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(46px, 1fr))', gap: '0.85rem', justifyContent: 'center' }}>

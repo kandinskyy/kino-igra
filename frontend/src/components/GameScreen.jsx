@@ -684,25 +684,24 @@ const GameScreen = () => {
                     style={{
                         display: 'inline-flex',
                         alignItems: 'center',
-                        gap: '8px',
-                        padding: '10px 22px',
-                        borderRadius: '30px',
+                        justifyContent: 'center',
+                        padding: '8px 20px',
+                        borderRadius: '26px',
                         cursor: 'pointer',
                         border: copiedCode ? '1px solid #00e676' : '1px solid rgba(28, 160, 229, 0.4)',
-                        color: copiedCode ? '#00e676' : 'var(--accent-blue)',
+                        color: copiedCode ? '#00e676' : '#ffffff',
                         background: 'rgba(3, 10, 24, 0.85)',
                         boxShadow: copiedCode ? '0 0 20px rgba(0, 230, 118, 0.35)' : '0 4px 20px rgba(0, 0, 0, 0.45)',
-                        fontSize: '0.95rem',
-                        fontWeight: 700,
+                        fontSize: '1.05rem',
+                        fontWeight: 800,
+                        letterSpacing: '2.5px',
                         transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
-                        outline: 'none'
+                        outline: 'none',
+                        textShadow: copiedCode ? 'none' : '0 0 12px rgba(28, 160, 229, 0.5)'
                     }}
                     title="Нажмите, чтобы скопировать код комнаты"
                 >
-                    <span>{copiedCode ? '✓ СКОПИРОВАНО!' : '📋 КОД КОМНАТЫ:'}</span>
-                    <span style={{ color: '#ffffff', letterSpacing: '2px', fontWeight: 800, textShadow: '0 0 12px rgba(28, 160, 229, 0.5)' }}>
-                        {gameState.id}
-                    </span>
+                    {copiedCode ? '✓ СКОПИРОВАНО!' : gameState.id}
                 </button>
             </div>
         </div>
