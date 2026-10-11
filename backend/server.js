@@ -697,7 +697,7 @@ app.get('/api/health', (req, res) => res.status(200).json({ status: 'ok', uptime
 const distPath = path.join(__dirname, '../frontend/dist');
 if (fs.existsSync(distPath)) {
     app.use(express.static(distPath));
-    app.get('*', (req, res) => {
+    app.use((req, res) => {
         if (req.path.startsWith('/api') || req.path.startsWith('/socket.io')) {
             return res.status(404).json({ error: 'Endpoint not found' });
         }
