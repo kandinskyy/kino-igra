@@ -37,6 +37,10 @@ export default function YandexAd({
         }
     }, [blockId, containerId, isPlaceholderId]);
 
+    if (isPlaceholderId) {
+        return null;
+    }
+
     return (
         <div 
             style={{ 
