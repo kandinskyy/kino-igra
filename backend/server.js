@@ -805,7 +805,9 @@ app.get('/healthz', (req, res) => res.status(200).send('OK'));
 app.get('/api/health', (req, res) => res.status(200).json({ status: 'ok', uptime: process.uptime() }));
 
 // Раздача статики собранного фронтенда
-const distPath = path.join(__dirname, '../frontend/dist');
+const distPath = fs.existsSync(path.join(__dirname, 'dist'))
+    ? path.join(__dirname, 'dist')
+    : path.join(__dirname, '../frontend/dist');
 if (fs.existsSync(distPath)) {
     app.use(express.static(distPath));
     app.use((req, res) => {
