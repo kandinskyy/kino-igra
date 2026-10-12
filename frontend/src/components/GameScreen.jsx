@@ -833,23 +833,9 @@ const GameScreen = () => {
             {/* ИТОГИ РАУНДА В ФАЗЕ ВСКРЫТИЯ */}
             {gameState.state === 'reveal' && (
                 <div className="glass-panel" style={{ padding: '1.5rem', textAlign: 'center', marginTop: '1rem' }}>
-                    {gameState.winner ? (
-                        <div style={{ marginBottom: '1.2rem', padding: '14px 22px', borderRadius: '14px', background: 'rgba(255, 215, 0, 0.12)', border: '1px solid rgba(255, 215, 0, 0.55)', boxShadow: '0 0 25px rgba(255, 215, 0, 0.25)', display: 'inline-block' }}>
-                            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', flexWrap: 'wrap' }}>
-                                <span style={{ fontSize: '1.8rem' }}>🏆</span>
-                                <span style={{ fontSize: '1.35rem', fontWeight: 800, color: '#ffd700' }}>
-                                    Победитель определён: {gameState.winner.nickname} ({gameState.winner.vp} ПО)!
-                                </span>
-                            </div>
-                            <div style={{ color: '#e2e8f0', fontSize: '0.95rem', marginTop: '6px' }}>
-                                {isHost ? 'Все оценки вскрыты! Нажмите кнопку «🏆 Итоги игры» наверху для перехода к финальной таблице.' : 'Все оценки вскрыты! Ожидаем, пока ведущий нажмёт «Итоги игры».'}
-                            </div>
-                        </div>
-                    ) : (
-                        <h3 style={{ fontSize: '1.4rem', margin: '0 0 0.8rem', color: 'var(--accent-blue)' }}>
-                            🌧️ Раунд завершён! Очки начислены за все совпадения.
-                        </h3>
-                    )}
+                    <h3 style={{ fontSize: '1.4rem', margin: '0 0 0.8rem', color: 'var(--accent-blue)' }}>
+                        🌧️ Раунд завершён! Очки начислены за все совпадения.
+                    </h3>
                     <div style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem', flexWrap: 'wrap' }}>
                         {sortedPlayers.map(p => (
                             <div key={p.id} style={{ fontSize: '1.05rem', display: 'flex', alignItems: 'center', gap: '6px' }}>

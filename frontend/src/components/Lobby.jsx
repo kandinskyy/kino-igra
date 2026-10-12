@@ -117,7 +117,6 @@ const Lobby = () => {
                                 e.currentTarget.style.boxShadow = copied ? '0 0 20px rgba(0, 230, 118, 0.35)' : '0 0 16px rgba(28, 160, 229, 0.25)';
                             }}
                         >
-                            <span style={{ fontSize: '1.4rem', fontWeight: 800, color: 'var(--text-muted)' }}>КОД:</span>
                             <span style={{ 
                                 fontSize: '2.2rem', 
                                 fontWeight: 900, 
@@ -125,18 +124,7 @@ const Lobby = () => {
                                 textShadow: copied ? '0 0 16px rgba(0, 230, 118, 0.7)' : '0 0 16px rgba(28, 160, 229, 0.6)',
                                 letterSpacing: '2px'
                             }}>
-                                {gameState.id}
-                            </span>
-                            <span style={{ 
-                                fontSize: '0.85rem', 
-                                color: copied ? '#00e676' : 'var(--text-muted)', 
-                                fontWeight: 700,
-                                background: 'rgba(0,0,0,0.3)',
-                                padding: '3px 8px',
-                                borderRadius: '8px',
-                                border: '1px solid rgba(255,255,255,0.08)'
-                            }}>
-                                {copied ? '✓ Скопировано!' : '📋 Нажмите для копирования'}
+                                {copied ? '✓ Скопировано!' : gameState.id}
                             </span>
                         </div>
                     </div>

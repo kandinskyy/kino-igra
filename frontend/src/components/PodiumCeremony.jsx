@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import ConfettiCannons from './ConfettiCannons';
 
 export default function PodiumCeremony({
@@ -8,6 +8,7 @@ export default function PodiumCeremony({
     onRestartGame,
     onLeaveGame,
 }) {
+    const leaderboardRef = useRef(null);
     // Сортировка игроков по очкам (по убыванию)
     const sortedPlayers = [...players].sort((a, b) => b.vp - a.vp);
 
@@ -65,10 +66,15 @@ export default function PodiumCeremony({
         };
     }, [totalPlaces]);
 
-    // Кнопка быстрого пропуска к полной таблице
-    const handleSkip = () => {
+    // Переход к полной таблице лидеров
+    const handleGoToLeaderboard = () => {
         setStep(4);
-        setConfettiTrigger(Date.now());
+        if (!confettiTrigger) {
+            setConfettiTrigger(Date.now());
+        }
+        setTimeout(() => {
+            leaderboardRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 50);
     };
 
     // Перезапуск анимации церемонии
@@ -140,39 +146,38 @@ export default function PodiumCeremony({
                     zIndex: 0
                 }} />
 
-                {/* Кнопка "Пропустить" / "Повторить" в верхнем углу */}
+                {/* Кнопка "Таблица лидеров" в верхнем углу */}
                 <div style={{ position: 'absolute', top: '16px', right: '16px', zIndex: 10 }}>
-                    {!showFullTable ? (
-                        <button
-                            className="btn-secondary"
-                            onClick={handleSkip}
-                            style={{
-                                padding: '6px 14px',
-                                fontSize: '0.85rem',
-                                color: 'var(--text-muted)',
-                                borderColor: 'rgba(255, 255, 255, 0.15)',
-                                background: 'rgba(5, 15, 30, 0.6)'
-                            }}
-                            title="Пропустить анимацию и сразу открыть результаты"
-                        >
-                            ⏭️ Пропустить
-                        </button>
-                    ) : (
-                        <button
-                            className="btn-secondary"
-                            onClick={handleReplay}
-                            style={{
-                                padding: '6px 14px',
-                                fontSize: '0.85rem',
-                                color: 'var(--accent-a)',
-                                borderColor: 'rgba(0, 229, 255, 0.3)',
-                                background: 'rgba(5, 15, 30, 0.6)'
-                            }}
-                            title="Запустить церемонию награждения заново"
-                        >
-                            🔄 Повторить церемонию
-                        </button>
-                    )}
+                    <button
+                        className="btn-secondary"
+                        onClick={handleGoToLeaderboard}
+                        style={{
+                            padding: '8px 18px',
+                            fontSize: '0.92rem',
+                            fontWeight: 700,
+                            color: '#00e5ff',
+                            borderColor: 'rgba(0, 229, 255, 0.45)',
+                            background: 'rgba(5, 15, 30, 0.85)',
+                            boxShadow: '0 0 15px rgba(0, 229, 255, 0.25)',
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '6px',
+                            borderRadius: '12px',
+                            cursor: 'pointer',
+                            transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)'
+                        }}
+                        onMouseEnter={(e) => {
+                            e.currentTarget.style.transform = 'translateY(-2px)';
+                            e.currentTarget.style.boxShadow = '0 0 22px rgba(0, 229, 255, 0.45)';
+                        }}
+                        onMouseLeave={(e) => {
+                            e.currentTarget.style.transform = 'translateY(0)';
+                            e.currentTarget.style.boxShadow = '0 0 15px rgba(0, 229, 255, 0.25)';
+                        }}
+                        title="Перейти к итоговой таблице лидеров"
+                    >
+                        📊 Таблица лидеров
+                    </button>
                 </div>
 
                 <div style={{ position: 'relative', zIndex: 1 }}>
@@ -630,12 +635,16 @@ export default function PodiumCeremony({
             {/* ==================================================== */}
             {/* ИТОГОВАЯ ТАБЛИЦА ОЧКОВ ВСЕХ ИГРОКОВ (ПОЯВЛЯЕТСЯ ПОСЛЕ АНИМАЦИИ) */}
             {/* ==================================================== */}
-            <div style={{
-                opacity: showFullTable ? 1 : 0,
-                transform: showFullTable ? 'translateY(0)' : 'translateY(30px)',
-                transition: 'all 0.8s cubic-bezier(0.16, 1, 0.3, 1)',
-                pointerEvents: showFullTable ? 'auto' : 'none'
-            }}>
+            <div 
+                ref={leaderboardRef}
+                id="leaderboard-section"
+                style={{
+                    opacity: showFullTable ? 1 : 0,
+                    transform: showFullTable ? 'translateY(0)' : 'translateY(30px)',
+                    transition: 'all 0.8s cubic-bezier(0.16, 1, 0.3, 1)',
+                    pointerEvents: showFullTable ? 'auto' : 'none'
+                }}
+            >
                 <div className="glass-panel" style={{
                     padding: '2.5rem',
                     border: '1px solid var(--surface-border-glow)',
@@ -744,6 +753,22 @@ export default function PodiumCeremony({
                             }}
                         >
                             🚪 Выйти в меню
+                        </button>
+                        <button
+                            className="btn-secondary"
+                            onClick={() => {
+                                window.scrollTo({ top: 0, behavior: 'smooth' });
+                                handleReplay();
+                            }}
+                            style={{
+                                padding: '16px 24px',
+                                fontSize: '1.1rem',
+                                borderColor: 'rgba(255, 215, 0, 0.35)',
+                                color: '#ffd700'
+                            }}
+                            title="Посмотреть церемонию награждения заново"
+                        >
+                            🔄 Повторить церемонию
                         </button>
                     </div>
                 </div>
