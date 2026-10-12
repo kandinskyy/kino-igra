@@ -49,6 +49,29 @@ try {
     console.error('Failed to load movies:', e.message);
 }
 
+// Выбор 5 фильмов для раунда без повторений в рамках одного матча
+function pickMoviesForRound(lobby) {
+    if (!lobby.usedMovieIds) lobby.usedMovieIds = [];
+
+    // Фильтруем фильмы, которые еще не участвовали в текущем матче
+    let available = ALL_MOVIES.filter(m => !lobby.usedMovieIds.includes(m.id));
+
+    // Если доступных фильмов осталось меньше 5, сбрасываем историю матча
+    if (available.length < 5) {
+        lobby.usedMovieIds = [];
+        available = [...ALL_MOVIES];
+    }
+
+    // Случайно перемешиваем доступные фильмы
+    const shuffled = [...available].sort(() => 0.5 - Math.random());
+    const selected = shuffled.slice(0, 5);
+
+    // Фиксируем выпавшие фильмы в списке использованных в матче
+    selected.forEach(m => lobby.usedMovieIds.push(m.id));
+
+    return selected;
+}
+
 // Генерация случайного кода из 6 символов
 const generateCode = () => Math.random().toString(36).substring(2, 8).toUpperCase();
 
@@ -220,6 +243,7 @@ io.on('connection', (socket) => {
             state: 'lobby', // lobby, round_start, reveal, game_over
             allColors: [...COLORS],
             movies: [],
+            usedMovieIds: [],
             ratings: {}, // { playerId: { movieId: 'S', ... } }
             timeLeft: 60,
             timerRunning: false,
@@ -345,9 +369,9 @@ io.on('connection', (socket) => {
             lobby.roundDetails = {};
             lobby.winner = null;
             
-            // Выбираем 5 случайных фильмов
-            const shuffled = [...ALL_MOVIES].sort(() => 0.5 - Math.random());
-            lobby.movies = shuffled.slice(0, 5);
+            // Выбираем 5 случайных фильмов без повторений в матче
+            lobby.usedMovieIds = [];
+            lobby.movies = pickMoviesForRound(lobby);
             
             // Сбрасываем счетчики выбора фильмов
             const resetProgress = {};
@@ -480,8 +504,8 @@ io.on('connection', (socket) => {
             lobby.isFinalRound = false;
             lobby.winner = null;
             
-            const shuffled = [...ALL_MOVIES].sort(() => 0.5 - Math.random());
-            lobby.movies = shuffled.slice(0, 5);
+            // Выбираем 5 случайных фильмов без повторений в матче
+            lobby.movies = pickMoviesForRound(lobby);
             
             // Сбрасываем счетчики выбора фильмов при старте нового раунда
             const resetProgress = {};
@@ -515,6 +539,7 @@ io.on('connection', (socket) => {
             lobby.roundPoints = {};
             lobby.roundDetails = {};
             lobby.roundAverages = {};
+            lobby.usedMovieIds = [];
             lobby.players.forEach(p => p.vp = 0);
             
             io.to(lobbyId).emit('lobby_update', lobby);
