@@ -115,11 +115,11 @@ const MainMenu = () => {
                             <input 
                                 type="number" 
                                 className="input-field" 
-                                style={{ width: '70px', textAlign: 'center', padding: '6px 8px', fontWeight: 700 }}
+                                style={{ width: '85px', textAlign: 'center', padding: '6px 8px', fontWeight: 700 }}
                                 value={targetVP} 
                                 onChange={(e) => setTargetVP(Number(e.target.value))}
                                 min={10} 
-                                max={99}
+                                max={999}
                             />
                             <span style={{ color: 'var(--accent-blue)', fontWeight: 700 }}>ПО</span>
                         </div>

@@ -100,11 +100,39 @@ function clearLobbyTimer(lobby) {
     lobby.timerRunning = false;
 }
 
+function fillRemainingRatingsRandomly(lobby) {
+    const allRatings = ['S', 'A', 'B', 'C', 'D'];
+    lobby.players.forEach(p => {
+        if (!lobby.ratings[p.id]) {
+            lobby.ratings[p.id] = {};
+        }
+        const userRatings = lobby.ratings[p.id];
+        const usedRatings = new Set(Object.values(userRatings));
+        const unusedRatings = allRatings.filter(r => !usedRatings.has(r));
+        
+        const unratedMovies = lobby.movies.filter(m => !userRatings[m.id]);
+        if (unratedMovies.length > 0 && unusedRatings.length > 0) {
+            for (let i = unusedRatings.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [unusedRatings[i], unusedRatings[j]] = [unusedRatings[j], unusedRatings[i]];
+            }
+            unratedMovies.forEach(m => {
+                if (unusedRatings.length > 0) {
+                    userRatings[m.id] = unusedRatings.pop();
+                }
+            });
+        }
+    });
+}
+
 function endRound(lobbyId) {
     const lobby = lobbies.get(lobbyId);
     if (!lobby || lobby.state !== 'round_start') return;
     
     clearLobbyTimer(lobby);
+
+    // Автоматически рандомим оставшиеся оценки для игроков, которые не успели
+    fillRemainingRatingsRandomly(lobby);
 
     // Подсчет очков за совпадения
     const roundPoints = {};
@@ -141,18 +169,39 @@ function endRound(lobbyId) {
         p.vp = (p.vp || 0) + (roundPoints[p.id] || 0);
     });
 
+    // Средний балл для каждого фильма: S=5, A=4, B=3, C=2, D=1
+    const roundAverages = {};
+    const RATING_NUMBERS = { S: 5, A: 4, B: 3, C: 2, D: 1 };
+    lobby.movies.forEach(movie => {
+        let total = 0;
+        let count = 0;
+        lobby.players.forEach(p => {
+            const r = lobby.ratings[p.id]?.[movie.id];
+            if (r && RATING_NUMBERS[r]) {
+                total += RATING_NUMBERS[r];
+                count++;
+            }
+        });
+        roundAverages[movie.id] = count > 0 ? (total / count).toFixed(1) : null;
+    });
+
     lobby.roundPoints = roundPoints;
     lobby.roundDetails = roundDetails;
+    lobby.roundAverages = roundAverages;
 
     // Проверяем победителя
     const reachedTarget = lobby.players.filter(p => p.vp >= lobby.targetVP);
     if (reachedTarget.length > 0) {
         reachedTarget.sort((a, b) => b.vp - a.vp);
         lobby.winner = reachedTarget[0];
-        lobby.state = 'game_over';
+        lobby.isFinalRound = true;
     } else {
-        lobby.state = 'reveal';
+        lobby.winner = null;
+        lobby.isFinalRound = false;
     }
+
+    // Всегда остаемся в 'reveal', чтобы все участники увидели оценки и средний балл
+    lobby.state = 'reveal';
 
     io.to(lobbyId).emit('lobby_update', lobby);
 }
@@ -167,7 +216,7 @@ io.on('connection', (socket) => {
             id: lobbyId,
             host: socket.id,
             players: [],
-            targetVP: targetVP || 30,
+            targetVP: Math.min(Math.max(Number(targetVP) || 30, 5), 999),
             state: 'lobby', // lobby, round_start, reveal, game_over
             allColors: [...COLORS],
             movies: [],
@@ -177,7 +226,9 @@ io.on('connection', (socket) => {
             timerInterval: null,
             roundPoints: {},
             roundDetails: {},
+            roundAverages: {},
             winner: null,
+            isFinalRound: false,
             pausedDueToDisconnect: false,
             disconnectedPlayerName: null,
             disconnectedPlayerId: null,
@@ -365,22 +416,43 @@ io.on('connection', (socket) => {
         }
     });
 
-    // Выставление / изменение оценки (с защитой от миссклика)
+    // Выставление / изменение оценки (со свапом оценок и авто-заполнением 5-го фильма)
     socket.on('submit_rating', ({ lobbyId, movieId, rating }, callback) => {
         const lobby = lobbies.get(lobbyId);
         if (!lobby || lobby.state !== 'round_start') return;
         if (!lobby.ratings[socket.id]) lobby.ratings[socket.id] = {};
         
         const userRatings = lobby.ratings[socket.id];
-        // Если кликнули на ту же оценку того же фильма -> снимаем оценку (сброс миссклика)
-        if (userRatings[movieId] === rating) {
-            delete userRatings[movieId];
-        } else {
-            // Если эта буква уже была у другого фильма -> снимаем с того фильма
-            for (const [mId, r] of Object.entries(userRatings)) {
-                if (r === rating) delete userRatings[mId];
-            }
+        const movieWithRating = Object.keys(userRatings).find(mId => userRatings[mId] === rating);
+        const oldRatingOfCurrentMovie = userRatings[movieId];
+
+        if (movieWithRating && movieWithRating !== movieId) {
+            // Свап: если буква уже стояла у другого фильма, меняем их местами
             userRatings[movieId] = rating;
+            if (oldRatingOfCurrentMovie) {
+                userRatings[movieWithRating] = oldRatingOfCurrentMovie;
+            } else {
+                delete userRatings[movieWithRating];
+            }
+        } else if (oldRatingOfCurrentMovie === rating) {
+            // Если все 5 оценок уже выставлены, пользователь меняет их местами свапом.
+            // Но если выставлено меньше 5, можно снять оценку повторным кликом
+            if (Object.keys(userRatings).length < 5) {
+                delete userRatings[movieId];
+            }
+        } else {
+            userRatings[movieId] = rating;
+        }
+
+        // Если оценено 4 из 5 фильмов -> оставшаяся оценка автоматически выставляется последнему фильму
+        const ratedKeys = Object.keys(userRatings).filter(id => userRatings[id]);
+        if (ratedKeys.length === 4 && lobby.movies.length === 5) {
+            const unratedMovie = lobby.movies.find(m => !userRatings[m.id]);
+            const used = Object.values(userRatings);
+            const remaining = ['S', 'A', 'B', 'C', 'D'].find(r => !used.includes(r));
+            if (unratedMovie && remaining) {
+                userRatings[unratedMovie.id] = remaining;
+            }
         }
 
         // Отправляем прогресс готовности игроков (сколько фильмов оценено) без раскрытия букв
@@ -404,6 +476,9 @@ io.on('connection', (socket) => {
             lobby.timerRunning = false;
             lobby.roundPoints = {};
             lobby.roundDetails = {};
+            lobby.roundAverages = {};
+            lobby.isFinalRound = false;
+            lobby.winner = null;
             
             const shuffled = [...ALL_MOVIES].sort(() => 0.5 - Math.random());
             lobby.movies = shuffled.slice(0, 5);
@@ -413,6 +488,15 @@ io.on('connection', (socket) => {
             lobby.players.forEach(p => { resetProgress[p.id] = 0; });
             io.to(lobbyId).emit('ratings_progress', resetProgress);
 
+            io.to(lobbyId).emit('lobby_update', lobby);
+        }
+    });
+
+    // Хост нажимает "Итоги игры" после финального раунда для открытия финальной таблицы
+    socket.on('finish_game', (lobbyId) => {
+        const lobby = lobbies.get(lobbyId);
+        if (lobby && lobby.host === socket.id && lobby.winner) {
+            lobby.state = 'game_over';
             io.to(lobbyId).emit('lobby_update', lobby);
         }
     });
@@ -427,8 +511,10 @@ io.on('connection', (socket) => {
             lobby.timeLeft = 60;
             lobby.timerRunning = false;
             lobby.winner = null;
+            lobby.isFinalRound = false;
             lobby.roundPoints = {};
             lobby.roundDetails = {};
+            lobby.roundAverages = {};
             lobby.players.forEach(p => p.vp = 0);
             
             io.to(lobbyId).emit('lobby_update', lobby);

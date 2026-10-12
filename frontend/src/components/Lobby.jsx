@@ -92,20 +92,57 @@ const Lobby = () => {
                     <span className="cloud-logo" style={{ fontSize: '2.4rem' }}>🌧️</span>
                     <div>
                         <div style={{ color: 'var(--text-muted)', fontSize: '0.85rem', fontWeight: 600 }}>КОМНАТА ОЖИДАНИЯ</div>
-                        <h2 style={{ fontSize: '2.2rem', margin: 0, fontWeight: 800 }}>
-                            КОД: <span style={{ color: 'var(--accent-blue)', textShadow: '0 0 16px rgba(28, 160, 229, 0.6)' }}>{gameState.id}</span>
-                        </h2>
+                        <div 
+                            onClick={handleCopy}
+                            title="Нажмите, чтобы скопировать код комнаты"
+                            style={{
+                                display: 'inline-flex',
+                                alignItems: 'center',
+                                gap: '8px',
+                                cursor: 'pointer',
+                                background: copied ? 'rgba(0, 230, 118, 0.15)' : 'rgba(28, 160, 229, 0.12)',
+                                border: copied ? '1px solid #00e676' : '1px solid rgba(28, 160, 229, 0.4)',
+                                padding: '6px 14px',
+                                borderRadius: '12px',
+                                marginTop: '4px',
+                                boxShadow: copied ? '0 0 20px rgba(0, 230, 118, 0.35)' : '0 0 16px rgba(28, 160, 229, 0.25)',
+                                transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)'
+                            }}
+                            onMouseEnter={(e) => {
+                                e.currentTarget.style.transform = 'translateY(-2px)';
+                                e.currentTarget.style.boxShadow = '0 0 25px rgba(28, 160, 229, 0.5)';
+                            }}
+                            onMouseLeave={(e) => {
+                                e.currentTarget.style.transform = 'translateY(0)';
+                                e.currentTarget.style.boxShadow = copied ? '0 0 20px rgba(0, 230, 118, 0.35)' : '0 0 16px rgba(28, 160, 229, 0.25)';
+                            }}
+                        >
+                            <span style={{ fontSize: '1.4rem', fontWeight: 800, color: 'var(--text-muted)' }}>КОД:</span>
+                            <span style={{ 
+                                fontSize: '2.2rem', 
+                                fontWeight: 900, 
+                                color: copied ? '#00e676' : 'var(--accent-blue)', 
+                                textShadow: copied ? '0 0 16px rgba(0, 230, 118, 0.7)' : '0 0 16px rgba(28, 160, 229, 0.6)',
+                                letterSpacing: '2px'
+                            }}>
+                                {gameState.id}
+                            </span>
+                            <span style={{ 
+                                fontSize: '0.85rem', 
+                                color: copied ? '#00e676' : 'var(--text-muted)', 
+                                fontWeight: 700,
+                                background: 'rgba(0,0,0,0.3)',
+                                padding: '3px 8px',
+                                borderRadius: '8px',
+                                border: '1px solid rgba(255,255,255,0.08)'
+                            }}>
+                                {copied ? '✓ Скопировано!' : '📋 Нажмите для копирования'}
+                            </span>
+                        </div>
                     </div>
                 </div>
 
                 <div style={{ display: 'flex', gap: '0.8rem', alignItems: 'center', flexWrap: 'wrap' }}>
-                    <button 
-                        className="btn-secondary" 
-                        onClick={handleCopy} 
-                        style={{ borderColor: copied ? '#00e676' : 'rgba(28, 160, 229, 0.4)', color: copied ? '#00e676' : 'var(--accent-blue)' }}
-                    >
-                        {copied ? '✓ СКОПИРОВАНО!' : '📋 Скопировать код'}
-                    </button>
 
                     {isHost && (
                         <button

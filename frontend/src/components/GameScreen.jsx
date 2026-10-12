@@ -17,19 +17,7 @@ const GameScreen = () => {
     // Прогресс других игроков: { [playerId]: countOfRatedMovies }
     const [progress, setProgress] = useState({});
 
-    // Режим стримера (сохраняется в localStorage)
-    const [streamerMode, setStreamerMode] = useState(() => {
-        return localStorage.getItem('kino_streamer_mode') === 'true';
-    });
 
-    const toggleStreamerMode = () => {
-        setStreamerMode((prev) => {
-            const next = !prev;
-            localStorage.setItem('kino_streamer_mode', String(next));
-            showToast(next ? 'Режим стримера включён: буквы на постерах скрыты' : 'Режим стримера выключен', 'info');
-            return next;
-        });
-    };
 
     const isHost = gameState.host === player?.id;
 
@@ -173,6 +161,11 @@ const GameScreen = () => {
         socket.emit('next_round', gameState.id);
     };
 
+    // Переход к финальной таблице лидеров (хост)
+    const handleFinishGame = () => {
+        socket.emit('finish_game', gameState.id);
+    };
+
     // Перезапуск игры (хост)
     const handleRestartGame = () => {
         setMyRatings({});
@@ -187,21 +180,41 @@ const GameScreen = () => {
         setTimeout(() => setCopiedCode(false), 2000);
     };
 
-    // Выставление / изменение оценки с защитой от миссклика
+    // Выставление / изменение оценки (со свапом оценок и авто-заполнением 5-го фильма)
     const handleRating = (movieId, rating) => {
         if (gameState.state !== 'round_start') return;
 
         const newRatings = { ...myRatings };
+        const movieWithRating = Object.keys(newRatings).find(mId => newRatings[mId] === rating);
+        const oldRatingOfCurrentMovie = newRatings[movieId];
 
-        // 1. Если кликнули на уже выбранную букву у этого фильма -> снимаем её (сброс)
-        if (newRatings[movieId] === rating) {
-            delete newRatings[movieId];
-        } else {
-            // 2. Если буква уже стояла на другом фильме -> убираем её оттуда
-            for (const [mId, r] of Object.entries(newRatings)) {
-                if (r === rating) delete newRatings[mId];
-            }
+        if (movieWithRating && movieWithRating !== movieId) {
+            // Свап: если буква уже стояла у другого фильма, меняем их местами
             newRatings[movieId] = rating;
+            if (oldRatingOfCurrentMovie) {
+                newRatings[movieWithRating] = oldRatingOfCurrentMovie;
+            } else {
+                delete newRatings[movieWithRating];
+            }
+        } else if (oldRatingOfCurrentMovie === rating) {
+            // Если все 5 оценок уже выставлены, пользователь меняет их местами свапом.
+            // Но если выставлено меньше 5, можно отменить выбор
+            if (Object.keys(newRatings).length < 5) {
+                delete newRatings[movieId];
+            }
+        } else {
+            newRatings[movieId] = rating;
+        }
+
+        // Если оценено 4 из 5 фильмов -> оставшаяся оценка автоматически выставляется последнему фильму
+        const ratedKeys = Object.keys(newRatings).filter(id => newRatings[id]);
+        if (ratedKeys.length === 4 && gameState.movies?.length === 5) {
+            const unratedMovie = gameState.movies.find(m => !newRatings[m.id]);
+            const used = Object.values(newRatings);
+            const remaining = ['S', 'A', 'B', 'C', 'D'].find(r => !used.includes(r));
+            if (unratedMovie && remaining) {
+                newRatings[unratedMovie.id] = remaining;
+            }
         }
 
         setMyRatings(newRatings);
@@ -221,6 +234,20 @@ const GameScreen = () => {
     const availableRatings = ['S', 'A', 'B', 'C', 'D'];
     const getUsedRatings = () => Object.values(myRatings);
     const ratedCount = Object.keys(myRatings).length;
+
+    const RATING_NUMBERS = { S: 5, A: 4, B: 3, C: 2, D: 1 };
+    const getMovieAvg = (movieId) => {
+        if (gameState.roundAverages?.[movieId]) return gameState.roundAverages[movieId];
+        const breakdown = gameState.roundDetails?.[movieId] || {};
+        let total = 0, count = 0;
+        Object.entries(breakdown).forEach(([r, pIds]) => {
+            if (RATING_NUMBERS[r]) {
+                total += RATING_NUMBERS[r] * pIds.length;
+                count += pIds.length;
+            }
+        });
+        return count > 0 ? (total / count).toFixed(1) : null;
+    };
 
     const getRatingColor = (r) => {
         switch (r) {
@@ -537,35 +564,30 @@ const GameScreen = () => {
                         </>
                     )}
 
-                    {/* В режиме раскрытия (reveal) кнопка перехода к следующему раунду */}
+                    {/* В режиме раскрытия (reveal) кнопка перехода к следующему раунду или итогам игры */}
                     {gameState.state === 'reveal' && isHost && (
-                        <button className="btn-primary" onClick={handleNextRound} style={{ padding: '12px 28px', fontSize: '1.05rem' }}>
-                            🌧️ Следующий раунд ➔
-                        </button>
+                        gameState.winner ? (
+                            <button 
+                                className="btn-primary" 
+                                onClick={handleFinishGame} 
+                                style={{ 
+                                    padding: '12px 28px', 
+                                    fontSize: '1.05rem',
+                                    background: 'linear-gradient(135deg, #ffd700 0%, #ff9900 100%)',
+                                    color: '#000000',
+                                    boxShadow: '0 0 25px rgba(255, 215, 0, 0.55)',
+                                    fontWeight: 900
+                                }}
+                                title="Перейти к итоговой таблице и награждению победителя"
+                            >
+                                🏆 Итоги игры ➔
+                            </button>
+                        ) : (
+                            <button className="btn-primary" onClick={handleNextRound} style={{ padding: '12px 28px', fontSize: '1.05rem' }}>
+                                🌧️ Следующий раунд ➔
+                            </button>
+                        )
                     )}
-
-                    {/* Переключатель "Режим стримера" в правом углу */}
-                    <button
-                        onClick={toggleStreamerMode}
-                        className="btn-secondary"
-                        style={{
-                            display: 'inline-flex',
-                            alignItems: 'center',
-                            gap: '6px',
-                            padding: '8px 14px',
-                            fontSize: '0.88rem',
-                            fontWeight: 700,
-                            borderColor: streamerMode ? '#a855f7' : 'rgba(28, 160, 229, 0.3)',
-                            background: streamerMode ? 'rgba(168, 85, 247, 0.22)' : 'rgba(28, 160, 229, 0.08)',
-                            color: streamerMode ? '#d8b4fe' : 'var(--text-main)',
-                            boxShadow: streamerMode ? '0 0 16px rgba(168, 85, 247, 0.45)' : 'none',
-                            transition: 'all 0.25s'
-                        }}
-                        title={streamerMode ? 'Режим стримера активен: буквы ранга на постерах скрыты от зрителей' : 'Включить режим стримера (скроет буквы на постерах)'}
-                    >
-                        <span>{streamerMode ? '🟣' : '👁️'}</span>
-                        <span>Режим стримера: {streamerMode ? 'ВКЛ' : 'ВЫКЛ'}</span>
-                    </button>
 
                     {/* Кнопка закрытия комнаты хостом */}
                     {isHost && (
@@ -619,14 +641,15 @@ const GameScreen = () => {
                 {gameState.movies?.map((movie) => {
                     const currentRating = myRatings[movie.id];
                     const roundBreakdown = gameState.roundDetails?.[movie.id] || {};
+                    const movieAvg = getMovieAvg(movie.id);
 
                     return (
                         <div key={movie.id} className="glass-panel" style={{ 
                             display: 'flex', 
                             flexDirection: 'column', 
                             padding: '1.1rem',
-                            border: currentRating ? (streamerMode ? '1px solid rgba(168, 85, 247, 0.7)' : `1px solid ${getRatingColor(currentRating)}`) : '1px solid var(--surface-border)',
-                            boxShadow: currentRating ? (streamerMode ? '0 8px 30px rgba(168, 85, 247, 0.3)' : `0 8px 30px ${getRatingColor(currentRating)}25`) : '0 10px 30px rgba(0,0,0,0.5)',
+                            border: currentRating ? `1px solid ${getRatingColor(currentRating)}` : '1px solid var(--surface-border)',
+                            boxShadow: currentRating ? `0 8px 30px ${getRatingColor(currentRating)}25` : '0 10px 30px rgba(0,0,0,0.5)',
                             transition: 'all 0.3s ease'
                         }}>
                             
@@ -650,7 +673,39 @@ const GameScreen = () => {
                                     style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover' }} 
                                 />
 
-                                {/* Выбранный бейдж ранга в углу постера (в режиме стримера буква скрыта от зрителей) */}
+                                {/* Средняя оценка пользователей (появляется в левом углу постера после завершения раунда) */}
+                                {gameState.state === 'reveal' && (
+                                    <div 
+                                        style={{
+                                            position: 'absolute',
+                                            top: '10px',
+                                            left: '10px',
+                                            padding: '5px 10px',
+                                            borderRadius: '10px',
+                                            background: 'rgba(3, 10, 24, 0.92)',
+                                            backdropFilter: 'blur(8px)',
+                                            border: '1px solid rgba(255, 215, 0, 0.6)',
+                                            boxShadow: '0 0 16px rgba(255, 215, 0, 0.35)',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            gap: '5px',
+                                            zIndex: 3
+                                        }}
+                                        title={`Средняя оценка всех игроков: ${movieAvg ? `${movieAvg} / 5` : 'Нет оценок'}`}
+                                    >
+                                        <span style={{ fontSize: '1rem' }}>⭐</span>
+                                        <span style={{ 
+                                            fontSize: '0.95rem', 
+                                            fontWeight: 800, 
+                                            color: '#ffd700',
+                                            letterSpacing: '0.5px'
+                                        }}>
+                                            {movieAvg ?? '—'}
+                                        </span>
+                                    </div>
+                                )}
+
+                                {/* Выбранный бейдж ранга в правом углу постера */}
                                 {currentRating && (
                                     <div 
                                         style={{
@@ -660,20 +715,20 @@ const GameScreen = () => {
                                             width: '42px',
                                             height: '42px',
                                             borderRadius: '12px',
-                                            background: streamerMode ? 'linear-gradient(135deg, #a855f7 0%, #7e22ce 100%)' : getRatingColor(currentRating),
-                                            color: streamerMode ? '#ffffff' : '#000',
+                                            background: getRatingColor(currentRating),
+                                            color: '#000',
                                             display: 'flex',
                                             alignItems: 'center',
                                             justifyContent: 'center',
                                             fontWeight: 800,
-                                            fontSize: streamerMode ? '1.25rem' : '1.5rem',
-                                            boxShadow: streamerMode ? '0 0 20px rgba(168, 85, 247, 0.85)' : `0 0 20px ${getRatingColor(currentRating)}`,
+                                            fontSize: '1.5rem',
+                                            boxShadow: `0 0 20px ${getRatingColor(currentRating)}`,
                                             zIndex: 2,
                                             transition: 'all 0.2s'
                                         }}
-                                        title={streamerMode ? 'Режим стримера: оценка выставлена, буква скрыта от зрителей' : `Выставлен ранг: ${currentRating}`}
+                                        title={`Выставлен ранг: ${currentRating}`}
                                     >
-                                        {streamerMode ? '🔒' : currentRating}
+                                        {currentRating}
                                     </div>
                                 )}
                             </div>
@@ -748,8 +803,13 @@ const GameScreen = () => {
                                     gap: '0.5rem',
                                     border: '1px solid var(--surface-border)'
                                 }}>
-                                    <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', fontWeight: 700, textTransform: 'uppercase', textAlign: 'center' }}>
-                                        Оценки игроков:
+                                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0 4px', fontSize: '0.8rem', color: 'var(--text-muted)', fontWeight: 700, textTransform: 'uppercase' }}>
+                                        <span>Оценки игроков:</span>
+                                        {movieAvg && (
+                                            <span style={{ color: '#ffd700', display: 'flex', alignItems: 'center', gap: '3px' }}>
+                                                <span>⭐</span> Ср. балл: {movieAvg}
+                                            </span>
+                                        )}
                                     </div>
 
                                     {availableRatings.map(r => {
@@ -817,9 +877,23 @@ const GameScreen = () => {
             {/* ИТОГИ РАУНДА В ФАЗЕ ВСКРЫТИЯ */}
             {gameState.state === 'reveal' && (
                 <div className="glass-panel" style={{ padding: '1.5rem', textAlign: 'center', marginTop: '1rem' }}>
-                    <h3 style={{ fontSize: '1.4rem', margin: '0 0 0.8rem', color: 'var(--accent-blue)' }}>
-                        🌧️ Раунд завершён! Очки начислены за все совпадения.
-                    </h3>
+                    {gameState.winner ? (
+                        <div style={{ marginBottom: '1.2rem', padding: '14px 22px', borderRadius: '14px', background: 'rgba(255, 215, 0, 0.12)', border: '1px solid rgba(255, 215, 0, 0.55)', boxShadow: '0 0 25px rgba(255, 215, 0, 0.25)', display: 'inline-block' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', flexWrap: 'wrap' }}>
+                                <span style={{ fontSize: '1.8rem' }}>🏆</span>
+                                <span style={{ fontSize: '1.35rem', fontWeight: 800, color: '#ffd700' }}>
+                                    Победитель определён: {gameState.winner.nickname} ({gameState.winner.vp} ПО)!
+                                </span>
+                            </div>
+                            <div style={{ color: '#e2e8f0', fontSize: '0.95rem', marginTop: '6px' }}>
+                                {isHost ? 'Все оценки вскрыты! Нажмите кнопку «🏆 Итоги игры» наверху для перехода к финальной таблице.' : 'Все оценки вскрыты! Ожидаем, пока ведущий нажмёт «Итоги игры».'}
+                            </div>
+                        </div>
+                    ) : (
+                        <h3 style={{ fontSize: '1.4rem', margin: '0 0 0.8rem', color: 'var(--accent-blue)' }}>
+                            🌧️ Раунд завершён! Очки начислены за все совпадения.
+                        </h3>
+                    )}
                     <div style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem', flexWrap: 'wrap' }}>
                         {sortedPlayers.map(p => (
                             <div key={p.id} style={{ fontSize: '1.05rem', display: 'flex', alignItems: 'center', gap: '6px' }}>
