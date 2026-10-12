@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useGame } from '../GameContext';
+import PodiumCeremony from './PodiumCeremony';
 
 const GameScreen = () => {
     const { socket, gameState, player, leaveGame, closeLobby, showConfirm, showToast } = useGame();
@@ -261,62 +262,17 @@ const GameScreen = () => {
     };
 
     // ==========================================
-    // ЭКРАН ПОБЕДЫ (GAME OVER)
+    // ЭКРАН ПОБЕДЫ (GAME OVER) — ЦЕРЕМОНИЯ НАГРАЖДЕНИЯ НА ПЬЕДЕСТАЛЕ
     // ==========================================
     if (gameState.state === 'game_over') {
-        const winner = gameState.winner || gameState.players[0];
-        const sortedPlayers = [...gameState.players].sort((a, b) => b.vp - a.vp);
-
         return (
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', width: '100%', maxWidth: '800px', margin: '4vh auto', textAlign: 'center' }}>
-                <div className="glass-panel" style={{ padding: '3rem', border: '2px solid var(--accent-blue)', boxShadow: '0 0 50px rgba(28, 160, 229, 0.4)' }}>
-                    <div style={{ fontSize: '4.5rem', marginBottom: '1rem', animation: 'floatCloud 3s ease-in-out infinite' }}>🏆</div>
-                    <div style={{ color: 'var(--accent-blue)', fontSize: '1.2rem', fontWeight: 800, letterSpacing: '2px' }}>ПОБЕДИТЕЛЬ ИГРЫ!</div>
-                    <h1 style={{ fontSize: '3rem', margin: '0.5rem 0 1.5rem', color: winner?.color || '#ffffff', textShadow: `0 0 25px ${winner?.color || '#1ca0e5'}70` }}>
-                        <span style={{ fontSize: '2.5rem', marginRight: '8px' }}>{winner?.emoji || '🌧️'}</span>
-                        {winner?.nickname} <span style={{ fontSize: '1.8rem', color: 'var(--accent-a)' }}>({winner?.vp} ПО)</span>
-                    </h1>
-
-                    <div style={{ margin: '2rem 0', display: 'flex', flexDirection: 'column', gap: '0.8rem' }}>
-                        <h3 style={{ color: 'var(--text-muted)', fontSize: '1rem', textTransform: 'uppercase' }}>Итоговая таблица лидеров:</h3>
-                        {sortedPlayers.map((p, idx) => (
-                            <div key={p.id} style={{
-                                display: 'flex',
-                                justifyContent: 'space-between',
-                                alignItems: 'center',
-                                padding: '12px 20px',
-                                background: idx === 0 ? 'rgba(28, 160, 229, 0.15)' : 'rgba(3, 10, 22, 0.5)',
-                                borderRadius: '12px',
-                                border: idx === 0 ? `1px solid ${p.color}` : '1px solid var(--surface-border)'
-                            }}>
-                                <span style={{ fontWeight: 700, fontSize: '1.1rem', color: p.color, display: 'flex', alignItems: 'center', gap: '8px' }}>
-                                    <span style={{ width: '10px', height: '10px', borderRadius: '50%', backgroundColor: p.connected ? '#00e676' : '#8b0000', display: 'inline-block' }} />
-                                    <span>{idx + 1}.</span>
-                                    <span style={{ fontSize: '1.2rem' }}>{p.emoji || '🌧️'}</span>
-                                    <span style={{ textShadow: `0 0 10px ${p.color}40` }}>{p.nickname}</span>
-                                    {idx === 0 && <span>👑</span>}
-                                </span>
-                                <strong style={{ fontSize: '1.2rem', color: 'var(--accent-a)' }}>{p.vp} ПО</strong>
-                            </div>
-                        ))}
-                    </div>
-
-                    <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-                        {isHost && (
-                            <button className="btn-primary" onClick={handleRestartGame} style={{ padding: '16px 36px', fontSize: '1.2rem' }}>
-                                🌧️ Начать новую игру
-                            </button>
-                        )}
-                        <button 
-                            className="btn-secondary" 
-                            onClick={leaveGame} 
-                            style={{ padding: '16px 28px', fontSize: '1.2rem', borderColor: 'rgba(255, 77, 109, 0.4)', color: '#ff6b81' }}
-                        >
-                            🚪 Выйти в меню
-                        </button>
-                    </div>
-                </div>
-            </div>
+            <PodiumCeremony
+                players={gameState.players || []}
+                winner={gameState.winner}
+                isHost={isHost}
+                onRestartGame={handleRestartGame}
+                onLeaveGame={leaveGame}
+            />
         );
     }
 
