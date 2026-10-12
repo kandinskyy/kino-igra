@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useGame } from '../GameContext';
+import YandexAd from './YandexAd';
 
 const ALL_16_COLORS = [
     { hex: '#B57EDC', emoji: '☂️', name: 'Лавандовый' },
@@ -404,6 +405,9 @@ const Lobby = () => {
                     </button>
                 )}
             </div>
+
+            {/* Рекламный блок РСЯ в лобби */}
+            <YandexAd maxWidth="720px" minHeight="90px" />
 
             {/* Модалка с правилами */}
             {showRules && (

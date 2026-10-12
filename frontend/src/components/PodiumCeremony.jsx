@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ConfettiCannons from './ConfettiCannons';
+import YandexAd from './YandexAd';
 
 export default function PodiumCeremony({
     players = [],
@@ -207,6 +208,9 @@ export default function PodiumCeremony({
                         </button>
                     </div>
                 </div>
+
+                {/* Рекламный блок РСЯ под таблицей лидеров */}
+                <YandexAd maxWidth="850px" minHeight="90px" />
             </div>
         );
     }

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useGame } from '../GameContext';
+import YandexAd from './YandexAd';
 
 const MainMenu = () => {
     const { socket, setPlayer, showToast } = useGame();
@@ -61,7 +62,7 @@ const MainMenu = () => {
                     color: 'transparent',
                     filter: 'drop-shadow(0 0 25px rgba(28, 160, 229, 0.45))'
                 }}>
-                    КИНО-ИГРА
+                    OVERRATED
                 </h1>
                 <p style={{ color: 'var(--text-muted)', fontSize: '1rem', margin: 0, letterSpacing: '0.5px' }}>
                     Кинематографичная битва вкусов в дождливый вечер
@@ -129,6 +130,9 @@ const MainMenu = () => {
                     </button>
                 </div>
             </div>
+
+            {/* Рекламный блок РСЯ */}
+            <YandexAd maxWidth="440px" minHeight="90px" />
         </div>
     );
 };
