@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import ConfettiCannons from './ConfettiCannons';
 
 export default function PodiumCeremony({
@@ -8,7 +8,9 @@ export default function PodiumCeremony({
     onRestartGame,
     onLeaveGame,
 }) {
-    const leaderboardRef = useRef(null);
+    // Режим отображения: 'podium' (анимация и пьедестал) или 'leaderboard' (отдельная таблица лидеров)
+    const [view, setView] = useState('podium');
+
     // Сортировка игроков по очкам (по убыванию)
     const sortedPlayers = [...players].sort((a, b) => b.vp - a.vp);
 
@@ -16,24 +18,17 @@ export default function PodiumCeremony({
     const secondPlace = sortedPlayers[1] || null;
     const thirdPlace = sortedPlayers[2] || null;
 
-    // Шаги анимации:
-    // 0: Появляется только пустой пьедестал с цифрами мест
-    // 1: Появляется 3-е место (через 2 секунды)
-    // 2: Появляется 2-е место (через 4 секунды)
-    // 3: Появляется 1-е место + выстрел конфетти из боковых пушек (через 6 секунд)
-    // 4: Открывается полная таблица очков всех игроков (через 8.5 секунд)
+    // Шаги анимации появления призеров:
+    // 0: пустой пьедестал
+    // 1: 3-е место (через 2 секунды)
+    // 2: 2-е место (через 4 секунды)
+    // 3: 1-е место + пушки конфетти (через 6 секунд)
     const [step, setStep] = useState(0);
     const [confettiTrigger, setConfettiTrigger] = useState(0);
 
     const totalPlaces = Math.min(3, sortedPlayers.length);
 
     useEffect(() => {
-        // Тайминги появления участников строго раз в 2 секунды:
-        // Если участников 3 и более:
-        // 2000ms -> 3 место
-        // 4000ms -> 2 место
-        // 6000ms -> 1 место (конфетти!)
-        // 8500ms -> полная таблица очков
         const timers = [];
 
         if (totalPlaces >= 3) {
@@ -43,22 +38,17 @@ export default function PodiumCeremony({
                 setStep(3);
                 setConfettiTrigger(Date.now());
             }, 6000));
-            timers.push(setTimeout(() => setStep(4), 8500));
         } else if (totalPlaces === 2) {
-            // 2 игрока: 2-е место на 2с, 1-е место на 4с
             timers.push(setTimeout(() => setStep(2), 2000));
             timers.push(setTimeout(() => {
                 setStep(3);
                 setConfettiTrigger(Date.now());
             }, 4000));
-            timers.push(setTimeout(() => setStep(4), 6500));
         } else {
-            // 1 игрок
             timers.push(setTimeout(() => {
                 setStep(3);
                 setConfettiTrigger(Date.now());
             }, 2000));
-            timers.push(setTimeout(() => setStep(4), 4500));
         }
 
         return () => {
@@ -66,51 +56,164 @@ export default function PodiumCeremony({
         };
     }, [totalPlaces]);
 
-    // Переход к полной таблице лидеров
-    const handleGoToLeaderboard = () => {
-        setStep(4);
-        if (!confettiTrigger) {
-            setConfettiTrigger(Date.now());
-        }
-        setTimeout(() => {
-            leaderboardRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 50);
-    };
-
-    // Перезапуск анимации церемонии
-    const handleReplay = () => {
-        setStep(0);
-        const timers = [];
-        if (totalPlaces >= 3) {
-            timers.push(setTimeout(() => setStep(1), 2000));
-            timers.push(setTimeout(() => setStep(2), 4000));
-            timers.push(setTimeout(() => {
-                setStep(3);
-                setConfettiTrigger(Date.now());
-            }, 6000));
-            timers.push(setTimeout(() => setStep(4), 8500));
-        } else if (totalPlaces === 2) {
-            timers.push(setTimeout(() => setStep(2), 2000));
-            timers.push(setTimeout(() => {
-                setStep(3);
-                setConfettiTrigger(Date.now());
-            }, 4000));
-            timers.push(setTimeout(() => setStep(4), 6500));
-        } else {
-            timers.push(setTimeout(() => {
-                setStep(3);
-                setConfettiTrigger(Date.now());
-            }, 2000));
-            timers.push(setTimeout(() => setStep(4), 4500));
-        }
-    };
-
     // Проверка видимости каждого места
     const isThirdVisible = step >= 1 && thirdPlace !== null;
     const isSecondVisible = step >= 2 && secondPlace !== null;
     const isFirstVisible = step >= 3 && firstPlace !== null;
-    const showFullTable = step >= 4;
 
+    // ====================================================
+    // СТРАНИЦА 2: ОТДЕЛЬНАЯ ИТОГОВАЯ ТАБЛИЦА ЛИДЕРОВ (СКРИНШОТ 1)
+    // ====================================================
+    if (view === 'leaderboard') {
+        return (
+            <div style={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '2rem',
+                width: '100%',
+                maxWidth: '850px',
+                margin: '4vh auto',
+                textAlign: 'center',
+                position: 'relative'
+            }}>
+                <div className="glass-panel" style={{
+                    padding: '2.5rem 3rem',
+                    border: '1px solid var(--surface-border-glow)',
+                    boxShadow: '0 12px 40px rgba(0, 0, 0, 0.7)',
+                    position: 'relative'
+                }}>
+                    {/* Кнопка возврата к пьедесталу в верхнем правом углу */}
+                    <div style={{ position: 'absolute', top: '16px', right: '16px' }}>
+                        <button
+                            className="btn-secondary"
+                            onClick={() => setView('podium')}
+                            style={{
+                                padding: '6px 14px',
+                                fontSize: '0.85rem',
+                                color: 'var(--text-muted)',
+                                borderColor: 'rgba(255, 255, 255, 0.15)',
+                                background: 'rgba(5, 15, 30, 0.6)',
+                                cursor: 'pointer'
+                            }}
+                            title="Вернуться к анимации пьедестала"
+                        >
+                            🏆 Пьедестал
+                        </button>
+                    </div>
+
+                    <h3 style={{
+                        color: 'var(--text-muted)',
+                        fontSize: '1.05rem',
+                        textTransform: 'uppercase',
+                        letterSpacing: '2px',
+                        marginBottom: '1.8rem',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        gap: '8px'
+                    }}>
+                        📊 Итоговая таблица лидеров
+                    </h3>
+
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.8rem', marginBottom: '2.2rem' }}>
+                        {sortedPlayers.map((p, idx) => (
+                            <div
+                                key={p.id}
+                                style={{
+                                    display: 'flex',
+                                    justifyContent: 'space-between',
+                                    alignItems: 'center',
+                                    padding: '14px 22px',
+                                    background: idx === 0
+                                        ? 'rgba(255, 215, 0, 0.12)'
+                                        : idx === 1
+                                            ? 'rgba(192, 205, 225, 0.08)'
+                                            : idx === 2
+                                                ? 'rgba(205, 127, 50, 0.08)'
+                                                : 'rgba(3, 10, 22, 0.5)',
+                                    borderRadius: '12px',
+                                    border: idx === 0
+                                        ? '1px solid rgba(255, 215, 0, 0.5)'
+                                        : idx === 1
+                                            ? '1px solid rgba(192, 205, 225, 0.3)'
+                                            : idx === 2
+                                                ? '1px solid rgba(205, 127, 50, 0.3)'
+                                                : '1px solid var(--surface-border)',
+                                    boxShadow: idx === 0 ? '0 0 15px rgba(255, 215, 0, 0.2)' : 'none',
+                                    transition: 'transform 0.2s ease'
+                                }}
+                            >
+                                <span style={{
+                                    fontWeight: 700,
+                                    fontSize: '1.15rem',
+                                    color: p.color || '#ffffff',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: '10px'
+                                }}>
+                                    <span style={{
+                                        width: '10px',
+                                        height: '10px',
+                                        borderRadius: '50%',
+                                        backgroundColor: p.connected ? '#00e676' : '#8b0000',
+                                        display: 'inline-block'
+                                    }} />
+                                    <span style={{ color: 'var(--text-muted)', minWidth: '24px', textAlign: 'left' }}>
+                                        {idx + 1}.
+                                    </span>
+                                    <span style={{ fontSize: '1.35rem' }}>{p.emoji || '🌧️'}</span>
+                                    <span style={{ textShadow: `0 0 10px ${p.color}40` }}>{p.nickname}</span>
+                                    {idx === 0 && <span title="Победитель матча">👑</span>}
+                                    {idx === 1 && <span title="Серебряный призер">🥈</span>}
+                                    {idx === 2 && <span title="Бронзовый призер">🥉</span>}
+                                </span>
+                                <strong style={{
+                                    fontSize: '1.25rem',
+                                    color: idx === 0 ? '#ffd700' : 'var(--accent-a)'
+                                }}>
+                                    {p.vp} ПО
+                                </strong>
+                            </div>
+                        ))}
+                    </div>
+
+                    {/* Кнопки под таблицей: ТОЛЬКО "Начать новую игру" и "Выйти в меню" */}
+                    <div style={{ display: 'flex', justifyContent: 'center', gap: '1.2rem', flexWrap: 'wrap' }}>
+                        {isHost && (
+                            <button
+                                className="btn-primary"
+                                onClick={onRestartGame}
+                                style={{
+                                    padding: '16px 36px',
+                                    fontSize: '1.2rem',
+                                    background: 'linear-gradient(135deg, #1ca0e5 0%, #0c72b8 100%)',
+                                    boxShadow: '0 0 25px rgba(28, 160, 229, 0.5)'
+                                }}
+                            >
+                                🌧️ Начать новую игру
+                            </button>
+                        )}
+                        <button
+                            className="btn-secondary"
+                            onClick={onLeaveGame}
+                            style={{
+                                padding: '16px 28px',
+                                fontSize: '1.2rem',
+                                borderColor: 'rgba(255, 77, 109, 0.4)',
+                                color: '#ff6b81'
+                            }}
+                        >
+                            🚪 Выйти в меню
+                        </button>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
+    // ====================================================
+    // СТРАНИЦА 1: ЧИСТАЯ ЦЕРЕМОНИЯ НАГРАЖДЕНИЯ С ПЬЕДЕСТАЛОМ (СКРИНШОТ 2)
+    // ====================================================
     return (
         <div style={{
             display: 'flex',
@@ -125,7 +228,7 @@ export default function PodiumCeremony({
             {/* Пушки с конфетти по бокам экрана */}
             <ConfettiCannons fireTrigger={confettiTrigger} />
 
-            {/* Верхняя плашка церемонии */}
+            {/* Карточка церемонии */}
             <div className="glass-panel" style={{
                 padding: '2rem 2.5rem',
                 border: '2px solid rgba(255, 215, 0, 0.4)',
@@ -150,7 +253,7 @@ export default function PodiumCeremony({
                 <div style={{ position: 'absolute', top: '16px', right: '16px', zIndex: 10 }}>
                     <button
                         className="btn-secondary"
-                        onClick={handleGoToLeaderboard}
+                        onClick={() => setView('leaderboard')}
                         style={{
                             padding: '8px 18px',
                             fontSize: '0.92rem',
@@ -629,148 +732,6 @@ export default function PodiumCeremony({
                             </div>
                         </div>
                     )}
-                </div>
-            </div>
-
-            {/* ==================================================== */}
-            {/* ИТОГОВАЯ ТАБЛИЦА ОЧКОВ ВСЕХ ИГРОКОВ (ПОЯВЛЯЕТСЯ ПОСЛЕ АНИМАЦИИ) */}
-            {/* ==================================================== */}
-            <div 
-                ref={leaderboardRef}
-                id="leaderboard-section"
-                style={{
-                    opacity: showFullTable ? 1 : 0,
-                    transform: showFullTable ? 'translateY(0)' : 'translateY(30px)',
-                    transition: 'all 0.8s cubic-bezier(0.16, 1, 0.3, 1)',
-                    pointerEvents: showFullTable ? 'auto' : 'none'
-                }}
-            >
-                <div className="glass-panel" style={{
-                    padding: '2.5rem',
-                    border: '1px solid var(--surface-border-glow)',
-                    boxShadow: '0 12px 40px rgba(0, 0, 0, 0.7)'
-                }}>
-                    <h3 style={{
-                        color: 'var(--text-muted)',
-                        fontSize: '1.05rem',
-                        textTransform: 'uppercase',
-                        letterSpacing: '2px',
-                        marginBottom: '1.5rem',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        gap: '8px'
-                    }}>
-                        📊 Итоговая таблица лидеров
-                    </h3>
-
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.8rem', marginBottom: '2rem' }}>
-                        {sortedPlayers.map((p, idx) => (
-                            <div
-                                key={p.id}
-                                style={{
-                                    display: 'flex',
-                                    justifyContent: 'space-between',
-                                    alignItems: 'center',
-                                    padding: '14px 22px',
-                                    background: idx === 0
-                                        ? 'rgba(255, 215, 0, 0.12)'
-                                        : idx === 1
-                                            ? 'rgba(192, 205, 225, 0.08)'
-                                            : idx === 2
-                                                ? 'rgba(205, 127, 50, 0.08)'
-                                                : 'rgba(3, 10, 22, 0.5)',
-                                    borderRadius: '12px',
-                                    border: idx === 0
-                                        ? '1px solid rgba(255, 215, 0, 0.5)'
-                                        : idx === 1
-                                            ? '1px solid rgba(192, 205, 225, 0.3)'
-                                            : idx === 2
-                                                ? '1px solid rgba(205, 127, 50, 0.3)'
-                                                : '1px solid var(--surface-border)',
-                                    boxShadow: idx === 0 ? '0 0 15px rgba(255, 215, 0, 0.2)' : 'none',
-                                    transition: 'transform 0.2s ease'
-                                }}
-                            >
-                                <span style={{
-                                    fontWeight: 700,
-                                    fontSize: '1.15rem',
-                                    color: p.color || '#ffffff',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    gap: '10px'
-                                }}>
-                                    <span style={{
-                                        width: '10px',
-                                        height: '10px',
-                                        borderRadius: '50%',
-                                        backgroundColor: p.connected ? '#00e676' : '#8b0000',
-                                        display: 'inline-block'
-                                    }} />
-                                    <span style={{ color: 'var(--text-muted)', minWidth: '24px', textAlign: 'left' }}>
-                                        {idx + 1}.
-                                    </span>
-                                    <span style={{ fontSize: '1.35rem' }}>{p.emoji || '🌧️'}</span>
-                                    <span style={{ textShadow: `0 0 10px ${p.color}40` }}>{p.nickname}</span>
-                                    {idx === 0 && <span title="Победитель матча">👑</span>}
-                                    {idx === 1 && <span title="Серебряный призер">🥈</span>}
-                                    {idx === 2 && <span title="Бронзовый призер">🥉</span>}
-                                </span>
-                                <strong style={{
-                                    fontSize: '1.25rem',
-                                    color: idx === 0 ? '#ffd700' : 'var(--accent-a)'
-                                }}>
-                                    {p.vp} ПО
-                                </strong>
-                            </div>
-                        ))}
-                    </div>
-
-                    {/* Кнопки управления хоста и игроков */}
-                    <div style={{ display: 'flex', justifyContent: 'center', gap: '1.2rem', flexWrap: 'wrap' }}>
-                        {isHost && (
-                            <button
-                                className="btn-primary"
-                                onClick={onRestartGame}
-                                style={{
-                                    padding: '16px 36px',
-                                    fontSize: '1.2rem',
-                                    background: 'linear-gradient(135deg, #1ca0e5 0%, #0c72b8 100%)',
-                                    boxShadow: '0 0 25px rgba(28, 160, 229, 0.5)'
-                                }}
-                            >
-                                🌧️ Начать новую игру
-                            </button>
-                        )}
-                        <button
-                            className="btn-secondary"
-                            onClick={onLeaveGame}
-                            style={{
-                                padding: '16px 28px',
-                                fontSize: '1.2rem',
-                                borderColor: 'rgba(255, 77, 109, 0.4)',
-                                color: '#ff6b81'
-                            }}
-                        >
-                            🚪 Выйти в меню
-                        </button>
-                        <button
-                            className="btn-secondary"
-                            onClick={() => {
-                                window.scrollTo({ top: 0, behavior: 'smooth' });
-                                handleReplay();
-                            }}
-                            style={{
-                                padding: '16px 24px',
-                                fontSize: '1.1rem',
-                                borderColor: 'rgba(255, 215, 0, 0.35)',
-                                color: '#ffd700'
-                            }}
-                            title="Посмотреть церемонию награждения заново"
-                        >
-                            🔄 Повторить церемонию
-                        </button>
-                    </div>
                 </div>
             </div>
         </div>
