@@ -52,18 +52,22 @@ const MainMenu = () => {
             {/* Логотип: серая тучка с голубыми каплями */}
             <div style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem' }}>
                 <span className="cloud-logo" role="img" aria-label="rain cloud">🌧️</span>
-                <h1 style={{ 
-                    fontSize: '3.6rem', 
-                    fontWeight: 800,
-                    letterSpacing: '-1px',
-                    margin: 0,
-                    background: 'linear-gradient(135deg, #ffffff 10%, #1ca0e5 70%, #0a84c6 100%)', 
-                    WebkitBackgroundClip: 'text', 
-                    color: 'transparent',
-                    filter: 'drop-shadow(0 0 25px rgba(28, 160, 229, 0.45))'
-                }}>
-                    OVERRATED
-                </h1>
+                <div style={{ filter: 'drop-shadow(0 0 25px rgba(28, 160, 229, 0.45))', padding: '0.1em 0.2em' }}>
+                    <h1 style={{ 
+                        fontSize: '3.6rem', 
+                        fontWeight: 800,
+                        letterSpacing: '-1px',
+                        margin: 0,
+                        background: 'linear-gradient(135deg, #ffffff 10%, #1ca0e5 70%, #0a84c6 100%)', 
+                        WebkitBackgroundClip: 'text', 
+                        WebkitTextFillColor: 'transparent',
+                        backgroundClip: 'text',
+                        color: 'transparent',
+                        lineHeight: 1.1
+                    }}>
+                        OVERRATED
+                    </h1>
+                </div>
                 <p style={{ color: 'var(--text-muted)', fontSize: '1rem', margin: 0, letterSpacing: '0.5px' }}>
                     Кинематографичная битва вкусов в дождливый вечер
                 </p>
@@ -113,15 +117,81 @@ const MainMenu = () => {
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(3, 10, 20, 0.5)', padding: '10px 14px', borderRadius: '12px', border: '1px solid var(--surface-border)' }}>
                         <label style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>Цель для победы:</label>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                            <button
+                                onClick={() => setTargetVP(prev => Math.max(10, prev - 5))}
+                                style={{
+                                    width: '36px',
+                                    height: '36px',
+                                    borderRadius: '10px',
+                                    border: '1px solid rgba(255,255,255,0.15)',
+                                    background: 'rgba(255,255,255,0.06)',
+                                    color: '#ffffff',
+                                    fontSize: '1.3rem',
+                                    fontWeight: 700,
+                                    cursor: 'pointer',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    transition: 'all 0.2s',
+                                    lineHeight: 1,
+                                    padding: 0,
+                                    fontFamily: 'var(--font-main)'
+                                }}
+                                onMouseEnter={(e) => {
+                                    e.currentTarget.style.background = 'rgba(28, 160, 229, 0.2)';
+                                    e.currentTarget.style.borderColor = 'var(--accent-blue)';
+                                    e.currentTarget.style.boxShadow = '0 0 12px rgba(28, 160, 229, 0.3)';
+                                }}
+                                onMouseLeave={(e) => {
+                                    e.currentTarget.style.background = 'rgba(255,255,255,0.06)';
+                                    e.currentTarget.style.borderColor = 'rgba(255,255,255,0.15)';
+                                    e.currentTarget.style.boxShadow = 'none';
+                                }}
+                            >
+                                −
+                            </button>
                             <input 
                                 type="number" 
-                                className="input-field" 
+                                className="input-field vp-input" 
                                 style={{ width: '85px', textAlign: 'center', padding: '6px 8px', fontWeight: 700 }}
                                 value={targetVP} 
                                 onChange={(e) => setTargetVP(Number(e.target.value))}
                                 min={10} 
                                 max={999}
                             />
+                            <button
+                                onClick={() => setTargetVP(prev => Math.min(999, prev + 5))}
+                                style={{
+                                    width: '36px',
+                                    height: '36px',
+                                    borderRadius: '10px',
+                                    border: '1px solid rgba(255,255,255,0.15)',
+                                    background: 'rgba(255,255,255,0.06)',
+                                    color: '#ffffff',
+                                    fontSize: '1.3rem',
+                                    fontWeight: 700,
+                                    cursor: 'pointer',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    transition: 'all 0.2s',
+                                    lineHeight: 1,
+                                    padding: 0,
+                                    fontFamily: 'var(--font-main)'
+                                }}
+                                onMouseEnter={(e) => {
+                                    e.currentTarget.style.background = 'rgba(28, 160, 229, 0.2)';
+                                    e.currentTarget.style.borderColor = 'var(--accent-blue)';
+                                    e.currentTarget.style.boxShadow = '0 0 12px rgba(28, 160, 229, 0.3)';
+                                }}
+                                onMouseLeave={(e) => {
+                                    e.currentTarget.style.background = 'rgba(255,255,255,0.06)';
+                                    e.currentTarget.style.borderColor = 'rgba(255,255,255,0.15)';
+                                    e.currentTarget.style.boxShadow = 'none';
+                                }}
+                            >
+                                +
+                            </button>
                             <span style={{ color: 'var(--accent-blue)', fontWeight: 700 }}>ПО</span>
                         </div>
                     </div>

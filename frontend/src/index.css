@@ -140,6 +140,17 @@ body {
   color: rgba(139, 165, 196, 0.5);
 }
 
+/* Скрыть нативные стрелочки у числового поля ПО */
+.vp-input::-webkit-outer-spin-button,
+.vp-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.vp-input[type=number] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
 /* Общий контейнер */
 .app-container {
   max-width: 1400px;
