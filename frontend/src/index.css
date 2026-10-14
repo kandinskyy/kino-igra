@@ -335,66 +335,82 @@ body {
   50% {
     filter: drop-shadow(0 0 35px rgba(255, 215, 0, 0.75));
   }
+}
 
-/* Кастомный степпер очков с белыми стрелочками */
+/* Единый красивый box для числа очков со встроенными белыми стрелочками */
 .vp-stepper-container {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  background: rgba(10, 28, 48, 0.65);
-  border: 1px solid rgba(28, 160, 229, 0.3);
-  border-radius: 10px;
-  padding: 2px 4px 2px 10px;
-  height: 38px;
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.4);
-  transition: border-color 0.2s, box-shadow 0.2s;
+  background: rgba(3, 10, 20, 0.75);
+  border: 1px solid rgba(28, 160, 229, 0.35);
+  border-radius: 12px;
+  padding: 0 8px 0 10px;
+  height: 42px;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-sizing: border-box;
+}
+
+.vp-stepper-container:hover {
+  border-color: rgba(28, 160, 229, 0.6);
+  background: rgba(5, 15, 30, 0.85);
 }
 
 .vp-stepper-container:focus-within {
   border-color: var(--accent-blue);
-  box-shadow: 0 0 12px rgba(28, 160, 229, 0.35);
+  box-shadow: 0 0 0 3px rgba(28, 160, 229, 0.25), inset 0 2px 4px rgba(0, 0, 0, 0.4);
+  background: rgba(5, 15, 30, 0.95);
 }
 
 .vp-stepper-input::-webkit-inner-spin-button,
 .vp-stepper-input::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
+  display: none;
 }
 
 .vp-stepper-input {
   -moz-appearance: textfield;
   appearance: textfield;
-  width: 52px;
-  background: transparent;
-  border: none;
-  outline: none;
-  color: #ffffff;
+  width: 48px;
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  color: #ffffff !important;
   font-weight: 700;
-  font-size: 1.15rem;
+  font-size: 1.2rem;
   text-align: center;
   font-family: var(--font-main);
   padding: 0;
+  margin: 0;
 }
 
 .vp-stepper-arrow-btn {
-  background: transparent;
-  border: none;
-  padding: 1px 4px;
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  padding: 2px 4px;
+  margin: 0;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   line-height: 1;
   color: #ffffff;
-  opacity: 0.85;
-  transition: opacity 0.15s, transform 0.15s, filter 0.15s;
+  opacity: 0.75;
+  transition: opacity 0.15s ease, transform 0.15s ease, filter 0.15s ease;
 }
 
 .vp-stepper-arrow-btn:hover {
   opacity: 1;
-  transform: scale(1.18);
-  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.7));
+  transform: scale(1.25);
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.8));
 }
 
 .vp-stepper-arrow-btn:active {
-  transform: scale(0.95);
+  transform: scale(0.9);
 }
