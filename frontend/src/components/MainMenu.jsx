@@ -116,83 +116,46 @@ const MainMenu = () => {
                     </h3>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(3, 10, 20, 0.5)', padding: '10px 14px', borderRadius: '12px', border: '1px solid var(--surface-border)' }}>
                         <label style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>Цель для победы:</label>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                            <button
-                                onClick={() => setTargetVP(prev => Math.max(10, prev - 5))}
-                                style={{
-                                    width: '36px',
-                                    height: '36px',
-                                    borderRadius: '10px',
-                                    border: '1px solid rgba(255,255,255,0.15)',
-                                    background: 'rgba(255,255,255,0.06)',
-                                    color: '#ffffff',
-                                    fontSize: '1.3rem',
-                                    fontWeight: 700,
-                                    cursor: 'pointer',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                    transition: 'all 0.2s',
-                                    lineHeight: 1,
-                                    padding: 0,
-                                    fontFamily: 'var(--font-main)'
-                                }}
-                                onMouseEnter={(e) => {
-                                    e.currentTarget.style.background = 'rgba(28, 160, 229, 0.2)';
-                                    e.currentTarget.style.borderColor = 'var(--accent-blue)';
-                                    e.currentTarget.style.boxShadow = '0 0 12px rgba(28, 160, 229, 0.3)';
-                                }}
-                                onMouseLeave={(e) => {
-                                    e.currentTarget.style.background = 'rgba(255,255,255,0.06)';
-                                    e.currentTarget.style.borderColor = 'rgba(255,255,255,0.15)';
-                                    e.currentTarget.style.boxShadow = 'none';
-                                }}
-                            >
-                                −
-                            </button>
-                            <input 
-                                type="number" 
-                                className="input-field vp-input" 
-                                style={{ width: '85px', textAlign: 'center', padding: '6px 8px', fontWeight: 700 }}
-                                value={targetVP} 
-                                onChange={(e) => setTargetVP(Number(e.target.value))}
-                                min={10} 
-                                max={999}
-                            />
-                            <button
-                                onClick={() => setTargetVP(prev => Math.min(999, prev + 5))}
-                                style={{
-                                    width: '36px',
-                                    height: '36px',
-                                    borderRadius: '10px',
-                                    border: '1px solid rgba(255,255,255,0.15)',
-                                    background: 'rgba(255,255,255,0.06)',
-                                    color: '#ffffff',
-                                    fontSize: '1.3rem',
-                                    fontWeight: 700,
-                                    cursor: 'pointer',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                    transition: 'all 0.2s',
-                                    lineHeight: 1,
-                                    padding: 0,
-                                    fontFamily: 'var(--font-main)'
-                                }}
-                                onMouseEnter={(e) => {
-                                    e.currentTarget.style.background = 'rgba(28, 160, 229, 0.2)';
-                                    e.currentTarget.style.borderColor = 'var(--accent-blue)';
-                                    e.currentTarget.style.boxShadow = '0 0 12px rgba(28, 160, 229, 0.3)';
-                                }}
-                                onMouseLeave={(e) => {
-                                    e.currentTarget.style.background = 'rgba(255,255,255,0.06)';
-                                    e.currentTarget.style.borderColor = 'rgba(255,255,255,0.15)';
-                                    e.currentTarget.style.boxShadow = 'none';
-                                }}
-                            >
-                                +
-                            </button>
-                            <span style={{ color: 'var(--accent-blue)', fontWeight: 700 }}>ПО</span>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                            <div className="vp-stepper-container">
+                                <input 
+                                    type="number" 
+                                    className="vp-stepper-input" 
+                                    value={targetVP} 
+                                    onChange={(e) => {
+                                        const val = parseInt(e.target.value, 10);
+                                        setTargetVP(isNaN(val) ? '' : Math.max(1, Math.min(999, val)));
+                                    }}
+                                    onBlur={() => {
+                                        if (!targetVP || targetVP < 1) setTargetVP(30);
+                                    }}
+                                    min={1} 
+                                    max={999}
+                                />
+                                <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', marginLeft: '2px' }}>
+                                    <button
+                                        type="button"
+                                        className="vp-stepper-arrow-btn"
+                                        onClick={() => setTargetVP(prev => Math.min(999, (Number(prev) || 0) + 1))}
+                                        title="Увеличить на 1"
+                                    >
+                                        <svg width="11" height="7" viewBox="0 0 11 7" fill="none">
+                                            <path d="M1 5.5L5.5 1.5L10 5.5" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                        </svg>
+                                    </button>
+                                    <button
+                                        type="button"
+                                        className="vp-stepper-arrow-btn"
+                                        onClick={() => setTargetVP(prev => Math.max(1, (Number(prev) || 0) - 1))}
+                                        title="Уменьшить на 1"
+                                    >
+                                        <svg width="11" height="7" viewBox="0 0 11 7" fill="none">
+                                            <path d="M1 1.5L5.5 5.5L10 1.5" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <span style={{ color: 'var(--accent-blue)', fontWeight: 700, fontSize: '0.95rem' }}>ПО</span>
                         </div>
                     </div>
                     <button className="btn-primary" onClick={handleCreateLobby} style={{ width: '100%', padding: '14px' }}>
