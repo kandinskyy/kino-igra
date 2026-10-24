@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useGame } from '../GameContext';
-import OkkoBanner from './OkkoBanner';
+import AdRotator from './AdRotator';
 
 const MainMenu = () => {
     const { socket, setPlayer, showToast } = useGame();
@@ -118,8 +118,8 @@ const MainMenu = () => {
                 </div>
             </div>
 
-            {/* Партнерский баннер Okko */}
-            <OkkoBanner maxWidth="560px" />
+            {/* Ротатор партнерских баннеров */}
+            <AdRotator maxWidth="560px" />
         </div>
     );
 };

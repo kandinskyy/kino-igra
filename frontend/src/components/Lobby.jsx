@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useGame } from '../GameContext';
-import OkkoBanner from './OkkoBanner';
+import AdRotator from './AdRotator';
 import { copyText } from '../utils/clipboard';
 
 const ALL_16_COLORS = [
@@ -528,8 +528,8 @@ const Lobby = () => {
                 )}
             </div>
 
-            {/* Партнерский баннер Okko в лобби */}
-            <OkkoBanner maxWidth="760px" />
+            {/* Ротатор партнерских баннеров в лобби */}
+            <AdRotator maxWidth="760px" />
 
             {/* Модалка с правилами */}
             {showRules && (

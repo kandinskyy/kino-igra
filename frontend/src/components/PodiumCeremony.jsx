@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ConfettiCannons from './ConfettiCannons';
-import OkkoBanner from './OkkoBanner';
+import AdRotator from './AdRotator';
 
 export default function PodiumCeremony({
     players = [],
@@ -209,8 +209,8 @@ export default function PodiumCeremony({
                     </div>
                 </div>
 
-                {/* Партнерский баннер Okko под таблицей лидеров */}
-                <OkkoBanner maxWidth="850px" />
+                {/* Ротатор партнерских баннеров под таблицей лидеров */}
+                <AdRotator maxWidth="850px" />
             </div>
         );
     }
