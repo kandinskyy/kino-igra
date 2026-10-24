@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useGame } from '../GameContext';
-import YandexAd from './YandexAd';
+import OkkoBanner from './OkkoBanner';
 
 const MainMenu = () => {
     const { socket, setPlayer, showToast } = useGame();
@@ -118,8 +118,8 @@ const MainMenu = () => {
                 </div>
             </div>
 
-            {/* Рекламный блок РСЯ */}
-            <YandexAd maxWidth="440px" minHeight="90px" />
+            {/* Партнерский баннер Okko */}
+            <OkkoBanner maxWidth="560px" />
         </div>
     );
 };

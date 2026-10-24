@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useGame } from '../GameContext';
-import YandexAd from './YandexAd';
+import OkkoBanner from './OkkoBanner';
 import { copyText } from '../utils/clipboard';
 
 const ALL_16_COLORS = [
@@ -528,8 +528,8 @@ const Lobby = () => {
                 )}
             </div>
 
-            {/* Рекламный блок РСЯ в лобби */}
-            <YandexAd maxWidth="720px" minHeight="90px" />
+            {/* Партнерский баннер Okko в лобби */}
+            <OkkoBanner maxWidth="760px" />
 
             {/* Модалка с правилами */}
             {showRules && (

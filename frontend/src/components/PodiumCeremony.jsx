@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ConfettiCannons from './ConfettiCannons';
-import YandexAd from './YandexAd';
+import OkkoBanner from './OkkoBanner';
 
 export default function PodiumCeremony({
     players = [],
@@ -209,8 +209,8 @@ export default function PodiumCeremony({
                     </div>
                 </div>
 
-                {/* Рекламный блок РСЯ под таблицей лидеров */}
-                <YandexAd maxWidth="850px" minHeight="90px" />
+                {/* Партнерский баннер Okko под таблицей лидеров */}
+                <OkkoBanner maxWidth="850px" />
             </div>
         );
     }
