@@ -105,7 +105,7 @@ export default function AdRotator({
                     borderRadius: '14px',
                     height: '74px',
                     boxSizing: 'border-box',
-                    padding: '0 1.25rem',
+                    padding: '0 1rem',
                     background: offer.gradient || 'linear-gradient(135deg, rgba(20, 20, 30, 0.9) 0%, rgba(10, 10, 16, 0.96) 100%)',
                     border: `1px solid ${offer.borderColor || 'rgba(255, 255, 255, 0.2)'}`,
                     boxShadow: `0 10px 30px rgba(0, 0, 0, 0.55), 0 0 20px ${offer.glowColor || 'rgba(255, 255, 255, 0.08)'}, inset 0 1px 0 rgba(255, 255, 255, 0.12)`,
@@ -115,7 +115,7 @@ export default function AdRotator({
                     alignItems: 'center',
                     justifyContent: 'space-between',
                     flexWrap: 'nowrap',
-                    gap: '1rem',
+                    gap: '0.85rem',
                     opacity: isFading ? 0.35 : 1,
                     transform: isFading ? 'scale(0.995)' : 'scale(1)',
                     transition: 'opacity 0.3s ease, transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease'
@@ -185,11 +185,11 @@ export default function AdRotator({
 
                     <div
                         style={{
-                            fontSize: '0.90rem',
+                            fontSize: '0.86rem',
                             fontWeight: 800,
                             color: '#ffffff',
                             letterSpacing: '-0.2px',
-                            lineHeight: 1.2,
+                            lineHeight: 1.25,
                             textShadow: '0 1px 4px rgba(0,0,0,0.5)',
                             whiteSpace: 'nowrap',
                             overflow: 'hidden',
@@ -204,7 +204,7 @@ export default function AdRotator({
 
                     <div
                         style={{
-                            fontSize: '0.72rem',
+                            fontSize: '0.70rem',
                             color: 'rgba(255, 255, 255, 0.72)',
                             lineHeight: 1.2,
                             whiteSpace: 'nowrap',
@@ -228,13 +228,13 @@ export default function AdRotator({
                         alignItems: 'center',
                         justifyContent: 'center',
                         gap: '6px',
-                        height: '36px',
-                        padding: '0 18px',
+                        height: '34px',
+                        padding: '0 14px',
                         borderRadius: '10px',
                         background: offer.btnGradient || 'linear-gradient(135deg, #0284c7 0%, #0369a1 100%)',
                         border: '1px solid rgba(255, 255, 255, 0.25)',
                         color: '#ffffff',
-                        fontSize: '0.82rem',
+                        fontSize: '0.80rem',
                         fontWeight: 800,
                         fontFamily: 'var(--font-main)',
                         cursor: 'pointer',
@@ -256,7 +256,7 @@ export default function AdRotator({
                     }}
                 >
                     <span>{offer.buttonText || 'Перейти'}</span>
-                    <span style={{ fontSize: '0.95rem', lineHeight: 1 }}>➔</span>
+                    <span style={{ fontSize: '0.90rem', lineHeight: 1 }}>➔</span>
                 </button>
             </div>
 

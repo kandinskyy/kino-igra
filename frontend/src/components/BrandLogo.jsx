@@ -21,8 +21,9 @@ export default function BrandLogo({ id, glowColor }) {
     if (id === 'foodband') {
         logoSrc = foodbandImg;
         logoAlt = 'FoodBand';
-        imgStyle.width = '38px';
-        imgStyle.height = '38px';
+        imgStyle.width = '36px';
+        imgStyle.height = '36px';
+        imgStyle.filter = 'drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2))';
     } else if (id === 'dominos') {
         logoSrc = dominosSvg;
         logoAlt = "Domino's Pizza";
