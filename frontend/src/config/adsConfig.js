@@ -1,12 +1,12 @@
 /**
  * Конфигурация рекламных партнерских предложений (Admitad / CPA / CPC).
- * Единый гармоничный стиль, выверенная длина текстов и премиальный дизайн для OVERRATED.
+ * Четкие названия брендов в бейджах, единый стиль и выверенная длина текстов.
  */
 export const AD_OFFERS = [
     {
         id: 'foodband',
         brand: 'FoodBand.ru',
-        badge: '🍕 ДОСТАВКА ЕДЫ',
+        badge: 'FOODBAND',
         title: 'Пицца и сочные роллы',
         highlight: 'со скидкой 25%',
         subtitle: 'Быстрая круглосуточная доставка прямо к фильму',
@@ -26,7 +26,7 @@ export const AD_OFFERS = [
     {
         id: 'dominos',
         brand: "Domino's Pizza",
-        badge: '🍕 DOMINO\'S PIZZA',
+        badge: "DOMINO'S PIZZA",
         title: 'Горячая фирменная пицца',
         highlight: 'за 30 минут',
         subtitle: 'Культовая пицца на хрустящем или тонком тесте',
@@ -46,7 +46,7 @@ export const AD_OFFERS = [
     {
         id: 'aviasales',
         brand: 'Aviasales',
-        badge: '✈️ АВИАБИЛЕТЫ',
+        badge: 'AVIASALES',
         title: 'Билеты по всем направлениям',
         highlight: 'без наценок',
         subtitle: 'Поиск и сравнение лучших цен авиакомпаний в один клик',
@@ -66,7 +66,7 @@ export const AD_OFFERS = [
     {
         id: 'aliexpress',
         brand: 'AliExpress',
-        badge: '🔥 РАСПРОДАЖА',
+        badge: 'ALIEXPRESS',
         title: 'Миллионы трендовых товаров',
         highlight: 'со скидкой до 70%',
         subtitle: 'Гаджеты, электроника и тренды с быстрой доставкой',

@@ -103,7 +103,9 @@ export default function AdRotator({
                     position: 'relative',
                     overflow: 'hidden',
                     borderRadius: '14px',
-                    padding: '0.85rem 1.25rem',
+                    height: '74px',
+                    boxSizing: 'border-box',
+                    padding: '0 1.25rem',
                     background: offer.gradient || 'linear-gradient(135deg, rgba(20, 20, 30, 0.9) 0%, rgba(10, 10, 16, 0.96) 100%)',
                     border: `1px solid ${offer.borderColor || 'rgba(255, 255, 255, 0.2)'}`,
                     boxShadow: `0 10px 30px rgba(0, 0, 0, 0.55), 0 0 20px ${offer.glowColor || 'rgba(255, 255, 255, 0.08)'}, inset 0 1px 0 rgba(255, 255, 255, 0.12)`,
@@ -143,33 +145,34 @@ export default function AdRotator({
                     }}
                 />
 
-                {/* Левая часть: четкий векторный логотип бренда */}
+                {/* Левая часть: четкий официальный логотип бренда на белом контрастном фоне */}
                 <BrandLogo
                     id={offer.id}
                     glowColor={offer.glowColor}
-                    btnGradient={offer.btnGradient}
                 />
 
-                {/* Центральная часть: сбалансированный текст в едином стиле */}
+                {/* Центральная часть: сбалансированный текст с защитой от изменения высоты */}
                 <div
                     style={{
                         display: 'flex',
                         flexDirection: 'column',
+                        justifyContent: 'center',
                         gap: '2px',
                         zIndex: 1,
                         flex: '1 1 auto',
-                        minWidth: 0
+                        minWidth: 0,
+                        overflow: 'hidden'
                     }}
                 >
                     <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                         <span
                             style={{
-                                fontSize: '0.64rem',
+                                fontSize: '0.62rem',
                                 fontWeight: 800,
                                 textTransform: 'uppercase',
-                                letterSpacing: '0.6px',
+                                letterSpacing: '0.8px',
                                 padding: '1px 6px',
-                                borderRadius: '5px',
+                                borderRadius: '4px',
                                 background: offer.badgeBg || 'rgba(255, 255, 255, 0.15)',
                                 color: offer.badgeColor || '#ffffff',
                                 border: `1px solid ${offer.borderColor || 'rgba(255, 255, 255, 0.2)'}`
@@ -177,17 +180,20 @@ export default function AdRotator({
                         >
                             {offer.badge}
                         </span>
-                        <span style={{ fontSize: '0.62rem', color: 'rgba(255, 255, 255, 0.4)' }}>18+</span>
+                        <span style={{ fontSize: '0.60rem', color: 'rgba(255, 255, 255, 0.4)' }}>18+</span>
                     </div>
 
                     <div
                         style={{
-                            fontSize: '0.94rem',
+                            fontSize: '0.90rem',
                             fontWeight: 800,
                             color: '#ffffff',
                             letterSpacing: '-0.2px',
-                            lineHeight: 1.25,
-                            textShadow: '0 1px 4px rgba(0,0,0,0.5)'
+                            lineHeight: 1.2,
+                            textShadow: '0 1px 4px rgba(0,0,0,0.5)',
+                            whiteSpace: 'nowrap',
+                            overflow: 'hidden',
+                            textOverflow: 'ellipsis'
                         }}
                     >
                         {offer.title}{' '}
@@ -198,9 +204,9 @@ export default function AdRotator({
 
                     <div
                         style={{
-                            fontSize: '0.74rem',
+                            fontSize: '0.72rem',
                             color: 'rgba(255, 255, 255, 0.72)',
-                            lineHeight: 1.25,
+                            lineHeight: 1.2,
                             whiteSpace: 'nowrap',
                             overflow: 'hidden',
                             textOverflow: 'ellipsis'
@@ -210,7 +216,7 @@ export default function AdRotator({
                     </div>
                 </div>
 
-                {/* Правая часть: кнопка ВСЕГДА справа на одной линии */}
+                {/* Правая часть: кнопка ВСЕГДА строго справа с фиксированной высотой */}
                 <button
                     type="button"
                     onClick={(e) => {
@@ -221,8 +227,9 @@ export default function AdRotator({
                         display: 'inline-flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        gap: '5px',
-                        padding: '8px 16px',
+                        gap: '6px',
+                        height: '36px',
+                        padding: '0 18px',
                         borderRadius: '10px',
                         background: offer.btnGradient || 'linear-gradient(135deg, #0284c7 0%, #0369a1 100%)',
                         border: '1px solid rgba(255, 255, 255, 0.25)',
