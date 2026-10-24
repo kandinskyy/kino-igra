@@ -20,6 +20,13 @@ dotenv.config();
 const app = express();
 app.use(cors());
 
+// Отключение HTTP/3 (QUIC) для предотвращения сбоев подключения в РФ (блокировки UDP 443 провайдерами)
+app.use((req, res, next) => {
+    res.setHeader('Alt-Svc', 'clear');
+    next();
+});
+
+
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
@@ -32,6 +39,19 @@ const io = new Server(server, {
 
 // Хранилище лобби в памяти (для MVP)
 const lobbies = new Map();
+
+function sanitizeLobby(lobby) {
+    if (!lobby) return null;
+    const clean = { ...lobby };
+    delete clean.timerInterval;
+    delete clean.hostGraceTimer;
+    return clean;
+}
+
+function emitLobbyUpdate(lobbyId, lobby) {
+    if (!lobbyId || !lobby) return;
+    io.to(lobbyId).emit('lobby_update', sanitizeLobby(lobby));
+}
 
 // Загрузка фильмов
 let ALL_MOVIES = [];
@@ -49,25 +69,54 @@ try {
     console.error('Failed to load movies:', e.message);
 }
 
-// Выбор 5 фильмов для раунда без повторений в рамках одного матча
+function normalizeMovieTitle(t) {
+    if (!t) return '';
+    return t.toLowerCase()
+        .replace(/ё/g, 'е')
+        .replace(/\s+/g, ' ')
+        .replace(/[.,:;!?\"'«»()]/g, '')
+        .trim();
+}
+
+function shuffleArray(arr) {
+    const a = [...arr];
+    for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+}
+
+// Выбор 5 фильмов для раунда без повторений в рамках лобби
 function pickMoviesForRound(lobby) {
     if (!lobby.usedMovieIds) lobby.usedMovieIds = [];
+    if (!lobby.usedMovieTitles) lobby.usedMovieTitles = [];
 
-    // Фильтруем фильмы, которые еще не участвовали в текущем матче
-    let available = ALL_MOVIES.filter(m => !lobby.usedMovieIds.includes(m.id));
+    // Фильтруем фильмы, которые еще не участвовали
+    let available = ALL_MOVIES.filter(m => {
+        if (lobby.usedMovieIds.includes(m.id)) return false;
+        const norm = normalizeMovieTitle(m.title);
+        if (norm && lobby.usedMovieTitles.includes(norm)) return false;
+        return true;
+    });
 
-    // Если доступных фильмов осталось меньше 5, сбрасываем историю матча
+    // Если доступных фильмов осталось меньше 5, сбрасываем историю
     if (available.length < 5) {
         lobby.usedMovieIds = [];
+        lobby.usedMovieTitles = [];
         available = [...ALL_MOVIES];
     }
 
-    // Случайно перемешиваем доступные фильмы
-    const shuffled = [...available].sort(() => 0.5 - Math.random());
+    // Равномерный Fisher-Yates shuffle
+    const shuffled = shuffleArray(available);
     const selected = shuffled.slice(0, 5);
 
-    // Фиксируем выпавшие фильмы в списке использованных в матче
-    selected.forEach(m => lobby.usedMovieIds.push(m.id));
+    // Фиксируем выпавшие фильмы в списке использованных
+    selected.forEach(m => {
+        lobby.usedMovieIds.push(m.id);
+        const norm = normalizeMovieTitle(m.title);
+        if (norm) lobby.usedMovieTitles.push(norm);
+    });
 
     return selected;
 }
@@ -105,7 +154,7 @@ function scheduleHostTransfer(lobby, lobbyId) {
                 lobby.host = nextOnline.id;
                 lobby.hostGraceTimer = null;
                 console.log(`Host transferred to ${nextOnline.nickname} (${nextOnline.id}) in lobby ${lobbyId} after 30s timeout`);
-                io.to(lobbyId).emit('lobby_update', lobby);
+                emitLobbyUpdate(lobbyId, lobby);
                 io.to(lobbyId).emit('host_transferred', {
                     newHostId: nextOnline.id,
                     newHostName: nextOnline.nickname
@@ -224,9 +273,10 @@ function endRound(lobbyId) {
     }
 
     // Всегда остаемся в 'reveal', чтобы все участники увидели оценки и средний балл
+    lobby.allVoted = false;
     lobby.state = 'reveal';
 
-    io.to(lobbyId).emit('lobby_update', lobby);
+    emitLobbyUpdate(lobbyId, lobby);
 }
 
 io.on('connection', (socket) => {
@@ -239,11 +289,13 @@ io.on('connection', (socket) => {
             id: lobbyId,
             host: socket.id,
             players: [],
-            targetVP: Math.min(Math.max(Number(targetVP) || 30, 5), 999),
+            targetVP: Math.min(Math.max(Number(targetVP) || 30, 1), 999),
             state: 'lobby', // lobby, round_start, reveal, game_over
             allColors: [...COLORS],
             movies: [],
             usedMovieIds: [],
+            usedMovieTitles: [],
+            allVoted: false,
             ratings: {}, // { playerId: { movieId: 'S', ... } }
             timeLeft: 60,
             timerRunning: false,
@@ -263,26 +315,38 @@ io.on('connection', (socket) => {
         console.log(`Lobby ${lobbyId} created by ${socket.id}`);
     });
 
+    // Хост меняет цель победы в созданном лобби
+    socket.on('update_target_vp', ({ lobbyId, targetVP }, callback) => {
+        const lobby = lobbies.get(lobbyId);
+        if (!lobby || lobby.host !== socket.id || lobby.state !== 'lobby') return;
+        const val = Math.min(Math.max(Number(targetVP) || 30, 1), 999);
+        lobby.targetVP = val;
+        emitLobbyUpdate(lobbyId, lobby);
+        if (callback) callback({ success: true, targetVP: val });
+    });
+
     // Подключение к лобби (с защитой по IP, уникальностью ников и запретом входа новых во время матча)
     socket.on('join_lobby', ({ lobbyId, nickname, sessionToken }, callback) => {
+        if (!callback) callback = () => {};
         const lobby = lobbies.get(lobbyId);
         if (!lobby) return callback({ success: false, message: 'Лобби не найдено' });
 
         const trimmedNick = (nickname || '').trim();
-        if (!trimmedNick) return callback({ success: false, message: 'Введите никнейм' });
 
         // Определение IP адреса клиента
         const clientIp = socket.handshake.headers['x-forwarded-for']?.split(',')[0]?.trim() || socket.handshake.address;
 
-        // Поиск существующего игрока (по сессии или по никнейму)
+        // Поиск существующего игрока:
+        // 1. По уникальному сессионному токену (приоритетно для реконнектов)
         const existingByToken = sessionToken ? lobby.players.find(p => p.sessionToken === sessionToken) : null;
-        const existingByNick = lobby.players.find(p => p.nickname.toLowerCase() === trimmedNick.toLowerCase());
+        // 2. По никнейму (если токена нет)
+        const existingByNick = trimmedNick ? lobby.players.find(p => p.nickname.toLowerCase() === trimmedNick.toLowerCase()) : null;
 
         const existingPlayer = existingByToken || existingByNick;
 
         if (existingPlayer) {
-            // Если игрок с таким ником уже ОНЛАЙН, но пытается зайти с другого браузера/устройства
-            if (existingPlayer.connected && existingPlayer.sessionToken !== sessionToken && existingPlayer.ip !== clientIp) {
+            // Если игрок с таким ником уже ОНЛАЙН, но пытается зайти с другого браузера/устройства (чужой токен и чужой IP)
+            if (existingPlayer.connected && existingPlayer.sessionToken && sessionToken && existingPlayer.sessionToken !== sessionToken && existingPlayer.ip !== clientIp) {
                 return callback({ success: false, message: 'Игрок с таким ником уже в игре! Выберите другой никнейм.' });
             }
 
@@ -291,12 +355,18 @@ io.on('connection', (socket) => {
                 return callback({ success: false, message: 'Этот никнейм уже занят другим игроком в этом лобби.' });
             }
 
-            // Это владелец переподключается!
+            // Это переподключение того же игрока!
             const oldSocketId = existingPlayer.id;
             existingPlayer.previousSocketId = oldSocketId;
             existingPlayer.id = socket.id;
             existingPlayer.connected = true;
             existingPlayer.ip = clientIp; // обновляем IP
+            if (trimmedNick && !existingPlayer.nickname) {
+                existingPlayer.nickname = trimmedNick;
+            }
+            if (!existingPlayer.sessionToken && sessionToken) {
+                existingPlayer.sessionToken = sessionToken;
+            }
             socket.join(lobbyId);
 
             // Переносим текущие оценки раунда со старого socket.id на новый
@@ -321,9 +391,19 @@ io.on('connection', (socket) => {
                 lobby.disconnectedPlayerId = null;
             }
 
-            io.to(lobbyId).emit('lobby_update', lobby);
-            return callback({ success: true, player: existingPlayer, lobby });
+            // Рассылаем актуальный прогресс голосования
+            const progress = {};
+            lobby.players.forEach(p => {
+                progress[p.id] = Object.keys(lobby.ratings[p.id] || {}).length;
+            });
+            io.to(lobbyId).emit('ratings_progress', progress);
+
+            emitLobbyUpdate(lobbyId, lobby);
+            return callback({ success: true, player: existingPlayer, lobby: sanitizeLobby(lobby) });
         }
+
+        // Если это новый игрок, никнейм обязателен
+        if (!trimmedNick) return callback({ success: false, message: 'Введите никнейм' });
 
         // Если это НОВЫЙ игрок, но игра уже началась -> вход закрыт!
         if (lobby.state !== 'lobby') {
@@ -349,8 +429,8 @@ io.on('connection', (socket) => {
         lobby.players.push(newPlayer);
         socket.join(lobbyId);
         
-        io.to(lobbyId).emit('lobby_update', lobby);
-        callback({ success: true, player: newPlayer, lobby });
+        emitLobbyUpdate(lobbyId, lobby);
+        callback({ success: true, player: newPlayer, lobby: sanitizeLobby(lobby) });
     });
 
     // Хост запускает игру
@@ -368,9 +448,11 @@ io.on('connection', (socket) => {
             lobby.roundPoints = {};
             lobby.roundDetails = {};
             lobby.winner = null;
+            lobby.allVoted = false;
             
-            // Выбираем 5 случайных фильмов без повторений в матче
-            lobby.usedMovieIds = [];
+            // Выбираем 5 случайных фильмов без повторений в лобби
+            if (!lobby.usedMovieIds) lobby.usedMovieIds = [];
+            if (!lobby.usedMovieTitles) lobby.usedMovieTitles = [];
             lobby.movies = pickMoviesForRound(lobby);
             
             // Сбрасываем счетчики выбора фильмов
@@ -378,7 +460,7 @@ io.on('connection', (socket) => {
             lobby.players.forEach(p => { resetProgress[p.id] = 0; });
             io.to(lobbyId).emit('ratings_progress', resetProgress);
 
-            io.to(lobbyId).emit('lobby_update', lobby);
+            emitLobbyUpdate(lobbyId, lobby);
         }
     });
 
@@ -389,7 +471,7 @@ io.on('connection', (socket) => {
             if (lobby.timerRunning) return;
             lobby.timerRunning = true;
             io.to(lobbyId).emit('timer_tick', { timeLeft: lobby.timeLeft, isRunning: true });
-            io.to(lobbyId).emit('lobby_update', lobby);
+            emitLobbyUpdate(lobbyId, lobby);
 
             lobby.timerInterval = setInterval(() => {
                 lobby.timeLeft--;
@@ -408,7 +490,7 @@ io.on('connection', (socket) => {
         if (lobby && lobby.host === socket.id && lobby.state === 'round_start') {
             clearLobbyTimer(lobby);
             io.to(lobbyId).emit('timer_tick', { timeLeft: lobby.timeLeft, isRunning: false });
-            io.to(lobbyId).emit('lobby_update', lobby);
+            emitLobbyUpdate(lobbyId, lobby);
         }
     });
 
@@ -419,7 +501,7 @@ io.on('connection', (socket) => {
             if (lobby.timerRunning || lobby.timeLeft <= 0) return;
             lobby.timerRunning = true;
             io.to(lobbyId).emit('timer_tick', { timeLeft: lobby.timeLeft, isRunning: true });
-            io.to(lobbyId).emit('lobby_update', lobby);
+            emitLobbyUpdate(lobbyId, lobby);
 
             lobby.timerInterval = setInterval(() => {
                 lobby.timeLeft--;
@@ -486,6 +568,14 @@ io.on('connection', (socket) => {
         });
         io.to(lobbyId).emit('ratings_progress', progress);
 
+        // Проверяем: все ли активные игроки оценили все 5 фильмов
+        const activePlayers = lobby.players.filter(p => p.connected);
+        const allVoted = activePlayers.length > 0 && activePlayers.every(p => {
+            return (progress[p.id] || 0) >= 5;
+        });
+        lobby.allVoted = allVoted;
+        emitLobbyUpdate(lobbyId, lobby);
+
         if (callback) callback({ success: true, myRatings: userRatings });
     });
 
@@ -503,8 +593,9 @@ io.on('connection', (socket) => {
             lobby.roundAverages = {};
             lobby.isFinalRound = false;
             lobby.winner = null;
+            lobby.allVoted = false;
             
-            // Выбираем 5 случайных фильмов без повторений в матче
+            // Выбираем 5 случайных фильмов без повторений в лобби
             lobby.movies = pickMoviesForRound(lobby);
             
             // Сбрасываем счетчики выбора фильмов при старте нового раунда
@@ -512,7 +603,7 @@ io.on('connection', (socket) => {
             lobby.players.forEach(p => { resetProgress[p.id] = 0; });
             io.to(lobbyId).emit('ratings_progress', resetProgress);
 
-            io.to(lobbyId).emit('lobby_update', lobby);
+            emitLobbyUpdate(lobbyId, lobby);
         }
     });
 
@@ -521,7 +612,7 @@ io.on('connection', (socket) => {
         const lobby = lobbies.get(lobbyId);
         if (lobby && lobby.host === socket.id && lobby.winner) {
             lobby.state = 'game_over';
-            io.to(lobbyId).emit('lobby_update', lobby);
+            emitLobbyUpdate(lobbyId, lobby);
         }
     });
 
@@ -539,10 +630,13 @@ io.on('connection', (socket) => {
             lobby.roundPoints = {};
             lobby.roundDetails = {};
             lobby.roundAverages = {};
-            lobby.usedMovieIds = [];
+            lobby.allVoted = false;
+            // Не затираем историю использованных фильмов, чтобы они не повторялись и в новых играх
+            if (!lobby.usedMovieIds) lobby.usedMovieIds = [];
+            if (!lobby.usedMovieTitles) lobby.usedMovieTitles = [];
             lobby.players.forEach(p => p.vp = 0);
             
-            io.to(lobbyId).emit('lobby_update', lobby);
+            emitLobbyUpdate(lobbyId, lobby);
         }
     });
 
@@ -563,7 +657,7 @@ io.on('connection', (socket) => {
         if (player) {
             player.color = colorObj.hex;
             player.emoji = colorObj.emoji;
-            io.to(lobbyId).emit('lobby_update', lobby);
+            emitLobbyUpdate(lobbyId, lobby);
             if (callback) callback({ success: true, color: colorObj.hex, emoji: colorObj.emoji });
         }
     });
@@ -592,7 +686,7 @@ io.on('connection', (socket) => {
                 scheduleHostTransfer(lobby, lobbyId);
             }
 
-            io.to(lobbyId).emit('lobby_update', lobby);
+            emitLobbyUpdate(lobbyId, lobby);
             if (callback) callback({ success: true });
         }
     });
@@ -634,8 +728,25 @@ io.on('connection', (socket) => {
                 lobby.disconnectedPlayerId = null;
             }
 
-            io.to(lobbyId).emit('lobby_update', lobby);
+            emitLobbyUpdate(lobbyId, lobby);
             if (callback) callback({ success: true });
+        }
+    });
+
+    // Игрок самостоятельно покидает лобби (выход в меню)
+    socket.on('leave_lobby', ({ lobbyId }) => {
+        const lobby = lobbies.get(lobbyId);
+        if (!lobby) return;
+        const playerIndex = lobby.players.findIndex(p => p.id === socket.id);
+        if (playerIndex !== -1) {
+            const player = lobby.players[playerIndex];
+            socket.leave(lobbyId);
+            if (lobby.state === 'lobby') {
+                lobby.players.splice(playerIndex, 1);
+            } else {
+                player.connected = false;
+            }
+            emitLobbyUpdate(lobbyId, lobby);
         }
     });
 
@@ -665,7 +776,7 @@ io.on('connection', (socket) => {
             }
 
             console.log(`[HOST TRANSFER] Хост лобби ${lobbyId} передан игроку ${targetPlayer.nickname} (${targetPlayer.id})`);
-            io.to(lobbyId).emit('lobby_update', lobby);
+            emitLobbyUpdate(lobbyId, lobby);
             io.to(lobbyId).emit('host_transferred', {
                 newHostId: targetPlayer.id,
                 newHostName: targetPlayer.nickname
@@ -684,7 +795,7 @@ io.on('connection', (socket) => {
         lobby.pausedDueToDisconnect = false;
         lobby.disconnectedPlayerName = null;
         lobby.disconnectedPlayerId = null;
-        io.to(lobbyId).emit('lobby_update', lobby);
+        emitLobbyUpdate(lobbyId, lobby);
     });
 
     // Отключение
@@ -714,7 +825,7 @@ io.on('connection', (socket) => {
                     clearLobbyTimer(lobby);
                 }
                 
-                io.to(lobbyId).emit('lobby_update', lobby);
+                emitLobbyUpdate(lobbyId, lobby);
             }
         }
     });

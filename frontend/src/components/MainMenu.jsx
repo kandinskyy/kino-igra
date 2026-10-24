@@ -6,14 +6,12 @@ const MainMenu = () => {
     const { socket, setPlayer, showToast } = useGame();
     const [nickname, setNickname] = useState(() => localStorage.getItem('kino_lastNickname') || '');
     const [lobbyCode, setLobbyCode] = useState(() => localStorage.getItem('kino_lastLobbyId') || '');
-    const [targetVP, setTargetVP] = useState(30);
-
     const handleCreateLobby = () => {
         if (!nickname.trim()) {
             return showToast('Введите ваш никнейм!', 'error');
         }
         
-        socket.emit('create_lobby', { targetVP }, (response) => {
+        socket.emit('create_lobby', { targetVP: 30 }, (response) => {
             if (response.success) {
                 handleJoinLobby(response.lobbyId);
             }
@@ -114,103 +112,6 @@ const MainMenu = () => {
                     <h3 style={{ margin: 0, fontSize: '1.1rem', color: 'var(--text-main)', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                         <span>✨</span> Создать новое лобби
                     </h3>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(3, 10, 20, 0.5)', padding: '10px 14px', borderRadius: '12px', border: '1px solid var(--surface-border)' }}>
-                        <label style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>Цель для победы:</label>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                            <div 
-                                className="vp-stepper-container"
-                                style={{
-                                    display: 'inline-flex',
-                                    alignItems: 'center',
-                                    background: 'rgba(3, 10, 20, 0.75)',
-                                    border: '1px solid rgba(28, 160, 229, 0.35)',
-                                    borderRadius: '12px',
-                                    padding: '0 8px 0 10px',
-                                    height: '42px',
-                                    boxSizing: 'border-box'
-                                }}
-                            >
-                                <input 
-                                    type="number" 
-                                    className="vp-stepper-input" 
-                                    value={targetVP} 
-                                    onChange={(e) => {
-                                        const val = parseInt(e.target.value, 10);
-                                        setTargetVP(isNaN(val) ? '' : Math.max(1, Math.min(999, val)));
-                                    }}
-                                    onBlur={() => {
-                                        if (!targetVP || targetVP < 1) setTargetVP(30);
-                                    }}
-                                    min={1} 
-                                    max={999}
-                                    style={{
-                                        width: '46px',
-                                        background: 'transparent',
-                                        border: 'none',
-                                        outline: 'none',
-                                        boxShadow: 'none',
-                                        color: '#ffffff',
-                                        fontWeight: 700,
-                                        fontSize: '1.2rem',
-                                        textAlign: 'center',
-                                        padding: 0,
-                                        margin: 0
-                                    }}
-                                />
-                                <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', marginLeft: '4px' }}>
-                                    <button
-                                        type="button"
-                                        className="vp-stepper-arrow-btn"
-                                        onClick={() => setTargetVP(prev => Math.min(999, (Number(prev) || 0) + 1))}
-                                        title="Увеличить на 1"
-                                        style={{
-                                            background: 'transparent',
-                                            backgroundColor: 'transparent',
-                                            border: 'none',
-                                            outline: 'none',
-                                            boxShadow: 'none',
-                                            padding: '2px 4px',
-                                            margin: 0,
-                                            cursor: 'pointer',
-                                            display: 'flex',
-                                            alignItems: 'center',
-                                            justifyContent: 'center',
-                                            lineHeight: 1
-                                        }}
-                                    >
-                                        <svg width="10" height="6" viewBox="0 0 10 6" fill="none" style={{ display: 'block' }}>
-                                            <path d="M1 5L5 1L9 5" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                        </svg>
-                                    </button>
-                                    <button
-                                        type="button"
-                                        className="vp-stepper-arrow-btn"
-                                        onClick={() => setTargetVP(prev => Math.max(1, (Number(prev) || 0) - 1))}
-                                        title="Уменьшить на 1"
-                                        style={{
-                                            background: 'transparent',
-                                            backgroundColor: 'transparent',
-                                            border: 'none',
-                                            outline: 'none',
-                                            boxShadow: 'none',
-                                            padding: '2px 4px',
-                                            margin: 0,
-                                            cursor: 'pointer',
-                                            display: 'flex',
-                                            alignItems: 'center',
-                                            justifyContent: 'center',
-                                            lineHeight: 1
-                                        }}
-                                    >
-                                        <svg width="10" height="6" viewBox="0 0 10 6" fill="none" style={{ display: 'block' }}>
-                                            <path d="M1 1L5 5L9 1" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                        </svg>
-                                    </button>
-                                </div>
-                            </div>
-                            <span style={{ color: 'var(--accent-blue)', fontWeight: 700, fontSize: '0.95rem' }}>ПО</span>
-                        </div>
-                    </div>
                     <button className="btn-primary" onClick={handleCreateLobby} style={{ width: '100%', padding: '14px' }}>
                         🌧️ Создать игру
                     </button>

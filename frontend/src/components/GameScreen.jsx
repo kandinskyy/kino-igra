@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useGame } from '../GameContext';
 import PodiumCeremony from './PodiumCeremony';
+import { copyText } from '../utils/clipboard';
 
-const GameScreen = () => {
+const GameScreen = ({ isAllVoted: propIsAllVoted }) => {
+
     const { socket, gameState, player, leaveGame, closeLobby, showConfirm, showToast } = useGame();
     const [copiedCode, setCopiedCode] = useState(false);
     
@@ -29,6 +31,20 @@ const GameScreen = () => {
         }
         return (a.nickname || '').localeCompare(b.nickname || '');
     });
+
+    const myPlayer = gameState?.players?.find(p => p.id === player?.id) || player;
+    const myVP = myPlayer?.vp || 0;
+    const targetVP = gameState?.targetVP || 30;
+    const pointsNeeded = Math.max(0, targetVP - myVP);
+
+    const activePlayers = gameState?.players?.filter(p => p.connected) || [];
+    const isAllVoted = propIsAllVoted || (gameState?.state === 'round_start' && activePlayers.length > 0 && Boolean(
+        gameState.allVoted ||
+        activePlayers.every(p => {
+            const count = progress[p.id] ?? (Object.keys(gameState.ratings?.[p.id] || {}).length);
+            return count >= 5;
+        })
+    ));
 
     // Синхронизация таймера и прогресса через сокеты
     useEffect(() => {
@@ -175,7 +191,7 @@ const GameScreen = () => {
     };
 
     const handleCopyCode = () => {
-        navigator.clipboard.writeText(gameState.id);
+        copyText(gameState.id);
         setCopiedCode(true);
         showToast(`Код комнаты скопирован: ${gameState.id}`, 'success');
         setTimeout(() => setCopiedCode(false), 2000);
@@ -280,7 +296,60 @@ const GameScreen = () => {
     // ОСНОВНОЙ ЭКРАН ИГРЫ ИЛИ ВСКРЫТИЕ РЕЗУЛЬТАТОВ
     // ==========================================
     return (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', width: '100%', maxWidth: '1440px', margin: '0 auto', marginTop: '1vh' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.4rem', width: '100%', maxWidth: '1440px', margin: '0 auto', marginTop: '1vh' }}>
+            
+            {/* СЛЕВА СВЕРХУ: ИНДИКАТОР ОЧКОВ ДО ПОБЕДЫ */}
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem', marginBottom: '-0.2rem' }}>
+                <div style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '12px',
+                    background: 'rgba(3, 12, 26, 0.88)',
+                    border: '1px solid rgba(28, 160, 229, 0.45)',
+                    borderRadius: '14px',
+                    padding: '8px 18px',
+                    boxShadow: '0 0 20px rgba(28, 160, 229, 0.25)',
+                    backdropFilter: 'blur(10px)'
+                }}>
+                    <span style={{ fontSize: '1.4rem' }}>🎯</span>
+                    <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px', flexWrap: 'wrap' }}>
+                        <span style={{ color: 'var(--text-muted)', fontSize: '0.88rem', fontWeight: 600 }}>
+                            До победы осталось:
+                        </span>
+                        <strong style={{ 
+                            fontSize: '1.35rem', 
+                            fontWeight: 900, 
+                            color: pointsNeeded <= 5 ? '#ffd700' : '#00e676', 
+                            textShadow: pointsNeeded <= 5 ? '0 0 14px rgba(255, 215, 0, 0.6)' : '0 0 14px rgba(0, 230, 118, 0.5)',
+                            letterSpacing: '0.5px'
+                        }}>
+                            {pointsNeeded} ПО
+                        </strong>
+                        <span style={{ color: 'rgba(255, 255, 255, 0.45)', fontSize: '0.82rem' }}>
+                            (цель: {targetVP} ПО)
+                        </span>
+                    </div>
+                </div>
+
+                {/* Индикатор готовности всех участников в раунде */}
+                {gameState.state === 'round_start' && isAllVoted && (
+                    <div style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '8px',
+                        background: 'rgba(11, 218, 81, 0.2)',
+                        border: '1px solid #00e676',
+                        borderRadius: '12px',
+                        padding: '8px 16px',
+                        boxShadow: '0 0 18px rgba(0, 230, 118, 0.45)',
+                        color: '#00e676',
+                        fontWeight: 800,
+                        fontSize: '0.95rem'
+                    }}>
+                        <span>✨</span> Все 5/5 фильмов оценены всеми игроками!
+                    </div>
+                )}
+            </div>
             
             {/* ПЛАШКА ПАУЗЫ ИЗ-ЗА ОТКЛЮЧЕНИЯ ИГРОКА */}
             {gameState.pausedDueToDisconnect && (

@@ -1125,11 +1125,6 @@
     "posterUrl": "/api/poster/4raR3JsD7GEFOmK0z3zaMgbegMt.jpg"
   },
   {
-    "id": "m226",
-    "title": "Люди в черном (1997)",
-    "posterUrl": "/api/poster/aWdS4UOb4aeoS9xZsxGHhXTA1jp.jpg"
-  },
-  {
     "id": "m227",
     "title": "Убить Билла 2 (2004)",
     "posterUrl": "/api/poster/elRmq22rSh0Yamsft5ULVconhlV.jpg"
@@ -1615,11 +1610,6 @@
     "posterUrl": "/api/poster/rT33WiN5ZNiWxvtqnM7qri9xD9G.jpg"
   },
   {
-    "id": "m324",
-    "title": "Коралина в Стране Кошма (2009)",
-    "posterUrl": "/api/poster/kwgBclQIcghtYYoJiDTw48bHWUK.jpg"
-  },
-  {
     "id": "m325",
     "title": "Нападение помидоров-убийц (1978)",
     "posterUrl": "/api/poster/flCZ7TcuFsT8K5pz6vDZ0Gjk7Nu.jpg"
@@ -1965,11 +1955,6 @@
     "posterUrl": "/api/poster/iMHn218oEVvA2Hs6Veb3jbne0P.jpg"
   },
   {
-    "id": "m394",
-    "title": "Миссия невыполнима 1 (1996)",
-    "posterUrl": "/api/poster/1qnh1n1tVRq7JY8MYbvaZgfRfq2.jpg"
-  },
-  {
     "id": "m395",
     "title": "Оппенгеймер (2023)",
     "posterUrl": "/api/poster/8OQzw8keE6sDNH25sOqPRTxhFTO.jpg"
@@ -2090,11 +2075,6 @@
     "posterUrl": "/api/poster/5qFxj03eBrkI0bUiGIonb4e0AI4.jpg"
   },
   {
-    "id": "m419",
-    "title": "Матрица (1999)",
-    "posterUrl": "/api/poster/kEDbym5htJgDQNenjUtSJxAHysB.jpg"
-  },
-  {
     "id": "m420",
     "title": "Охотники за привидениями (1984)",
     "posterUrl": "/api/poster/q9gSeNEXzwTllZC6Wrjfb7Rcr2X.jpg"
@@ -2213,16 +2193,6 @@
     "id": "m443",
     "title": "Крестный отец 2 (1974)",
     "posterUrl": "/api/poster/tOLQ3iRDfbwhVaw3QjDzIOS7zcu.jpg"
-  },
-  {
-    "id": "m444",
-    "title": "Крестный отец 3 (1990)",
-    "posterUrl": "/api/poster/b0kAYDl4NApOfzNWdlYzmXwujYU.jpg"
-  },
-  {
-    "id": "m445",
-    "title": "Не смотри вверх (2021)",
-    "posterUrl": "/api/poster/nLWRxZYkUVM3gQNyF70jFMvImG3.jpg"
   },
   {
     "id": "m446",
@@ -2660,11 +2630,6 @@
     "posterUrl": "/api/poster/2D4UyCiRrIGSJodGLUe6xoEgsSr.jpg"
   },
   {
-    "id": "m533",
-    "title": "Гатака (1997)",
-    "posterUrl": "/api/poster/m3RWupJDKE8OHWem9oR8JULroiP.jpg"
-  },
-  {
     "id": "m534",
     "title": "За пивом! (2022)",
     "posterUrl": "/api/poster/7SMF6SOSPDAkWYzyNCO0JPm52Fj.jpg"
@@ -2845,11 +2810,6 @@
     "posterUrl": "/api/poster/hikJQzjhgcQpGIQ18c0AXjDEdF4.jpg"
   },
   {
-    "id": "m570",
-    "title": "Стражи Галактики 3. (2023)",
-    "posterUrl": "/api/poster/mz7lPfNOLOWDKoz625tFgNcSPVi.jpg"
-  },
-  {
     "id": "m571",
     "title": "Пролетая над гнездом кукушки. (1975)",
     "posterUrl": "/api/poster/fn5m0hbHOqEWpSGmDzvhj8G0KCq.jpg"
@@ -2920,11 +2880,6 @@
     "posterUrl": "/api/poster/z2gIGxxJ1OV64pJQ3DaOtMpy7I.jpg"
   },
   {
-    "id": "m585",
-    "title": "Омерзительная восьмерка (2015)",
-    "posterUrl": "/api/poster/7qFSC1xhsHe9wxyTBxQmts7s3n4.jpg"
-  },
-  {
     "id": "m586",
     "title": "Москва слезам не верит (1979)",
     "posterUrl": "/api/poster/gt2un5LYmp7G3J3UZL43RqYEv4R.jpg"
@@ -2983,11 +2938,6 @@
     "id": "m597",
     "title": "Горе-творец (2017)",
     "posterUrl": "/api/poster/lEoEnvSuBEVcVmiIfbOJMJc1frS.jpg"
-  },
-  {
-    "id": "m598",
-    "title": "Зеленая миля (1999) 1 часть записи",
-    "posterUrl": "/api/poster/lHxe8t4B0CKv4DO0C0B4rsuiG95.jpg"
   },
   {
     "id": "m599",
@@ -3062,7 +3012,7 @@
   {
     "id": "m613",
     "title": "Бегущий по лезвию 2049 (2017)",
-    "posterUrl": "/api/poster/fnIJeT9GZvscKm5PbmAvhTYDsLh.jpg"
+    "posterUrl": "https://st.kp.yandex.net/images/film_iphone/iphone360_589290.jpg"
   },
   {
     "id": "m614",
@@ -3093,11 +3043,6 @@
     "id": "m619",
     "title": "Прогулка (2015)",
     "posterUrl": "/api/poster/uosoDdJkXtLdXT9Vc9kGDpWaQFK.jpg"
-  },
-  {
-    "id": "m620",
-    "title": "Люди Х 2 (2003)",
-    "posterUrl": "/api/poster/qkQ3KZ0wF7pyPWMzL5TxnEKKDiJ.jpg"
   },
   {
     "id": "m621",
@@ -3275,11 +3220,6 @@
     "posterUrl": "/api/poster/lUKcrcO3wEPhNnzGq06JIX7GIEb.jpg"
   },
   {
-    "id": "m648",
-    "title": "Дэдпул (2016)",
-    "posterUrl": "/api/poster/r5PYZGOiIQuGpaZas9TTplNZ5Ox.jpg"
-  },
-  {
     "id": "m649",
     "title": "Мстители: Война бесконечности (2018)",
     "posterUrl": "/api/poster/c6RSGB6O0RaaHG3JGLq8lnUJSBC.jpg"
@@ -3298,11 +3238,6 @@
     "id": "m652",
     "title": "Железный человек (2008)",
     "posterUrl": "/api/poster/wAKZudQn0HEXqLvaGN6BEripHbv.jpg"
-  },
-  {
-    "id": "m653",
-    "title": "Джанго освобождённый (2012)",
-    "posterUrl": "/api/poster/9TqgGueg974s9Vw3U1rCYK30QP3.jpg"
   },
   {
     "id": "m654",
@@ -3373,11 +3308,6 @@
     "id": "m667",
     "title": "Человек-паук: Нет пути домой (2021)",
     "posterUrl": "/api/poster/qad0kyRLHG1Qccp2A0YCCUbvhiD.jpg"
-  },
-  {
-    "id": "m668",
-    "title": "Пираты Карибского моря: Проклятие Чёрной жемчужины (2003)",
-    "posterUrl": "/api/poster/70xRYK8orGWA7NfxvzhtkjpZAD6.jpg"
   },
   {
     "id": "m669",
@@ -3583,11 +3513,6 @@
     "id": "m709",
     "title": "Мементо (2000)",
     "posterUrl": "/api/poster/sP3GaLR1kRz0Fj5exKJmYKvIYzz.jpg"
-  },
-  {
-    "id": "m710",
-    "title": "Изгой-один: Звёздные войны. Истории (2016)",
-    "posterUrl": "/api/poster/agKGn83Y380RKlakyVEIpTuMoA1.jpg"
   },
   {
     "id": "m711",
@@ -5162,6 +5087,31 @@
   {
     "id": "m1025",
     "title": "Ворон (1994)",
-    "posterUrl": "/api/poster/qEMnKs6va3zHPTk2VzEZr7wn7YC.jpg"
+    "posterUrl": "https://st.kp.yandex.net/images/film_iphone/iphone360_360.jpg"
+  },
+  {
+    "id": "m_papa_pesik_2026",
+    "title": "Папа, купи пёсика (2026)",
+    "posterUrl": "https://avatars.mds.yandex.net/get-kinopoisk-image/9784475/a6cddf19-19f5-4c58-a138-f2bddf74fbf1/orig"
+  },
+  {
+    "id": "m_buddy_2026",
+    "title": "Бадди (2026)",
+    "posterUrl": "https://images.justwatch.com/poster/355561110/s592/buddy-2026.jpg"
+  },
+  {
+    "id": "m_batman_arkham_2014",
+    "title": "Бэтмен: Нападение на Аркхэм (2014)",
+    "posterUrl": "https://images.justwatch.com/poster/307179266/s592/Batman-Assault-on-Arkham.jpg"
+  },
+  {
+    "id": "m_batman_ninja_2018",
+    "title": "Бэтмен-ниндзя (2018)",
+    "posterUrl": "https://images.justwatch.com/poster/327432577/s592/Batman-Ninja.jpg"
+  },
+  {
+    "id": "m_batman_ninja_yakuza_2025",
+    "title": "Бэтмен-ниндзя против лиги якудза (2025)",
+    "posterUrl": "https://images.justwatch.com/poster/327567619/s592/batman-ninja-vs-yakuza-league.jpg"
   }
 ]

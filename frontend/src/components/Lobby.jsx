@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { useGame } from '../GameContext';
 import YandexAd from './YandexAd';
+import { copyText } from '../utils/clipboard';
 
 const ALL_16_COLORS = [
+
     { hex: '#B57EDC', emoji: '☂️', name: 'Лавандовый' },
     { hex: '#1CA0E5', emoji: '💧', name: 'Неоновый голубой' },
     { hex: '#00E676', emoji: '🍀', name: 'Изумрудный' },
@@ -30,7 +32,7 @@ const Lobby = () => {
     const myPlayer = gameState.players.find(p => p.id === player?.id) || player;
 
     const handleCopy = () => {
-        navigator.clipboard.writeText(gameState.id);
+        copyText(gameState.id);
         setCopied(true);
         showToast(`Код скопирован: ${gameState.id}`, 'success');
         setTimeout(() => setCopied(false), 2000);
@@ -38,6 +40,11 @@ const Lobby = () => {
 
     const handleLaunch = () => {
         socket.emit('launch_game', gameState.id);
+    };
+
+    const handleUpdateTargetVP = (newVal) => {
+        if (!isHost || !socket || !gameState?.id) return;
+        socket.emit('update_target_vp', { lobbyId: gameState.id, targetVP: newVal });
     };
 
     const handleSelectColor = (colorHex) => {
@@ -252,10 +259,125 @@ const Lobby = () => {
 
             {/* Карточка участников */}
             <div className="glass-panel" style={{ padding: '2rem' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid var(--surface-border)', paddingBottom: '1.2rem', marginBottom: '1.6rem' }}>
-                    <span style={{ color: 'var(--text-muted)', fontSize: '1.05rem' }}>
-                        🎯 Цель победы: <strong style={{ color: '#ffffff', fontWeight: 800 }}>{gameState.targetVP} ПО</strong>
-                    </span>
+                <div style={{ 
+                    display: 'flex', 
+                    justifyContent: 'space-between', 
+                    alignItems: 'center', 
+                    borderBottom: '1px solid var(--surface-border)', 
+                    paddingBottom: '1.2rem', 
+                    marginBottom: '1.6rem',
+                    flexWrap: 'wrap',
+                    gap: '1.2rem'
+                }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
+                        <label style={{ color: 'var(--text-muted)', fontSize: '0.95rem', fontWeight: 600 }}>Цель для победы:</label>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                            <div 
+                                className="vp-stepper-container"
+                                style={{
+                                    display: 'inline-flex',
+                                    alignItems: 'center',
+                                    background: 'rgba(3, 10, 20, 0.75)',
+                                    border: '1px solid rgba(28, 160, 229, 0.35)',
+                                    borderRadius: '12px',
+                                    padding: '0 8px 0 10px',
+                                    height: '42px',
+                                    boxSizing: 'border-box',
+                                    boxShadow: '0 0 15px rgba(28, 160, 229, 0.15)'
+                                }}
+                            >
+                                <input 
+                                    type="number" 
+                                    className="vp-stepper-input" 
+                                    value={gameState.targetVP || 30} 
+                                    disabled={!isHost}
+                                    readOnly={!isHost}
+                                    onChange={(e) => {
+                                        if (!isHost) return;
+                                        const val = parseInt(e.target.value, 10);
+                                        handleUpdateTargetVP(isNaN(val) ? '' : Math.max(1, Math.min(999, val)));
+                                    }}
+                                    onBlur={() => {
+                                        if (!isHost) return;
+                                        if (!gameState.targetVP || gameState.targetVP < 1) handleUpdateTargetVP(30);
+                                    }}
+                                    min={1} 
+                                    max={999}
+                                    title={isHost ? 'Цель очков для победы в матче' : 'Цель для победы (настраивает хост)'}
+                                    style={{
+                                        width: '46px',
+                                        background: 'transparent',
+                                        border: 'none',
+                                        outline: 'none',
+                                        boxShadow: 'none',
+                                        color: '#ffffff',
+                                        fontWeight: 700,
+                                        fontSize: '1.2rem',
+                                        textAlign: 'center',
+                                        padding: 0,
+                                        margin: 0,
+                                        cursor: isHost ? 'text' : 'default'
+                                    }}
+                                />
+                                {isHost && (
+                                    <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', marginLeft: '4px' }}>
+                                        <button
+                                            type="button"
+                                            className="vp-stepper-arrow-btn"
+                                            onClick={() => handleUpdateTargetVP(Math.min(999, (Number(gameState.targetVP) || 0) + 1))}
+                                            title="Увеличить на 1"
+                                            style={{
+                                                background: 'transparent',
+                                                backgroundColor: 'transparent',
+                                                border: 'none',
+                                                outline: 'none',
+                                                boxShadow: 'none',
+                                                padding: '2px 4px',
+                                                margin: 0,
+                                                cursor: 'pointer',
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                justifyContent: 'center',
+                                                lineHeight: 1
+                                            }}
+                                        >
+                                            <svg width="10" height="6" viewBox="0 0 10 6" fill="none" style={{ display: 'block' }}>
+                                                <path d="M1 5L5 1L9 5" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                            </svg>
+                                        </button>
+                                        <button
+                                            type="button"
+                                            className="vp-stepper-arrow-btn"
+                                            onClick={() => handleUpdateTargetVP(Math.max(1, (Number(gameState.targetVP) || 0) - 1))}
+                                            title="Уменьшить на 1"
+                                            style={{
+                                                background: 'transparent',
+                                                backgroundColor: 'transparent',
+                                                border: 'none',
+                                                outline: 'none',
+                                                boxShadow: 'none',
+                                                padding: '2px 4px',
+                                                margin: 0,
+                                                cursor: 'pointer',
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                justifyContent: 'center',
+                                                lineHeight: 1
+                                            }}
+                                        >
+                                            <svg width="10" height="6" viewBox="0 0 10 6" fill="none" style={{ display: 'block' }}>
+                                                <path d="M1 1L5 5L9 1" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                )}
+                            </div>
+                            <span style={{ color: 'var(--accent-blue)', fontWeight: 700, fontSize: '0.95rem' }}>ПО</span>
+                            {!isHost && (
+                                <span style={{ color: 'var(--text-muted)', fontSize: '0.8rem', marginLeft: '4px' }}>(настраивает хост)</span>
+                            )}
+                        </div>
+                    </div>
                     <span style={{ color: 'var(--text-muted)', fontSize: '1.05rem' }}>
                         👥 Игроки: <strong style={{ color: 'var(--accent-blue)', fontWeight: 800 }}>{gameState.players.length} / 16</strong>
                     </span>

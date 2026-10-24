@@ -66,27 +66,32 @@ export const GameProvider = ({ children }) => {
     useEffect(() => {
         const backendUrl = import.meta.env.VITE_BACKEND_URL || (import.meta.env.DEV ? 'http://localhost:3001' : undefined);
         const newSocket = backendUrl ? io(backendUrl) : io();
+
         setSocket(newSocket);
 
         newSocket.on('connect', () => {
             setIsConnected(true);
             
-            // Пытаемся восстановить сессию, если страница была обновлена
+            // Пытаемся восстановить сессию, если страница была обновлена или произошло переподключение
             const savedLobbyId = localStorage.getItem('kino_lobbyId');
             const savedToken = localStorage.getItem('kino_sessionToken');
+            const savedNick = localStorage.getItem('kino_lastNickname') || '';
             
             if (savedLobbyId && savedToken) {
                 newSocket.emit('join_lobby', { 
                     lobbyId: savedLobbyId, 
-                    sessionToken: savedToken 
+                    sessionToken: savedToken,
+                    nickname: savedNick
                 }, (response) => {
-                    if (response.success) {
+                    if (response && response.success) {
                         setPlayer(response.player);
                         setGameState(response.lobby);
-                    } else {
-                        // Если лобби уже не существует, чистим хвосты
+                    } else if (response && response.message === 'Лобби не найдено') {
+                        // Только если комната реально удалена/не существует, очищаем сессию
                         localStorage.removeItem('kino_lobbyId');
                         localStorage.removeItem('kino_sessionToken');
+                        setGameState(null);
+                        setPlayer(null);
                     }
                 });
             }
@@ -117,18 +122,7 @@ export const GameProvider = ({ children }) => {
             setPlayer(null);
         });
 
-        const handleUnload = () => {
-            const currentLobbyId = localStorage.getItem('kino_lobbyId');
-            if (newSocket && currentLobbyId) {
-                newSocket.emit('leave_lobby', { lobbyId: currentLobbyId });
-            }
-        };
-        window.addEventListener('beforeunload', handleUnload);
-        window.addEventListener('pagehide', handleUnload);
-
         return () => {
-            window.removeEventListener('beforeunload', handleUnload);
-            window.removeEventListener('pagehide', handleUnload);
             newSocket.close();
         };
     }, []);
