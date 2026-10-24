@@ -21,6 +21,17 @@ function App() {
         })
     );
 
+    React.useEffect(() => {
+        if (isAllVoted) {
+            document.body.classList.add('all-voted-theme');
+        } else {
+            document.body.classList.remove('all-voted-theme');
+        }
+        return () => {
+            document.body.classList.remove('all-voted-theme');
+        };
+    }, [isAllVoted]);
+
     if (!isConnected) {
         return (
             <>
@@ -39,24 +50,9 @@ function App() {
 
     return (
         <>
-            {/* Плавная смена фона сайта на зеленый (#0BDA51) при голосовании 5/5 всеми игроками с анимацией 2 секунды */}
-            <div 
-                className={`all-voted-bg-transition ${isAllVoted ? 'active' : ''}`}
-                style={{
-                    position: 'fixed',
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                    backgroundColor: '#0BDA51',
-                    backgroundImage: 'radial-gradient(circle at 50% 25%, rgba(255, 255, 255, 0.22) 0%, rgba(11, 218, 81, 0.88) 60%, #0BDA51 100%)',
-                    opacity: isAllVoted ? 1 : 0,
-                    transition: 'opacity 2s cubic-bezier(0.4, 0, 0.2, 1)',
-                    pointerEvents: 'none',
-                    zIndex: 0
-                }}
-            />
-            <RainBackground />
+            {/* Плавная смена фона сайта на темно-зеленый (на основе #00A86B) при голосовании 5/5 всеми игроками */}
+            <div className={`all-voted-bg-transition ${isAllVoted ? 'active' : ''}`} />
+            <RainBackground isAllVoted={isAllVoted} />
             <ModalDialog />
             <div className="app-container">
                 {!gameState && <MainMenu />}

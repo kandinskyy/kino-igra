@@ -19,6 +19,19 @@
   --font-main: 'JetBrains Mono', monospace, -apple-system, sans-serif;
 }
 
+body.all-voted-theme {
+  --bg-color: #021a12;
+  --surface: rgba(3, 24, 16, 0.78);
+  --surface-border: rgba(0, 168, 107, 0.38);
+  --surface-border-glow: rgba(0, 168, 107, 0.65);
+  --text-main: #f0fdf6;
+  --text-muted: #9cd4be;
+
+  --accent-blue: #00c980;
+  --accent-blue-glow: rgba(0, 201, 128, 0.45);
+  --accent-deep: #03281b;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -38,6 +51,7 @@ body {
     radial-gradient(circle at 90% 70%, rgba(13, 75, 125, 0.25) 0%, transparent 50%),
     linear-gradient(180deg, #050d18 0%, #03070e 100%);
   background-attachment: fixed;
+  transition: background-color 2s cubic-bezier(0.4, 0, 0.2, 1), color 1.5s ease;
 }
 
 /* Стеклянные панели (Glassmorphism) */
@@ -50,11 +64,46 @@ body {
   box-shadow: 
     0 12px 40px rgba(0, 0, 0, 0.65),
     inset 0 1px 0 rgba(255, 255, 255, 0.08);
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  transition: background 1.5s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 1.5s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 1.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .glass-panel:hover {
-  border-color: rgba(28, 160, 229, 0.35);
+  border-color: var(--surface-border-glow);
+}
+
+.all-voted-bg-transition {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #004d31;
+  background-image: radial-gradient(circle at 50% 20%, #007a4e 0%, #005e3c 40%, #00422a 70%, #022216 100%);
+  opacity: 0;
+  transition: opacity 2s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.all-voted-bg-transition.active {
+  opacity: 1;
+}
+
+@keyframes emeraldPulse {
+  0% {
+    box-shadow: 0 0 16px rgba(0, 168, 107, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 28px rgba(0, 201, 128, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    transform: scale(1.02);
+  }
+  100% {
+    box-shadow: 0 0 16px rgba(0, 168, 107, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    transform: scale(1);
+  }
 }
 
 /* Кнопки */

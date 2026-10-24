@@ -304,12 +304,13 @@ const GameScreen = ({ isAllVoted: propIsAllVoted }) => {
                     display: 'inline-flex',
                     alignItems: 'center',
                     gap: '12px',
-                    background: 'rgba(3, 12, 26, 0.88)',
-                    border: '1px solid rgba(28, 160, 229, 0.45)',
+                    background: isAllVoted ? 'rgba(3, 26, 18, 0.92)' : 'rgba(3, 12, 26, 0.88)',
+                    border: isAllVoted ? '1px solid rgba(0, 168, 107, 0.55)' : '1px solid rgba(28, 160, 229, 0.45)',
                     borderRadius: '14px',
                     padding: '8px 18px',
-                    boxShadow: '0 0 20px rgba(28, 160, 229, 0.25)',
-                    backdropFilter: 'blur(10px)'
+                    boxShadow: isAllVoted ? '0 0 22px rgba(0, 168, 107, 0.38)' : '0 0 20px rgba(28, 160, 229, 0.25)',
+                    backdropFilter: 'blur(10px)',
+                    transition: 'all 1.5s cubic-bezier(0.4, 0, 0.2, 1)'
                 }}>
                     <span style={{ fontSize: '1.4rem' }}>🎯</span>
                     <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px', flexWrap: 'wrap' }}>
@@ -319,13 +320,13 @@ const GameScreen = ({ isAllVoted: propIsAllVoted }) => {
                         <strong style={{ 
                             fontSize: '1.35rem', 
                             fontWeight: 900, 
-                            color: pointsNeeded <= 5 ? '#ffd700' : '#00e676', 
-                            textShadow: pointsNeeded <= 5 ? '0 0 14px rgba(255, 215, 0, 0.6)' : '0 0 14px rgba(0, 230, 118, 0.5)',
+                            color: pointsNeeded <= 5 ? '#ffd700' : (isAllVoted ? '#00ff9d' : '#00e676'), 
+                            textShadow: pointsNeeded <= 5 ? '0 0 14px rgba(255, 215, 0, 0.6)' : (isAllVoted ? '0 0 16px rgba(0, 255, 157, 0.65)' : '0 0 14px rgba(0, 230, 118, 0.5)'),
                             letterSpacing: '0.5px'
                         }}>
                             {pointsNeeded} ПО
                         </strong>
-                        <span style={{ color: 'rgba(255, 255, 255, 0.45)', fontSize: '0.82rem' }}>
+                        <span style={{ color: 'rgba(255, 255, 255, 0.6)', fontSize: '0.82rem' }}>
                             (цель: {targetVP} ПО)
                         </span>
                     </div>
@@ -337,16 +338,18 @@ const GameScreen = ({ isAllVoted: propIsAllVoted }) => {
                         display: 'inline-flex',
                         alignItems: 'center',
                         gap: '8px',
-                        background: 'rgba(11, 218, 81, 0.2)',
-                        border: '1px solid #00e676',
-                        borderRadius: '12px',
-                        padding: '8px 16px',
-                        boxShadow: '0 0 18px rgba(0, 230, 118, 0.45)',
-                        color: '#00e676',
+                        background: 'linear-gradient(135deg, rgba(0, 168, 107, 0.35) 0%, rgba(0, 90, 58, 0.55) 100%)',
+                        border: '1px solid #00c980',
+                        borderRadius: '14px',
+                        padding: '8px 18px',
+                        boxShadow: '0 0 25px rgba(0, 168, 107, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
+                        color: '#ffffff',
                         fontWeight: 800,
-                        fontSize: '0.95rem'
+                        fontSize: '0.95rem',
+                        textShadow: '0 0 12px rgba(0, 201, 128, 0.8)',
+                        animation: 'emeraldPulse 2.5s infinite ease-in-out'
                     }}>
-                        <span>✨</span> Все 5/5 фильмов оценены всеми игроками!
+                        <span style={{ fontSize: '1.1rem' }}>✨</span> Все 5/5 фильмов оценены всеми игроками!
                     </div>
                 )}
             </div>
@@ -415,13 +418,15 @@ const GameScreen = ({ isAllVoted: propIsAllVoted }) => {
                                 display: 'flex', 
                                 alignItems: 'center', 
                                 gap: '0.6rem', 
-                                background: isTop1 ? 'linear-gradient(135deg, rgba(255, 215, 0, 0.12) 0%, rgba(3, 12, 24, 0.85) 100%)' : 'rgba(3, 12, 24, 0.75)', 
+                                background: isTop1 
+                                    ? (isAllVoted ? 'linear-gradient(135deg, rgba(255, 215, 0, 0.18) 0%, rgba(3, 26, 18, 0.92) 100%)' : 'linear-gradient(135deg, rgba(255, 215, 0, 0.12) 0%, rgba(3, 12, 24, 0.85) 100%)')
+                                    : (isAllVoted ? 'rgba(3, 26, 18, 0.88)' : 'rgba(3, 12, 24, 0.75)'), 
                                 padding: '8px 14px', 
                                 borderRadius: '14px', 
                                 border: isTop1 ? '1px solid rgba(255, 215, 0, 0.6)' : `1px solid ${p.color}55`,
                                 boxShadow: isTop1 ? '0 0 16px rgba(255, 215, 0, 0.35)' : `0 0 12px ${p.color}25`,
                                 opacity: p.connected ? 1 : 0.65,
-                                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
+                                transition: 'all 1.5s cubic-bezier(0.4, 0, 0.2, 1)'
                             }}>
                                 {/* Бейдж места в рейтинге (#1, #2, #3...) */}
                                 <span style={{ 
@@ -491,9 +496,11 @@ const GameScreen = ({ isAllVoted: propIsAllVoted }) => {
                                         fontSize: '0.75rem', 
                                         padding: '2px 6px', 
                                         borderRadius: '8px', 
-                                        background: isAllDone ? 'rgba(0, 230, 118, 0.2)' : 'rgba(28, 160, 229, 0.15)',
-                                        color: isAllDone ? '#00e676' : 'var(--accent-blue)',
-                                        fontWeight: 700 
+                                        background: isAllDone ? (isAllVoted ? 'rgba(0, 168, 107, 0.28)' : 'rgba(0, 230, 118, 0.2)') : 'rgba(28, 160, 229, 0.15)',
+                                        color: isAllDone ? (isAllVoted ? '#00ff9d' : '#00e676') : 'var(--accent-blue)',
+                                        border: isAllDone && isAllVoted ? '1px solid rgba(0, 201, 128, 0.45)' : 'none',
+                                        fontWeight: 700,
+                                        transition: 'all 1.5s ease'
                                     }}>
                                         {pRatedCount}/5
                                     </span>
@@ -534,19 +541,22 @@ const GameScreen = ({ isAllVoted: propIsAllVoted }) => {
                                 display: 'flex', 
                                 alignItems: 'center', 
                                 gap: '0.6rem',
-                                background: 'rgba(3, 10, 20, 0.8)',
+                                background: isAllVoted ? 'rgba(2, 22, 15, 0.88)' : 'rgba(3, 10, 20, 0.8)',
                                 padding: '6px 16px',
                                 borderRadius: '14px',
-                                border: timeLeft <= 10 && timerRunning ? '1px solid var(--accent-d)' : '1px solid var(--surface-border)'
+                                border: timeLeft <= 10 && timerRunning ? '1px solid var(--accent-d)' : (isAllVoted ? '1px solid rgba(0, 168, 107, 0.45)' : '1px solid var(--surface-border)'),
+                                boxShadow: isAllVoted ? '0 0 18px rgba(0, 168, 107, 0.25)' : 'none',
+                                transition: 'all 1.5s ease'
                             }}>
                                 <span style={{ fontSize: '1.2rem' }}>⏱️</span>
                                 <span style={{ 
                                     fontSize: '2rem', 
                                     fontWeight: 800, 
                                     color: timeLeft <= 10 && timerRunning ? 'var(--accent-d)' : 'var(--accent-blue)',
-                                    textShadow: timeLeft <= 10 && timerRunning ? '0 0 20px rgba(255, 56, 100, 0.7)' : '0 0 15px rgba(28, 160, 229, 0.5)',
+                                    textShadow: timeLeft <= 10 && timerRunning ? '0 0 20px rgba(255, 56, 100, 0.7)' : (isAllVoted ? '0 0 18px rgba(0, 201, 128, 0.6)' : '0 0 15px rgba(28, 160, 229, 0.5)'),
                                     minWidth: '55px',
-                                    textAlign: 'center'
+                                    textAlign: 'center',
+                                    transition: 'color 1.5s ease, text-shadow 1.5s ease'
                                 }}>
                                     {timeLeft}с
                                 </span>
@@ -575,10 +585,15 @@ const GameScreen = ({ isAllVoted: propIsAllVoted }) => {
                                         className="btn-primary" 
                                         onClick={handleEndRoundEarly}
                                         style={{ 
-                                            background: 'linear-gradient(135deg, #00e5ff 0%, #1ca0e5 100%)', 
+                                            background: isAllVoted 
+                                                ? 'linear-gradient(135deg, #00c980 0%, #008756 100%)' 
+                                                : 'linear-gradient(135deg, #00e5ff 0%, #1ca0e5 100%)', 
                                             padding: '8px 18px', 
                                             fontSize: '0.95rem',
-                                            boxShadow: '0 0 15px rgba(0, 229, 255, 0.4)'
+                                            boxShadow: isAllVoted 
+                                                ? '0 0 25px rgba(0, 201, 128, 0.65)' 
+                                                : '0 0 15px rgba(0, 229, 255, 0.4)',
+                                            transition: 'all 1.5s ease'
                                         }}
                                         title="Завершить раунд и вскрыть оценки прямо сейчас, не дожидаясь таймера"
                                     >
@@ -652,10 +667,16 @@ const GameScreen = ({ isAllVoted: propIsAllVoted }) => {
             {/* ПОДСКАЗКА ДЛЯ ИГРОКА */}
             {gameState.state === 'round_start' && (
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0 0.5rem' }}>
-                    <div style={{ color: 'var(--text-muted)', fontSize: '0.95rem' }}>
+                    <div style={{ color: 'var(--text-muted)', fontSize: '0.95rem', transition: 'color 1.5s ease' }}>
                         Расставьте ранги от <strong style={{ color: 'var(--accent-s)' }}>S</strong> до <strong style={{ color: 'var(--accent-d)' }}>D</strong>. Кликните повторно по букве, чтобы снять оценку.
                     </div>
-                    <div style={{ fontWeight: 700, color: ratedCount === 5 ? '#00e676' : 'var(--accent-blue)', fontSize: '0.95rem' }}>
+                    <div style={{ 
+                        fontWeight: 700, 
+                        color: ratedCount === 5 ? (isAllVoted ? '#00ff9d' : '#00e676') : 'var(--accent-blue)', 
+                        fontSize: '0.95rem',
+                        textShadow: isAllVoted && ratedCount === 5 ? '0 0 12px rgba(0, 255, 157, 0.55)' : 'none',
+                        transition: 'all 1.5s ease'
+                    }}>
                         {ratedCount === 5 ? '✓ Все 5 фильмов оценены' : `Оценено: ${ratedCount} из 5`}
                     </div>
                 </div>
@@ -777,13 +798,14 @@ const GameScreen = ({ isAllVoted: propIsAllVoted }) => {
                             {/* РЕЖИМ 1: ГОЛОСОВАНИЕ (ROUND_START) */}
                             {gameState.state === 'round_start' && (
                                 <div style={{ 
-                                    background: 'rgba(3, 10, 22, 0.6)', 
+                                    background: isAllVoted ? 'rgba(2, 22, 15, 0.75)' : 'rgba(3, 10, 22, 0.6)', 
                                     padding: '0.8rem', 
                                     borderRadius: '14px', 
                                     display: 'flex', 
                                     gap: '0.45rem', 
                                     justifyContent: 'center', 
-                                    border: '1px solid var(--surface-border)' 
+                                    border: '1px solid var(--surface-border)',
+                                    transition: 'all 1.5s ease'
                                 }}>
                                     {availableRatings.map(r => {
                                         const isSelected = currentRating === r;
@@ -934,16 +956,22 @@ const GameScreen = ({ isAllVoted: propIsAllVoted }) => {
                         padding: '8px 20px',
                         borderRadius: '26px',
                         cursor: 'pointer',
-                        border: copiedCode ? '1px solid #00e676' : '1px solid rgba(28, 160, 229, 0.4)',
+                        border: copiedCode 
+                            ? '1px solid #00e676' 
+                            : (isAllVoted ? '1px solid rgba(0, 168, 107, 0.55)' : '1px solid rgba(28, 160, 229, 0.4)'),
                         color: copiedCode ? '#00e676' : '#ffffff',
-                        background: 'rgba(3, 10, 24, 0.85)',
-                        boxShadow: copiedCode ? '0 0 20px rgba(0, 230, 118, 0.35)' : '0 4px 20px rgba(0, 0, 0, 0.45)',
+                        background: isAllVoted ? 'rgba(2, 22, 15, 0.9)' : 'rgba(3, 10, 24, 0.85)',
+                        boxShadow: copiedCode 
+                            ? '0 0 20px rgba(0, 230, 118, 0.35)' 
+                            : (isAllVoted ? '0 4px 25px rgba(0, 168, 107, 0.35)' : '0 4px 20px rgba(0, 0, 0, 0.45)'),
                         fontSize: '1.05rem',
                         fontWeight: 800,
                         letterSpacing: '2.5px',
-                        transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
+                        transition: 'all 1.5s cubic-bezier(0.4, 0, 0.2, 1)',
                         outline: 'none',
-                        textShadow: copiedCode ? 'none' : '0 0 12px rgba(28, 160, 229, 0.5)'
+                        textShadow: copiedCode 
+                            ? 'none' 
+                            : (isAllVoted ? '0 0 14px rgba(0, 201, 128, 0.6)' : '0 0 12px rgba(28, 160, 229, 0.5)')
                     }}
                     title="Нажмите, чтобы скопировать код комнаты"
                 >

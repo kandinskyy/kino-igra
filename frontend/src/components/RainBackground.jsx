@@ -1,7 +1,12 @@
 import React, { useEffect, useRef } from 'react';
 
-const RainBackground = () => {
+const RainBackground = ({ isAllVoted = false }) => {
     const canvasRef = useRef(null);
+    const isAllVotedRef = useRef(isAllVoted);
+
+    useEffect(() => {
+        isAllVotedRef.current = isAllVoted;
+    }, [isAllVoted]);
 
     useEffect(() => {
         const canvas = canvasRef.current;
@@ -33,15 +38,31 @@ const RainBackground = () => {
             });
         }
 
+        let curR = 28;
+        let curG = 160;
+        let curB = 229;
+
         const render = () => {
             ctx.clearRect(0, 0, width, height);
+
+            // Плавная интерполяция цвета дождя к изумрудному при голосовании 5/5
+            const targetR = isAllVotedRef.current ? 0 : 28;
+            const targetG = isAllVotedRef.current ? 180 : 160;
+            const targetB = isAllVotedRef.current ? 120 : 229;
+            curR += (targetR - curR) * 0.035;
+            curG += (targetG - curG) * 0.035;
+            curB += (targetB - curB) * 0.035;
+
+            const rInt = Math.round(curR);
+            const gInt = Math.round(curG);
+            const bInt = Math.round(curB);
 
             // Рисуем струи дождя
             for (let i = 0; i < streaks.length; i++) {
                 const s = streaks[i];
                 ctx.beginPath();
                 ctx.lineWidth = s.width;
-                ctx.strokeStyle = `rgba(28, 160, 229, ${s.opacity})`;
+                ctx.strokeStyle = `rgba(${rInt}, ${gInt}, ${bInt}, ${s.opacity})`;
                 ctx.moveTo(s.x, s.y);
                 ctx.lineTo(s.x - s.length * 0.12, s.y + s.length);
                 ctx.stroke();
