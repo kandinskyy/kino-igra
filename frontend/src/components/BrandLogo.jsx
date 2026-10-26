@@ -3,6 +3,9 @@ import foodbandImg from '../assets/ads/foodband.png';
 import dominosSvg from '../assets/ads/dominos.svg';
 import aviasalesImg from '../assets/ads/aviasales_mark.png';
 import aliexpressSvg from '../assets/ads/aliexpress_mark.svg';
+import growfoodImg from '../assets/ads/growfood.png';
+import startImg from '../assets/ads/start.png';
+import iviSvg from '../assets/ads/ivi_mark.svg';
 
 /**
  * Официальные логотипы брендов в контрастной премиальной плашке (44x44px).
@@ -39,6 +42,28 @@ export default function BrandLogo({ id, glowColor }) {
         logoAlt = 'AliExpress';
         imgStyle.width = '30px';
         imgStyle.height = '30px';
+    } else if (id === 'growfood') {
+        logoSrc = growfoodImg;
+        logoAlt = 'Grow Food';
+        imgStyle.width = '38px';
+        imgStyle.height = '38px';
+        imgStyle.borderRadius = '9px';
+        imgStyle.objectFit = 'cover';
+        imgStyle.filter = 'drop-shadow(0 1px 3px rgba(0, 0, 0, 0.18))';
+    } else if (id === 'start') {
+        logoSrc = startImg;
+        logoAlt = 'START';
+        imgStyle.width = '38px';
+        imgStyle.height = '38px';
+        imgStyle.borderRadius = '9px';
+        imgStyle.objectFit = 'contain';
+        imgStyle.filter = 'drop-shadow(0 2px 5px rgba(0, 0, 0, 0.2))';
+    } else if (id === 'ivi') {
+        logoSrc = iviSvg;
+        logoAlt = 'Иви';
+        imgStyle.width = '34px';
+        imgStyle.height = '34px';
+        imgStyle.filter = 'drop-shadow(0 2px 5px rgba(243, 7, 69, 0.25))';
     }
 
     return (

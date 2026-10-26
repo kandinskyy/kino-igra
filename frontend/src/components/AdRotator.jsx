@@ -26,21 +26,41 @@ function createShuffledDeck(length, prevLastIndex = null) {
 let globalDeck = null;
 let globalDeckIndex = 0;
 
+function getLastOfferIndex() {
+    try {
+        const val = sessionStorage.getItem('kino_last_ad_idx');
+        if (val !== null) {
+            const parsed = parseInt(val, 10);
+            if (!isNaN(parsed) && parsed >= 0 && parsed < AD_OFFERS.length) {
+                return parsed;
+            }
+        }
+    } catch (_) {}
+    return null;
+}
+
+function saveLastOfferIndex(idx) {
+    try {
+        sessionStorage.setItem('kino_last_ad_idx', String(idx));
+    } catch (_) {}
+}
+
 function getNextOfferIndex() {
     if (!AD_OFFERS.length) return 0;
     if (AD_OFFERS.length === 1) return 0;
 
     // Если колода еще не создана, устарела по размеру или закончился текущий цикл
     if (!globalDeck || globalDeck.length !== AD_OFFERS.length || globalDeckIndex >= globalDeck.length) {
-        const lastIndex = globalDeck && globalDeck.length === AD_OFFERS.length 
+        const lastIndex = (globalDeck && globalDeck.length === AD_OFFERS.length)
             ? globalDeck[globalDeck.length - 1] 
-            : null;
+            : getLastOfferIndex();
         globalDeck = createShuffledDeck(AD_OFFERS.length, lastIndex);
         globalDeckIndex = 0;
     }
 
     const nextIdx = globalDeck[globalDeckIndex];
     globalDeckIndex++;
+    saveLastOfferIndex(nextIdx);
     return nextIdx;
 }
 
