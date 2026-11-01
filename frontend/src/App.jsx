@@ -8,7 +8,7 @@ import RainBackground from './components/RainBackground';
 import ModalDialog from './components/ModalDialog';
 
 function App() {
-    const { gameState, isConnected } = useGame();
+    const { gameState, isConnected, connectionMessage, reconnect } = useGame();
 
     // Проверяем: оценили ли все активные игроки 5/5 фильмов в текущем раунде
     const isRoundStart = gameState?.state === 'round_start';
@@ -32,7 +32,7 @@ function App() {
         };
     }, [isAllVoted]);
 
-    if (!isConnected) {
+    if (!isConnected && !gameState) {
         return (
             <>
                 <RainBackground />
@@ -41,7 +41,8 @@ function App() {
                     <div className="glass-panel" style={{ padding: '2rem 3rem', textAlign: 'center' }}>
                         <div className="cloud-logo" style={{ fontSize: '3rem', marginBottom: '1rem' }}>🌧️</div>
                         <h2 style={{ color: 'var(--text-main)', fontSize: '1.4rem' }}>Подключение к серверу...</h2>
-                        <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', marginTop: '0.5rem' }}>Устанавливаем защищенное соединение</p>
+                        <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', marginTop: '0.5rem' }}>{connectionMessage}</p>
+                        <button className="btn-secondary" style={{ marginTop: 20 }} onClick={reconnect}>Повторить подключение</button>
                     </div>
                 </div>
             </>
@@ -55,9 +56,12 @@ function App() {
             <RainBackground isAllVoted={isAllVoted} />
             <ModalDialog />
             <div className="app-container">
+                {!isConnected && <div role="status" className="connection-banner">{connectionMessage} <button className="btn-secondary" onClick={reconnect}>Повторить</button></div>}
+                <fieldset disabled={!isConnected} className="game-fieldset">
                 {!gameState && <MainMenu />}
                 {gameState?.state === 'lobby' && <Lobby />}
                 {gameState && gameState.state !== 'lobby' && <GameScreen isAllVoted={isAllVoted} />}
+                </fieldset>
             </div>
         </>
     );

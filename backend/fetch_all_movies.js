@@ -1,5 +1,6 @@
 const axios = require('axios');
 const fs = require('fs');
+const path = require('path');
 const { parse } = require('csv-parse/sync');
 
 const gids = ['1852959410', '2035338320', '97443646', '1098480737'];
@@ -12,7 +13,7 @@ async function fetchAll() {
     for (const gid of gids) {
         try {
             console.log(`Fetching tab ${gid}...`);
-            const res = await axios.get(baseURL + gid);
+            const res = await axios.get(baseURL + gid, { timeout: 15000 });
             
             // Parse CSV
             const records = parse(res.data, {
@@ -56,12 +57,15 @@ async function fetchAll() {
                 }
             }
         } catch (e) {
-            console.error(`Error on tab ${gid}:`, e.message);
+            throw new Error(`Import aborted on tab ${gid}: ${e.message}`);
         }
     }
     
-    fs.writeFileSync('movies.json', JSON.stringify(allMovies, null, 2));
+    if (allMovies.length < 5) throw new Error('Catalog is incomplete');
+    const target = path.join(__dirname, 'movies.json');
+    fs.writeFileSync(target + '.tmp', JSON.stringify(allMovies, null, 2));
+    fs.renameSync(target + '.tmp', target);
     console.log(`Successfully saved ${allMovies.length} movies!`);
 }
 
-fetchAll();
+fetchAll().catch(e => { console.error(e.message); process.exitCode = 1; });

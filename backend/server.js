@@ -1,11 +1,3 @@
-process.on('uncaughtException', (err) => {
-    console.error('[CRITICAL] Uncaught Exception:', err.stack || err);
-});
-
-process.on('unhandledRejection', (reason, promise) => {
-    console.error('[CRITICAL] Unhandled Rejection at:', promise, 'reason:', reason);
-});
-
 const express = require('express');
 const http = require('http');
 const { Server } = require('socket.io');
@@ -14,11 +6,13 @@ const dotenv = require('dotenv');
 const axios = require('axios');
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
 
 dotenv.config();
 
 const app = express();
-app.use(cors());
+const allowedOrigins = new Set(['https://overratedkino.ru', 'https://www.overratedkino.ru', 'https://kino-igra.onrender.com', 'http://localhost:5173', 'http://localhost:3001']);
+app.use(cors({ origin: (origin, cb) => cb(null, !origin || allowedOrigins.has(origin)) }));
 
 // Отключение HTTP/3 (QUIC) для предотвращения сбоев подключения в РФ (блокировки UDP 443 провайдерами)
 app.use((req, res, next) => {
@@ -29,28 +23,46 @@ app.use((req, res, next) => {
 
 const server = http.createServer(app);
 const io = new Server(server, {
+    allowRequest: (req, callback) => callback(null, !req.headers.origin || allowedOrigins.has(req.headers.origin)),
     cors: {
-        origin: "*",
+        origin: (origin, cb) => cb(null, !origin || allowedOrigins.has(origin)),
         methods: ["GET", "POST"]
     },
+    maxHttpBufferSize: 16384,
     pingInterval: 10000,
     pingTimeout: 20000
 });
 
 // Хранилище лобби в памяти (для MVP)
 const lobbies = new Map();
-
-function sanitizeLobby(lobby) {
-    if (!lobby) return null;
-    const clean = { ...lobby };
-    delete clean.timerInterval;
-    delete clean.hostGraceTimer;
-    return clean;
+const roomStore = require('./room-store')(lobbies);
+let saveTimer;
+function saveRooms() {
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(() => { try { roomStore.save(); } catch (e) { console.error('[STATE SAVE]', e.message); } }, 100);
 }
 
+function publicPlayer(p) {
+    const { id, nickname, color, emoji, vp, connected } = p;
+    return { id, nickname, color, emoji, vp, connected };
+}
+function sanitizeLobby(lobby, playerId) {
+    const { id, host, targetVP, state, movies, timeLeft, timerRunning, roundPoints, roundDetails,
+        roundAverages, isFinalRound, pausedDueToDisconnect, disconnectedPlayerName, disconnectedPlayerId, roundId } = lobby;
+    const progress = Object.fromEntries(lobby.players.map(p => [p.id, Object.keys(lobby.ratings[p.id] || {}).length]));
+    const active = lobby.players.filter(p => p.connected);
+    return { id, host, targetVP, state, movies, timeLeft, timerRunning, roundPoints, roundDetails,
+        roundAverages, isFinalRound, pausedDueToDisconnect, disconnectedPlayerName, disconnectedPlayerId, roundId,
+        players: lobby.players.map(publicPlayer), winner: lobby.winner ? publicPlayer(lobby.winner) : null,
+        allColors: COLORS, progress,
+        allVoted: state === 'round_start' && active.length > 0 && active.every(p => progress[p.id] === 5),
+        ratings: state === 'round_start' ? (playerId ? { [playerId]: lobby.ratings[playerId] || {} } : {}) : lobby.ratings };
+}
 function emitLobbyUpdate(lobbyId, lobby) {
-    if (!lobbyId || !lobby) return;
-    io.to(lobbyId).emit('lobby_update', sanitizeLobby(lobby));
+    saveRooms();
+    for (const p of lobby.players) {
+        if (p.connected && p.socketId) io.to(p.socketId).emit('lobby_update', sanitizeLobby(lobby, p.id));
+    }
 }
 
 // Загрузка фильмов
@@ -66,7 +78,7 @@ try {
     })).filter(m => m.posterUrl);
     console.log(`Loaded ${ALL_MOVIES.length} movies.`);
 } catch (e) {
-    console.error('Failed to load movies:', e.message);
+    throw new Error('Failed to load movies: ' + e.message);
 }
 
 function normalizeMovieTitle(t) {
@@ -122,7 +134,7 @@ function pickMoviesForRound(lobby) {
 }
 
 // Генерация случайного кода из 6 символов
-const generateCode = () => Math.random().toString(36).substring(2, 8).toUpperCase();
+const generateCode = () => { let code; do { code = crypto.randomBytes(3).toString('hex').toUpperCase(); } while (lobbies.has(code)); return code; };
 
 // 16 контрастных цветов с уникальными и красивыми эмодзи
 const COLORS = [
@@ -165,6 +177,7 @@ function scheduleHostTransfer(lobby, lobbyId) {
 }
 
 function clearLobbyTimer(lobby) {
+    if (lobby.timerRunning && lobby.deadline) lobby.timeLeft = Math.max(0, Math.ceil((lobby.deadline - Date.now()) / 1000));
     if (lobby.timerInterval) {
         clearInterval(lobby.timerInterval);
         lobby.timerInterval = null;
@@ -280,16 +293,62 @@ function endRound(lobbyId) {
 }
 
 io.on('connection', (socket) => {
-    console.log('User connected:', socket.id);
+    socket.data.playerId = crypto.randomUUID();
+    const transportId = socket.id;
+    let windowStart = Date.now(), packetCount = 0, createdCount = 0;
+    const hostEvents = new Set(['update_target_vp', 'launch_game', 'start_timer', 'pause_timer', 'resume_timer', 'end_round_early', 'next_round', 'finish_game', 'restart_game', 'close_lobby', 'kick_player', 'transfer_host', 'dismiss_disconnect_pause']);
+    socket.use(([event, data, ack], next) => {
+        const fail = message => { if (typeof ack === 'function') ack({ success: false, message }); else socket.emit('error_message', message); };
+        if (Date.now() - windowStart > 10000) { windowStart = Date.now(); packetCount = 0; }
+        if (++packetCount > 100) return fail('Слишком много действий. Подождите несколько секунд.');
+        if (event === 'create_lobby') {
+            if (!data || typeof data !== 'object' || ++createdCount > 10 || lobbies.size >= 1000) return fail('Не удалось создать комнату. Попробуйте позже.');
+            return next();
+        }
+        const lobbyId = typeof data === 'string' ? data : data?.lobbyId;
+        if (typeof lobbyId !== 'string' || !/^[A-Z0-9]{6}$/.test(lobbyId)) return fail('Неверный код комнаты');
+        const lobby = lobbies.get(lobbyId);
+        if (!lobby) return fail('Лобби не найдено');
+        if (event === 'join_lobby') {
+            if (typeof data !== 'object' || (data.nickname !== undefined && (typeof data.nickname !== 'string' || data.nickname.trim().length > 15)) || (data.sessionToken != null && (typeof data.sessionToken !== 'string' || data.sessionToken.length > 128))) return fail('Проверьте никнейм и код комнаты');
+            return next();
+        }
+        const player = lobby.players.find(p => p.id === socket.data.playerId && p.socketId === transportId && p.connected);
+        if (!player) return fail('Вы больше не участник этой комнаты');
+        if (hostEvents.has(event) && lobby.host !== player.id) return fail('Это действие доступно только ведущему');
+        if (event === 'submit_rating' && (lobby.state !== 'round_start' || !lobby.movies.some(m => m.id === data.movieId) || !['S','A','B','C','D'].includes(data.rating) || (data.roundId !== undefined && data.roundId !== lobby.roundId))) return fail('Оценка не принята: проверьте текущий раунд');
+        if (event === 'change_color' && (typeof data.color !== 'string' || !COLORS.some(c => c.hex.toLowerCase() === data.color.toLowerCase()))) return fail('Выберите цвет из палитры');
+        const required = { launch_game: 'lobby', next_round: 'reveal', finish_game: 'reveal', restart_game: 'game_over' };
+        if (required[event] && lobby.state !== required[event]) return fail('Состояние игры изменилось');
+        if (event === 'next_round' && lobby.isFinalRound) return fail('Игра завершена. Откройте итоги.');
+        next();
+    });
+    const register = socket.on.bind(socket);
+    socket.on = (event, handler) => register(event, (...args) => {
+        try {
+            if (event !== 'disconnect') {
+                const ack = typeof args[1] === 'function' ? args[1] : () => {};
+                let answered = false;
+                args[1] = response => { answered = true; ack(response); };
+                handler(...args);
+                if (!answered) ack({ success: true });
+            } else handler(...args);
+        } catch (error) { console.error('[EVENT]', event, error.message); if (typeof args[1] === 'function') args[1]({ success: false, message: 'Не удалось выполнить действие' }); }
+    });
+
+    console.log('User connected:', socket.data.playerId);
 
     // Создание лобби
     socket.on('create_lobby', ({ targetVP }, callback) => {
+        if (socket.data.lobbyId) return callback({ success: false, message: 'Сначала выйдите из текущей комнаты' });
         const lobbyId = generateCode();
+        socket.data.lobbyId = lobbyId;
         lobbies.set(lobbyId, {
             id: lobbyId,
-            host: socket.id,
+            host: socket.data.playerId,
             players: [],
             targetVP: Math.min(Math.max(Number(targetVP) || 30, 1), 999),
+            roundId: 0,
             state: 'lobby', // lobby, round_start, reveal, game_over
             allColors: [...COLORS],
             movies: [],
@@ -312,13 +371,13 @@ io.on('connection', (socket) => {
         });
         socket.join(lobbyId);
         callback({ success: true, lobbyId });
-        console.log(`Lobby ${lobbyId} created by ${socket.id}`);
+        console.log(`Lobby ${lobbyId} created by ${socket.data.playerId}`);
     });
 
     // Хост меняет цель победы в созданном лобби
     socket.on('update_target_vp', ({ lobbyId, targetVP }, callback) => {
         const lobby = lobbies.get(lobbyId);
-        if (!lobby || lobby.host !== socket.id || lobby.state !== 'lobby') return;
+        if (!lobby || lobby.host !== socket.data.playerId || lobby.state !== 'lobby') return;
         const val = Math.min(Math.max(Number(targetVP) || 30, 1), 999);
         lobby.targetVP = val;
         emitLobbyUpdate(lobbyId, lobby);
@@ -333,59 +392,36 @@ io.on('connection', (socket) => {
 
         const trimmedNick = (nickname || '').trim();
 
-        // Определение IP адреса клиента
-        const clientIp = socket.handshake.headers['x-forwarded-for']?.split(',')[0]?.trim() || socket.handshake.address;
-
-        // Поиск существующего игрока:
-        // 1. По уникальному сессионному токену (приоритетно для реконнектов)
-        const existingByToken = sessionToken ? lobby.players.find(p => p.sessionToken === sessionToken) : null;
-        // 2. По никнейму (если токена нет)
-        const existingByNick = trimmedNick ? lobby.players.find(p => p.nickname.toLowerCase() === trimmedNick.toLowerCase()) : null;
-
-        const existingPlayer = existingByToken || existingByNick;
-
+        if (socket.data.lobbyId && socket.data.lobbyId !== lobbyId) return callback({ success: false, message: 'Сначала выйдите из текущей комнаты' });
+        const existingPlayer = sessionToken ? lobby.players.find(p => p.sessionToken === sessionToken) : null;
+        if (!existingPlayer && lobby.players.some(p => p.socketId === transportId && p.connected)) return callback({ success: false, message: 'Вы уже в этой комнате' });
+        const existingNick = lobby.players.find(p => p.nickname.toLowerCase() === trimmedNick.toLowerCase());
+        if (!existingPlayer && existingNick) return callback({ success: false, message: 'Никнейм занят. Вернитесь из прежнего браузера или выберите другой.' });
         if (existingPlayer) {
-            // Если игрок с таким ником уже ОНЛАЙН, но пытается зайти с другого браузера/устройства (чужой токен и чужой IP)
-            if (existingPlayer.connected && existingPlayer.sessionToken && sessionToken && existingPlayer.sessionToken !== sessionToken && existingPlayer.ip !== clientIp) {
-                return callback({ success: false, message: 'Игрок с таким ником уже в игре! Выберите другой никнейм.' });
-            }
-
-            // Если игрок оффлайн, но кто-то пытается занять его ник с другого IP и без правильного токена
-            if (!existingPlayer.connected && existingPlayer.sessionToken && sessionToken && existingPlayer.sessionToken !== sessionToken && existingPlayer.ip && existingPlayer.ip !== clientIp) {
-                return callback({ success: false, message: 'Этот никнейм уже занят другим игроком в этом лобби.' });
-            }
-
-            // Это переподключение того же игрока!
             const oldSocketId = existingPlayer.id;
-            existingPlayer.previousSocketId = oldSocketId;
-            existingPlayer.id = socket.id;
+            if (existingPlayer.socketId && existingPlayer.socketId !== transportId) {
+                const previous = io.sockets.sockets.get(existingPlayer.socketId);
+                previous?.emit('session_replaced', { message: 'Игра открыта в другой вкладке.' });
+                previous?.leave(lobbyId);
+            }
+            socket.data.playerId = existingPlayer.id;
+            socket.data.lobbyId = lobbyId;
+            existingPlayer.socketId = transportId;
             existingPlayer.connected = true;
-            existingPlayer.ip = clientIp; // обновляем IP
-            if (trimmedNick && !existingPlayer.nickname) {
-                existingPlayer.nickname = trimmedNick;
-            }
-            if (!existingPlayer.sessionToken && sessionToken) {
-                existingPlayer.sessionToken = sessionToken;
-            }
             socket.join(lobbyId);
-
-            // Переносим текущие оценки раунда со старого socket.id на новый
-            if (oldSocketId && lobby.ratings[oldSocketId]) {
-                lobby.ratings[socket.id] = lobby.ratings[oldSocketId];
-                delete lobby.ratings[oldSocketId];
-            }
+            if (!lobby.players.some(p => p.id === lobby.host && p.connected)) scheduleHostTransfer(lobby, lobbyId);
 
             // Если хост переподключился (отменяем 30-секундный таймер передачи хоста)
-            if (lobby.host === oldSocketId || lobby.host === existingPlayer.previousSocketId || lobby.host === existingPlayer.id) {
+            if (lobby.host === existingPlayer.id) {
                 if (lobby.hostGraceTimer) {
                     clearTimeout(lobby.hostGraceTimer);
                     lobby.hostGraceTimer = null;
                 }
-                lobby.host = socket.id;
+                lobby.host = socket.data.playerId;
             }
 
             // Если игра стояла на паузе из-за этого игрока, снимаем статус паузы
-            if (lobby.disconnectedPlayerId === oldSocketId || lobby.disconnectedPlayerId === existingPlayer.previousSocketId || lobby.disconnectedPlayerName === existingPlayer.nickname) {
+            if (lobby.disconnectedPlayerId === oldSocketId || lobby.disconnectedPlayerId === existingPlayer.id || lobby.disconnectedPlayerName === existingPlayer.nickname) {
                 lobby.pausedDueToDisconnect = false;
                 lobby.disconnectedPlayerName = null;
                 lobby.disconnectedPlayerId = null;
@@ -399,7 +435,7 @@ io.on('connection', (socket) => {
             io.to(lobbyId).emit('ratings_progress', progress);
 
             emitLobbyUpdate(lobbyId, lobby);
-            return callback({ success: true, player: existingPlayer, lobby: sanitizeLobby(lobby) });
+            return callback({ success: true, player: { ...publicPlayer(existingPlayer), sessionToken: existingPlayer.sessionToken }, lobby: sanitizeLobby(lobby, existingPlayer.id) });
         }
 
         // Если это новый игрок, никнейм обязателен
@@ -414,13 +450,14 @@ io.on('connection', (socket) => {
 
         // Выбираем первый свободный цвет и его эмодзи из 16 вариантов
         const colorObj = COLORS.find(c => !lobby.players.some(p => p.color.toLowerCase() === c.hex.toLowerCase())) || COLORS[0];
-        const newToken = Math.random().toString(36).substring(2, 15);
+        const newToken = crypto.randomBytes(32).toString('hex');
+        socket.data.lobbyId = lobbyId;
         const newPlayer = {
-            id: socket.id,
+            id: socket.data.playerId,
             nickname: trimmedNick,
             color: colorObj.hex,
             emoji: colorObj.emoji,
-            ip: clientIp,
+            socketId: transportId,
             vp: 0,
             connected: true,
             sessionToken: newToken
@@ -430,17 +467,18 @@ io.on('connection', (socket) => {
         socket.join(lobbyId);
 
         emitLobbyUpdate(lobbyId, lobby);
-        callback({ success: true, player: newPlayer, lobby: sanitizeLobby(lobby) });
+        callback({ success: true, player: { ...publicPlayer(newPlayer), sessionToken: newPlayer.sessionToken }, lobby: sanitizeLobby(lobby, newPlayer.id) });
     });
 
     // Хост запускает игру
     socket.on('launch_game', (lobbyId) => {
         const lobby = lobbies.get(lobbyId);
-        if (lobby && lobby.host === socket.id) {
-            if (lobby.players.length < 2) {
+        if (lobby && lobby.host === socket.data.playerId) {
+            if (lobby.players.filter(p => p.connected).length < 2) {
                 return socket.emit('error_message', 'Для старта игры нужно минимум 2 игрока');
             }
             clearLobbyTimer(lobby);
+            lobby.roundId = (lobby.roundId || 0) + 1;
             lobby.state = 'round_start';
             lobby.ratings = {};
             lobby.timeLeft = 60;
@@ -467,14 +505,15 @@ io.on('connection', (socket) => {
     // Запуск таймера хостом
     socket.on('start_timer', (lobbyId) => {
         const lobby = lobbies.get(lobbyId);
-        if (lobby && lobby.host === socket.id && lobby.state === 'round_start') {
+        if (lobby && lobby.host === socket.data.playerId && lobby.state === 'round_start') {
             if (lobby.timerRunning) return;
+            lobby.deadline = Date.now() + lobby.timeLeft * 1000;
             lobby.timerRunning = true;
             io.to(lobbyId).emit('timer_tick', { timeLeft: lobby.timeLeft, isRunning: true });
             emitLobbyUpdate(lobbyId, lobby);
 
             lobby.timerInterval = setInterval(() => {
-                lobby.timeLeft--;
+                lobby.timeLeft = Math.max(0, Math.ceil((lobby.deadline - Date.now()) / 1000));
                 if (lobby.timeLeft <= 0) {
                     endRound(lobbyId);
                 } else {
@@ -487,7 +526,7 @@ io.on('connection', (socket) => {
     // Пауза таймера хостом
     socket.on('pause_timer', (lobbyId) => {
         const lobby = lobbies.get(lobbyId);
-        if (lobby && lobby.host === socket.id && lobby.state === 'round_start') {
+        if (lobby && lobby.host === socket.data.playerId && lobby.state === 'round_start') {
             clearLobbyTimer(lobby);
             io.to(lobbyId).emit('timer_tick', { timeLeft: lobby.timeLeft, isRunning: false });
             emitLobbyUpdate(lobbyId, lobby);
@@ -497,14 +536,15 @@ io.on('connection', (socket) => {
     // Возобновление таймера хостом
     socket.on('resume_timer', (lobbyId) => {
         const lobby = lobbies.get(lobbyId);
-        if (lobby && lobby.host === socket.id && lobby.state === 'round_start') {
+        if (lobby && lobby.host === socket.data.playerId && lobby.state === 'round_start') {
             if (lobby.timerRunning || lobby.timeLeft <= 0) return;
+            lobby.deadline = Date.now() + lobby.timeLeft * 1000;
             lobby.timerRunning = true;
             io.to(lobbyId).emit('timer_tick', { timeLeft: lobby.timeLeft, isRunning: true });
             emitLobbyUpdate(lobbyId, lobby);
 
             lobby.timerInterval = setInterval(() => {
-                lobby.timeLeft--;
+                lobby.timeLeft = Math.max(0, Math.ceil((lobby.deadline - Date.now()) / 1000));
                 if (lobby.timeLeft <= 0) {
                     endRound(lobbyId);
                 } else {
@@ -517,7 +557,7 @@ io.on('connection', (socket) => {
     // Досрочное завершение раунда хостом (без ожидания таймера)
     socket.on('end_round_early', (lobbyId) => {
         const lobby = lobbies.get(lobbyId);
-        if (lobby && lobby.host === socket.id && lobby.state === 'round_start') {
+        if (lobby && lobby.host === socket.data.playerId && lobby.state === 'round_start') {
             endRound(lobbyId);
         }
     });
@@ -526,9 +566,9 @@ io.on('connection', (socket) => {
     socket.on('submit_rating', ({ lobbyId, movieId, rating }, callback) => {
         const lobby = lobbies.get(lobbyId);
         if (!lobby || lobby.state !== 'round_start') return;
-        if (!lobby.ratings[socket.id]) lobby.ratings[socket.id] = {};
+        if (!lobby.ratings[socket.data.playerId]) lobby.ratings[socket.data.playerId] = {};
 
-        const userRatings = lobby.ratings[socket.id];
+        const userRatings = lobby.ratings[socket.data.playerId];
         const movieWithRating = Object.keys(userRatings).find(mId => userRatings[mId] === rating);
         const oldRatingOfCurrentMovie = userRatings[movieId];
 
@@ -582,8 +622,9 @@ io.on('connection', (socket) => {
     // Следующий раунд
     socket.on('next_round', (lobbyId) => {
         const lobby = lobbies.get(lobbyId);
-        if (lobby && lobby.host === socket.id) {
+        if (lobby && lobby.host === socket.data.playerId) {
             clearLobbyTimer(lobby);
+            lobby.roundId = (lobby.roundId || 0) + 1;
             lobby.state = 'round_start';
             lobby.ratings = {};
             lobby.timeLeft = 60;
@@ -610,7 +651,7 @@ io.on('connection', (socket) => {
     // Хост нажимает "Итоги игры" после финального раунда для открытия финальной таблицы
     socket.on('finish_game', (lobbyId) => {
         const lobby = lobbies.get(lobbyId);
-        if (lobby && lobby.host === socket.id && lobby.winner) {
+        if (lobby && lobby.host === socket.data.playerId && lobby.winner) {
             lobby.state = 'game_over';
             emitLobbyUpdate(lobbyId, lobby);
         }
@@ -619,7 +660,7 @@ io.on('connection', (socket) => {
     // Перезапуск игры с нуля
     socket.on('restart_game', (lobbyId) => {
         const lobby = lobbies.get(lobbyId);
-        if (lobby && lobby.host === socket.id) {
+        if (lobby && lobby.host === socket.data.playerId) {
             clearLobbyTimer(lobby);
             lobby.state = 'lobby';
             lobby.ratings = {};
@@ -646,14 +687,14 @@ io.on('connection', (socket) => {
         if (!lobby || lobby.state !== 'lobby') return;
 
         // Проверяем, не занят ли цвет другим игроком
-        const isTaken = lobby.players.some(p => p.id !== socket.id && p.color.toLowerCase() === color.toLowerCase());
+        const isTaken = lobby.players.some(p => p.id !== socket.data.playerId && p.color.toLowerCase() === color.toLowerCase());
         if (isTaken) {
             if (callback) callback({ success: false, message: 'Этот цвет уже занят' });
             return;
         }
 
         const colorObj = COLORS.find(c => c.hex.toLowerCase() === color.toLowerCase()) || { hex: color, emoji: '🌧️' };
-        const player = lobby.players.find(p => p.id === socket.id);
+        const player = lobby.players.find(p => p.id === socket.data.playerId);
         if (player) {
             player.color = colorObj.hex;
             player.emoji = colorObj.emoji;
@@ -667,10 +708,11 @@ io.on('connection', (socket) => {
         const lobby = lobbies.get(lobbyId);
         if (!lobby) return;
 
-        const player = lobby.players.find(p => p.id === socket.id);
+        const player = lobby.players.find(p => p.id === socket.data.playerId);
         if (player) {
             player.connected = false;
             socket.leave(lobbyId);
+            socket.data.lobbyId = null;
 
             // Если идет раунд и таймер был запущен -> ставим на паузу
             if (lobby.state === 'round_start' && lobby.timerRunning) {
@@ -682,7 +724,7 @@ io.on('connection', (socket) => {
             }
 
             // Если вышел хост, даем 30 секунд на возврат перед передачей хоста
-            if (lobby.host === socket.id) {
+            if (lobby.host === socket.data.playerId) {
                 scheduleHostTransfer(lobby, lobbyId);
             }
 
@@ -694,7 +736,7 @@ io.on('connection', (socket) => {
     // Закрытие / роспуск лобби хостом (во время матча или в комнате ожидания)
     socket.on('close_lobby', ({ lobbyId }, callback) => {
         const lobby = lobbies.get(lobbyId);
-        if (!lobby || lobby.host !== socket.id) return;
+        if (!lobby || lobby.host !== socket.data.playerId) return;
 
         clearLobbyTimer(lobby);
         if (lobby.hostGraceTimer) {
@@ -703,18 +745,26 @@ io.on('connection', (socket) => {
         }
 
         io.to(lobbyId).emit('lobby_closed', { message: 'Хост закрыл комнату.' });
+        io.in(lobbyId).socketsLeave(lobbyId);
+        for (const client of io.sockets.sockets.values()) if (client.data.lobbyId === lobbyId) client.data.lobbyId = null;
         lobbies.delete(lobbyId);
+        saveRooms();
         if (callback) callback({ success: true });
     });
 
     // Исключение игрока хостом / продолжение игры без него
     socket.on('kick_player', ({ lobbyId, playerId }, callback) => {
         const lobby = lobbies.get(lobbyId);
-        if (!lobby || lobby.host !== socket.id) return;
+        if (!lobby || lobby.host !== socket.data.playerId) return;
 
         const index = lobby.players.findIndex(p => p.id === playerId);
         if (index !== -1) {
+            if (playerId === lobby.host) return callback({ success: false, message: 'Сначала передайте права ведущего' });
             const removed = lobby.players.splice(index, 1)[0];
+            const kicked = io.sockets.sockets.get(removed.socketId);
+            kicked?.emit('kicked', { message: 'Ведущий исключил вас из комнаты' });
+            kicked?.leave(lobbyId);
+            if (kicked) kicked.data.lobbyId = null;
 
             // Удаляем оценки исключенного игрока
             if (lobby.ratings[playerId]) {
@@ -733,23 +783,6 @@ io.on('connection', (socket) => {
         }
     });
 
-    // Игрок самостоятельно покидает лобби (выход в меню)
-    socket.on('leave_lobby', ({ lobbyId }) => {
-        const lobby = lobbies.get(lobbyId);
-        if (!lobby) return;
-        const playerIndex = lobby.players.findIndex(p => p.id === socket.id);
-        if (playerIndex !== -1) {
-            const player = lobby.players[playerIndex];
-            socket.leave(lobbyId);
-            if (lobby.state === 'lobby') {
-                lobby.players.splice(playerIndex, 1);
-            } else {
-                player.connected = false;
-            }
-            emitLobbyUpdate(lobbyId, lobby);
-        }
-    });
-
     // Ручная передача статуса хоста другому игроку (в лобби или во время матча)
     socket.on('transfer_host', ({ lobbyId, targetPlayerId }, callback) => {
         try {
@@ -758,7 +791,7 @@ io.on('connection', (socket) => {
                 if (callback) callback({ success: false, message: 'Лобби не найдено' });
                 return;
             }
-            if (lobby.host !== socket.id) {
+            if (lobby.host !== socket.data.playerId) {
                 if (callback) callback({ success: false, message: 'Только текущий хост может передать права' });
                 return;
             }
@@ -791,7 +824,7 @@ io.on('connection', (socket) => {
     // Хост решает продолжить раунд без отключившегося игрока
     socket.on('dismiss_disconnect_pause', ({ lobbyId }) => {
         const lobby = lobbies.get(lobbyId);
-        if (!lobby || lobby.host !== socket.id) return;
+        if (!lobby || lobby.host !== socket.data.playerId) return;
         lobby.pausedDueToDisconnect = false;
         lobby.disconnectedPlayerName = null;
         lobby.disconnectedPlayerId = null;
@@ -801,10 +834,10 @@ io.on('connection', (socket) => {
     // Отключение
     socket.on('disconnect', () => {
         for (let [lobbyId, lobby] of lobbies.entries()) {
-            const player = lobby.players.find(p => p.id === socket.id);
-            if (player) {
+            const player = lobby.players.find(p => p.id === socket.data.playerId);
+            if (player && player.socketId === transportId) {
                 player.connected = false;
-                player.previousSocketId = socket.id;
+                player.previousSocketId = socket.data.playerId;
 
                 // Если идет раунд и таймер тикал -> ставим на паузу!
                 if (lobby.state === 'round_start' && lobby.timerRunning) {
@@ -816,7 +849,7 @@ io.on('connection', (socket) => {
                 }
 
                 // Если отключился хост, запускаем 30-секундный таймер передачи хоста
-                if (lobby.host === socket.id) {
+                if (lobby.host === socket.data.playerId) {
                     scheduleHostTransfer(lobby, lobbyId);
                 }
 
@@ -843,6 +876,7 @@ setInterval(() => {
                 clearLobbyTimer(lobby);
                 if (lobby.hostGraceTimer) clearTimeout(lobby.hostGraceTimer);
                 lobbies.delete(lobbyId);
+                saveRooms();
                 console.log(`[CLEANUP] Успешно удалена неактивная комната ${lobbyId}`);
             }
         } else {
@@ -851,85 +885,13 @@ setInterval(() => {
     }
 }, 60000);
 
-// Высокопроизводительное кэширование и безопасное проксирование постеров TMDB
-const https = require('https');
-const tmdbAgent = new https.Agent({
-    lookup: (hostname, opts, cb) => {
-        if (hostname.includes('tmdb.org')) {
-            const ip = '99.84.152.32';
-            if (typeof opts === 'function') opts(null, ip, 4);
-            else if (opts.all) cb(null, [{ address: ip, family: 4 }]);
-            else cb(null, ip, 4);
-        } else {
-            require('dns').lookup(hostname, opts, cb);
-        }
-    }
-});
-
-// Кэш постеров в оперативной памяти (хранит до 300 последних картинок)
-const posterCache = new Map();
-const MAX_POSTER_CACHE = 300;
-
-app.get('/api/poster/:file', async (req, res) => {
-    const file = req.params.file;
-    if (!file || !/^[\w\-\.]+$/.test(file)) {
-        return res.status(400).end();
-    }
-
-    if (posterCache.has(file)) {
-        const cached = posterCache.get(file);
-        res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
-        res.setHeader('Content-Type', cached.contentType);
-        return res.send(cached.buffer);
-    }
-
-    try {
-        const tmdbUrl = `https://image.tmdb.org/t/p/w500/${file}`;
-        const response = await axios.get(tmdbUrl, {
-            responseType: 'arraybuffer',
-            timeout: 10000,
-            httpsAgent: tmdbAgent,
-            headers: { 'User-Agent': 'Mozilla/5.0' }
-        });
-
-        const contentType = response.headers['content-type'] || 'image/jpeg';
-        const buffer = Buffer.from(response.data);
-
-        if (posterCache.size >= MAX_POSTER_CACHE) {
-            const oldestKey = posterCache.keys().next().value;
-            posterCache.delete(oldestKey);
-        }
-        posterCache.set(file, { buffer, contentType });
-
-        res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
-        res.setHeader('Content-Type', contentType);
-        res.send(buffer);
-    } catch (e) {
-        if (!res.headersSent) {
-            res.redirect(`https://image.tmdb.org/t/p/w500/${file}`);
-        }
-    }
-});
-
-// Проверка жизнеспособности сервиса для Render и Nginx
-app.get('/healthz', (req, res) => res.status(200).send('OK'));
-app.get('/api/health', (req, res) => res.status(200).json({ status: 'ok', uptime: process.uptime() }));
-
-// Раздача статики собранного фронтенда
-const distPath = fs.existsSync(path.join(__dirname, 'dist'))
-    ? path.join(__dirname, 'dist')
-    : path.join(__dirname, '../frontend/dist');
-if (fs.existsSync(distPath)) {
-    app.use(express.static(distPath));
-    app.use((req, res) => {
-        if (req.path.startsWith('/api') || req.path.startsWith('/socket.io')) {
-            return res.status(404).json({ error: 'Endpoint not found' });
-        }
-        res.sendFile(path.join(distPath, 'index.html'));
-    });
+require('./http-service')({ app, server, movies: ALL_MOVIES });
+function shutdown() {
+    for (const lobby of lobbies.values()) clearLobbyTimer(lobby);
+    try { roomStore.save(); } catch (e) { console.error('[STATE SAVE]', e.message); }
+    io.emit('server_restarting');
+    io.close(() => process.exit(0));
+    setTimeout(() => process.exit(1), 5000).unref();
 }
-
-const PORT = process.env.PORT || 3001;
-server.listen(PORT, '0.0.0.0', () => {
-    console.log(`Backend server running on port ${PORT} (0.0.0.0)`);
-});
+process.on('SIGTERM', shutdown);
+process.on('SIGINT', shutdown);

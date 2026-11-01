@@ -1,3 +1,4 @@
+import { storage } from './utils/storage';
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { io } from 'socket.io-client';
 
@@ -10,6 +11,7 @@ export const GameProvider = ({ children }) => {
     const [gameState, setGameState] = useState(null);
     const [player, setPlayer] = useState(null);
     const [isConnected, setIsConnected] = useState(false);
+    const [connectionMessage, setConnectionMessage] = useState('Подключаемся к игре…');
     const [modal, setModal] = useState(null);
     const [toast, setToast] = useState(null);
 
@@ -64,32 +66,35 @@ export const GameProvider = ({ children }) => {
     }, [toast]);
 
     useEffect(() => {
-        const backendUrl = import.meta.env.VITE_BACKEND_URL || (import.meta.env.DEV ? 'http://localhost:3001' : undefined);
-        const newSocket = backendUrl ? io(backendUrl) : io();
+        const backendUrl = import.meta.env.VITE_BACKEND_URL;
+        const newSocket = io(backendUrl, { timeout: 15000, reconnectionDelayMax: 5000 });
 
         setSocket(newSocket);
 
         newSocket.on('connect', () => {
             setIsConnected(true);
-            
+            setConnectionMessage('');
+
             // Пытаемся восстановить сессию, если страница была обновлена или произошло переподключение
-            const savedLobbyId = localStorage.getItem('kino_lobbyId');
-            const savedToken = localStorage.getItem('kino_sessionToken');
-            const savedNick = localStorage.getItem('kino_lastNickname') || '';
-            
+            const savedLobbyId = storage.getItem('kino_lobbyId');
+            const savedToken = storage.getItem('kino_sessionToken');
+            const savedNick = storage.getItem('kino_lastNickname') || '';
+
             if (savedLobbyId && savedToken) {
-                newSocket.emit('join_lobby', { 
-                    lobbyId: savedLobbyId, 
+                newSocket.timeout(10000).emit('join_lobby', {
+                    lobbyId: savedLobbyId,
                     sessionToken: savedToken,
                     nickname: savedNick
-                }, (response) => {
+                }, (error, response) => {
+                    if (error) { setIsConnected(false); setConnectionMessage('Не удалось восстановить игру. Повторите подключение.'); return; }
                     if (response && response.success) {
                         setPlayer(response.player);
                         setGameState(response.lobby);
-                    } else if (response && response.message === 'Лобби не найдено') {
+                    } else if (response && !response.success) {
+                        showToast(response.message === 'Лобби не найдено' ? 'Комната закрыта или сервер перезапущен. Создайте новую игру.' : response.message, 'error');
                         // Только если комната реально удалена/не существует, очищаем сессию
-                        localStorage.removeItem('kino_lobbyId');
-                        localStorage.removeItem('kino_sessionToken');
+                        storage.removeItem('kino_lobbyId');
+                        storage.removeItem('kino_sessionToken');
                         setGameState(null);
                         setPlayer(null);
                     }
@@ -97,8 +102,16 @@ export const GameProvider = ({ children }) => {
             }
         });
 
-        newSocket.on('disconnect', () => setIsConnected(false));
-        
+        newSocket.on('disconnect', () => { setIsConnected(false); setConnectionMessage('Связь прервалась. Восстанавливаем подключение…'); });
+        newSocket.on('connect_error', () => { setIsConnected(false); setConnectionMessage(navigator.onLine ? 'Сервер пока недоступен. Повторяем подключение…' : 'Нет интернета. Проверьте подключение.'); });
+        newSocket.on('error_message', message => showToast(message, 'error'));
+        const removed = data => {
+            storage.removeItem('kino_lobbyId'); storage.removeItem('kino_sessionToken');
+            setGameState(null); setPlayer(null); showToast(data.message, 'error');
+        };
+        newSocket.on('kicked', removed);
+        newSocket.on('session_replaced', data => { removed(data); newSocket.disconnect(); });
+
         newSocket.on('lobby_update', (lobby) => {
             setGameState(lobby);
         });
@@ -116,8 +129,8 @@ export const GameProvider = ({ children }) => {
                 confirmText: 'Понятно',
                 resolve: () => {}
             });
-            localStorage.removeItem('kino_lobbyId');
-            localStorage.removeItem('kino_sessionToken');
+            storage.removeItem('kino_lobbyId');
+            storage.removeItem('kino_sessionToken');
             setGameState(null);
             setPlayer(null);
         });
@@ -132,16 +145,17 @@ export const GameProvider = ({ children }) => {
             socket.emit('leave_lobby', { lobbyId: gameState.id });
         }
         if (gameState?.id) {
-            localStorage.setItem('kino_lastLobbyId', gameState.id);
+            storage.setItem('kino_lastLobbyId', gameState.id);
         }
         if (player?.nickname) {
-            localStorage.setItem('kino_lastNickname', player.nickname);
+            storage.setItem('kino_lastNickname', player.nickname);
         }
         if (player?.sessionToken) {
-            localStorage.setItem('kino_lastSessionToken', player.sessionToken);
+            storage.setItem('kino_lastSessionToken', player.sessionToken);
+            storage.setItem('kino_token_' + gameState.id, player.sessionToken);
         }
-        localStorage.removeItem('kino_lobbyId');
-        localStorage.removeItem('kino_sessionToken');
+        storage.removeItem('kino_lobbyId');
+        storage.removeItem('kino_sessionToken');
 
         setGameState(null);
         setPlayer(null);
@@ -151,8 +165,8 @@ export const GameProvider = ({ children }) => {
         if (socket && gameState?.id) {
             socket.emit('close_lobby', { lobbyId: gameState.id });
         }
-        localStorage.removeItem('kino_lobbyId');
-        localStorage.removeItem('kino_sessionToken');
+        storage.removeItem('kino_lobbyId');
+        storage.removeItem('kino_sessionToken');
         setGameState(null);
         setPlayer(null);
     };
@@ -164,6 +178,8 @@ export const GameProvider = ({ children }) => {
         player,
         setPlayer,
         isConnected,
+        connectionMessage,
+        reconnect: () => { socket?.disconnect(); socket?.connect(); },
         leaveGame,
         closeLobby,
         modal,

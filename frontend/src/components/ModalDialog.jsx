@@ -1,35 +1,54 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useGame } from '../GameContext';
 
 const ModalDialog = () => {
     const { modal, closeModal, toast } = useGame();
 
+    const dialogRef = useRef(null);
+    const closeRef = useRef(closeModal);
+    useEffect(() => { closeRef.current = closeModal; }, [closeModal]);
+    useEffect(() => {
+        if (!modal) return;
+        const previous = document.activeElement;
+        const dialog = dialogRef.current;
+        dialog?.querySelector('button')?.focus();
+        const key = e => {
+            if (e.key === 'Escape') closeRef.current(false);
+            if (e.key !== 'Tab') return;
+            const buttons = [...dialog.querySelectorAll('button:not(:disabled)')];
+            const first = buttons[0], last = buttons.at(-1);
+            if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last?.focus(); }
+            if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first?.focus(); }
+        };
+        document.addEventListener('keydown', key);
+        return () => { document.removeEventListener('keydown', key); previous?.focus(); };
+    }, [modal]);
     return (
         <>
             {/* Всплывающий тост вверху экрана */}
             {toast && (
-                <div 
-                    className="toast-notification"
+                <div
+                    role="status" aria-live="polite" className="toast-notification"
                     style={{
                         position: 'fixed',
                         top: '24px',
                         left: '50%',
                         transform: 'translateX(-50%)',
                         zIndex: 10000,
-                        background: toast.type === 'error' 
-                            ? 'rgba(30, 8, 16, 0.92)' 
-                            : toast.type === 'success' 
-                                ? 'rgba(4, 26, 18, 0.92)' 
+                        background: toast.type === 'error'
+                            ? 'rgba(30, 8, 16, 0.92)'
+                            : toast.type === 'success'
+                                ? 'rgba(4, 26, 18, 0.92)'
                                 : 'rgba(5, 18, 36, 0.92)',
-                        border: toast.type === 'error' 
-                            ? '1px solid rgba(255, 56, 100, 0.5)' 
-                            : toast.type === 'success' 
-                                ? '1px solid rgba(0, 230, 118, 0.5)' 
+                        border: toast.type === 'error'
+                            ? '1px solid rgba(255, 56, 100, 0.5)'
+                            : toast.type === 'success'
+                                ? '1px solid rgba(0, 230, 118, 0.5)'
                                 : '1px solid rgba(28, 160, 229, 0.5)',
-                        boxShadow: toast.type === 'error' 
-                            ? '0 8px 30px rgba(255, 56, 100, 0.35)' 
-                            : toast.type === 'success' 
-                                ? '0 8px 30px rgba(0, 230, 118, 0.35)' 
+                        boxShadow: toast.type === 'error'
+                            ? '0 8px 30px rgba(255, 56, 100, 0.35)'
+                            : toast.type === 'success'
+                                ? '0 8px 30px rgba(0, 230, 118, 0.35)'
                                 : '0 8px 30px rgba(28, 160, 229, 0.35)',
                         backdropFilter: 'blur(16px)',
                         WebkitBackdropFilter: 'blur(16px)',
@@ -54,7 +73,7 @@ const ModalDialog = () => {
 
             {/* Модальное диалоговое окно */}
             {modal && (
-                <div 
+                <div
                     style={{
                         position: 'fixed',
                         inset: 0,
@@ -74,8 +93,8 @@ const ModalDialog = () => {
                         }
                     }}
                 >
-                    <div 
-                        className="glass-panel"
+                    <div
+                        ref={dialogRef} role="dialog" aria-modal="true" aria-labelledby="dialog-title" className="glass-panel"
                         style={{
                             maxWidth: '460px',
                             width: '100%',
@@ -84,20 +103,20 @@ const ModalDialog = () => {
                             display: 'flex',
                             flexDirection: 'column',
                             alignItems: 'center',
-                            background: modal.isDanger 
-                                ? 'radial-gradient(circle at 50% 0%, rgba(255, 56, 100, 0.15) 0%, rgba(8, 16, 30, 0.96) 100%)' 
+                            background: modal.isDanger
+                                ? 'radial-gradient(circle at 50% 0%, rgba(255, 56, 100, 0.15) 0%, rgba(8, 16, 30, 0.96) 100%)'
                                 : 'radial-gradient(circle at 50% 0%, rgba(28, 160, 229, 0.18) 0%, rgba(6, 18, 36, 0.96) 100%)',
-                            border: modal.isDanger 
-                                ? '1px solid rgba(255, 56, 100, 0.45)' 
+                            border: modal.isDanger
+                                ? '1px solid rgba(255, 56, 100, 0.45)'
                                 : '1px solid rgba(28, 160, 229, 0.45)',
-                            boxShadow: modal.isDanger 
-                                ? '0 20px 60px rgba(0, 0, 0, 0.85), 0 0 35px rgba(255, 56, 100, 0.3)' 
+                            boxShadow: modal.isDanger
+                                ? '0 20px 60px rgba(0, 0, 0, 0.85), 0 0 35px rgba(255, 56, 100, 0.3)'
                                 : '0 20px 60px rgba(0, 0, 0, 0.85), 0 0 35px rgba(28, 160, 229, 0.3)',
                             animation: 'modalPopIn 0.28s cubic-bezier(0.16, 1, 0.3, 1)'
                         }}
                     >
                         {/* Иконка / эмодзи */}
-                        <div 
+                        <div
                             style={{
                                 width: '64px',
                                 height: '64px',
@@ -116,10 +135,10 @@ const ModalDialog = () => {
                         </div>
 
                         {/* Заголовок */}
-                        <h3 style={{ 
-                            fontSize: '1.4rem', 
-                            fontWeight: 800, 
-                            color: '#ffffff', 
+                        <h3 id="dialog-title" style={{
+                            fontSize: '1.4rem',
+                            fontWeight: 800,
+                            color: '#ffffff',
                             margin: 0,
                             letterSpacing: '-0.3px'
                         }}>
@@ -127,10 +146,10 @@ const ModalDialog = () => {
                         </h3>
 
                         {/* Текст сообщения */}
-                        <p style={{ 
-                            fontSize: '1.02rem', 
-                            color: '#cbd5e1', 
-                            lineHeight: '1.6', 
+                        <p style={{
+                            fontSize: '1.02rem',
+                            color: '#cbd5e1',
+                            lineHeight: '1.6',
                             margin: '0.9rem 0 1.8rem',
                             wordBreak: 'break-word'
                         }}>
@@ -140,25 +159,25 @@ const ModalDialog = () => {
                         {/* Кнопки управления */}
                         {modal.type === 'confirm' ? (
                             <div style={{ display: 'flex', gap: '0.9rem', width: '100%', justifyContent: 'center' }}>
-                                <button 
+                                <button
                                     className="btn-secondary"
                                     onClick={() => closeModal(false)}
                                     style={{ flex: 1, padding: '12px 18px', fontSize: '1rem' }}
                                 >
                                     {modal.cancelText || 'Отмена'}
                                 </button>
-                                <button 
+                                <button
                                     className={modal.isDanger ? 'btn-primary btn-danger' : 'btn-primary'}
                                     onClick={() => closeModal(true)}
-                                    style={{ 
-                                        flex: 1, 
-                                        padding: '12px 18px', 
+                                    style={{
+                                        flex: 1,
+                                        padding: '12px 18px',
                                         fontSize: '1rem',
-                                        background: modal.isDanger 
-                                            ? 'linear-gradient(135deg, #ff3864 0%, #b81438 100%)' 
+                                        background: modal.isDanger
+                                            ? 'linear-gradient(135deg, #ff3864 0%, #b81438 100%)'
                                             : undefined,
-                                        boxShadow: modal.isDanger 
-                                            ? '0 4px 20px rgba(255, 56, 100, 0.5)' 
+                                        boxShadow: modal.isDanger
+                                            ? '0 4px 20px rgba(255, 56, 100, 0.5)'
                                             : undefined
                                     }}
                                 >
@@ -166,7 +185,7 @@ const ModalDialog = () => {
                                 </button>
                             </div>
                         ) : (
-                            <button 
+                            <button
                                 className="btn-primary"
                                 onClick={() => closeModal(true)}
                                 style={{ width: '100%', padding: '12px 24px', fontSize: '1.05rem' }}

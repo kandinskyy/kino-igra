@@ -2,8 +2,10 @@ const fs = require('fs');
 const path = require('path');
 const https = require('https');
 
-const API_KEY = 'ef6c0648c4c1712e817628a9979d7299';
-const TMDB_IP = '99.84.152.32';
+require('dotenv').config({ path: path.join(__dirname, '../.env') });
+const API_KEY = process.env.TMDB_API_KEY;
+if (!API_KEY) throw new Error('Set TMDB_API_KEY in the environment');
+
 
 // 7 новых фильмов, запрошенных пользователем
 const NEW_MOVIES = [
@@ -49,11 +51,6 @@ function searchTMDB(titleWithYear) {
                     hostname: 'api.themoviedb.org',
                     path: q,
                     headers: { 'Host': 'api.themoviedb.org', 'User-Agent': 'Mozilla/5.0' },
-                    lookup: (h, opt, cb) => {
-                        if (typeof opt === 'function') opt(null, TMDB_IP, 4);
-                        else if (opt.all) cb(null, [{ address: TMDB_IP, family: 4 }]);
-                        else cb(null, TMDB_IP, 4);
-                    }
                 };
 
                 const req = https.get(options, (res) => {

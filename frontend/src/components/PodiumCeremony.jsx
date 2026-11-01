@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import ConfettiCannons from './ConfettiCannons';
-import AdRotator from './AdRotator';
 
 export default function PodiumCeremony({
     players = [],
-    winner = null,
     isHost = false,
     onRestartGame,
     onLeaveGame,
@@ -208,9 +206,6 @@ export default function PodiumCeremony({
                         </button>
                     </div>
                 </div>
-
-                {/* Ротатор партнерских баннеров под таблицей лидеров */}
-                <AdRotator maxWidth="850px" />
             </div>
         );
     }
@@ -332,6 +327,7 @@ export default function PodiumCeremony({
                     alignItems: 'flex-end',
                     gap: totalPlaces >= 3 ? '24px' : '36px',
                     minHeight: '440px',
+                    flexWrap: 'wrap',
                     animation: 'podiumRise 0.8s cubic-bezier(0.2, 0.8, 0.3, 1) forwards'
                 }}>
 

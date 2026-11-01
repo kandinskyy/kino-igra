@@ -18,7 +18,7 @@ const GameScreen = ({ isAllVoted: propIsAllVoted }) => {
     });
 
     // Прогресс других игроков: { [playerId]: countOfRatedMovies }
-    const [progress, setProgress] = useState({});
+    const [progress, setProgress] = useState(gameState.progress || {});
 
 
 
@@ -71,6 +71,7 @@ const GameScreen = ({ isAllVoted: propIsAllVoted }) => {
     // Синхронизация при обновлении стейта лобби
     useEffect(() => {
         if (gameState) {
+            setProgress(gameState.progress || {});
             setTimeLeft(gameState.timeLeft ?? 60);
             setTimerRunning(gameState.timerRunning ?? false);
             if (gameState.ratings?.[player?.id]) {
@@ -123,7 +124,7 @@ const GameScreen = ({ isAllVoted: propIsAllVoted }) => {
             isDanger: true
         });
         if (confirmed) {
-            socket.emit('kick_player', { lobbyId: gameState.id, playerId: targetPlayerId });
+            try { const res = await socket.timeout(10000).emitWithAck('kick_player', { lobbyId: gameState.id, playerId: targetPlayerId }); if (!res.success) throw Error(res.message); } catch (e) { showToast(e.message, 'error'); return; }
             showToast('Игрок исключён из матча', 'info');
         }
     };
@@ -190,10 +191,10 @@ const GameScreen = ({ isAllVoted: propIsAllVoted }) => {
         socket.emit('restart_game', gameState.id);
     };
 
-    const handleCopyCode = () => {
-        copyText(gameState.id);
+    const handleCopyCode = async () => {
+        try { await copyText(new URL('?room=' + gameState.id, window.location.origin).href); } catch { showToast('Не удалось скопировать ссылку', 'error'); return; }
         setCopiedCode(true);
-        showToast(`Код комнаты скопирован: ${gameState.id}`, 'success');
+        showToast(`Ссылка скопирована: ${gameState.id}`, 'success');
         setTimeout(() => setCopiedCode(false), 2000);
     };
 
@@ -240,6 +241,7 @@ const GameScreen = ({ isAllVoted: propIsAllVoted }) => {
         socket.emit('submit_rating', {
             lobbyId: gameState.id,
             movieId,
+            roundId: gameState.roundId,
             rating
         }, (res) => {
             if (res?.success) {
@@ -713,8 +715,7 @@ const GameScreen = ({ isAllVoted: propIsAllVoted }) => {
                                     alt={movie.title} 
                                     loading="lazy"
                                     onError={(e) => {
-                                        e.target.onerror = null;
-                                        e.target.src = `https://placehold.co/400x600/081a30/1ca0e5?text=${encodeURIComponent(movie.title)}`;
+                                        if (!e.target.src.endsWith('/poster-placeholder.svg')) e.target.src = '/poster-placeholder.svg';
                                     }}
                                     style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover' }} 
                                 />

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useGame } from '../GameContext';
-import AdRotator from './AdRotator';
 import { copyText } from '../utils/clipboard';
 
 const ALL_16_COLORS = [
@@ -31,10 +30,10 @@ const Lobby = () => {
     const isHost = gameState.host === player?.id;
     const myPlayer = gameState.players.find(p => p.id === player?.id) || player;
 
-    const handleCopy = () => {
-        copyText(gameState.id);
+    const handleCopy = async () => {
+        try { await copyText(new URL('?room=' + gameState.id, window.location.origin).href); } catch { showToast('Не удалось скопировать ссылку', 'error'); return; }
         setCopied(true);
-        showToast(`Код скопирован: ${gameState.id}`, 'success');
+        showToast(`Ссылка скопирована: ${gameState.id}`, 'success');
         setTimeout(() => setCopied(false), 2000);
     };
 
@@ -86,7 +85,7 @@ const Lobby = () => {
             isDanger: true
         });
         if (confirmed) {
-            socket.emit('kick_player', { lobbyId: gameState.id, playerId: targetPlayerId });
+            try { const res = await socket.timeout(10000).emitWithAck('kick_player', { lobbyId: gameState.id, playerId: targetPlayerId }); if (!res.success) throw Error(res.message); } catch (e) { showToast(e.message, 'error'); return; }
             showToast('Игрок исключён из комнаты', 'info');
         }
     };
@@ -165,7 +164,7 @@ const Lobby = () => {
                     <button
                         className="btn-secondary"
                         onClick={leaveGame}
-                        title="Выйти в меню (вы сможете вернуться в любой момент по тому же нику)"
+                        title="Выйти в меню (вы сможете вернуться из этого браузера)"
                         style={{ borderColor: 'rgba(255, 77, 109, 0.35)', color: '#ff6b81' }}
                     >
                         🚪 Выйти в меню
@@ -383,7 +382,7 @@ const Lobby = () => {
                     </span>
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '1.1rem' }}>
+                <div className="players-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '1.1rem' }}>
                     {gameState.players.map((p, idx) => (
                         <div key={p.id || idx} style={{ 
                             background: 'rgba(3, 10, 22, 0.7)', 
@@ -528,9 +527,6 @@ const Lobby = () => {
                 )}
             </div>
 
-            {/* Ротатор партнерских баннеров в лобби */}
-            <AdRotator maxWidth="760px" />
-
             {/* Модалка с правилами */}
             {showRules && (
                 <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(2, 6, 14, 0.88)', backdropFilter: 'blur(10px)', zIndex: 100, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
@@ -545,7 +541,7 @@ const Lobby = () => {
                             <li>🎨 До старта матча вы можете выбрать любой из <strong>16 цветов</strong> (включая лавандовый).</li>
                             <li>🟢 <strong>Зелёная точка</strong> — игрок онлайн в матче, 🔴 <strong>бордовая</strong> — отключился.</li>
                             <li>⏸️ При отключении игрока таймер автоматически ставится на паузу. Хост может продолжить без него или исключить.</li>
-                            <li>🔄 Ошиблись в ранге? Кликните на другую букву или нажмите повторно, чтобы снять выбор!</li>
+                            <li>🔄 Ошиблись в ранге? Выберите другую букву — занятые ранги поменяются местами. Пятый фильм оценивается автоматически.</li>
                             <li>✨ За каждое совпадение оценки с другим игроком вы получаете <strong>+1 ПО</strong>.</li>
                             <li>🏆 Побеждает тот, кто первым наберёт <strong>{gameState.targetVP} ПО</strong>!</li>
                         </ul>
