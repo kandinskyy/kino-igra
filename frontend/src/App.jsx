@@ -1,70 +1,72 @@
-import React from 'react';
-import { useGame } from './GameContext';
-import MainMenu from './components/MainMenu';
-import Lobby from './components/Lobby';
-import GameScreen from './components/GameScreen';
-import RainBackground from './components/RainBackground';
-
-import ModalDialog from './components/ModalDialog';
-
-function App() {
-    const { gameState, isConnected, connectionMessage, reconnect } = useGame();
-
-    // Проверяем: оценили ли все активные игроки 5/5 фильмов в текущем раунде
-    const isRoundStart = gameState?.state === 'round_start';
-    const activePlayers = gameState?.players?.filter(p => p.connected) || [];
-    const isAllVoted = isRoundStart && activePlayers.length > 0 && Boolean(
-        gameState.allVoted ||
-        activePlayers.every(p => {
-            const count = Object.keys(gameState?.ratings?.[p.id] || {}).length;
-            return count >= 5;
-        })
-    );
-
-    React.useEffect(() => {
-        if (isAllVoted) {
-            document.body.classList.add('all-voted-theme');
-        } else {
-            document.body.classList.remove('all-voted-theme');
-        }
-        return () => {
-            document.body.classList.remove('all-voted-theme');
-        };
-    }, [isAllVoted]);
-
-    if (!isConnected && !gameState) {
-        return (
-            <>
-                <RainBackground />
-                <ModalDialog />
-                <div className="app-container" style={{ justifyContent: 'center', alignItems: 'center' }}>
-                    <div className="glass-panel" style={{ padding: '2rem 3rem', textAlign: 'center' }}>
-                        <div className="cloud-logo" style={{ fontSize: '3rem', marginBottom: '1rem' }}>🌧️</div>
-                        <h2 style={{ color: 'var(--text-main)', fontSize: '1.4rem' }}>Подключение к серверу...</h2>
-                        <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', marginTop: '0.5rem' }}>{connectionMessage}</p>
-                        <button className="btn-secondary" style={{ marginTop: 20 }} onClick={reconnect}>Повторить подключение</button>
-                    </div>
-                </div>
-            </>
-        );
-    }
-
-    return (
-        <>
-            {/* Плавная смена фона сайта на темно-зеленый (на основе #00A86B) при голосовании 5/5 всеми игроками */}
-            <div className={`all-voted-bg-transition ${isAllVoted ? 'active' : ''}`} />
-            <RainBackground isAllVoted={isAllVoted} />
-            <ModalDialog />
-            <div className="app-container">
-                {!isConnected && <div role="status" className="connection-banner">{connectionMessage} <button className="btn-secondary" onClick={reconnect}>Повторить</button></div>}
-                <fieldset disabled={!isConnected} className="game-fieldset">
-                {!gameState && <MainMenu />}
-                {gameState?.state === 'lobby' && <Lobby />}
-                {gameState && gameState.state !== 'lobby' && <GameScreen isAllVoted={isAllVoted} />}
-                </fieldset>
-            </div>
-        </>
-    );
+import { useEffect, useState } from "react";
+import { useGame } from "./GameContext";
+import MainMenu from "./components/MainMenu";
+import Lobby from "./components/Lobby";
+import GameScreen from "./components/GameScreen";
+import RainBackground from "./components/RainBackground";
+import ModalDialog from "./components/ModalDialog";
+import { Cloud } from "./components/Identity";
+export default function App() {
+  const { gameState, isConnected, connectionMessage, reconnect, showAlert } =
+    useGame();
+  const allVoted = gameState?.state === "round_start" && gameState.allVoted;
+  const [slow, setSlow] = useState(false);
+  useEffect(() => {
+    const t = setTimeout(() => setSlow(true), 12000);
+    return () => clearTimeout(t);
+  }, []);
+  return (
+    <>
+      <RainBackground isAllVoted={allVoted} />
+      <div className={`ambient ${allVoted ? "ambient-ready" : ""}`} />
+      <ModalDialog />
+      <div className={`site-shell ${allVoted ? "ready-theme" : ""}`}>
+        <header className="site-header">
+          <span className="brand">
+            <Cloud />
+            OVERRATED
+          </span>
+          {!gameState && (
+            <button
+              className="quiet-button"
+              onClick={() =>
+                showAlert(
+                  "В каждом раунде — пять фильмов. Расставьте ранги от S до D: каждый используется один раз, пятый назначается автоматически. За каждое совпадение с другим игроком — одно очко. Ведущий запускает таймер и раскрывает оценки. Побеждает тот, кто достигнет выбранной цели.",
+                  { title: "Как играть", icon: "", confirmText: "Понятно" },
+                )
+              }
+            >
+              Правила игры
+            </button>
+          )}
+          {gameState && (
+            <span className="room-label">
+              Комната <strong>{gameState.id}</strong>
+            </span>
+          )}
+        </header>
+        {!isConnected && (
+          <div className="connection-banner" role="status">
+            {connectionMessage}
+            {slow && (
+              <button className="btn-secondary" onClick={reconnect}>
+                Повторить подключение
+              </button>
+            )}
+          </div>
+        )}
+        <main>
+          <fieldset className="game-fieldset" disabled={!isConnected}>
+            {!gameState ? (
+              <MainMenu />
+            ) : gameState.state === "lobby" ? (
+              <Lobby />
+            ) : (
+              <GameScreen />
+            )}
+          </fieldset>
+        </main>
+      </div>
+    </>
+  );
 }
-
-export default App;

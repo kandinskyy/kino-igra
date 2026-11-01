@@ -14,12 +14,28 @@ test('private ratings and session credentials never reach another player', { tim
   try {
     await new Promise((resolve, reject) => { child.stdout.on('data', b => { if (b.toString().includes('Backend server running')) resolve(); }); child.once('exit', () => reject(new Error('server exited'))); });
     const a = await connect(), b = await connect();
+    const preview = await fetch('http://localhost:3099/api/preview-movies').then(r => r.json());
+    assert.equal(preview.length, 5);
+    assert.equal(new Set(preview.map(m => m.id)).size, 5);
+    assert.ok(preview.every(m => m.posterUrl.startsWith('/api/poster/')));
     const blocked = io('http://localhost:3099', { transports: ['websocket'], reconnection: false, extraHeaders: { Origin: 'https://untrusted.example' } });
     clients.push(blocked);
     await new Promise((resolve, reject) => { blocked.once('connect_error', resolve); blocked.once('connect', () => reject(Error('untrusted origin connected'))); });
+    const proxyProbe = io('http://localhost:3099', { transports: ['websocket'], reconnection: false, extraHeaders: { Origin: 'https://serene.alwaysdata.net' } });
+    clients.push(proxyProbe);
+    await new Promise((resolve, reject) => { proxyProbe.once('connect', resolve); proxyProbe.once('connect_error', reject); });
+    proxyProbe.disconnect();
+    const proxyPolling = await fetch('http://localhost:3099/socket.io/?EIO=4&transport=polling', { headers: { Origin: 'https://serene.alwaysdata.net' } });
+    assert.equal(proxyPolling.status, 200);
+    assert.equal(proxyPolling.headers.get('access-control-allow-origin'), 'https://serene.alwaysdata.net');
     const { lobbyId } = await call(a, 'create_lobby', { targetVP: 30 });
     const alice = await call(a, 'join_lobby', { lobbyId, nickname: 'Alice' });
     const bob = await call(b, 'join_lobby', { lobbyId, nickname: 'Bob' });
+    assert.equal(alice.lobby.allColors.length, 24);
+    assert.equal(new Set(alice.lobby.allColors.map(c => c.hex.toLowerCase())).size, 24);
+    const extraColor = alice.lobby.allColors[23].hex;
+    assert.equal((await call(a, 'change_color', { lobbyId, color: extraColor })).success, true);
+    assert.equal((await call(b, 'change_color', { lobbyId, color: extraColor })).success, false);
     assert.equal(bob.lobby.players[0].sessionToken, undefined);
     assert.equal(bob.lobby.players[0].ip, undefined);
     assert.equal((await call(a, 'join_lobby', { lobbyId, nickname: 'Duplicate' })).success, false);
@@ -38,6 +54,7 @@ test('private ratings and session credentials never reach another player', { tim
     const restored = await connect();
     const session = await call(restored, 'join_lobby', { lobbyId, sessionToken: alice.player.sessionToken });
     assert.equal(session.player.id, alice.player.id);
+    assert.equal(session.player.color, extraColor);
     assert.equal(session.lobby.ratings[alice.player.id][movieId], 'S');
     assert.equal((await call(a.connect(), 'join_lobby', { lobbyId, nickname: 'Alice', sessionToken: 'wrong' })).success, false);
     const ranks = ['S', 'A', 'B', 'C', 'D'];
@@ -65,6 +82,33 @@ test('private ratings and session credentials never reach another player', { tim
     assert.equal((await call(attacker, 'join_lobby', null)).success, false);
     await call(restored, 'close_lobby', { lobbyId });
     assert.equal(leaked, false);
+    // A winning round must remain in reveal until the host explicitly opens the ceremony.
+    const finalRoom = await call(restored, 'create_lobby', { targetVP: 1 });
+    const finalId = finalRoom.lobbyId;
+    const finalAlice = await call(restored, 'join_lobby', { lobbyId: finalId, nickname: 'Alice' });
+    await call(b, 'join_lobby', { lobbyId: finalId, nickname: 'Bob' });
+    await call(restored, 'update_target_vp', { lobbyId: finalId, targetVP: 7 });
+    await call(restored, 'update_target_vp', { lobbyId: finalId, targetVP: 1 });
+    await call(restored, 'launch_game', finalId);
+    const finalRound = await call(restored, 'join_lobby', { lobbyId: finalId, sessionToken: finalAlice.player.sessionToken });
+    for (let i = 0; i < 4; i++) for (const client of [restored, b]) await call(client, 'submit_rating', { lobbyId: finalId, movieId: finalRound.lobby.movies[i].id, rating: ranks[i] });
+    const readyRound = await call(restored, 'join_lobby', { lobbyId: finalId, sessionToken: finalAlice.player.sessionToken });
+    assert.equal(readyRound.lobby.allVoted, true);
+    assert.ok(Object.values(readyRound.lobby.progress).every(count => count === 5));
+    await call(restored, 'end_round_early', finalId);
+    const finalReveal = await call(restored, 'join_lobby', { lobbyId: finalId, sessionToken: finalAlice.player.sessionToken });
+    assert.equal(finalReveal.lobby.state, 'reveal');
+    assert.equal(finalReveal.lobby.isFinalRound, true);
+    assert.ok(finalReveal.lobby.roundDetails[finalRound.lobby.movies[0].id].S.includes(finalAlice.player.id));
+    assert.equal((await call(restored, 'next_round', finalId)).success, false);
+    await call(restored, 'finish_game', finalId);
+    const finished = await call(restored, 'join_lobby', { lobbyId: finalId, sessionToken: finalAlice.player.sessionToken });
+    assert.equal(finished.lobby.state, 'game_over');
+    await call(restored, 'restart_game', finalId);
+    const restarted = await call(restored, 'join_lobby', { lobbyId: finalId, sessionToken: finalAlice.player.sessionToken });
+    assert.equal(restarted.lobby.state, 'lobby');
+    assert.ok(restarted.lobby.players.every(p => p.vp === 0));
+    await call(restored, 'close_lobby', { lobbyId: finalId });
   } finally { clients.forEach(s => s.close()); child.kill(); }
 });
 

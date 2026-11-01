@@ -11,7 +11,7 @@ const crypto = require('crypto');
 dotenv.config();
 
 const app = express();
-const allowedOrigins = new Set(['https://overratedkino.ru', 'https://www.overratedkino.ru', 'https://kino-igra.onrender.com', 'https://serene.alwaysdata.net', 'http://localhost:5173', 'http://localhost:3001']);
+const allowedOrigins = new Set(['https://overratedkino.ru', 'https://www.overratedkino.ru', 'https://kino-igra.onrender.com', 'https://serene.alwaysdata.net', 'http://localhost:5173', 'http://localhost:3001', 'http://localhost:4175']);
 app.use(cors({ origin: (origin, cb) => cb(null, !origin || allowedOrigins.has(origin)) }));
 
 // Отключение HTTP/3 (QUIC) для предотвращения сбоев подключения в РФ (блокировки UDP 443 провайдерами)
@@ -136,7 +136,7 @@ function pickMoviesForRound(lobby) {
 // Генерация случайного кода из 6 символов
 const generateCode = () => { let code; do { code = crypto.randomBytes(3).toString('hex').toUpperCase(); } while (lobbies.has(code)); return code; };
 
-// 16 контрастных цветов с уникальными и красивыми эмодзи
+// Stable identity keys: 24 selectable robot/color variants, up to 16 players.
 const COLORS = [
     { hex: '#B57EDC', emoji: '☂️', name: 'Лавандовый' },
     { hex: '#1CA0E5', emoji: '💧', name: 'Неоновый голубой' },
@@ -153,7 +153,15 @@ const COLORS = [
     { hex: '#FFD600', emoji: '☀️', name: 'Золотой' },
     { hex: '#00B4D8', emoji: '💎', name: 'Аквамарин' },
     { hex: '#7B2CBF', emoji: '🪐', name: 'Ультрафиолет' },
-    { hex: '#D8B4FE', emoji: '🌙', name: 'Сиреневый' }
+    { hex: '#D8B4FE', emoji: '🌙', name: 'Сиреневый' },
+    { hex: '#A98D60', emoji: '🤖', name: 'Бежевый' },
+    { hex: '#9A9FAF', emoji: '🤖', name: 'Серый' },
+    { hex: '#EDB72F', emoji: '🤖', name: 'Золотистый' },
+    { hex: '#DE6F36', emoji: '🤖', name: 'Терракотовый' },
+    { hex: '#D25A72', emoji: '🤖', name: 'Коралловый' },
+    { hex: '#AC92CD', emoji: '🤖', name: 'Сиреневый' },
+    { hex: '#6F8F48', emoji: '🤖', name: 'Оливковый' },
+    { hex: '#E1DFD2', emoji: '🤖', name: 'Жемчужный' }
 ];
 
 function scheduleHostTransfer(lobby, lobbyId) {
@@ -448,7 +456,7 @@ io.on('connection', (socket) => {
 
         if (lobby.players.length >= 16) return callback({ success: false, message: 'Лобби заполнено (макс. 16 игроков)' });
 
-        // Выбираем первый свободный цвет и его эмодзи из 16 вариантов
+        // Choose the first unused identity from the 24 selectable variants.
         const colorObj = COLORS.find(c => !lobby.players.some(p => p.color.toLowerCase() === c.hex.toLowerCase())) || COLORS[0];
         const newToken = crypto.randomBytes(32).toString('hex');
         socket.data.lobbyId = lobbyId;
@@ -681,7 +689,7 @@ io.on('connection', (socket) => {
         }
     });
 
-    // Смена цвета игроком в лобби (выбор из 16 контрастных цветов)
+    // Change the player's robot/color identity in the lobby.
     socket.on('change_color', ({ lobbyId, color }, callback) => {
         const lobby = lobbies.get(lobbyId);
         if (!lobby || lobby.state !== 'lobby') return;
