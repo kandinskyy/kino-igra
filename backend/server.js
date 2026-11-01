@@ -11,7 +11,7 @@ const crypto = require('crypto');
 dotenv.config();
 
 const app = express();
-const allowedOrigins = new Set(['https://overratedkino.ru', 'https://www.overratedkino.ru', 'https://kino-igra.onrender.com', 'http://localhost:5173', 'http://localhost:3001']);
+const allowedOrigins = new Set(['https://overratedkino.ru', 'https://www.overratedkino.ru', 'https://kino-igra.onrender.com', 'https://serene.alwaysdata.net', 'http://localhost:5173', 'http://localhost:3001']);
 app.use(cors({ origin: (origin, cb) => cb(null, !origin || allowedOrigins.has(origin)) }));
 
 // Отключение HTTP/3 (QUIC) для предотвращения сбоев подключения в РФ (блокировки UDP 443 провайдерами)
