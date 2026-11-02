@@ -6,7 +6,7 @@ import {characterPose} from './acting';
 import {BodyFinish,SleeveFinish,ShoeFinish} from './CostumeFinish';
 
 const portraits = {loki:'28 0 144 165',batman:'30 13 140 153',chaplin:'30 17 140 151',pirate:'27 16 146 154',vader:'25 22 150 145',sherlock:'29 17 142 151',thor:'27 22 146 146',thanos:'26 16 148 154',forrest:'31 23 138 146',captain:'31 25 138 143'};
-const stern = new Set(['matrix','terminator','bill','batman','wick','toretto','jason','vader','thanos','hulk']);
+const stern = new Set(['matrix','terminator','bill','batman','wick','toretto','jason','vader','thanos','hulk','achi']);
 const playful = new Set(['fight','pirate','joker','loki','wolf','bateman']);
 
 function Palm({x,y,color}) {
@@ -28,10 +28,12 @@ export default function FilmCharacter({character,portrait=false,mood='character'
   const strong=id==='hulk'||id==='thanos', armWidth=strong?22:18, handRadius=strong?11:9.5;
   const severe=stern.has(id), sly=playful.has(id), masked=['vader','jason','iron','captain','bateman','thanos'].includes(id);
   let brows=severe?'M73 87l17 5m20 0 17-5':sly?'M73 87q8-6 17-3m20 5 17-1':'M73 87q8-3 17-1m20 0q9-3 17 0';
+  if(id==='achi') brows='M71 88q11-4 21 2m16 0q11-6 21-3';
   if(id==='toretto') brows='M73 89q7-2 16 1m22 0q9-3 16-1';
   if(id==='thanos') brows='M71 88q12-5 23 4m12 0q11-9 23-4';
   if(id==='hulk') brows='M70 87l22 6m16 0 22-6';
   let mouth=id==='joker'?'M83 140q17 13 34-1':winning?(severe?'M93 143q8 3 15-1':'M91 140q9 12 18 0Z'):sly?'M92 143q10 4 18-3':severe?'M93 143h14':'M94 143q6 3 12 0';
+  if(id==='achi') mouth=winning?'M92 142q8 4 17-2':'M94 143q7 1 13-1';
   if(id==='thor') mouth=winning?'M93 141q7 4 14-1':'M94 141q6 2 12 0';
   if(id==='wick') mouth=winning?'M94 141q6 2 12-1':'M94 141h12';
   if(id==='pirate') mouth=winning?'M92 144q10 4 17-2':'M93 144q8 2 14-1';

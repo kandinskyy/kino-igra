@@ -3,9 +3,9 @@ import assert from 'node:assert/strict';
 import {colors, emblems, robotIndex, robotColor} from './playerSymbols.js';
 import {cast} from '../components/characters/cast.js';
 
-test('29 selectable identities map to the deployed cast, including replacements', () => {
-  assert.equal(colors.length, 29);
-  assert.equal(new Set(colors.map(c => c.toLowerCase())).size, 29);
+test('30 selectable identities map to the deployed cast, including replacements', () => {
+  assert.equal(colors.length, 30);
+  assert.equal(new Set(colors.map(c => c.toLowerCase())).size, 30);
   assert.deepEqual(new Set(emblems.map(c => c.outfit)), new Set(cast.map(c => c.id)));
   assert.equal(emblems[1].outfit, 'vader');
   assert.equal(emblems[7].outfit, 'batman');

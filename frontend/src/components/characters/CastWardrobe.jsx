@@ -22,6 +22,23 @@ function Suit({color='#343e4b',tie='#5d7489',vest=false,shirt='#eee9df',plaid=fa
 
 export function CostumeBody({id,cloth}) {
   return <g strokeLinecap="round" strokeLinejoin="round">
+    {id==='achi'&&<g data-part="achi-leather-jacket" data-cut="fitted-motorcycle">
+      <path d="M87 149h26l-7 18H97Z" fill="#101820"/>
+      <path d="M77 145q4-6 10-4l10 22-9 6-8-12Z" fill="#27313C" stroke="#111A23" strokeWidth="1.1"/>
+      <path d="M121 145q-4-6-10-4l-8 22 8 5 8-12Z" fill="#27313C" stroke="#111A23" strokeWidth="1.1"/>
+      <path d="m81 148 5 12 7 5m23-17-4 12-5 4" stroke="#61707B" strokeWidth=".8"/>
+      <path d="M99 166q2 15 2 31" stroke="#111923" strokeWidth="3.5"/>
+      <path d="M99 166q2 15 2 31" stroke="#8898A2" strokeWidth=".9"/>
+      <rect x="98" y="169" width="2.6" height="4.5" rx=".8" fill="#B5C0C6"/>
+      <path d="m114 181 15-10" stroke="#111923" strokeWidth="3.3"/>
+      <path d="m114 181 15-10" stroke="#798994" strokeWidth=".8"/>
+      <path d="m127 173 1 3" stroke="#A7B5BD" strokeWidth="1.2"/>
+      <path d="M71 164q-3 9-2 18m60-18q3 9 2 18" stroke="#111D27" strokeWidth="1.1"/>
+      <path d="m73 187 12-2m31 0 12 2" stroke="#53616C" strokeWidth=".7"/>
+      <path d="M48 193q52 9 104 0l2 2q-54 10-108 0Z" fill="#27313C"/>
+      <path d="M52 195q48 7 96 0" stroke="#495965" strokeWidth=".7"/>
+      <circle cx="86" cy="160" r="1.3" fill="#A3AFB6"/>
+    </g>}
     {id==='matrix'&&<><path d="M66 147 87 145l13 9 13-9 21 2 17 52H49Z" fill="#252d2b"/><path d="m81 145 9 11 10-2 10 2 9-11m-19 9v43" stroke="#4a5550" strokeWidth="1.5"/>{[163,174,185].map(y=><circle key={y} cx="104" cy={y} r="1" fill="#89938a"/>)}</>}
     {id==='fight'&&<><path d="M78 147h44v50H78Z" fill="#d5ad72"/><path d="m83 150 9 5-9 6 11 7-8 6 9 7m17-32-7 8 10 8-8 6 9 8" stroke="#715246" strokeWidth="2"/><path d="M64 147h17l7 51H47Zm72 0h-17l-7 51h41Z" fill={cloth}/><path d="m80 146-9 18 12 3-10 18m47-39 9 18-12 3 10 18" stroke="#d48a67" strokeWidth="1.5"/><path d="m56 182 15-3m58 0 15 3" stroke="#733933" strokeWidth="2"/></>}
     {id==='captain'&&<><path d="M66 147h68l8 35H58Z" fill="#344f7b"/><path d="m100 153 3 7 8 1-6 5 2 8-7-4-7 4 2-8-6-5 8-1Z" fill="#e1e5df"/><path d="M65 180h70v18H65Z" fill="#eee1d2"/><path d="M76 180v18m16-18v18m16-18v18m16-18v18" stroke="#a84649" strokeWidth="7"/><path d="M61 192h78v7H61Z" fill="#574a43"/><rect x="94" y="191" width="12" height="8" rx="1" stroke="#b7b9b4" fill="#6a6359"/></>}

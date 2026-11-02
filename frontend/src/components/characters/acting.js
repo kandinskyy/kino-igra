@@ -1,6 +1,7 @@
 // Hands and their sleeves always share one shoulder pivot. Coordinates are
 // silhouettes first; motion adds character instead of hiding identical poses.
 export const victoryPoses = {
+  achi:       {left:[66,181], right:[136,180], head:-3, body:1, action:'confident', note:'Сдержанная усмешка, небольшой наклон головы и руки в боках. Без моргания.'},
   matrix:     {left:[52,184], right:[160,148], head:-2, body:0, action:'stop', note:'Останавливает всё вокруг открытой ладонью. Почти неподвижен.'},
   fight:      {left:[39,178], right:[164,178], head:-4, body:2, action:'spread', note:'Разводит руки и ухмыляется, словно всё это было его затеей.'},
   captain:    {left:[50,178], right:[151,111], head:0, body:0, action:'salute', note:'Подносит руку к виску; щит остаётся у другой руки.'},

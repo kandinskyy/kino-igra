@@ -33,8 +33,8 @@ test('private ratings and session credentials never reach another player', { tim
     const bob = await call(b, 'join_lobby', { lobbyId, nickname: 'Bob' });
     const identities = require('../shared/player-identities.json');
     assert.deepEqual(alice.lobby.allColors.map(c => c.hex), identities.map(c => c.hex));
-    assert.equal(alice.lobby.allColors.length, 29);
-    assert.equal(new Set(alice.lobby.allColors.map(c => c.hex.toLowerCase())).size, 29);
+    assert.equal(alice.lobby.allColors.length, 30);
+    assert.equal(new Set(alice.lobby.allColors.map(c => c.hex.toLowerCase())).size, 30);
     for (const identity of identities.slice(24)) {
       assert.equal((await call(a, 'change_color', { lobbyId, color: identity.hex })).success, true);
     }

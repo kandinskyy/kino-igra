@@ -3,6 +3,7 @@ import Headgear from './Headgear';
 import {BatemanFace,JokerMakeup} from './HeadExpressions';
 
 const haircuts = {
+  achi:'M43 102Q37 77 46 59q4-12 17-17l-1-8 12 2q10-12 22-6l8-6 10 7q24-1 35 19 12 19 7 52l-8-7-6-23q-14 5-24-6-15 12-34 13l-19-4-5 21-7-7-2 14Z',
   matrix:'M43 103C34 69 54 39 94 40q44-8 61 35l2 29-11-7-7-21q-20 6-39-13Q75 82 53 79l-3 25Z',
   fight:'M44 99 39 76l10-12-1-15 16 3 7-17 15 7 13-14 11 13 19-5 4 14 17 2-1 17 10 9-5 24-10-18-13 4-10-11-14 10-14-7-15 10-11-5-8 20Z',
   marty:'M43 100Q32 72 52 57l-4-11 19 2q14-20 45-12 34 2 44 31l-1 34-13-22q-17 7-27-15-16 15-40 15l-12 20-6-10-8 14Z',
@@ -34,6 +35,7 @@ const longHair = {
 export function BackHair({id,hair}) { return longHair[id]?<path d={longHair[id]} fill={hair}/>:null; }
 
 export function FrontHair({id,hair}) {
+  if(id==='achi') return <g><path d={haircuts.achi} fill={hair}/><path d="M53 61q8-16 30-17m-20 16q14-17 36-18m-17 18q15-15 31-14m-9 14q15-8 25 4" stroke="#45464A" strokeWidth="1.5" fill="none" strokeLinecap="round"/></g>;
   if(id==='bateman') return <g><path d={haircuts.bateman} fill={hair}/><path d="M48 64q13-31 43-31m-33 24q19-25 49-21m9 5q21 4 32 27" stroke="#705042" strokeWidth="1" strokeOpacity=".55" fill="none"/></g>;
   if (id==='toretto'||id==='thanos'||id==='vader'||id==='batman'||id==='jason') return null;
   if (id==='thor') return <path d="M43 103Q32 70 51 51 73 30 100 40q29-8 47 16 14 17 10 45l-13-21-3-11q-19 3-41-17-15 18-42 24l-5 27-5-12Z" fill={hair}/>;

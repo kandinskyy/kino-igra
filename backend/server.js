@@ -136,7 +136,7 @@ function pickMoviesForRound(lobby) {
 // Генерация случайного кода из 6 символов
 const generateCode = () => { let code; do { code = crypto.randomBytes(3).toString('hex').toUpperCase(); } while (lobbies.has(code)); return code; };
 
-// Shared stable identity keys: 29 film characters, up to 16 players.
+// Shared stable identity keys: 30 film characters, up to 16 players.
 const COLORS = require('../shared/player-identities.json').map(({hex, colorName}) => ({hex, name: colorName, emoji: '🌧️'}));
 
 function scheduleHostTransfer(lobby, lobbyId) {
