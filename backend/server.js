@@ -136,33 +136,8 @@ function pickMoviesForRound(lobby) {
 // Генерация случайного кода из 6 символов
 const generateCode = () => { let code; do { code = crypto.randomBytes(3).toString('hex').toUpperCase(); } while (lobbies.has(code)); return code; };
 
-// Stable identity keys: 24 selectable robot/color variants, up to 16 players.
-const COLORS = [
-    { hex: '#B57EDC', emoji: '☂️', name: 'Лавандовый' },
-    { hex: '#1CA0E5', emoji: '💧', name: 'Неоновый голубой' },
-    { hex: '#00E676', emoji: '🍀', name: 'Изумрудный' },
-    { hex: '#FF007F', emoji: '🌸', name: 'Фуксия' },
-    { hex: '#FFB300', emoji: '⚡', name: 'Янтарный' },
-    { hex: '#8A2BE2', emoji: '🔮', name: 'Фиолетовый' },
-    { hex: '#FF3864', emoji: '🪸', name: 'Коралловый' },
-    { hex: '#00F5D4', emoji: '🫧', name: 'Мятный' },
-    { hex: '#FF6D00', emoji: '🦊', name: 'Оранжевый' },
-    { hex: '#AEEA00', emoji: '🍏', name: 'Лайм' },
-    { hex: '#0091EA', emoji: '🌊', name: 'Лазурный' },
-    { hex: '#FF1493', emoji: '🦩', name: 'Hot Pink' },
-    { hex: '#FFD600', emoji: '☀️', name: 'Золотой' },
-    { hex: '#00B4D8', emoji: '💎', name: 'Аквамарин' },
-    { hex: '#7B2CBF', emoji: '🪐', name: 'Ультрафиолет' },
-    { hex: '#D8B4FE', emoji: '🌙', name: 'Сиреневый' },
-    { hex: '#A98D60', emoji: '🤖', name: 'Бежевый' },
-    { hex: '#9A9FAF', emoji: '🤖', name: 'Серый' },
-    { hex: '#EDB72F', emoji: '🤖', name: 'Золотистый' },
-    { hex: '#DE6F36', emoji: '🤖', name: 'Терракотовый' },
-    { hex: '#D25A72', emoji: '🤖', name: 'Коралловый' },
-    { hex: '#AC92CD', emoji: '🤖', name: 'Сиреневый' },
-    { hex: '#6F8F48', emoji: '🤖', name: 'Оливковый' },
-    { hex: '#E1DFD2', emoji: '🤖', name: 'Жемчужный' }
-];
+// Shared stable identity keys: 29 film characters, up to 16 players.
+const COLORS = require('../shared/player-identities.json').map(({hex, colorName}) => ({hex, name: colorName, emoji: '🌧️'}));
 
 function scheduleHostTransfer(lobby, lobbyId) {
     if (lobby.hostGraceTimer) clearTimeout(lobby.hostGraceTimer);

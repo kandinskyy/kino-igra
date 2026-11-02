@@ -18,6 +18,7 @@ export default function MainMenu() {
   );
   const [busy, setBusy] = useState(false),
     [movies, setMovies] = useState([]);
+  const [errors, setErrors] = useState({});
   useEffect(() => {
     const controller = new AbortController();
     fetch("/api/preview-movies", { signal: controller.signal })
@@ -31,10 +32,18 @@ export default function MainMenu() {
   }, []);
   async function enter(e) {
     e.preventDefault();
-    if (busy || !isConnected) return;
-    if (!nickname.trim()) return showToast("Введите никнейм", "error");
+    const nextErrors = {};
+    if (!nickname.trim()) nextErrors.nickname = "Введите никнейм";
     if (mode === "join" && !/^[A-Z0-9]{6}$/.test(code.trim().toUpperCase()))
-      return showToast("Код состоит из 6 символов", "error");
+      nextErrors.code = "Введите код из 6 латинских букв или цифр";
+    setErrors(nextErrors);
+    if (Object.keys(nextErrors).length) {
+      e.currentTarget.elements
+        .namedItem(nextErrors.nickname ? "nickname" : "room-code")
+        ?.focus();
+      return;
+    }
+    if (busy || !isConnected) return;
     setBusy(true);
     try {
       let lobbyId = code.trim().toUpperCase();
@@ -106,42 +115,70 @@ export default function MainMenu() {
           <button
             role="tab"
             aria-selected={mode === "create"}
-            onClick={() => setMode("create")}
+            onClick={() => {
+              setMode("create");
+              setErrors({});
+            }}
           >
             Создать комнату
           </button>
           <button
             role="tab"
             aria-selected={mode === "join"}
-            onClick={() => setMode("join")}
+            onClick={() => {
+              setMode("join");
+              setErrors({});
+            }}
           >
             Войти по коду
           </button>
         </div>
-        <form onSubmit={enter}>
+        <form onSubmit={enter} noValidate>
           <label htmlFor="nickname">Никнейм</label>
           <input
             id="nickname"
+            name="nickname"
             value={nickname}
-            onChange={(e) => setNickname(e.target.value)}
+            onChange={(e) => {
+              setNickname(e.target.value);
+              setErrors((current) => ({ ...current, nickname: undefined }));
+            }}
+            aria-invalid={Boolean(errors.nickname)}
+            aria-describedby={errors.nickname ? "nickname-error" : undefined}
             placeholder="Как вас называть?"
             maxLength={15}
             autoComplete="nickname"
             required
           />
+          {errors.nickname && (
+            <p id="nickname-error" className="entry-error" role="alert">
+              {errors.nickname}
+            </p>
+          )}
           {mode === "join" && (
             <>
               <label htmlFor="room-code">Код комнаты</label>
               <input
                 id="room-code"
+                name="room-code"
                 value={code}
-                onChange={(e) => setCode(e.target.value.toUpperCase())}
+                onChange={(e) => {
+                  setCode(e.target.value.toUpperCase());
+                  setErrors((current) => ({ ...current, code: undefined }));
+                }}
+                aria-invalid={Boolean(errors.code)}
+                aria-describedby={errors.code ? "room-code-error" : undefined}
                 placeholder="ABC123"
                 maxLength={6}
                 autoComplete="off"
                 spellCheck={false}
                 required
               />
+              {errors.code && (
+                <p id="room-code-error" className="entry-error" role="alert">
+                  {errors.code}
+                </p>
+              )}
             </>
           )}
           <button className="btn-primary full" disabled={busy || !isConnected}>

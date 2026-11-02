@@ -1,0 +1,234 @@
+[
+  {
+    "hex": "#B57EDC",
+    "outfit": "wizard",
+    "name": "Гарри Поттер",
+    "film": "Гарри Поттер",
+    "color": "#B29AED",
+    "colorName": "Фиолетовый"
+  },
+  {
+    "hex": "#1CA0E5",
+    "outfit": "vader",
+    "name": "Дарт Вейдер",
+    "film": "Звёздные войны",
+    "color": "#DA7B7D",
+    "colorName": "Синий"
+  },
+  {
+    "hex": "#00E676",
+    "outfit": "matrix",
+    "name": "Нео",
+    "film": "Матрица",
+    "color": "#71C69E",
+    "colorName": "Зелёный"
+  },
+  {
+    "hex": "#FF007F",
+    "outfit": "fight",
+    "name": "Тайлер Дёрден",
+    "film": "Бойцовский клуб",
+    "color": "#E887A7",
+    "colorName": "Розовый"
+  },
+  {
+    "hex": "#FFB300",
+    "outfit": "dune",
+    "name": "Пол Атрейдес",
+    "film": "Дюна",
+    "color": "#DEC580",
+    "colorName": "Жёлтый"
+  },
+  {
+    "hex": "#8A2BE2",
+    "outfit": "captain",
+    "name": "Стив Роджерс",
+    "film": "Капитан Америка",
+    "color": "#7D9FE0",
+    "colorName": "Кобальтовый"
+  },
+  {
+    "hex": "#FF3864",
+    "outfit": "iron",
+    "name": "Тони Старк",
+    "film": "Железный человек",
+    "color": "#EA8065",
+    "colorName": "Красный"
+  },
+  {
+    "hex": "#00F5D4",
+    "outfit": "batman",
+    "name": "Бэтмен",
+    "film": "Брюс Уэйн · Тёмный рыцарь",
+    "color": "#879FBF",
+    "colorName": "Мятный"
+  },
+  {
+    "hex": "#FF6D00",
+    "outfit": "marty",
+    "name": "Марти Макфлай",
+    "film": "Назад в будущее",
+    "color": "#EDAA6A",
+    "colorName": "Оранжевый"
+  },
+  {
+    "hex": "#AEEA00",
+    "outfit": "hulk",
+    "name": "Брюс Бэннер",
+    "film": "Халк",
+    "color": "#A2CE6E",
+    "colorName": "Лаймовый"
+  },
+  {
+    "hex": "#0091EA",
+    "outfit": "thor",
+    "name": "Тор",
+    "film": "Мстители",
+    "color": "#8DBACF",
+    "colorName": "Стальной"
+  },
+  {
+    "hex": "#FF1493",
+    "outfit": "widow",
+    "name": "Наташа Романофф",
+    "film": "Чёрная вдова",
+    "color": "#D493A4",
+    "colorName": "Пыльно-розовый"
+  },
+  {
+    "hex": "#FFD600",
+    "outfit": "brother",
+    "name": "Данила Багров",
+    "film": "Брат",
+    "color": "#C9AF8C",
+    "colorName": "Песочный"
+  },
+  {
+    "hex": "#00B4D8",
+    "outfit": "terminator",
+    "name": "Т-800",
+    "film": "Терминатор 2",
+    "color": "#78CBD0",
+    "colorName": "Бирюзовый"
+  },
+  {
+    "hex": "#7B2CBF",
+    "outfit": "pirate",
+    "name": "Джек Воробей",
+    "film": "Пираты Карибского моря",
+    "color": "#C390AB",
+    "colorName": "Сливовый"
+  },
+  {
+    "hex": "#D8B4FE",
+    "outfit": "joker",
+    "name": "Джокер",
+    "film": "Тёмный рыцарь",
+    "color": "#ACCA79",
+    "colorName": "Серебристый"
+  },
+  {
+    "hex": "#A98D60",
+    "outfit": "forrest",
+    "name": "Форрест Гамп",
+    "film": "Форрест Гамп",
+    "color": "#D3B18A",
+    "colorName": "Бежевый"
+  },
+  {
+    "hex": "#9A9FAF",
+    "outfit": "wolf",
+    "name": "Джордан Белфорт",
+    "film": "Волк с Уолл-стрит",
+    "color": "#B8C4D9",
+    "colorName": "Серый"
+  },
+  {
+    "hex": "#EDB72F",
+    "outfit": "bill",
+    "name": "Беатрикс Киддо",
+    "film": "Убить Билла",
+    "color": "#F1D15F",
+    "colorName": "Золотистый"
+  },
+  {
+    "hex": "#DE6F36",
+    "outfit": "jason",
+    "name": "Джейсон Вурхиз",
+    "film": "Пятница, 13-е",
+    "color": "#D99775",
+    "colorName": "Терракотовый"
+  },
+  {
+    "hex": "#D25A72",
+    "outfit": "spider",
+    "name": "Питер Паркер",
+    "film": "Человек-паук",
+    "color": "#EA8B9B",
+    "colorName": "Коралловый"
+  },
+  {
+    "hex": "#AC92CD",
+    "outfit": "thanos",
+    "name": "Танос",
+    "film": "Мстители: Война бесконечности",
+    "color": "#BCA8E0",
+    "colorName": "Сиреневый"
+  },
+  {
+    "hex": "#6F8F48",
+    "outfit": "loki",
+    "name": "Локи",
+    "film": "Мстители",
+    "color": "#A3BA73",
+    "colorName": "Оливковый"
+  },
+  {
+    "hex": "#E1DFD2",
+    "outfit": "jedi",
+    "name": "Люк Скайуокер",
+    "film": "Звёздные войны: Возвращение джедая",
+    "color": "#DBD8C1",
+    "colorName": "Жемчужный"
+  },
+  {
+    "hex": "#D28B81",
+    "outfit": "bateman",
+    "name": "Патрик Бейтман",
+    "film": "Американский психопат",
+    "color": "#D28B81",
+    "colorName": "Пыльно-красный"
+  },
+  {
+    "hex": "#C7C9CD",
+    "outfit": "chaplin",
+    "name": "Чарли Чаплин",
+    "film": "Бродяга · Малыш",
+    "color": "#C7C9CD",
+    "colorName": "Платиновый"
+  },
+  {
+    "hex": "#BDA588",
+    "outfit": "sherlock",
+    "name": "Шерлок Холмс",
+    "film": "Шерлок Холмс",
+    "color": "#BDA588",
+    "colorName": "Коричневый"
+  },
+  {
+    "hex": "#9EACC6",
+    "outfit": "wick",
+    "name": "Джон Уик",
+    "film": "Джон Уик",
+    "color": "#9EACC6",
+    "colorName": "Графитовый"
+  },
+  {
+    "hex": "#D9B37E",
+    "outfit": "toretto",
+    "name": "Доминик Торетто",
+    "film": "Форсаж",
+    "color": "#D9B37E",
+    "colorName": "Пшеничный"
+  }
+]

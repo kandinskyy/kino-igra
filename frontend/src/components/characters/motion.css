@@ -1,0 +1,111 @@
+/* Character rig animation only; workshop layouts are excluded. */
+.film-full .cast-rig{transform-box:view-box;transform-origin:100px 211px}.film-full .cast-head{transform-box:view-box;transform-origin:100px 158px}.film-full .cast-arm-left{transform-box:view-box;transform-origin:66px 154px}.film-full .cast-arm-right{transform-box:view-box;transform-origin:134px 154px}
+.film-animated[data-mood=character] .cast-head{animation:cast-thought var(--motion-period) ease-in-out infinite}.film-animated[data-gesture=swagger][data-mood=character] .cast-rig{animation:cast-swagger var(--motion-period) ease-in-out infinite}.film-animated[data-mood=victory] .cast-arm-right{animation:cast-salute 5s ease-in-out infinite}.film-animated[data-mood=victory] .cast-head{animation:cast-nod 5s ease-in-out infinite}.film-animated[data-gesture=still] .cast-head{animation:cast-slow-turn 9s ease-in-out infinite}.film-animated[data-gesture=still] .cast-arm-right{animation:none}.film-animated[data-gesture=bow][data-mood=victory] .cast-rig{animation:cast-bow 6s ease-in-out infinite}.film-animated[data-gesture=bow][data-mood=victory] .cast-arm-right{animation:none}.film-animated[data-gesture=pump][data-mood=victory] .cast-rig{animation:cast-hop 4.8s ease-in-out infinite}.film-animated[data-gesture=pump][data-mood=victory] .cast-arm-left{animation:cast-fist 4.8s ease-in-out infinite}.film-animated[data-gesture=gauntlet][data-mood=victory] .cast-arm-right{animation:none}.film-animated[data-gesture=gauntlet][data-mood=victory] .cast-arm-left{animation:cast-fist 6s ease-in-out infinite}.film-animated[data-gesture=wave][data-mood=victory] .cast-arm-right{animation:cast-wave 4s ease-in-out infinite}.film-animated[data-gesture=swagger][data-mood=victory] .cast-rig{animation:cast-swagger 5s ease-in-out infinite}.film-animated[data-gesture=chest][data-mood=victory] .cast-arm-right{animation:cast-chest 4s ease-in-out infinite}.film-animated[data-gesture=nod][data-mood=victory] .cast-arm-right{animation:cast-quiet-fist 6s ease-in-out infinite}
+@keyframes cast-thought{0%,65%,100%{transform:rotate(0)}77%{transform:rotate(1.4deg)}87%{transform:rotate(-.4deg)}}@keyframes cast-nod{0%,10%,50%,100%{transform:rotate(0)}25%{transform:translateY(1px) rotate(1.8deg)}37%{transform:rotate(-.3deg)}}@keyframes cast-salute{0%,55%,100%{transform:rotate(0)}20%{transform:rotate(-9deg)}35%{transform:rotate(-3deg)}}@keyframes cast-fist{0%,60%,100%{transform:rotate(0)}22%{transform:rotate(12deg)}38%{transform:rotate(3deg)}}@keyframes cast-wave{0%,12%,60%,100%{transform:rotate(0)}24%,46%{transform:rotate(-12deg)}35%{transform:rotate(7deg)}}@keyframes cast-bow{0%,10%,55%,100%{transform:rotate(0)}27%,35%{transform:translateY(2px) rotate(-5deg)}}@keyframes cast-hop{0%,10%,35%,60%,100%{transform:translateY(0)}22%{transform:translateY(-5px)}48%{transform:translateY(-3px)}}@keyframes cast-swagger{0%,100%{transform:rotate(-.6deg)}50%{transform:rotate(1deg)}}@keyframes cast-slow-turn{0%,60%,100%{transform:rotate(0)}80%{transform:rotate(2deg)}}@keyframes cast-chest{0%,10%,55%,100%{transform:rotate(0)}22%,40%{transform:rotate(18deg)}30%{transform:rotate(5deg)}}@keyframes cast-quiet-fist{0%,10%,55%,100%{transform:rotate(0)}25%{transform:rotate(-5deg)}}
+@media(prefers-reduced-motion:reduce){.film-animated .cast-rig,.film-animated .cast-head,.film-animated .cast-arm-left,.film-animated .cast-arm-right{animation:none!important}}
+.motion-full .motion-rig{transform-box:view-box;transform-origin:100px 211px}
+.motion-full .motion-head{transform-box:view-box;transform-origin:100px 158px}
+.motion-full .motion-arm-left{transform-box:view-box;transform-origin:66px 154px}
+.motion-full .motion-arm-right{transform-box:view-box;transform-origin:134px 154px}
+.motion-harry.motion-full[data-pose=character] .motion-rig{animation:harry-idle-sway 5.6s ease-in-out infinite}
+.motion-harry.motion-full[data-pose=character] .motion-head{animation:harry-curious-tilt 8s ease-in-out infinite}
+.motion-harry.motion-full[data-pose=character] .motion-arm-right{animation:harry-wand-thought 7s ease-in-out infinite}
+.motion-harry.motion-full[data-pose=victory] .motion-rig{animation:harry-double-hop 4.2s ease-in-out infinite}
+.motion-harry.motion-full[data-pose=victory] .motion-arm-left{animation:harry-cheer-left 4.2s ease-in-out infinite}
+.motion-harry.motion-full[data-pose=victory] .motion-arm-right{animation:harry-cheer-wand 4.2s ease-in-out infinite}
+.motion-paul.motion-full[data-pose=character] .motion-head{animation:paul-consider 8.5s ease-in-out infinite}
+.motion-paul.motion-full[data-pose=victory] .motion-head{animation:paul-acknowledge 6s ease-in-out infinite}
+.motion-paul.motion-full[data-pose=victory] .motion-arm-right{animation:paul-short-salute 6s ease-in-out infinite}
+.motion-paused .motion-rig,.motion-paused .motion-head,.motion-paused .motion-arm-left,.motion-paused .motion-arm-right{animation-play-state:paused!important}
+@keyframes harry-idle-sway{0%,100%{transform:rotate(-.45deg)}50%{transform:rotate(.65deg)}}
+@keyframes harry-curious-tilt{0%,48%,100%{transform:rotate(0)}60%,70%{transform:rotate(-1.6deg)}84%{transform:rotate(.5deg)}}
+@keyframes harry-wand-thought{0%,62%,100%{transform:rotate(0)}72%{transform:rotate(-4deg)}80%{transform:rotate(-1deg)}88%{transform:rotate(-3deg)}}
+@keyframes harry-double-hop{0%,9%,29%,49%,100%{transform:translateY(0) rotate(0)}18%{transform:translateY(-7px) rotate(-.7deg)}39%{transform:translateY(-10px) rotate(.7deg)}}
+@keyframes harry-cheer-left{0%,55%,100%{transform:rotate(0)}16%{transform:rotate(10deg)}28%{transform:rotate(-3deg)}40%{transform:rotate(12deg)}}
+@keyframes harry-cheer-wand{0%,55%,100%{transform:rotate(0)}14%{transform:rotate(-11deg)}26%{transform:rotate(4deg)}39%{transform:rotate(-14deg)}48%{transform:rotate(-3deg)}}
+@keyframes paul-consider{0%,72%,100%{transform:rotate(0)}81%{transform:rotate(1.3deg)}89%{transform:rotate(-.35deg)}}
+@keyframes paul-acknowledge{0%,10%,48%,100%{transform:translateY(0) rotate(0)}24%{transform:translateY(1px) rotate(2deg)}36%{transform:translateY(0) rotate(-.3deg)}}
+@keyframes paul-short-salute{0%,10%,48%,100%{transform:rotate(0)}24%{transform:rotate(-13deg)}36%{transform:rotate(-3deg)}}
+@media(prefers-reduced-motion:reduce){.motion-full .motion-rig,.motion-full .motion-head,.motion-full .motion-arm-left,.motion-full .motion-arm-right{animation:none!important}}
+/* Pose geometry lives in acting.js. Only the large inspector is animated.
+   These rules replace the v07 generic victory wave; Spider-Man keeps his. */
+.game-character .film-animated[data-mood=victory] :is(.cast-rig,.cast-head,.cast-arm-left,.cast-arm-right){animation:none}
+.game-character .film-animated[data-mood=victory][data-action=stop] .cast-arm-right{animation:stop-palm 7s ease-in-out infinite}
+.game-character .film-animated[data-mood=victory][data-action=spread] .cast-rig{animation:cast-swagger 5s ease-in-out infinite}
+.game-character .film-animated[data-mood=victory][data-action=spread] .cast-arm-left{animation:spread-left 6s ease-in-out infinite}
+.game-character .film-animated[data-mood=victory][data-action=spread] .cast-arm-right{animation:spread-right 6s ease-in-out infinite}
+.game-character .film-animated[data-mood=victory][data-action=salute] .cast-arm-right{animation:military-salute 7s ease-in-out infinite}
+.game-character .film-animated[data-mood=victory][data-action=repulsor] .cast-arm-right{animation:present-repulsor 6s ease-in-out infinite}
+.game-character .film-animated[data-mood=victory][data-action=hop] .cast-rig{animation:cast-hop 4.8s ease-in-out infinite}
+.game-character .film-animated[data-mood=victory][data-action=hop] .cast-arm-right{animation:cast-salute 4.8s ease-in-out infinite}
+.game-character .film-animated[data-mood=victory][data-action=roar] .cast-rig{animation:hulk-stomp 5.6s ease-in-out infinite}
+.game-character .film-animated[data-mood=victory][data-action=roar] .cast-arm-left{animation:hulk-left 5.6s ease-in-out infinite}
+.game-character .film-animated[data-mood=victory][data-action=roar] .cast-arm-right{animation:hulk-right 5.6s ease-in-out infinite}
+.game-character .film-animated[data-mood=victory][data-action=hammer] .cast-arm-right{animation:raise-mjolnir 7s ease-in-out infinite}
+.game-character .film-animated[data-mood=victory][data-action=confident] .cast-head{animation:confident-tilt 7.5s ease-in-out infinite}
+.game-character .film-animated[data-mood=victory][data-action=headphone] .cast-head{animation:music-nod 4.8s ease-in-out infinite}
+.game-character .film-animated[data-mood=victory][data-action=headphone] .cast-arm-right{animation:adjust-headphone 8s ease-in-out infinite}
+.game-character .film-animated[data-mood=victory][data-action=thumb] .cast-arm-right{animation:thumb-settle 8s ease-in-out infinite}
+.game-character .film-animated[data-mood=victory][data-action=pirate] .cast-rig{animation:captain-balance 6.2s ease-in-out infinite}
+.game-character .film-animated[data-mood=victory][data-action=pirate] .cast-head{animation:captain-countertilt 6.2s ease-in-out infinite}
+.game-character .film-animated[data-mood=victory][data-action=wave] .cast-arm-right{animation:friendly-wave 6s ease-in-out infinite}
+.game-character .film-animated[data-mood=victory][data-action=chest] .cast-arm-right{animation:chest-rhythm 5s ease-in-out infinite}
+.game-character .film-animated[data-mood=victory][data-action=blade] .cast-head{animation:blade-nod 8s ease-in-out infinite}
+.game-character .film-animated[data-mood=victory][data-action=ominous] .cast-head{animation:mask-turn 10s ease-in-out infinite}
+.game-character .film-animated[data-mood=victory][data-action=web] .cast-arm-right{animation:cast-salute 5s ease-in-out infinite}
+.game-character .film-animated[data-mood=victory][data-action=web] .cast-head{animation:cast-nod 5s ease-in-out infinite}
+.game-character .film-animated[data-mood=victory][data-action=gauntlet] .cast-arm-left{animation:gauntlet-turn 7s ease-in-out infinite}
+.game-character .film-animated[data-mood=victory][data-action=royal] .cast-arm-left{animation:spread-left 8s ease-in-out infinite}
+.game-character .film-animated[data-mood=victory][data-action=royal] .cast-arm-right{animation:spread-right 8s ease-in-out infinite}
+.game-character .film-animated[data-mood=victory][data-action=jedi] .cast-arm-right{animation:jedi-guard 7s ease-in-out infinite}
+.game-character .film-animated[data-mood=victory][data-action=force] .cast-arm-left{animation:force-palm 9s ease-in-out infinite}
+.game-character .film-animated[data-mood=victory][data-action=cape] .cast-cape{transform-box:view-box;transform-origin:100px 154px;animation:open-cape 8s ease-in-out infinite}
+.game-character .film-animated[data-mood=victory][data-action=applause] .cast-arm-left{animation:slow-clap-left 6.2s ease-in-out infinite}
+.game-character .film-animated[data-mood=victory][data-action=applause] .cast-arm-right{animation:slow-clap-right 6.2s ease-in-out infinite}
+.game-character .film-animated[data-mood=victory][data-action=business] .cast-arm-left{animation:adjust-tie 7s ease-in-out infinite}
+.game-character .film-animated[data-mood=victory][data-action=business] .cast-arm-right{animation:present-card 7s ease-in-out infinite}
+.game-character .film-animated[data-mood=victory][data-action=bow] .cast-rig{animation:gentleman-bow 7s ease-in-out infinite}
+.game-character .film-animated[data-mood=victory][data-action=inspect] .cast-head{animation:detective-lean 8s ease-in-out infinite}
+.game-character .film-animated[data-mood=victory][data-action=respect] .cast-head{animation:respectful-nod 7.5s ease-in-out infinite}
+.game-character .film-animated[data-mood=victory][data-action=respect] .cast-arm-right{animation:adjust-cuff 7.5s ease-in-out infinite}
+.game-character .film-animated[data-mood=victory][data-action=driver] .cast-arm-right{animation:car-key-turn 7s ease-in-out infinite}
+@keyframes stop-palm{0%,12%,65%,100%{transform:rotate(0)}28%,42%{transform:rotate(-3deg)}}
+@keyframes spread-left{0%,100%{transform:rotate(0)}35%,55%{transform:rotate(-5deg)}}
+@keyframes spread-right{0%,100%{transform:rotate(0)}35%,55%{transform:rotate(5deg)}}
+@keyframes military-salute{0%,12%,70%,100%{transform:rotate(0)}30%,55%{transform:rotate(-2deg)}}
+@keyframes present-repulsor{0%,15%,70%,100%{transform:rotate(0)}35%,50%{transform:rotate(-6deg)}}
+@keyframes hulk-stomp{0%,12%,40%,70%,100%{transform:translateY(0)}26%{transform:translateY(-4px)}49%{transform:translateY(2px)}}
+@keyframes hulk-left{0%,10%,70%,100%{transform:rotate(0)}27%,45%{transform:rotate(-8deg)}}
+@keyframes hulk-right{0%,10%,70%,100%{transform:rotate(0)}27%,45%{transform:rotate(8deg)}}
+@keyframes raise-mjolnir{0%,10%,75%,100%{transform:rotate(0)}32%,50%{transform:rotate(-5deg)}}
+@keyframes confident-tilt{0%,65%,100%{transform:rotate(0)}30%,43%{transform:rotate(2deg)}}
+@keyframes music-nod{0%,30%,65%,100%{transform:translateY(0)}15%,48%{transform:translateY(1.3px)}}
+@keyframes adjust-headphone{0%,10%,55%,100%{transform:rotate(0)}28%,38%{transform:rotate(-2deg)}}
+@keyframes thumb-settle{0%,12%,60%,100%{transform:rotate(0)}28%{transform:rotate(-3deg)}40%{transform:rotate(1deg)}}
+@keyframes captain-balance{0%,100%{transform:rotate(-1.4deg)}40%{transform:rotate(1.8deg)}65%{transform:rotate(.4deg)}}
+@keyframes captain-countertilt{0%,100%{transform:rotate(1deg)}40%{transform:rotate(-1.6deg)}}
+@keyframes friendly-wave{0%,10%,65%,100%{transform:rotate(0)}22%,42%{transform:rotate(-9deg)}32%,52%{transform:rotate(8deg)}}
+@keyframes chest-rhythm{0%,10%,28%,46%,100%{transform:rotate(0)}19%,37%{transform:rotate(-13deg)}}
+@keyframes blade-nod{0%,12%,50%,100%{transform:rotate(0)}28%{transform:translateY(1px) rotate(-1deg)}}
+@keyframes mask-turn{0%,65%,100%{transform:rotate(0)}82%{transform:rotate(-3deg)}}
+@keyframes gauntlet-turn{0%,12%,65%,100%{transform:rotate(0)}34%,46%{transform:rotate(6deg)}}
+@keyframes jedi-guard{0%,15%,65%,100%{transform:rotate(0)}35%,46%{transform:rotate(-3deg)}}
+@keyframes force-palm{0%,15%,75%,100%{transform:rotate(0)}35%,55%{transform:rotate(4deg)}}
+@keyframes open-cape{0%,12%,75%,100%{transform:scaleX(1)}35%,55%{transform:scaleX(1.07)}}
+@keyframes slow-clap-left{0%,10%,30%,50%,75%,100%{transform:rotate(0)}20%,40%,60%{transform:rotate(-20deg)}}
+@keyframes slow-clap-right{0%,10%,30%,50%,75%,100%{transform:rotate(0)}20%,40%,60%{transform:rotate(20deg)}}
+@keyframes adjust-tie{0%,15%,65%,100%{transform:rotate(0)}28%,40%{transform:rotate(5deg)}}
+@keyframes present-card{0%,40%,80%,100%{transform:rotate(0)}57%,65%{transform:rotate(-4deg)}}
+@keyframes gentleman-bow{0%,10%,65%,100%{transform:rotate(0)}30%,42%{transform:translateY(2px) rotate(-4deg)}}
+@keyframes detective-lean{0%,15%,65%,100%{transform:rotate(0)}30%,45%{transform:rotate(1deg)}}
+@keyframes respectful-nod{0%,15%,60%,100%{transform:rotate(0)}30%{transform:translateY(1.5px) rotate(1deg)}42%{transform:rotate(-.3deg)}}
+@keyframes adjust-cuff{0%,10%,55%,100%{transform:rotate(0)}26%,37%{transform:rotate(4deg)}}
+@keyframes car-key-turn{0%,12%,65%,100%{transform:rotate(0)}32%,44%{transform:rotate(-5deg)}}
+.game-character .film-animated[data-mood=victory][data-action=sigma] .cast-head{animation:sigma-hold 8s ease-in-out infinite}
+@keyframes sigma-hold{0%,15%,70%,100%{transform:translateY(0)}32%,50%{transform:translateY(-1.3px)}}
+.game-character .film-animated[data-action=sigma] .bateman-face-normal{animation:bateman-normal-cycle 8s linear infinite}
+.game-character .film-animated[data-action=sigma] .bateman-face-sigma{animation:bateman-sigma-cycle 8s linear infinite}
+@keyframes bateman-normal-cycle{0%,22%,100%{opacity:1}28%,67%{opacity:0}73%{opacity:1}}
+@keyframes bateman-sigma-cycle{0%,22%,100%{opacity:0}28%,67%{opacity:1}73%{opacity:0}}
+@media(prefers-reduced-motion:reduce){.game-character .film-animated[data-action=sigma] .bateman-face-normal,.game-character .film-animated[data-action=sigma] .bateman-face-sigma{animation:none!important}}
+@media(prefers-reduced-motion:reduce){.game-character .film-animated[data-mood=victory] :is(.cast-rig,.cast-head,.cast-arm-left,.cast-arm-right,.cast-cape){animation:none!important}}

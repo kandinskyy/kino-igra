@@ -336,6 +336,16 @@ svg {
 .entry-panel input {
   margin-bottom: 24px;
 }
+.entry-panel input[aria-invalid="true"] {
+  border-color: #ff92ad;
+  margin-bottom: 8px;
+}
+.entry-error {
+  color: #ffabc0;
+  font-size: 12px;
+  line-height: 1.5;
+  margin: 0 0 20px;
+}
 .entry-panel .btn-primary {
   margin-top: 3px;
   min-height: 54px;
@@ -1224,6 +1234,24 @@ svg {
 }
 .character {
   overflow: visible;
+}
+.game-character {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 0;
+}
+.game-character > svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.symbol-grid button .game-character > svg {
+  width: 100%;
+  height: 100%;
+}
+.game-character.is-portrait > svg {
+  overflow: hidden;
 }
 .avatar:has(.character) {
   background: color-mix(in srgb, var(--player-color) 10%, #172139);

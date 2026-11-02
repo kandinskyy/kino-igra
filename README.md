@@ -12,6 +12,14 @@ Use Node 22 (at least 22.12). Run `npm run build`, then `npm start` for the prod
 
 Render builds with `npm run build` and starts with `npm start`. Configure the HTTP health check as `/healthz`. Both health routes return 503 if the catalog or frontend build is missing. A commit pushed to `main` automatically deploys.
 
+The 29 film characters use local SVG drawings in `frontend/src/components/characters`.
+`shared/player-identities.json` defines the server/client selection order and stable
+color keys. The original 24 keys are retained; the removed Cruella, Xenomorph and
+Gandalf slots now show Vader, Batman and Joker. Five new slots extend the list.
+Portraits are static; full characters have individual idle and victory motion,
+including Bateman's normal/sigma loop. Reduced-motion preferences are respected.
+The local workshop and its revision backups are separate from the production entry.
+
 Sessions use server-generated secrets and stable player IDs. Only a player's own ranks are sent before reveal. A reconnect from a second tab replaces the first. Nicknames alone cannot restore a session. Invitations use `?room=ABC123`.
 
 ## Persistence and operations
