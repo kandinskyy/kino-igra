@@ -25,7 +25,20 @@ export function CostumeBody({id,cloth}) {
     {id==='matrix'&&<><path d="M66 147 87 145l13 9 13-9 21 2 17 52H49Z" fill="#252d2b"/><path d="m81 145 9 11 10-2 10 2 9-11m-19 9v43" stroke="#4a5550" strokeWidth="1.5"/>{[163,174,185].map(y=><circle key={y} cx="104" cy={y} r="1" fill="#89938a"/>)}</>}
     {id==='fight'&&<><path d="M78 147h44v50H78Z" fill="#d5ad72"/><path d="m83 150 9 5-9 6 11 7-8 6 9 7m17-32-7 8 10 8-8 6 9 8" stroke="#715246" strokeWidth="2"/><path d="M64 147h17l7 51H47Zm72 0h-17l-7 51h41Z" fill={cloth}/><path d="m80 146-9 18 12 3-10 18m47-39 9 18-12 3 10 18" stroke="#d48a67" strokeWidth="1.5"/><path d="m56 182 15-3m58 0 15 3" stroke="#733933" strokeWidth="2"/></>}
     {id==='captain'&&<><path d="M66 147h68l8 35H58Z" fill="#344f7b"/><path d="m100 153 3 7 8 1-6 5 2 8-7-4-7 4 2-8-6-5 8-1Z" fill="#e1e5df"/><path d="M65 180h70v18H65Z" fill="#eee1d2"/><path d="M76 180v18m16-18v18m16-18v18m16-18v18" stroke="#a84649" strokeWidth="7"/><path d="M61 192h78v7H61Z" fill="#574a43"/><rect x="94" y="191" width="12" height="8" rx="1" stroke="#b7b9b4" fill="#6a6359"/></>}
-    {id==='iron'&&<><path d="m66 147 17-3 17 10 17-10 17 3 12 48-24 6H78l-24-6Z" fill="#a3473c" stroke="#6d302d" strokeWidth=".8"/><path d="m68 151 15 0 8 11-13 12-14-6m68-17-15 0-8 11 13 12 14-6" fill="#c8a35e" stroke="#8f703e" strokeWidth=".7"/><path d="m78 175 13 6h18l13-6-5 21H83Z" fill="#81392f"/><path d="M87 187h26m-24 5h22" stroke="#bc6650" strokeWidth="1.2"/><circle cx="100" cy="168" r="10.5" fill="#546f78" stroke="#e0c082" strokeWidth="1.5"/><circle cx="100" cy="168" r="7.5" fill="#bddfe0"/><circle cx="100" cy="168" r="4.5" fill="#effff4"/><path d="m82 149 7 8m29-8-7 8M71 192l9 4m49-4-9 4" stroke="#e8c27d" strokeWidth="1"/></>}
+    {id==='iron'&&<g data-part="mark-vii-armor" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M65 147q35-10 70 0l13 48q-48 14-96 0Z" fill="#B62F38" stroke="#69212B" strokeWidth="1"/>
+      <path d="m65 147 15-2 7 8-8 8-20-1Zm70 0-15-2-7 8 8 8 20-1Z" fill="#D34944" stroke="#762631" strokeWidth=".8"/>
+      <path d="m61 160 15-1 9 9-5 9-17-6Zm78 0-15-1-9 9 5 9 17-6Z" fill="#D8AD59" stroke="#956B35" strokeWidth=".7"/>
+      <path d="m64 161 10 0 7 7-3 4-13-5Zm72 0-10 0-7 7 3 4 13-5Z" fill="#F0CD7F"/>
+      <path d="m80 155 20 5 20-5m-43 15 10 5m36-5-10 5" stroke="#6C202B" strokeWidth="1.3"/>
+      <circle cx="100" cy="171" r="10" fill="#5D3538" stroke="#CBD8D7" strokeWidth="1.8"/>
+      <circle cx="100" cy="171" r="7.5" fill="#69C9DE"/><circle cx="100" cy="171" r="5.2" fill="#E5FCFF"/>
+      <path d="M80 182q20 8 40 0l-2 7q-18 5-36 0Z" fill="#C43A3D" stroke="#762631" strokeWidth=".9"/>
+      <path d="M83 190q17 5 34 0l-3 7H86Z" fill="#A72A34" stroke="#762631" strokeWidth=".9"/>
+      <path d="m61 178 14 5-2 6-13-5m79-6-14 5 2 6 13-5" fill="#C99F51" stroke="#762631" strokeWidth=".8"/>
+      <path d="m60 190 17 6-4 5-15-5m82-6-17 6 4 5 15-5" fill="#E0B764"/>
+      <path d="M89 200h22" stroke="#DF5B50" strokeWidth="1.5"/>
+    </g>}
     {id==='marty'&&<><path d="M76 147h48v51H76Z" fill="#e9e2d4"/><path d="M83 147v51m13-51v51m13-51v51m-31-41h45m-45 10h45m-45 10h45m-45 10h45" stroke="#7e9ba8" strokeWidth="1.2"/><path d="M68 147h15l4 51H53Zm64 0h-15l-4 51h34Z" fill="#658698"/><path d="m70 147 13-1-2 49-22 2-3-23Zm60 0-13-1 2 49 22 2 3-23Z" fill="#dd6a46"/><path d="m62 167 18 1m-20 12 20 1m40-13 18-1m-18 14 20-1" stroke="#ac4f35" strokeWidth="1"/><path d="M100 149v46" stroke="#747f87" strokeWidth="1"/></>}
     {id==='hulk'&&<><path d="M67 150q15-4 25 5m16 0q10-9 25-5M73 166q12-8 24-1m6 0q12-7 24 1M100 158v28m-14-8h10m8 0h10" stroke="#6a944c" strokeWidth="2"/><path d="m52 190 12-5 7 5 9-4 9 5 11-4 10 4 10-5 8 5 11-6 9 5-5 17H57Z" fill="#67547e"/><path d="M100 193v15" stroke="#4e405e" strokeWidth="1.5"/></>}
     {id==='thor'&&<><path d="M66 148h68l9 49H57Z" fill="#445760"/><path d="m76 149-5 43m53-43 5 43M84 151l16 12 16-12m-32 27 16 12 16-12" stroke="#a9bbc0" strokeWidth="2"/>{[78,122].flatMap(x=>[160,178].map(y=><circle key={`${x}-${y}`} cx={x} cy={y} r="5.2" fill="#c2d0d1" stroke="#738992" strokeWidth="1.5"/>))}<path d="M65 195h70" stroke="#342f30" strokeWidth="5"/></>}

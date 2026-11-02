@@ -13,20 +13,23 @@ export function CaptainHead({skin,winning}) {
 }
 
 export function IronHead() {
-  return <g data-part="headgear" data-mask="mark-iii" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M45 103C40 69 57 41 85 38h30c28 3 45 31 40 65l-4 30-19 22q-32 15-64 0l-19-22Z" fill="#ad493d" stroke="#6d2d2b" strokeWidth="1.4"/>
-    <path d="M48 87h9v35l-5 6m100-41h-9v35l5 6" fill="#7e332e" stroke="#cd6b4f" strokeWidth="1"/>
-    <path d="M63 58 80 46l13 10h14l13-10 17 12 9 24-9 14 1 29-15 23-23 8-23-8-15-23 1-29-9-14Z" fill="#d4b779" stroke="#987844" strokeWidth="1.1"/>
-    <path d="M65 61 79 51l13 10h16l13-10 14 10 5 17-12 13H72L60 78Z" fill="#e3c78b"/>
-    <path d="m64 98 8-7h56l8 7-5 25-12 10H81l-12-10Z" fill="#c4a365"/>
-    <path d="M70 99 94 101v7l-23-2Zm60 0-24 2v7l23-2Z" fill="#34434a"/>
-    <path d="m73 101 18 2v3l-18-2Zm54 0-18 2v3l18-2Z" fill="#e5fff8"/>
-    <path d="m97 114 3-2 3 2v10h-6Z" fill="#cfaf70"/>
-    <path d="M85 138h30l-4 3H89Z" fill="#746044"/>
-    <path d="m76 143 8 8 16 4 16-4 8-8" stroke="#f0d59a" strokeWidth="1"/>
-    <path d="m69 118 6 10m56-10-6 10" stroke="#f0d59a" strokeWidth="1.1"/>
-    <path d="M56 65q4-12 13-16m75 16q-4-12-13-16M58 140l14 16m70-16-14 16" stroke="#d97655" strokeWidth="1.4"/>
-    <path d="M91 158h18" stroke="#652b2b" strokeWidth="2"/>
+  return <g data-part="headgear" data-mask="mark-vii-sculpted" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M48 99C46 66 64 43 91 42h18c27 1 45 24 43 57l-5 30-14 22-17 10H84l-17-10-14-22Z" fill="#A9212D" stroke="#641D27" strokeWidth="1.3"/>
+    <path d="M53 87Q54 59 77 49m46 0q23 10 24 38" stroke="#D74A43" strokeWidth="1.6"/>
+    <path d="m51 96 9-5 2 28-5 8Zm98 0-9-5-2 28 5 8Z" fill="#6E1D29"/>
+    <path d="M66 64 85 60l4 19h22l4-19 19 4 3 31-8 18-1 17-15 19H87l-15-19-1-17-8-18Z" fill="#D8AE59" stroke="#9C7238" strokeWidth="1"/>
+    <path d="m68 66 14-3 5 20h26l5-20 14 3 2 26-9 8H75l-9-8Z" fill="#EBC77B"/>
+    <path d="M86 48h28l-3 27H89Z" fill="#94212B"/>
+    <path d="M89 50h22l-1 8H90Z" fill="#BA3339"/>
+    <path d="m73 97 22 4v7l-22-3-5-6Zm54 0-22 4v7l22-3 5-6Z" fill="#3D3333"/>
+    <path d="m73 100 20 3v3l-19-3Zm54 0-20 3v3l19-3Z" fill="#D8FBFF"/>
+    <path d="m72 109 10 11 3 14-10-8Zm56 0-10 11-3 14 10-8Z" fill="#B88C42"/>
+    <path d="m85 112 15-5 15 5-5 23H90Z" fill="#DDB460"/>
+    <path d="m85 137 4 3h22l4-3" stroke="#745431" strokeWidth="1.4"/>
+    <path d="m88 143 3 9h18l3-9Z" fill="#EDC77A"/>
+    <path d="m59 124 10 21 16 10m56-31-10 21-16 10" stroke="#D64D45" strokeWidth="1.8"/>
+    <path d="m67 133 7 11m59-11-7 11" stroke="#7A202C" strokeWidth="2"/>
+    <path d="M87 158h26" stroke="#631D27" strokeWidth="2"/>
   </g>;
 }
 
@@ -49,6 +52,24 @@ export function ThorHelmet() {
   </g>;
 }
 
+function ThanosHelmet() {
+  return <g data-part="thanos-helmet" data-design="endgame-reference" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M40 94C34 64 52 32 80 30h40c28 2 46 34 40 64l-4 39-21 30-12-2 12-20 7-30-5-24-19-5-18 13-18-13-19 5-5 24 7 30 12 20-12 2-21-30Z" fill="#303432" stroke="#625238" strokeWidth="1.2"/>
+    <path d="M81 31Q48 36 40 77l5 39 10 14 3-23-4-18 8-18 13 7 8-10 5-37Z" fill="#B59A62" stroke="#7D6742" strokeWidth=".9"/>
+    <path d="M119 31q33 5 41 46l-5 39-10 14-3-23 4-18-8-18-13 7-8-10-5-37Z" fill="#B59A62" stroke="#7D6742" strokeWidth=".9"/>
+    <path d="M74 35Q53 44 48 69l10-5 14 6 8-8 3-29Zm52 0q21 9 26 34l-10-5-14 6-8-8-3-29Z" fill="#D8BE85"/>
+    <path d="m43 92 11-7 7 24 7 18-9 14-13-15Zm114 0-11-7-7 24-7 18 9 14 13-15Z" fill="#BDA16A" stroke="#7D6742" strokeWidth=".9"/>
+    <path d="m46 116 13 12 9-1 9 33-12-4-16-24Zm108 0-13 12-9-1-9 33 12-4 16-24Z" fill="#947B4F"/>
+    <path d="m48 120 9 12 8 20m87-32-9 12-8 20" stroke="#CFB77E" strokeWidth="1.1"/>
+    <path d="M79 32q-8 24-7 42l16 11m33-53q8 24 7 42l-16 11" stroke="#AD925B" strokeWidth="3"/>
+    <path d="M88 31q-6 31-4 44l12 13m16-57q6 31 4 44l-12 13" stroke="#C3A970" strokeWidth="3"/>
+    <path d="M96 30q-3 34-1 49l5 13 5-13q2-15-1-49Z" fill="#6F6141" stroke="#BCA16A" strokeWidth="1"/>
+    <path d="M100 32v45m-1 5 1 5 1-5" stroke="#DDC48B" strokeWidth="1.5"/>
+    <path d="m62 72 20 10 18 13 18-13 20-10" stroke="#CEB47A" strokeWidth="1.7"/>
+    <path d="m58 86 5-8 10 5m69 3-5-8-10 5" stroke="#1E2525" strokeWidth="3"/>
+  </g>;
+}
+
 export function ThanosFace({winning}) {
   return <g data-part="thanos-face" strokeLinecap="round" strokeLinejoin="round">
     <path d="M63 91q13-14 32-1l-3 5-12-5-15 7Zm74 0q-13-14-32-1l3 5 12-5 15 7Z" fill="#80658e"/>
@@ -58,5 +79,6 @@ export function ThanosFace({winning}) {
     <path d={winning?'M91 139q10 3 19-2':'M92 140h16'} stroke="#594562" strokeWidth="1.2"/>
     <path d="m85 146 2 9m4-8 1 11m5-10v12m6-12v12m5-13-1 11m7-12-2 9" stroke="#705679" strokeWidth="1.3"/>
     <path d="M75 128q-3 8 2 13m48-13q3 8-2 13" stroke="#8b7096" strokeWidth="1"/>
+    <ThanosHelmet/>
   </g>;
 }

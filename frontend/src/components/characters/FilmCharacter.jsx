@@ -5,7 +5,7 @@ import {CostumeBack, CostumeBody, HandProp} from './CastWardrobe';
 import {characterPose} from './acting';
 import {BodyFinish,SleeveFinish,ShoeFinish} from './CostumeFinish';
 
-const portraits = {loki:'28 0 144 165',batman:'30 13 140 153',chaplin:'30 17 140 151',pirate:'27 16 146 154',vader:'25 22 150 145',sherlock:'29 17 142 151',thor:'27 22 146 146',thanos:'31 33 138 143',forrest:'31 23 138 146',captain:'31 25 138 143'};
+const portraits = {loki:'28 0 144 165',batman:'30 13 140 153',chaplin:'30 17 140 151',pirate:'27 16 146 154',vader:'25 22 150 145',sherlock:'29 17 142 151',thor:'27 22 146 146',thanos:'26 16 148 154',forrest:'31 23 138 146',captain:'31 25 138 143'};
 const stern = new Set(['matrix','terminator','bill','batman','wick','toretto','jason','vader','thanos','hulk']);
 const playful = new Set(['fight','pirate','joker','loki','wolf','bateman']);
 
@@ -66,7 +66,7 @@ export default function FilmCharacter({character,portrait=false,mood='character'
       {winning&&id==='terminator'&&side==='right'&&<path d={`M${x-3} ${y-3}q-2-13 3-14 4 0 3 13`} fill={hands}/>}
       {winning&&id==='spider'&&side==='right'&&<path d={`M${x-7} ${y-3}l-2-10m16 10 2-10`} stroke={hands} strokeWidth="5"/>}
       {propInFront&&prop}
-      {id==='iron'&&side==='right'&&<circle cx={x} cy={y} r="4.2" fill="#d2f4ee" stroke="#e5be76" strokeWidth="1.2"/>}
+      {id==='iron'&&side==='right'&&winning&&<circle cx={x} cy={y} r="4.2" fill="#d2f4ee" stroke="#e5be76" strokeWidth="1.2"/>}
     </g>;
   };
   return <svg xmlns="http://www.w3.org/2000/svg" viewBox={portrait?(portraits[id]||'36 27 128 143'):'0 0 200 240'} className={`film-character ${portrait?'film-portrait':'film-full'} ${motion?'film-animated':'film-static'}`} data-character={id} data-gesture={c.gesture} data-action={pose.action} data-mood={mood} role="img" aria-label={`${c.name} — ${winning?'Победа':'Характер'}`} fill="none" style={{'--motion-period':`${5.6+(id.length%5)*.65}s`}}>

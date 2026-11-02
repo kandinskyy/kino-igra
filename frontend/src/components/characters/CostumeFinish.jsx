@@ -6,7 +6,7 @@ const bodyFinishes={
     matrix:()=><><path d="m80 159 9 6m31-6-9 6M63 181l14-2m46 0 14 2M67 195l-4-6m70 6 4-6" stroke="#526159" strokeWidth=".9"/><path d="M100 188v12m-6-3 6-3 6 3" stroke="#111d1a" strokeWidth="1.1"/></>,
     fight:()=><><path d="m69 169 7 23m55-23-7 23" stroke="#e3a181" strokeWidth=".8"/><path d="m95 174q-7-9-8-1 0 4 6 4m12-8q9-5 8 2-1 4-6 3" stroke="#916b4e" strokeWidth="1.1"/><circle cx="66" cy="164" r="1.2" fill="#c9b08a"/><circle cx="134" cy="164" r="1.2" fill="#c9b08a"/></>,
     captain:()=><><path d="m67 158 12 6m54-6-12 6m-52 9 11 3m51-3-11 3" stroke="#7b97ae" strokeWidth="1.1"/><path d="M62 190h76" stroke="#172e49" strokeWidth="1.2"/><path d="M68 194v4m64-4v4" stroke="#af9a74" strokeWidth="1"/><path d="M70 201h20v5H70Zm40 0h20v5h-20Z" fill="#9d4549"/></>,
-    iron:()=><><path d="m73 179 7 14m47-14-7 14" stroke="#dd9670" strokeWidth=".8"/><path d="M69 201h21v5H67Zm41 0h21l2 5h-23Z" fill="#b14f40" stroke="#75322b" strokeWidth=".6"/><path d="M73 202h13m28 0h13" stroke="#dab575" strokeWidth="1.3"/></>,
+    iron:()=><><path d="M66 200h25v6H64Zm43 0h25l2 6h-27Z" fill="#B62F38" stroke="#70232C" strokeWidth=".8"/><path d="M66 207h25m18 0h25" stroke="#E2B65A" strokeWidth="1.7"/></>,
     marty:()=><><path d="M82 164v29m36-29v29" stroke="#f0b984" strokeWidth="1.1"/><path d="M65 176h12m46 0h12m-71 12 12-1m48 0 12 1" stroke="#ef9a6a" strokeWidth=".9"/><path d="M87 200v5m26-5v5" stroke="#aec1c6" strokeWidth=".9"/></>,
     hulk:()=><><path d="m69 195 7 4-8 4m60-8-7 4 8 4M87 195l-3 9m29-9 3 9" stroke="#514365" strokeWidth="1.1"/><path d="m75 207 4-3 4 3m34 0 4-3 4 3" stroke="#8fba63" strokeWidth="1.5"/></>,
     thor:()=><><path d="M91 171h18m-18 3 9 6 9-6m-9 6v10" stroke="#c1ccc8" strokeWidth=".9"/><path d="m61 187 6 5m72-5-6 5" stroke="#263b46" strokeWidth="2"/>{[78,122].flatMap(x=>[160,178].map(y=><path key={`${x}-${y}`} d={`M${x-3} ${y-1}q1-3 4-2`} stroke="#f1f1de" strokeWidth="1"/>))}<path d="M65 202h25m20 0h25" stroke="#81949a" strokeWidth="1.5"/></>,
@@ -43,7 +43,7 @@ export function SleeveFinish({id,x,y,control,side}) {
     <path d="M-7-10H7" stroke={tone} strokeWidth={id==='wolf'?2.5:1.1} strokeLinecap="round"/>
     {id==='widow'&&[-5,-1,3].map(cx=><rect key={cx} x={cx} y="-14" width="2" height="3" rx=".5" fill="#a1bbc2"/>)}
     {id==='batman'&&<path d={side==='left'?'m-8-13-4-4 4 1m0-6-4-4 4 1':'m8-13 4-4-4 1m0-6 4-4-4 1'} stroke="#62727c" strokeWidth="1.4" strokeLinejoin="round"/>}
-    {id==='iron'&&<path d="M-7-15H7m-7-3v7" stroke="#743b35" strokeWidth="1"/>}
+    {id==='iron'&&<><rect x="-6.5" y="-22" width="13" height="12" rx="3" fill="#E2B65A" stroke="#AB7636" strokeWidth=".7"/><path d="M-7-7H7" stroke="#70232C" strokeWidth="1.3"/></>}
     {id==='wolf'&&<rect x="-3" y="-13" width="6" height="5" rx="1" fill="#d3b674" stroke="#f0d699" strokeWidth=".8"/>}
   </g>;
 }
