@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
+import { denseRank } from "../config/places";
 import { Avatar } from "./Identity";
 import Character from "./Character";
 import PlaceMedal from "./PlaceMedal";
 import ConfettiCannons from "./ConfettiCannons";
 export default function PodiumCeremony({
   players,
+  history = [],
   isHost,
   onRestartGame,
   onLeaveGame,
@@ -55,30 +57,22 @@ export default function PodiumCeremony({
           <div className={`podium-stage ${step === 3 ? "celebrating" : ""}`}>
             <div className="stage-halo" aria-hidden="true" />
             {[1, 0, 2].map((index) => {
-              const p = sorted[index];
-              if (!p) return null;
+              const group = sorted.filter(p=>denseRank(sorted,p.vp)===index+1);
               const visible = step >= (index === 2 ? 1 : index === 1 ? 2 : 3);
-              const rank = sorted.findIndex((x) => x.vp === p.vp) + 1;
+              const rank = index + 1;
               return (
                 <div
-                  key={p.id}
+                  key={index}
+                  style={{"--podium-count":Math.max(group.length,1)}}
                   className={`podium-person place-${index + 1} medal-${rank} ${visible ? "visible" : ""}`}
                 >
-                  <div className="podium-identity">
-                    <strong>{p.nickname}</strong>
-                    <span>{p.vp} очков</span>
-                    <Character
-                      color={p.color}
-                      full
-                      celebrate={step === 3}
-                      className="podium-character"
-                    />
-                  </div>
+                  <div className="podium-members">{group.map(member=><Character key={member.id} color={member.color} full celebrate={step===3} className="podium-character"/>)}</div>
                   <div className="podium-block">
                     <span className="podium-place">
                       {rank}
                       <small>место</small>
                     </span>
+                    <div className={`podium-names names-${rank}`}>{group.map(member=><strong key={member.id}>{member.nickname}</strong>)}</div>
                   </div>
                 </div>
               );
@@ -107,7 +101,7 @@ export default function PodiumCeremony({
           </div>
           <div className="final-leaderboard">
             {sorted.map((p) => {
-              const rank = sorted.findIndex((x) => x.vp === p.vp) + 1;
+              const rank = denseRank(sorted,p.vp);
               return (
                 <div
                   className={`leader-row ${p.vp === winner.vp ? "leader-winner" : ""}`}
@@ -128,6 +122,24 @@ export default function PodiumCeremony({
               );
             })}
           </div>
+          {history.length > 0 && <section className="round-history">
+            <h2>История раундов</h2>
+            {history.map(round => {
+              const critic = round.players.find(p => p.id === round.criticId);
+              return <details key={round.roundId}>
+                <summary><span>Раунд {round.roundId}</span>{critic && <span className="history-critic"><span>Критик:</span><Avatar player={critic}/><strong style={{color:critic.color}}>{critic.nickname}</strong></span>}</summary>
+                <div>{round.movies.map(m => <article className="history-film" key={m.id}>
+                  <h3>{m.title}</h3>
+                  <div className="history-ballots">{round.players.map(p => <div className="history-ballot" key={p.id}>
+                    <Avatar player={p}/>
+                    <span className="history-player"><strong style={{color:p.color}}>{p.nickname}</strong>{p.id === round.criticId && <small>Критик</small>}</span>
+                    <strong className={`history-rating rank-${round.ratings[p.id]?.[m.id]}`}>{round.ratings[p.id]?.[m.id] || '—'}</strong>
+                    {round.autoRatings[p.id]?.[m.id] && <small>Авто</small>}
+                  </div>)}</div>
+                </article>)}</div>
+              </details>;
+            })}
+          </section>}
           <div className="final-actions">
             <button className="btn-secondary" onClick={onLeaveGame}>
               В главное меню

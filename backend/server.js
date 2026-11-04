@@ -35,6 +35,8 @@ const io = new Server(server, {
 
 // Хранилище лобби в памяти (для MVP)
 const lobbies = new Map();
+const categoryIds = new Set(require('../shared/catalog-categories.json').map(c => c.id));
+const modes = require('./match-modes')({lobbies, emit: emitLobbyUpdate, clearTimer: clearLobbyTimer, endRound});
 const roomStore = require('./room-store')(lobbies);
 let saveTimer;
 function saveRooms() {
@@ -51,12 +53,12 @@ function sanitizeLobby(lobby, playerId) {
         roundAverages, isFinalRound, pausedDueToDisconnect, disconnectedPlayerName, disconnectedPlayerId, roundId } = lobby;
     const progress = Object.fromEntries(lobby.players.map(p => [p.id, Object.keys(lobby.ratings[p.id] || {}).length]));
     const active = lobby.players.filter(p => p.connected);
-    return { id, host, targetVP, state, movies, timeLeft, timerRunning, roundPoints, roundDetails,
+    return modes.publicView(lobby, playerId, { id, host, targetVP, state, movies, timeLeft, timerRunning, roundPoints, roundDetails,
         roundAverages, isFinalRound, pausedDueToDisconnect, disconnectedPlayerName, disconnectedPlayerId, roundId,
         players: lobby.players.map(publicPlayer), winner: lobby.winner ? publicPlayer(lobby.winner) : null,
-        allColors: COLORS, progress,
+        allColors: COLORS, progress, categories: lobby.categories || ['films'],
         allVoted: state === 'round_start' && active.length > 0 && active.every(p => progress[p.id] === 5),
-        ratings: state === 'round_start' ? (playerId ? { [playerId]: lobby.ratings[playerId] || {} } : {}) : lobby.ratings };
+        ratings: state === 'round_start' ? (playerId ? { [playerId]: lobby.ratings[playerId] || {} } : {}) : lobby.ratings });
 }
 function emitLobbyUpdate(lobbyId, lobby) {
     saveRooms();
@@ -74,6 +76,7 @@ try {
     ALL_MOVIES = parsed.map((m, index) => ({
         id: m.id || (m.url ? m.url.split('/')[2] : `m-${index}`),
         title: m.title || m.name,
+        category: m.category || 'films',
         posterUrl: m.posterUrl || m.image
     })).filter(m => m.posterUrl);
     console.log(`Loaded ${ALL_MOVIES.length} movies.`);
@@ -105,7 +108,8 @@ function pickMoviesForRound(lobby) {
     if (!lobby.usedMovieTitles) lobby.usedMovieTitles = [];
 
     // Фильтруем фильмы, которые еще не участвовали
-    let available = ALL_MOVIES.filter(m => {
+    const pool = ALL_MOVIES.filter(m => (lobby.categories || ['films']).includes(m.category));
+    let available = pool.filter(m => {
         if (lobby.usedMovieIds.includes(m.id)) return false;
         const norm = normalizeMovieTitle(m.title);
         if (norm && lobby.usedMovieTitles.includes(norm)) return false;
@@ -116,7 +120,7 @@ function pickMoviesForRound(lobby) {
     if (available.length < 5) {
         lobby.usedMovieIds = [];
         lobby.usedMovieTitles = [];
-        available = [...ALL_MOVIES];
+        available = [...pool];
     }
 
     // Равномерный Fisher-Yates shuffle
@@ -175,6 +179,8 @@ function fillRemainingRatingsRandomly(lobby) {
             lobby.ratings[p.id] = {};
         }
         const userRatings = lobby.ratings[p.id];
+        for (const m of lobby.movies) if (!userRatings[m.id]) ((lobby.autoRatings ||= {})[p.id] ||= {})[m.id] = true;
+        if (lobby.repeatRatings) { modes.fill(lobby,p.id); return; }
         const usedRatings = new Set(Object.values(userRatings));
         const unusedRatings = allRatings.filter(r => !usedRatings.has(r));
 
@@ -232,6 +238,8 @@ function endRound(lobbyId) {
         });
     });
 
+    lobby.roundDetails = roundDetails;
+    modes.score(lobby, roundPoints);
     // Начисляем очки игрокам
     lobby.players.forEach(p => {
         p.vp = (p.vp || 0) + (roundPoints[p.id] || 0);
@@ -271,6 +279,7 @@ function endRound(lobbyId) {
     // Всегда остаемся в 'reveal', чтобы все участники увидели оценки и средний балл
     lobby.allVoted = false;
     lobby.state = 'reveal';
+    modes.complete(lobby);
 
     emitLobbyUpdate(lobbyId, lobby);
 }
@@ -299,8 +308,14 @@ io.on('connection', (socket) => {
         const player = lobby.players.find(p => p.id === socket.data.playerId && p.socketId === transportId && p.connected);
         if (!player) return fail('Вы больше не участник этой комнаты');
         if (hostEvents.has(event) && lobby.host !== player.id) return fail('Это действие доступно только ведущему');
+        if (['launch_game','start_timer','resume_timer','end_round_early','next_round'].includes(event) && lobby.players.filter(p=>p.connected).length<2) return fail('Ожидаем второго участника');
         if (event === 'submit_rating' && (lobby.state !== 'round_start' || !lobby.movies.some(m => m.id === data.movieId) || !['S','A','B','C','D'].includes(data.rating) || (data.roundId !== undefined && data.roundId !== lobby.roundId))) return fail('Оценка не принята: проверьте текущий раунд');
         if (event === 'change_color' && (typeof data.color !== 'string' || !COLORS.some(c => c.hex.toLowerCase() === data.color.toLowerCase()))) return fail('Выберите цвет из палитры');
+        if (lobby.mode === 'opinion') {
+            if (['start_timer','pause_timer','resume_timer','end_round_early','dismiss_disconnect_pause'].includes(event)) return fail('В этом режиме таймер управляется автоматически');
+            if (['submit_rating','save_critic_ratings','next_round','launch_game'].includes(event) && lobby.players.filter(p=>p.connected).length < 2) return fail('Ожидаем второго участника');
+            if (event === 'submit_rating' && ((lobby.phase === 'critic') !== (lobby.criticId === player.id))) return fail('Сейчас вы не выставляете оценки');
+        }
         const required = { launch_game: 'lobby', next_round: 'reveal', finish_game: 'reveal', restart_game: 'game_over' };
         if (required[event] && lobby.state !== required[event]) return fail('Состояние игры изменилось');
         if (event === 'next_round' && lobby.isFinalRound) return fail('Игра завершена. Откройте итоги.');
@@ -331,6 +346,7 @@ io.on('connection', (socket) => {
             host: socket.data.playerId,
             players: [],
             targetVP: Math.min(Math.max(Number(targetVP) || 30, 1), 999),
+            categories: ['films'],
             roundId: 0,
             state: 'lobby', // lobby, round_start, reveal, game_over
             allColors: [...COLORS],
@@ -358,11 +374,20 @@ io.on('connection', (socket) => {
     });
 
     // Хост меняет цель победы в созданном лобби
-    socket.on('update_target_vp', ({ lobbyId, targetVP }, callback) => {
+    socket.on('update_target_vp', ({ lobbyId, targetVP, categories, mode, circles, hiddenMode, repeatRatings }, callback) => {
         const lobby = lobbies.get(lobbyId);
         if (!lobby || lobby.host !== socket.data.playerId || lobby.state !== 'lobby') return;
+        if (categories !== undefined && (!Array.isArray(categories) || !categories.length || categories.some(c => !categoryIds.has(c)))) {
+            if (callback) callback({ success: false, message: 'Выберите хотя бы одну допустимую категорию' });
+            return;
+        }
+        if (mode !== undefined && !['original','opinion'].includes(mode)) return callback({success:false,message:'Неизвестный режим'});
+        if (circles !== undefined && (!Number.isInteger(circles)||circles<1||circles>999)) return callback({success:false,message:'Введите от 1 до 999 кругов'});
+        if ([hiddenMode,repeatRatings].some(v=>v!==undefined&&typeof v!=='boolean')) return callback({success:false,message:'Неверные условия'});
         const val = Math.min(Math.max(Number(targetVP) || 30, 1), 999);
+        Object.assign(lobby,{mode:mode??lobby.mode??'original',circles:circles??lobby.circles??1,hiddenMode:hiddenMode??lobby.hiddenMode??false,repeatRatings:repeatRatings??lobby.repeatRatings??false});
         lobby.targetVP = val;
+        if (categories !== undefined) lobby.categories = [...new Set(categories)];
         emitLobbyUpdate(lobbyId, lobby);
         if (callback) callback({ success: true, targetVP: val });
     });
@@ -390,7 +415,9 @@ io.on('connection', (socket) => {
             socket.data.playerId = existingPlayer.id;
             socket.data.lobbyId = lobbyId;
             existingPlayer.socketId = transportId;
+            const wasDisconnected = !existingPlayer.connected;
             existingPlayer.connected = true;
+            modes.reconnect(lobby,existingPlayer,wasDisconnected);
             socket.join(lobbyId);
             if (!lobby.players.some(p => p.id === lobby.host && p.connected)) scheduleHostTransfer(lobby, lobbyId);
 
@@ -415,7 +442,7 @@ io.on('connection', (socket) => {
             lobby.players.forEach(p => {
                 progress[p.id] = Object.keys(lobby.ratings[p.id] || {}).length;
             });
-            io.to(lobbyId).emit('ratings_progress', progress);
+            if (!lobby.hiddenMode && lobby.mode !== 'opinion') io.to(lobbyId).emit('ratings_progress', progress);
 
             emitLobbyUpdate(lobbyId, lobby);
             return callback({ success: true, player: { ...publicPlayer(existingPlayer), sessionToken: existingPlayer.sessionToken }, lobby: sanitizeLobby(lobby, existingPlayer.id) });
@@ -475,6 +502,7 @@ io.on('connection', (socket) => {
             if (!lobby.usedMovieIds) lobby.usedMovieIds = [];
             if (!lobby.usedMovieTitles) lobby.usedMovieTitles = [];
             lobby.movies = pickMoviesForRound(lobby);
+            modes.start(lobby);
 
             // Сбрасываем счетчики выбора фильмов
             const resetProgress = {};
@@ -483,6 +511,12 @@ io.on('connection', (socket) => {
 
             emitLobbyUpdate(lobbyId, lobby);
         }
+    });
+
+    socket.on('save_critic_ratings', ({lobbyId}, callback) => {
+        const l=lobbies.get(lobbyId);
+        if(l.mode!=='opinion'||l.state!=='round_start'||l.phase!=='critic'||l.criticId!==socket.data.playerId||Object.keys(l.ratings[l.criticId]||{}).length!==5) return callback({success:false,message:'Сначала выставьте все пять оценок'});
+        modes.guessing(l);callback({success:true});
     });
 
     // Запуск таймера хостом
@@ -552,10 +586,11 @@ io.on('connection', (socket) => {
         if (!lobby.ratings[socket.data.playerId]) lobby.ratings[socket.data.playerId] = {};
 
         const userRatings = lobby.ratings[socket.data.playerId];
+        if(lobby.autoRatings?.[socket.data.playerId]) delete lobby.autoRatings[socket.data.playerId][movieId];
         const movieWithRating = Object.keys(userRatings).find(mId => userRatings[mId] === rating);
         const oldRatingOfCurrentMovie = userRatings[movieId];
 
-        if (movieWithRating && movieWithRating !== movieId) {
+        if (!lobby.repeatRatings && movieWithRating && movieWithRating !== movieId) {
             // Свап: если буква уже стояла у другого фильма, меняем их местами
             userRatings[movieId] = rating;
             if (oldRatingOfCurrentMovie) {
@@ -575,12 +610,14 @@ io.on('connection', (socket) => {
 
         // Если оценено 4 из 5 фильмов -> оставшаяся оценка автоматически выставляется последнему фильму
         const ratedKeys = Object.keys(userRatings).filter(id => userRatings[id]);
-        if (ratedKeys.length === 4 && lobby.movies.length === 5) {
+        if (!lobby.repeatRatings && ratedKeys.length === 4 && lobby.movies.length === 5) {
             const unratedMovie = lobby.movies.find(m => !userRatings[m.id]);
             const used = Object.values(userRatings);
             const remaining = ['S', 'A', 'B', 'C', 'D'].find(r => !used.includes(r));
             if (unratedMovie && remaining) {
                 userRatings[unratedMovie.id] = remaining;
+                // The fifth distinct rank is forced, not a random timeout answer.
+                if (lobby.autoRatings?.[socket.data.playerId]) delete lobby.autoRatings[socket.data.playerId][unratedMovie.id];
             }
         }
 
@@ -589,7 +626,7 @@ io.on('connection', (socket) => {
         lobby.players.forEach(p => {
             progress[p.id] = Object.keys(lobby.ratings[p.id] || {}).length;
         });
-        io.to(lobbyId).emit('ratings_progress', progress);
+        if (!lobby.hiddenMode && lobby.mode !== 'opinion') io.to(lobbyId).emit('ratings_progress', progress);
 
         // Проверяем: все ли активные игроки оценили все 5 фильмов
         const activePlayers = lobby.players.filter(p => p.connected);
@@ -621,6 +658,7 @@ io.on('connection', (socket) => {
 
             // Выбираем 5 случайных фильмов без повторений в лобби
             lobby.movies = pickMoviesForRound(lobby);
+            modes.start(lobby);
 
             // Сбрасываем счетчики выбора фильмов при старте нового раунда
             const resetProgress = {};
@@ -646,6 +684,7 @@ io.on('connection', (socket) => {
         if (lobby && lobby.host === socket.data.playerId) {
             clearLobbyTimer(lobby);
             lobby.state = 'lobby';
+            lobby.criticQueue=null;lobby.history=[];lobby.criticId=null;lobby.criticPlayer=null;lobby.phase=null;lobby.autoRatings={};lobby.perfect={};lobby.matchPoints={};lobby.revealedAt=null;lobby.opinionRemaining=null;
             lobby.ratings = {};
             lobby.timeLeft = 60;
             lobby.timerRunning = false;
@@ -694,11 +733,13 @@ io.on('connection', (socket) => {
         const player = lobby.players.find(p => p.id === socket.data.playerId);
         if (player) {
             player.connected = false;
+            modes.disconnected(lobby,player,true);
+                io.to(lobbyId).emit('player_connection_notice', {message: lobby.hiddenMode ? 'Один из игроков покинул игру' : `Игрок «${player.nickname}» покинул игру`});
             socket.leave(lobbyId);
             socket.data.lobbyId = null;
 
             // Если идет раунд и таймер был запущен -> ставим на паузу
-            if (lobby.state === 'round_start' && lobby.timerRunning) {
+            if (lobby.mode !== 'opinion' && lobby.state === 'round_start' && lobby.timerRunning) {
                 clearLobbyTimer(lobby);
                 lobby.pausedDueToDisconnect = true;
                 lobby.disconnectedPlayerName = player.nickname;
@@ -744,13 +785,14 @@ io.on('connection', (socket) => {
         if (index !== -1) {
             if (playerId === lobby.host) return callback({ success: false, message: 'Сначала передайте права ведущего' });
             const removed = lobby.players.splice(index, 1)[0];
+            modes.disconnected(lobby,removed,true);
             const kicked = io.sockets.sockets.get(removed.socketId);
             kicked?.emit('kicked', { message: 'Ведущий исключил вас из комнаты' });
             kicked?.leave(lobbyId);
             if (kicked) kicked.data.lobbyId = null;
 
             // Удаляем оценки исключенного игрока
-            if (lobby.ratings[playerId]) {
+            if (lobby.ratings[playerId] && !(lobby.mode === 'opinion' && lobby.criticId === playerId)) {
                 delete lobby.ratings[playerId];
             }
 
@@ -820,10 +862,12 @@ io.on('connection', (socket) => {
             const player = lobby.players.find(p => p.id === socket.data.playerId);
             if (player && player.socketId === transportId) {
                 player.connected = false;
+            modes.disconnected(lobby,player,false);
+                io.to(lobbyId).emit('player_connection_notice', {message: lobby.hiddenMode ? 'Один из игроков потерял соединение' : `Игрок «${player.nickname}» потерял соединение`});
                 player.previousSocketId = socket.data.playerId;
 
                 // Если идет раунд и таймер тикал -> ставим на паузу!
-                if (lobby.state === 'round_start' && lobby.timerRunning) {
+                if (lobby.mode !== 'opinion' && lobby.state === 'round_start' && lobby.timerRunning) {
                     clearLobbyTimer(lobby);
                     lobby.pausedDueToDisconnect = true;
                     lobby.disconnectedPlayerName = player.nickname;

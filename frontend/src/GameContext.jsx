@@ -105,6 +105,7 @@ export const GameProvider = ({ children }) => {
         newSocket.on('disconnect', () => { setIsConnected(false); setConnectionMessage('Связь прервалась. Восстанавливаем подключение…'); });
         newSocket.on('connect_error', () => { setIsConnected(false); setConnectionMessage(navigator.onLine ? 'Сервер пока недоступен. Повторяем подключение…' : 'Нет интернета. Проверьте подключение.'); });
         newSocket.on('error_message', message => showToast(message, 'error'));
+        newSocket.on('player_connection_notice', data => showToast(data.message, 'info'));
         const removed = data => {
             storage.removeItem('kino_lobbyId'); storage.removeItem('kino_sessionToken');
             setGameState(null); setPlayer(null); showToast(data.message, 'error');

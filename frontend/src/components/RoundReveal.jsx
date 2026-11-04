@@ -9,7 +9,7 @@ export default function RoundReveal({ game: g }) {
           <div className="movie-poster">
             <Poster movie={m} />
           </div>
-          <h2>{m.title.replace(/ \(\d{4}\)$/, "")}</h2>
+          <h2>{m.title}</h2>
           <div className="film-average">
             <span>Средняя оценка</span>
             <strong>

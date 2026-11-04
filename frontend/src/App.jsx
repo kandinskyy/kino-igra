@@ -7,7 +7,7 @@ import RainBackground from "./components/RainBackground";
 import ModalDialog from "./components/ModalDialog";
 import { Cloud } from "./components/Identity";
 export default function App() {
-  const { gameState, isConnected, connectionMessage, reconnect, showAlert } =
+  const { gameState, isConnected, connectionMessage, reconnect } =
     useGame();
   const allVoted = gameState?.state === "round_start" && gameState.allVoted;
   const [slow, setSlow] = useState(false);
@@ -26,19 +26,6 @@ export default function App() {
             <Cloud />
             OVERRATED
           </span>
-          {!gameState && (
-            <button
-              className="quiet-button"
-              onClick={() =>
-                showAlert(
-                  "В каждом раунде — пять фильмов. Расставьте ранги от S до D: каждый используется один раз, пятый назначается автоматически. За каждое совпадение с другим игроком — одно очко. Ведущий запускает таймер и раскрывает оценки. Побеждает тот, кто достигнет выбранной цели.",
-                  { title: "Как играть", icon: "", confirmText: "Понятно" },
-                )
-              }
-            >
-              Правила игры
-            </button>
-          )}
           {gameState && (
             <span className="room-label">
               Комната <strong>{gameState.id}</strong>

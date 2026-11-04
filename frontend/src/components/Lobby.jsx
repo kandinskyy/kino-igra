@@ -4,6 +4,7 @@ import { useGame } from "../GameContext";
 import { copyText } from "../utils/clipboard";
 import { Avatar, Emblem } from "./Identity";
 import { LockKeyhole } from "lucide-react";
+import MatchSettings from "./MatchSettings";
 export default function Lobby() {
   const {
     socket,
@@ -16,28 +17,16 @@ export default function Lobby() {
   } = useGame();
   const host = g.host === player?.id,
     me = g.players.find((p) => p.id === player?.id) || player;
-  const [draft, setDraft] = useState(String(g.targetVP)),
-    [busy, setBusy] = useState(false);
+  const [busy, setBusy] = useState(false);
   async function request(event, data) {
     const r = await socket.timeout(10000).emitWithAck(event, data);
     if (!r.success) throw Error(r.message || "Действие недоступно");
     return r;
   }
-  async function saveTarget() {
-    const value = Number(draft);
-    if (!Number.isInteger(value) || value < 1 || value > 999) {
-      showToast("Введите целое число от 1 до 999", "error");
-      setDraft(String(g.targetVP));
-      return false;
-    }
-    if (value !== g.targetVP)
-      await request("update_target_vp", { lobbyId: g.id, targetVP: value });
-    return true;
-  }
   async function launch() {
     setBusy(true);
     try {
-      if (await saveTarget()) await request("launch_game", g.id);
+      await request("launch_game", g.id);
     } catch (e) {
       showToast(e.message, "error");
     } finally {
@@ -234,35 +223,7 @@ export default function Lobby() {
           <button className="text-link" onClick={copy}>
             Скопировать приглашение
           </button>
-          <div className="target-setting">
-            <label htmlFor="target-vp">Цель игры</label>
-            {host ? (
-              <div className="target-input">
-                <input
-                  id="target-vp"
-                  type="number"
-                  min="1"
-                  max="999"
-                  step="1"
-                  value={draft}
-                  onChange={(e) => setDraft(e.target.value)}
-                  onBlur={() =>
-                    saveTarget().catch((e) => showToast(e.message, "error"))
-                  }
-                />
-                <span>очков</span>
-              </div>
-            ) : (
-              <strong>{g.targetVP} очков</strong>
-            )}
-            <p>
-              {host ? "Введите число от 1 до 999" : "Цель выбирает ведущий"}
-            </p>
-          </div>
-          <div className="setting-line">
-            <span>Время на раунд</span>
-            <strong>60 секунд</strong>
-          </div>
+          <MatchSettings settings={g} targetVP={g.targetVP} categories={g.categories} host={host} onSave={(targetVP, categories, options) => request("update_target_vp", { lobbyId: g.id, targetVP, categories, ...options })} />
           {host ? (
             <button
               className="btn-primary full"

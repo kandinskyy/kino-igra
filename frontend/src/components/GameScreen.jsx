@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { useGame } from "../GameContext";
 import { Avatar, Poster } from "./Identity";
-import RoundReveal from "./RoundReveal";
+import RoundReveal from "./MatchReveal";
+import MatchScores from "./MatchScores";
+import { useMatchScores } from "../hooks/useMatchScores";
 import PodiumCeremony from "./PodiumCeremony";
 const ranks = ["S", "A", "B", "C", "D"];
 export default function GameScreen() {
@@ -13,6 +15,9 @@ export default function GameScreen() {
     showConfirm,
     showToast,
   } = useGame();
+  const animation = useMatchScores(g);
+  const opinion=g.mode==='opinion';
+  const canRate=!opinion||(g.phase==='critic'?g.isCritic:!g.isCritic);
   const host = g.host === player?.id,
     reveal = g.state === "reveal";
   const [clock, setClock] = useState({
@@ -96,34 +101,35 @@ export default function GameScreen() {
     return (
       <PodiumCeremony
         players={g.players}
+        history={g.history}
         isHost={host}
         onRestartGame={() => request("restart_game", g.id)}
         onLeaveGame={leaveGame}
       />
     );
   return (
-    <section className={`game-page ${!reveal && g.allVoted ? "everyone-ready" : ""}`}>
+    <section className={`game-page ${g.repeatRatings ? "repeat-ratings" : ""} ${!reveal && g.allVoted ? "everyone-ready" : ""}`}>
       <div className="page-heading">
         <div>
           <span className="overline">
-            Раунд {g.roundId} · цель {g.targetVP} очков
+            Раунд {g.roundId} · {opinion?`Мнение одного · ${g.circles} кругов`:`цель ${g.targetVP} очков`}
           </span>
           <h1>
             {reveal
               ? "Вскрываем оценки"
               : g.allVoted
                 ? "Все готовы"
-                : "Расставьте фильмы по местам"}
+                : "Расставьте оценки по местам"}
           </h1>
         </div>
         <div className="game-top-actions">
-          {!reveal && (
+          {!reveal && (!opinion || g.phase==='guess') && (
             <div className="timer">
               <span className={clock.running ? "running" : ""}>
                 {Math.floor(clock.timeLeft / 60)}:
                 {String(clock.timeLeft % 60).padStart(2, "0")}
               </span>
-              {host && (
+              {host && !opinion && (
                 <button
                   className="btn-secondary"
                   onClick={() =>
@@ -155,10 +161,10 @@ export default function GameScreen() {
           </button>
         </div>
       </div>
-      {g.pausedDueToDisconnect && (
+      {!opinion && g.pausedDueToDisconnect && (
         <div className="disconnect-notice" role="status">
           <span>
-            Игрок «{g.disconnectedPlayerName}» отключился. Таймер на паузе.
+            {g.hiddenMode?'Один из игроков потерял соединение.':`Игрок «${g.disconnectedPlayerName}» отключился.`} Таймер на паузе.
           </span>
           {host && (
             <button className="btn-secondary" onClick={resume}>
@@ -167,7 +173,11 @@ export default function GameScreen() {
           )}
         </div>
       )}
-      <div className="game-roster">
+      <MatchScores game={g} me={player?.id} animation={animation}/>
+      {opinion&&!reveal&&<div key={`${g.roundId}-${g.isCritic}`} className="role-announcement" role="status"><strong>{g.isCritic?'Вы критик':'Вы угадываете'}</strong><span>{g.phase==='critic'?(g.isCritic?'Составьте рейтинг и сохраните оценки':`${g.criticName||'Критик'} составляет рейтинг`):'Угадайте мнение критика'}</span></div>}
+      {g.waitingForPlayers&&<div className="disconnect-notice">Игра на паузе. Ожидаем второго участника.</div>}
+      {g.criticWait!==null&&g.criticWait!==undefined&&<div className="disconnect-notice">{g.hiddenMode?'Один из игроков потерял соединение.':'Критик потерял соединение.'} Ждём возвращения: {g.criticWait} с.</div>}
+      {!g.hiddenMode&&<div className="game-roster">
         {g.players.map((p) => (
           <div
             className={`roster-player ${!p.connected ? "offline" : ""}`}
@@ -181,9 +191,9 @@ export default function GameScreen() {
               </strong>
               <span>
                 {reveal
-                  ? `${g.roundPoints?.[p.id] || 0} за раунд · ${p.vp} всего`
+                  ? `${g.roundPoints?.[p.id] || 0} за раунд · ${animation.scores[p.id] ?? 0} всего`
                   : p.connected
-                    ? `${progress[p.id] || 0}/5 фильмов`
+                    ? `${progress[p.id] || 0}/5 оценок`
                     : "Не в сети"}
               </span>
             </div>
@@ -209,11 +219,12 @@ export default function GameScreen() {
             )}
           </div>
         ))}
-      </div>
+      </div>}
       {!reveal ? (
         <>
           <p className="rank-instruction">
-            S — шедевр, D — не моё. Каждый ранг используется один раз.
+            {opinion && <strong>{g.isCritic?'Вы критик. ':g.phase==='critic'?'Критик составляет рейтинг. ':'Вы угадываете. '}</strong>}
+            S — шедевр, D — не моё. {g.repeatRatings?'Можно повторять оценки.':'Каждый ранг используется один раз.'}
           </p>
           <div className="movie-grid">
             {g.movies.map((m, index) => (
@@ -229,9 +240,9 @@ export default function GameScreen() {
                     </span>
                   )}
                 </div>
-                <h2>{m.title.replace(/ \(\d{4}\)$/, "")}</h2>
+                <h2>{m.title.replace(/ \(\d{4}(?: - (?:\d{4}|\.\.\.))?\)$/, "")}</h2>
                 <span className="movie-year">
-                  {m.title.match(/\((\d{4})\)$/)?.[1] || "Фильм"}
+                  {m.title.match(/\((\d{4}(?: - (?:\d{4}|\.\.\.))?)\)$/)?.[1] || ""}
                 </span>
                 <div
                   className="rank-options"
@@ -241,8 +252,8 @@ export default function GameScreen() {
                   {ranks.map((r) => (
                     <button
                       key={r}
-                      className={`rank-${r} ${mine[m.id] === r ? "chosen" : Object.values(mine).includes(r) ? "rank-used" : ""}`}
-                      disabled={pending}
+                      className={`rank-${r} ${mine[m.id] === r ? "chosen" : !g.repeatRatings && Object.values(mine).includes(r) ? "rank-used" : ""}`}
+                      disabled={pending || !canRate || g.waitingForPlayers}
                       onClick={() => rate(m.id, r)}
                       aria-pressed={mine[m.id] === r}
                       aria-label={`${r}: ${m.title}`}
@@ -258,14 +269,14 @@ export default function GameScreen() {
             <div>
               <strong>
                 {count === 5
-                  ? "Вы оценили все фильмы"
+                  ? "Все оценки выставлены"
                   : `Ваши оценки: ${count} из 5`}
               </strong>
               <span>
                 Готовы {ready} из {active.length} игроков
               </span>
             </div>
-            {host ? (
+            {opinion ? (g.isCritic&&g.phase==='critic'?<button className="btn-primary" disabled={count!==5||g.waitingForPlayers} onClick={()=>request('save_critic_ratings',{lobbyId:g.id})}>Сохранить оценки</button>:<p className="muted">{g.phase==='critic'?'Ожидаем рейтинг критика':'Оценки раскроются по окончании минуты'}</p>) : host ? (
               <button className="btn-primary" onClick={end}>
                 {g.allVoted ? "Раскрыть оценки" : "Завершить раунд досрочно"}
               </button>
@@ -280,16 +291,16 @@ export default function GameScreen() {
         </>
       ) : (
         <>
-          <RoundReveal game={g} />
+          <RoundReveal game={g} me={player?.id} />
           <div className="round-controls">
             <div>
               <strong>
-                {g.isFinalRound ? "Победный порог достигнут" : "Раунд завершён"}
+                {g.isFinalRound ? "Игра завершена" : "Раунд завершён"}
               </strong>
               <span>
                 {g.isFinalRound
                   ? "Сначала обсудите оценки, затем откройте итоги игры."
-                  : "Каждое совпадение с другим игроком — одно очко."}
+                  : opinion ? "Совпадение с критиком — +1, все пять — ещё +3." : "Каждое совпадение с другим игроком — одно очко."}
               </span>
             </div>
             {host ? (

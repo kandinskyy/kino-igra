@@ -1,0 +1,6 @@
+[
+  { "id": "films", "label": "Фильмы" },
+  { "id": "anime", "label": "Аниме" },
+  { "id": "series", "label": "Сериалы" },
+  { "id": "cartoons", "label": "Мультсериалы" }
+]
