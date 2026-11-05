@@ -2,11 +2,12 @@ import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {colors, emblems, robotIndex, robotColor} from './playerSymbols.js';
 import {cast} from '../components/characters/cast.js';
+import {additions, sortedIndices, universe} from '../components/characters/expansion/cast.js';
 
-test('30 selectable identities map to the deployed cast, including replacements', () => {
-  assert.equal(colors.length, 30);
-  assert.equal(new Set(colors.map(c => c.toLowerCase())).size, 30);
-  assert.deepEqual(new Set(emblems.map(c => c.outfit)), new Set(cast.map(c => c.id)));
+test('51 selectable identities map to artwork and retain existing player keys', () => {
+  assert.equal(colors.length, 51);
+  assert.equal(new Set(colors.map(c => c.toLowerCase())).size, 51);
+  assert.deepEqual(new Set(emblems.map(c => c.outfit)), new Set([...cast,...additions].map(c => c.id)));
   assert.equal(emblems[1].outfit, 'vader');
   assert.equal(emblems[7].outfit, 'batman');
   assert.equal(emblems[15].outfit, 'joker');
@@ -23,4 +24,17 @@ test('30 selectable identities map to the deployed cast, including replacements'
   }
   assert.equal(robotIndex(undefined), 0);
   assert.equal(robotColor('unknown'), emblems[0].color);
+});
+
+test('character picker groups universes alphabetically without changing identity indices',()=>{
+  const order=sortedIndices(emblems);
+  assert.equal(new Set(order).size,51);
+  const groups=order.map(i=>universe(emblems[i]));
+  assert.deepEqual(groups,[...groups].sort((a,b)=>a.localeCompare(b,'ru')));
+  for(const film of new Set(groups)){
+    const positions=groups.flatMap((group,i)=>group===film?[i]:[]);
+    assert.equal(positions.at(-1)-positions[0]+1,positions.length);
+  }
+  assert.equal(emblems.filter(c=>c.outfit==='makima').length,1);
+  for(const removed of ['power','mikasa','stan','guard','sukuna','eleven','dustin','butcher','jon','daenerys'])assert.ok(!emblems.some(c=>c.outfit===removed));
 });

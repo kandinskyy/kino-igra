@@ -1,9 +1,9 @@
-import { emblems, robotIndex } from "../config/playerSymbols";
+import CharacterPicker from "./CharacterPicker";
 import { useState } from "react";
 import { useGame } from "../GameContext";
 import { copyText } from "../utils/clipboard";
-import { Avatar, Emblem } from "./Identity";
-import { LockKeyhole } from "lucide-react";
+import { Avatar } from "./Identity";
+
 import MatchSettings from "./MatchSettings";
 export default function Lobby() {
   const {
@@ -150,56 +150,7 @@ export default function Lobby() {
               </div>
             ))}
           </div>
-          <div className="identity-picker">
-            <div>
-              <h3>Ваш персонаж и цвет</h3>
-            </div>
-            <div className="robot-preview">
-              <Emblem color={me?.color} full />
-              <div>
-                <strong>{emblems[robotIndex(me?.color)].name}</strong>
-                <span>{emblems[robotIndex(me?.color)].film}</span>
-              </div>
-            </div>
-            <div className="symbol-grid">
-              {g.allColors.map((c, i) => {
-                const occupied = g.players.find(
-                  (p) =>
-                    p.id !== player?.id &&
-                    p.color.toLowerCase() === c.hex.toLowerCase(),
-                );
-                return (
-                  <button
-                    key={c.hex}
-                    className={me?.color === c.hex ? "selected" : ""}
-                    disabled={!!occupied}
-                    title={`${emblems[i].name} · ${emblems[i].film}${occupied ? " — занят: " + occupied.nickname : ""}`}
-                    aria-label={`${emblems[i].name}, ${emblems[i].colorName}`}
-                    aria-pressed={me?.color === c.hex}
-                    style={{ "--player-color": emblems[i].color }}
-                    onClick={async () => {
-                      try {
-                        await request("change_color", {
-                          lobbyId: g.id,
-                          color: c.hex,
-                        });
-                      } catch (e) {
-                        showToast(e.message, "error");
-                      }
-                    }}
-                  >
-                    <Emblem index={i} />
-                    {occupied && (
-                      <LockKeyhole
-                        className="costume-lock"
-                        aria-hidden="true"
-                      />
-                    )}
-                  </button>
-                );
-              })}
-            </div>
-          </div>
+          <CharacterPicker color={me?.color} players={g.players} playerId={player?.id} availableColors={g.allColors} onSave={color=>request("change_color",{lobbyId:g.id,color})}/>
         </section>
         <aside className="surface room-settings">
           <h2>Пригласить друзей</h2>

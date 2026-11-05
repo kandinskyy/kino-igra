@@ -238,5 +238,173 @@
     "film": "Три метра над уровнем неба",
     "color": "#789CB3",
     "colorName": "Стальной синий"
+  },
+  {
+    "hex": "#CFB66C",
+    "outfit": "walter",
+    "name": "Уолтер Уайт",
+    "film": "Во все тяжкие",
+    "color": "#CFB66C",
+    "colorName": "Уолтер Уайт"
+  },
+  {
+    "hex": "#E5BC55",
+    "outfit": "jesse",
+    "name": "Джесси Пинкман",
+    "film": "Во все тяжкие",
+    "color": "#E5BC55",
+    "colorName": "Джесси Пинкман"
+  },
+  {
+    "hex": "#DA9AB5",
+    "outfit": "saul",
+    "name": "Сол Гудман",
+    "film": "Лучше звоните Солу",
+    "color": "#DA9AB5",
+    "colorName": "Сол Гудман"
+  },
+  {
+    "hex": "#84A9DB",
+    "outfit": "homelander",
+    "name": "Хоумлендер",
+    "film": "Пацаны",
+    "color": "#84A9DB",
+    "colorName": "Хоумлендер"
+  },
+  {
+    "hex": "#70B8A0",
+    "outfit": "gihun",
+    "name": "Сон Ги Хун",
+    "film": "Игра в кальмара",
+    "color": "#70B8A0",
+    "colorName": "Сон Ги Хун"
+  },
+  {
+    "hex": "#F1B94F",
+    "outfit": "naruto",
+    "name": "Наруто Узумаки",
+    "film": "Наруто",
+    "color": "#F1B94F",
+    "colorName": "Наруто Узумаки"
+  },
+  {
+    "hex": "#A8B5E0",
+    "outfit": "sasuke",
+    "name": "Саске Учиха",
+    "film": "Наруто",
+    "color": "#A8B5E0",
+    "colorName": "Саске Учиха"
+  },
+  {
+    "hex": "#9CBDAD",
+    "outfit": "kakashi",
+    "name": "Какаши Хатаке",
+    "film": "Наруто",
+    "color": "#9CBDAD",
+    "colorName": "Какаши Хатаке"
+  },
+  {
+    "hex": "#CF9B7E",
+    "outfit": "light",
+    "name": "Лайт Ягами",
+    "film": "Тетрадь смерти",
+    "color": "#CF9B7E",
+    "colorName": "Лайт Ягами"
+  },
+  {
+    "hex": "#BDC4D6",
+    "outfit": "l",
+    "name": "L",
+    "film": "Тетрадь смерти",
+    "color": "#BDC4D6",
+    "colorName": "L"
+  },
+  {
+    "hex": "#E6AF67",
+    "outfit": "luffy",
+    "name": "Монки Д. Луффи",
+    "film": "Ван-Пис",
+    "color": "#E6AF67",
+    "colorName": "Монки Д. Луффи"
+  },
+  {
+    "hex": "#88BA85",
+    "outfit": "zoro",
+    "name": "Ророноа Зоро",
+    "film": "Ван-Пис",
+    "color": "#88BA85",
+    "colorName": "Ророноа Зоро"
+  },
+  {
+    "hex": "#B7D0EA",
+    "outfit": "gojo",
+    "name": "Сатору Годжо",
+    "film": "Магическая битва",
+    "color": "#B7D0EA",
+    "colorName": "Сатору Годжо"
+  },
+  {
+    "hex": "#A2B49C",
+    "outfit": "levi",
+    "name": "Леви Аккерман",
+    "film": "Атака титанов",
+    "color": "#A2B49C",
+    "colorName": "Леви Аккерман"
+  },
+  {
+    "hex": "#ECD061",
+    "outfit": "saitama",
+    "name": "Сайтама",
+    "film": "Ванпанчмен",
+    "color": "#ECD061",
+    "colorName": "Сайтама"
+  },
+  {
+    "hex": "#E69367",
+    "outfit": "denji",
+    "name": "Дэндзи",
+    "film": "Человек-бензопила",
+    "color": "#E69367",
+    "colorName": "Дэндзи"
+  },
+  {
+    "hex": "#D89C89",
+    "outfit": "makima",
+    "name": "Макима",
+    "film": "Человек-бензопила",
+    "color": "#D89C89",
+    "colorName": "Макима"
+  },
+  {
+    "hex": "#83B5D3",
+    "outfit": "dipper",
+    "name": "Диппер Пайнс",
+    "film": "Гравити Фолз",
+    "color": "#83B5D3",
+    "colorName": "Диппер Пайнс"
+  },
+  {
+    "hex": "#EAA1CB",
+    "outfit": "mabel",
+    "name": "Мэйбл Пайнс",
+    "film": "Гравити Фолз",
+    "color": "#EAA1CB",
+    "colorName": "Мэйбл Пайнс"
+  },
+  {
+    "hex": "#91CCD5",
+    "outfit": "rick",
+    "name": "Рик Санчез",
+    "film": "Рик и Морти",
+    "color": "#91CCD5",
+    "colorName": "Рик Санчез"
+  },
+  {
+    "hex": "#E4CB74",
+    "outfit": "morty",
+    "name": "Морти Смит",
+    "film": "Рик и Морти",
+    "color": "#E4CB74",
+    "colorName": "Морти Смит"
   }
 ]
