@@ -20,7 +20,12 @@ async function download(url) {
       if (buffer.length>2*1024*1024) throw Error('oversized poster');
       await sharp(buffer).metadata(); return buffer;
     } catch(error) {
-      if (attempt===4) throw error;
+      if (attempt===4) {
+        // curl's HTTP/2 transport can recover an interrupted origin fetch.
+        const buffer = execFileSync('curl',['-4','--http2','--fail','--silent','--show-error',
+          '--max-time','30',url],{maxBuffer:2*1024*1024});
+        await sharp(buffer).metadata(); return buffer;
+      }
       await new Promise(r=>setTimeout(r,1000*(attempt+1)));
     }
   }
