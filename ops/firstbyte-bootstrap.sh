@@ -91,5 +91,10 @@ ufw --force enable
 systemctl daemon-reload
 systemctl enable --now overrated nginx
 systemctl reload nginx
-curl --fail --retry 10 --retry-connrefused --retry-delay 1 http://127.0.0.1/api/health
+# nginx reload is asynchronous; retry until its new workers serve this location.
+for attempt in $(seq 1 15); do
+  if curl --fail --silent http://127.0.0.1/api/health; then break; fi
+  if [ "$attempt" = 15 ]; then exit 1; fi
+  sleep 1
+done
 printf '\nFIRSTBYTE_APP_READY\n'
