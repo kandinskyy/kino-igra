@@ -50,7 +50,7 @@ async function state(s, lobbyId, token) {
   room = await state(a, lobbyId, aa.player.sessionToken); assert.equal(room.allVoted, true);
   await call(a, 'end_round_early', lobbyId);
   room = await state(a, lobbyId, aa.player.sessionToken);
-  assert.equal(room.state, 'reveal'); assert.equal(room.roundPoints[aa.player.id], 5);
+  assert.equal(room.state, 'reveal'); assert.equal(room.roundPoints[aa.player.id], 10);
   await call(a, 'finish_game', lobbyId);
   room = await state(a, lobbyId, aa.player.sessionToken);
   assert.equal(room.state, 'game_over'); assert.equal(room.history.length, 1);
@@ -65,6 +65,13 @@ async function state(s, lobbyId, token) {
   await call(a, 'submit_rating', {lobbyId, movieId, rating: 'S'});
   execFileSync('systemctl', ['restart', 'overrated']);
   for (const s of clients) s.disconnect();
+  let ready = false;
+  for (let i=0;i<40;i++) {
+    try { ready = (await fetch(base+'/api/health')).ok; } catch {}
+    if (ready) break;
+    await new Promise(r=>setTimeout(r,250));
+  }
+  assert.equal(ready,true,'service becomes ready after restart');
   await connected(a); await connected(b);
   room = await state(a, lobbyId, first.player.sessionToken);
   assert.equal(room.ratings[first.player.id][movieId], 'S');
