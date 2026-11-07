@@ -1,5 +1,6 @@
 const fs = require('node:fs');
 const path = require('node:path');
+const { isExpired } = require('./room-lifecycle');
 
 // Set ROOM_STATE_FILE only to a persistent, private filesystem location.
 module.exports = function roomStore(rooms) {
@@ -9,7 +10,7 @@ module.exports = function roomStore(rooms) {
     const snapshot = JSON.parse(fs.readFileSync(file, 'utf8'));
     if (snapshot.version !== 1) throw Error('Unsupported room snapshot');
     for (const room of snapshot.rooms) {
-      if (Date.now() - (room.updatedAt || 0) > 30 * 60 * 1000) continue;
+      if (isExpired(room)) continue;
       room.players.forEach(p => { p.connected = false; p.socketId = null; });
       if (room.timerRunning && room.deadline) room.timeLeft = Math.max(0, Math.ceil((room.deadline - room.updatedAt) / 1000));
       room.timerRunning = false; room.timerInterval = null; room.hostGraceTimer = null;

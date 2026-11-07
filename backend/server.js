@@ -36,6 +36,7 @@ const io = new Server(server, {
 // Хранилище лобби в памяти (для MVP)
 const lobbies = new Map();
 const roomActions = require('./room-actions');
+const lifecycle = require('./room-lifecycle');
 const categoryIds = new Set(require('../shared/catalog-categories.json').map(c => c.id));
 const modes = require('./match-modes')({lobbies, emit: emitLobbyUpdate, clearTimer: clearLobbyTimer, endRound});
 const roomStore = require('./room-store')(lobbies);
@@ -122,6 +123,18 @@ function clearLobbyTimer(lobby) {
         lobby.timerInterval = null;
     }
     lobby.timerRunning = false;
+}
+
+function closeRoom(lobbyId, message) {
+    const lobby = lobbies.get(lobbyId);
+    if (!lobby) return;
+    clearLobbyTimer(lobby);
+    if (lobby.hostGraceTimer) clearTimeout(lobby.hostGraceTimer);
+    io.to(lobbyId).emit('lobby_closed', { message });
+    io.in(lobbyId).socketsLeave(lobbyId);
+    for (const client of io.sockets.sockets.values()) if (client.data.lobbyId === lobbyId) client.data.lobbyId = null;
+    lobbies.delete(lobbyId);
+    saveRooms();
 }
 
 function fillRemainingRatingsRandomly(lobby) {
@@ -253,6 +266,10 @@ io.on('connection', (socket) => {
         if (typeof lobbyId !== 'string' || !/^[A-Z0-9]{6}$/.test(lobbyId)) return fail('Неверный код комнаты');
         const lobby = lobbies.get(lobbyId);
         if (!lobby) return fail('Лобби не найдено');
+        if (lifecycle.isExpired(lobby)) {
+            closeRoom(lobbyId, 'Комната закрыта после 15 минут без действий.');
+            return fail('Лобби не найдено');
+        }
         if (event === 'join_lobby') {
             if (typeof data !== 'object' || (data.nickname !== undefined && (typeof data.nickname !== 'string' || data.nickname.trim().length > 15)) || (data.sessionToken != null && (typeof data.sessionToken !== 'string' || data.sessionToken.length > 128))) return fail('Проверьте никнейм и код комнаты');
             return next();
@@ -282,9 +299,14 @@ io.on('connection', (socket) => {
             if (event !== 'disconnect') {
                 const ack = typeof args[1] === 'function' ? args[1] : () => {};
                 let answered = false;
-                args[1] = response => { answered = true; ack(response); };
+                const lobbyId = typeof args[0] === 'string' ? args[0] : args[0]?.lobbyId;
+                const markActivity = () => {
+                    const lobby = lobbies.get(lobbyId);
+                    if (lobby && event !== 'join_lobby' && event !== 'leave_lobby') { lobby.lastActivityAt = Date.now(); saveRooms(); }
+                };
+                args[1] = response => { answered = true; if (response?.success) markActivity(); ack(response); };
                 handler(...args);
-                if (!answered) ack({ success: true });
+                if (!answered) { markActivity(); ack({ success: true }); }
             } else handler(...args);
         } catch (error) { console.error('[EVENT]', event, error.message); if (typeof args[1] === 'function') args[1]({ success: false, message: ['reroll_movie','save_guesser_ratings','edit_guesser_ratings','send_chat_message','delete_chat_message'].includes(event) ? error.message : 'Не удалось выполнить действие' }); }
     });
@@ -298,6 +320,7 @@ io.on('connection', (socket) => {
         socket.data.lobbyId = lobbyId;
         lobbies.set(lobbyId, {
             id: lobbyId,
+            lastActivityAt: Date.now(),
             host: socket.data.playerId,
             players: [],
             targetVP: Math.min(Math.max(Number(targetVP) || 30, 1), 999),
@@ -372,6 +395,7 @@ io.on('connection', (socket) => {
             existingPlayer.socketId = transportId;
             const wasDisconnected = !existingPlayer.connected;
             existingPlayer.connected = true;
+            existingPlayer.voluntarilyLeft = false;
             modes.reconnect(lobby,existingPlayer,wasDisconnected);
             socket.join(lobbyId);
             if (!lobby.players.some(p => p.id === lobby.host && p.connected)) scheduleHostTransfer(lobby, lobbyId);
@@ -429,6 +453,7 @@ io.on('connection', (socket) => {
         };
 
         lobby.players.push(newPlayer);
+        lobby.lastActivityAt = Date.now();
         socket.join(lobbyId);
 
         emitLobbyUpdate(lobbyId, lobby);
@@ -711,10 +736,17 @@ io.on('connection', (socket) => {
         const player = lobby.players.find(p => p.id === socket.data.playerId);
         if (player) {
             player.connected = false;
+            player.voluntarilyLeft = true;
             modes.disconnected(lobby,player,true);
                 io.to(lobbyId).emit('player_connection_notice', {message: lobby.hiddenMode ? 'Один из игроков покинул игру' : `Игрок «${player.nickname}» покинул игру`});
             socket.leave(lobbyId);
             socket.data.lobbyId = null;
+
+            if (lifecycle.everyoneLeft(lobby)) {
+                closeRoom(lobbyId, 'Все игроки вышли из комнаты.');
+                if (callback) callback({ success: true });
+                return;
+            }
 
             // Если идет раунд и таймер был запущен -> ставим на паузу
             if (lobby.mode !== 'opinion' && lobby.state === 'round_start' && lobby.timerRunning) {
@@ -740,17 +772,7 @@ io.on('connection', (socket) => {
         const lobby = lobbies.get(lobbyId);
         if (!lobby || lobby.host !== socket.data.playerId) return;
 
-        clearLobbyTimer(lobby);
-        if (lobby.hostGraceTimer) {
-            clearTimeout(lobby.hostGraceTimer);
-            lobby.hostGraceTimer = null;
-        }
-
-        io.to(lobbyId).emit('lobby_closed', { message: 'Хост закрыл комнату.' });
-        io.in(lobbyId).socketsLeave(lobbyId);
-        for (const client of io.sockets.sockets.values()) if (client.data.lobbyId === lobbyId) client.data.lobbyId = null;
-        lobbies.delete(lobbyId);
-        saveRooms();
+        closeRoom(lobbyId, 'Хост закрыл комнату.');
         if (callback) callback({ success: true });
     });
 
@@ -869,26 +891,13 @@ io.on('connection', (socket) => {
     });
 });
 
-// Периодическая очистка зомби-комнат (когда все вышли более 30 минут назад), предотвращает утечку памяти
+// A dropped connection alone does not close a room: players can reconnect within the idle window.
 setInterval(() => {
     const now = Date.now();
     for (const [lobbyId, lobby] of lobbies.entries()) {
-        const allOffline = lobby.players.length === 0 || lobby.players.every(p => !p.connected);
-        if (allOffline) {
-            if (!lobby.allOfflineSince) {
-                lobby.allOfflineSince = now;
-            } else if (now - lobby.allOfflineSince > 30 * 60 * 1000) {
-                clearLobbyTimer(lobby);
-                if (lobby.hostGraceTimer) clearTimeout(lobby.hostGraceTimer);
-                lobbies.delete(lobbyId);
-                saveRooms();
-                console.log(`[CLEANUP] Успешно удалена неактивная комната ${lobbyId}`);
-            }
-        } else {
-            lobby.allOfflineSince = null;
-        }
+        if (lifecycle.isExpired(lobby, now)) closeRoom(lobbyId, 'Комната закрыта после 15 минут без действий.');
     }
-}, 60000);
+}, 10000);
 
 require('./http-service')({ app, server, movies: ALL_MOVIES });
 function shutdown() {

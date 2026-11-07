@@ -69,17 +69,40 @@ export const GameProvider = ({ children }) => {
     useEffect(() => {
         const backendUrl = import.meta.env.VITE_BACKEND_URL;
         const newSocket = io(backendUrl, { timeout: 15000, reconnectionDelayMax: 5000 });
+        let firstConnection = true;
+        let disposed = false;
+        let promptPending = false;
 
         setSocket(newSocket);
 
-        newSocket.on('connect', () => {
+        newSocket.on('connect', async () => {
+            if (promptPending) return;
             // Пытаемся восстановить сессию, если страница была обновлена или произошло переподключение
             const session = reconnectSession(location.search, storage);
+            const askToReturn = firstConnection && session && storage.getItem('kino_lobbyId') === session.lobbyId;
+            firstConnection = false;
             // Do not let a manual entry race the pending automatic restore.
             setIsConnected(!session);
             setConnectionMessage(session ? 'Восстанавливаем игру…' : '');
 
             if (session) {
+                if (askToReturn) {
+                    promptPending = true;
+                    const wantsToReturn = await showConfirm(`Вернуться в комнату ${session.lobbyId}?`, {
+                        title: 'Переподключиться к игре?', confirmText: 'Да', cancelText: 'Нет',
+                    });
+                    promptPending = false;
+                    if (disposed) return;
+                    if (!wantsToReturn) {
+                        storage.removeItem('kino_lobbyId');
+                        storage.removeItem('kino_sessionToken');
+                        history.replaceState(null, '', roomAddress(location.href, null));
+                        setIsConnected(newSocket.connected);
+                        setConnectionMessage('');
+                        return;
+                    }
+                    if (!newSocket.connected) { firstConnection = false; return; }
+                }
                 newSocket.timeout(10000).emit('join_lobby', session, (error, response) => {
                     if (error) { setIsConnected(false); setConnectionMessage('Не удалось восстановить игру. Повторите подключение.'); return; }
                     setIsConnected(true);
@@ -94,6 +117,10 @@ export const GameProvider = ({ children }) => {
                         // Только если комната реально удалена/не существует, очищаем сессию
                         storage.removeItem('kino_lobbyId');
                         storage.removeItem('kino_sessionToken');
+                        if (response.message === 'Лобби не найдено') {
+                            storage.removeItem('kino_token_' + session.lobbyId);
+                            history.replaceState(null, '', roomAddress(location.href, null));
+                        }
                         setGameState(null);
                         setPlayer(null);
                     }
@@ -131,11 +158,13 @@ export const GameProvider = ({ children }) => {
             });
             storage.removeItem('kino_lobbyId');
             storage.removeItem('kino_sessionToken');
+            history.replaceState(null, '', roomAddress(location.href, null));
             setGameState(null);
             setPlayer(null);
         });
 
         return () => {
+            disposed = true;
             newSocket.close();
         };
     }, []);
