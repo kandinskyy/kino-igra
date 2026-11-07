@@ -1,3 +1,4 @@
+import { criticNameStyle } from "../config/playerSymbols";
 import { useEffect, useState } from "react";
 import { denseRank } from "../config/places";
 import { Avatar } from "./Identity";
@@ -127,12 +128,12 @@ export default function PodiumCeremony({
             {history.map(round => {
               const critic = round.players.find(p => p.id === round.criticId);
               return <details key={round.roundId}>
-                <summary><span>Раунд {round.roundId}</span>{critic && <span className="history-critic"><span>Критик:</span><Avatar player={critic}/><strong style={{color:critic.color}}>{critic.nickname}</strong></span>}</summary>
+                <summary><span>Раунд {round.roundId}</span>{critic && <span className="history-critic"><span>Критик:</span><Avatar player={critic}/><strong className="critic-name" style={criticNameStyle(critic.color)}>{critic.nickname}</strong></span>}</summary>
                 <div>{round.movies.map(m => <article className="history-film" key={m.id}>
                   <h3>{m.title}</h3>
                   <div className="history-ballots">{round.players.map(p => <div className="history-ballot" key={p.id}>
                     <Avatar player={p}/>
-                    <span className="history-player"><strong style={{color:p.color}}>{p.nickname}</strong>{p.id === round.criticId && <small>Критик</small>}</span>
+                    <span className="history-player"><strong className={p.id === round.criticId ? "critic-name" : ""} style={p.id === round.criticId ? criticNameStyle(p.color) : {color:p.color}}>{p.nickname}</strong>{p.id === round.criticId && <small>Критик</small>}</span>
                     <strong className={`history-rating rank-${round.ratings[p.id]?.[m.id]}`}>{round.ratings[p.id]?.[m.id] || '—'}</strong>
                     {round.autoRatings[p.id]?.[m.id] && <small>Авто</small>}
                   </div>)}</div>

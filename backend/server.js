@@ -35,6 +35,7 @@ const io = new Server(server, {
 
 // Хранилище лобби в памяти (для MVP)
 const lobbies = new Map();
+const roomActions = require('./room-actions');
 const categoryIds = new Set(require('../shared/catalog-categories.json').map(c => c.id));
 const modes = require('./match-modes')({lobbies, emit: emitLobbyUpdate, clearTimer: clearLobbyTimer, endRound});
 const roomStore = require('./room-store')(lobbies);
@@ -84,57 +85,8 @@ try {
     throw new Error('Failed to load movies: ' + e.message);
 }
 
-function normalizeMovieTitle(t) {
-    if (!t) return '';
-    return t.toLowerCase()
-        .replace(/ё/g, 'е')
-        .replace(/\s+/g, ' ')
-        .replace(/[.,:;!?\"'«»()]/g, '')
-        .trim();
-}
-
-function shuffleArray(arr) {
-    const a = [...arr];
-    for (let i = a.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [a[i], a[j]] = [a[j], a[i]];
-    }
-    return a;
-}
-
-// Выбор 5 фильмов для раунда без повторений в рамках лобби
 function pickMoviesForRound(lobby) {
-    if (!lobby.usedMovieIds) lobby.usedMovieIds = [];
-    if (!lobby.usedMovieTitles) lobby.usedMovieTitles = [];
-
-    // Фильтруем фильмы, которые еще не участвовали
-    const pool = ALL_MOVIES.filter(m => (lobby.categories || ['films']).includes(m.category));
-    let available = pool.filter(m => {
-        if (lobby.usedMovieIds.includes(m.id)) return false;
-        const norm = normalizeMovieTitle(m.title);
-        if (norm && lobby.usedMovieTitles.includes(norm)) return false;
-        return true;
-    });
-
-    // Если доступных фильмов осталось меньше 5, сбрасываем историю
-    if (available.length < 5) {
-        lobby.usedMovieIds = [];
-        lobby.usedMovieTitles = [];
-        available = [...pool];
-    }
-
-    // Равномерный Fisher-Yates shuffle
-    const shuffled = shuffleArray(available);
-    const selected = shuffled.slice(0, 5);
-
-    // Фиксируем выпавшие фильмы в списке использованных
-    selected.forEach(m => {
-        lobby.usedMovieIds.push(m.id);
-        const norm = normalizeMovieTitle(m.title);
-        if (norm) lobby.usedMovieTitles.push(norm);
-    });
-
-    return selected;
+    return roomActions.draw(lobby, ALL_MOVIES, 5);
 }
 
 // Генерация случайного кода из 6 символов
@@ -288,7 +240,7 @@ io.on('connection', (socket) => {
     socket.data.playerId = crypto.randomUUID();
     const transportId = socket.id;
     let windowStart = Date.now(), packetCount = 0, createdCount = 0;
-    const hostEvents = new Set(['update_target_vp', 'launch_game', 'start_timer', 'pause_timer', 'resume_timer', 'end_round_early', 'next_round', 'finish_game', 'restart_game', 'close_lobby', 'kick_player', 'transfer_host', 'dismiss_disconnect_pause']);
+    const hostEvents = new Set(['update_target_vp', 'launch_game', 'start_timer', 'pause_timer', 'resume_timer', 'end_round_early', 'next_round', 'finish_game', 'restart_game', 'close_lobby', 'kick_player', 'transfer_host', 'dismiss_disconnect_pause', 'delete_chat_message']);
     socket.use(([event, data, ack], next) => {
         const fail = message => { if (typeof ack === 'function') ack({ success: false, message }); else socket.emit('error_message', message); };
         if (Date.now() - windowStart > 10000) { windowStart = Date.now(); packetCount = 0; }
@@ -316,6 +268,9 @@ io.on('connection', (socket) => {
             if (['submit_rating','save_critic_ratings','next_round','launch_game'].includes(event) && lobby.players.filter(p=>p.connected).length < 2) return fail('Ожидаем второго участника');
             if (event === 'submit_rating' && ((lobby.phase === 'critic') !== (lobby.criticId === player.id))) return fail('Сейчас вы не выставляете оценки');
         }
+        if (event === 'submit_rating' && lobby.savedRatings?.[player.id]) return fail('Нажмите «Изменить оценки»');
+        if (['reroll_movie','save_guesser_ratings','edit_guesser_ratings'].includes(event) && data.roundId !== lobby.roundId) return fail('Раунд уже изменился');
+        if (event === 'save_critic_ratings' && data.roundId !== undefined && data.roundId !== lobby.roundId) return fail('Раунд уже изменился');
         const required = { launch_game: 'lobby', next_round: 'reveal', finish_game: 'reveal', restart_game: 'game_over' };
         if (required[event] && lobby.state !== required[event]) return fail('Состояние игры изменилось');
         if (event === 'next_round' && lobby.isFinalRound) return fail('Игра завершена. Откройте итоги.');
@@ -331,7 +286,7 @@ io.on('connection', (socket) => {
                 handler(...args);
                 if (!answered) ack({ success: true });
             } else handler(...args);
-        } catch (error) { console.error('[EVENT]', event, error.message); if (typeof args[1] === 'function') args[1]({ success: false, message: 'Не удалось выполнить действие' }); }
+        } catch (error) { console.error('[EVENT]', event, error.message); if (typeof args[1] === 'function') args[1]({ success: false, message: ['reroll_movie','save_guesser_ratings','edit_guesser_ratings','send_chat_message','delete_chat_message'].includes(event) ? error.message : 'Не удалось выполнить действие' }); }
     });
 
     console.log('User connected:', socket.data.playerId);
@@ -517,6 +472,29 @@ io.on('connection', (socket) => {
         const l=lobbies.get(lobbyId);
         if(l.mode!=='opinion'||l.state!=='round_start'||l.phase!=='critic'||l.criticId!==socket.data.playerId||Object.keys(l.ratings[l.criticId]||{}).length!==5) return callback({success:false,message:'Сначала выставьте все пять оценок'});
         modes.guessing(l);callback({success:true});
+    });
+
+    socket.on('reroll_movie', ({lobbyId, movieId, roundId}, callback) => {
+        const l = lobbies.get(lobbyId);
+        roomActions.reroll(l, socket.data.playerId, movieId, roundId, ALL_MOVIES);
+        emitLobbyUpdate(lobbyId, l); callback({success:true});
+    });
+    for (const event of ['save_guesser_ratings', 'edit_guesser_ratings']) socket.on(event, ({lobbyId, roundId}, callback) => {
+        const l = lobbies.get(lobbyId);
+        roomActions.saveVotes(l, socket.data.playerId, roundId, event === 'edit_guesser_ratings');
+        if (roomActions.allSaved(l)) endRound(lobbyId);
+        else emitLobbyUpdate(lobbyId, l);
+        callback({success:true});
+    });
+    socket.on('send_chat_message', ({lobbyId, text}, callback) => {
+        const l = lobbies.get(lobbyId), p = l.players.find(p => p.id === socket.data.playerId);
+        const message = roomActions.sendChat(l, p, text);
+        emitLobbyUpdate(lobbyId, l); callback({success:true, messageId:message.id});
+    });
+    socket.on('delete_chat_message', ({lobbyId, messageId}, callback) => {
+        const l = lobbies.get(lobbyId);
+        roomActions.deleteChat(l, socket.data.playerId, messageId);
+        emitLobbyUpdate(lobbyId, l); callback({success:true});
     });
 
     // Запуск таймера хостом

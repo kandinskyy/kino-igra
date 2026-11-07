@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useGame } from "../GameContext";
 import { storage } from "../utils/storage";
+import { rememberSession, roomAddress } from "../config/sessionRouting";
 import { Poster } from "./Identity";
 export default function MainMenu() {
   const { socket, setPlayer, setGameState, showToast, isConnected } = useGame();
@@ -60,14 +61,8 @@ export default function MainMenu() {
         sessionToken: storage.getItem("kino_token_" + lobbyId),
       });
       if (!r.success) throw Error(r.message);
-      for (const [key, value] of Object.entries({
-        kino_lobbyId: lobbyId,
-        kino_sessionToken: r.player.sessionToken,
-        ["kino_token_" + lobbyId]: r.player.sessionToken,
-        kino_lastLobbyId: lobbyId,
-        kino_lastNickname: nickname.trim(),
-      }))
-        storage.setItem(key, value);
+      rememberSession(storage, lobbyId, r.player);
+      history.replaceState(null, "", roomAddress(location.href, lobbyId));
       setPlayer(r.player);
       setGameState(r.lobby);
     } catch (err) {

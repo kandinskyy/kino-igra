@@ -1,5 +1,6 @@
 const crypto = require("node:crypto");
 const ranks = ["S", "A", "B", "C", "D"];
+const { allSaved } = require('./room-actions');
 const shuffle = (a) => {
   a = [...a];
   for (let i = a.length - 1; i > 0; i--) {
@@ -56,10 +57,13 @@ function publicView(l, id, view) {
     myRoundPoints: l.roundPoints?.[id] || 0,
     myPerfect: !!l.perfect?.[id],
     matchPoints: revealed ? l.matchPoints?.[id] || {} : {},
+    rerolledSlots: l.rerolledSlots || [],
+    mySaved: !!l.savedRatings?.[id],
+    savedRatings: secret ? { [id]: !!l.savedRatings?.[id] } : l.savedRatings || {},
+    chat: l.chat || [],
   });
   if (opinion && l.state === "round_start") {
-    view.progress = { [id]: Object.keys(l.ratings[id] || {}).length };
-    view.allVoted = false;
+    view.allVoted = l.phase === 'guess' && l.players.filter(p => p.connected && p.id !== l.criticId).every(p => l.savedRatings?.[p.id]);
   }
   if (secret) {
     view.players = view.players.map((p) => ({
@@ -96,6 +100,8 @@ module.exports = function install({
     emit(l.id, l);
   }
   function start(l) {
+    l.rerolledSlots = [];
+    l.savedRatings = {};
     if (l.mode !== "opinion") {
       l.autoRatings = {};
       return;
@@ -148,8 +154,13 @@ module.exports = function install({
       if (l.mode === "opinion") {
         const n = Object.values(matches).reduce((a, b) => a + b, 0);
         l.perfect[p.id] = n === 5;
-        points[p.id] = n + (n === 5 ? 3 : 0);
+        points[p.id] = n + (n === 5 ? 1 : 0);
       }
+    }
+    if (l.mode === 'opinion') {
+      const guessers = (l.roundParticipants || l.players.map(p => p.id)).filter(id => id !== l.criticId);
+      const perfectCount = guessers.filter(id => l.perfect[id]).length;
+      points[l.criticId] = guessers.length && perfectCount === guessers.length ? 0 : perfectCount;
     }
   }
   function complete(l) {
@@ -247,6 +258,7 @@ module.exports = function install({
           else if (before !== Math.ceil(l.criticGraceRemaining)) emit(l.id, l);
         }
       } else if (l.phase === "guess") {
+        if (allSaved(l)) { endRound(l.id); continue; }
         l.opinionRemaining = (l.opinionRemaining ?? l.timeLeft) - elapsed;
         const next = Math.max(0, Math.ceil(l.opinionRemaining));
         if (next !== l.timeLeft) {

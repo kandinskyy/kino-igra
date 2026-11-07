@@ -1,5 +1,5 @@
+import { criticNameStyle } from "../config/playerSymbols";
 import { Avatar, Poster } from "./Identity";
-import { playersByRating } from "../config/roundBallots";
 export default function MatchReveal({ game: g, me }) {
   const opinion = g.mode === "opinion";
   return (
@@ -12,7 +12,7 @@ export default function MatchReveal({ game: g, me }) {
           <article
             key={`${g.roundId}-${m.id}`}
             style={{ "--reveal-delay": `${index * 260}ms` }}
-            className={`movie-card reveal-card staged-reveal ${!g.isCritic ? (points ? "guess-hit" : "guess-miss") : ""} ${g.myPerfect ? "perfect-reveal" : ""}`}
+            className={`movie-card reveal-card staged-reveal ${opinion && !g.isCritic ? (points ? "guess-hit" : "guess-miss") : ""} ${opinion && g.myPerfect ? "perfect-reveal" : ""}`}
           >
             <div className="movie-poster">
               <Poster movie={m} />
@@ -27,7 +27,7 @@ export default function MatchReveal({ game: g, me }) {
                 </strong>
               </div>
             )}
-            {(g.hiddenMode || opinion) && (
+            {g.hiddenMode && (
               <div className="personal-ballot">
                 <span>
                   {g.isCritic ? "Ваш рейтинг" : "Ваша оценка"}{" "}
@@ -44,42 +44,38 @@ export default function MatchReveal({ game: g, me }) {
                 {!g.isCritic && <strong>+{points}</strong>}
               </div>
             )}
-            {!g.hiddenMode && (
-              <ul className="film-ballots" aria-label={`Оценки: ${m.title}`}>
-                {playersByRating(g.players, g.ratings, m.id).map((p) => {
-                  const r = g.ratings?.[p.id]?.[m.id];
-                  const bonus = opinion
-                    ? p.id !== g.criticId && r === correct
-                      ? 1
-                      : 0
-                    : Math.max(
-                        0,
-                        (g.roundDetails?.[m.id]?.[r]?.length || 0) - 1,
-                      );
-                  return (
-                    <li key={p.id}>
-                      <Avatar player={p} />
-                      <span className="ballot-name">
-                        {p.nickname}
-                        {p.id === g.criticId ? " · критик" : ""}
-                        {g.autoRatings?.[p.id]?.[m.id] && (
-                          <small> · Авто</small>
-                        )}
-                      </span>
-                      <span className={`ballot-rank rank-${r}`}>
-                        {r || "—"}
-                      </span>
-                      <small className={bonus ? "ballot-bonus" : "ballot-zero"}>
-                        +{bonus}
-                      </small>
-                    </li>
-                  );
-                })}
-              </ul>
-            )}
+            {!g.hiddenMode && <GroupedBallots game={g} movie={m} me={me}/>}
           </article>
         );
       })}
     </div>
   );
+}
+
+function GroupedBallots({game:g,movie,me}) {
+  const opinion=g.mode==='opinion';
+  const mine=g.players.find(p=>p.id===me);
+  const critic=opinion?g.players.find(p=>p.id===g.criticId):null;
+  const rating=p=>p.id===g.criticId&&opinion ? g.criticRatings?.[movie.id] : g.ratings?.[p.id]?.[movie.id];
+  function row(p,featured=false){
+    const r=rating(p), isCritic=opinion&&p.id===g.criticId;
+    const points=opinion ? (!isCritic&&r===g.criticRatings?.[movie.id]?1:0) : Math.max(0,(g.roundDetails?.[movie.id]?.[r]?.length||0)-1);
+    const auto=isCritic?g.criticAuto?.[movie.id]:g.autoRatings?.[p.id]?.[movie.id];
+    return <li key={p.id} className={(featured?'own-ballot ':'')+(isCritic?'current-critic':'')} style={isCritic?criticNameStyle(p.color):undefined}>
+      <Avatar player={p}/>
+      <span className="ballot-name">{p.nickname}{auto&&<small> · Авто</small>}</span>
+      {featured&&<strong className={'ballot-rank rank-'+r}>{r||'—'}</strong>}
+      {!isCritic&&<small className={points?'ballot-bonus':'ballot-zero'}>+{points}</small>}
+    </li>;
+  }
+  return <div className="original-ballots">
+    <ul className="film-ballots personal-film-ballot" aria-label="Ваши оценки и рейтинг критика">
+      {mine&&row(mine,true)}
+      {critic&&critic.id!==me&&row(critic,true)}
+    </ul>
+    {['S','A','B','C','D'].map(r=>{
+      const people=g.players.filter(p=>p.id!==me&&p.id!==critic?.id&&rating(p)===r);
+      return people.length>0&&<section className="ballot-group" key={r} aria-label={'Оценка '+r}><h3 className={'rank-'+r}><span>{r}</span></h3><ul className="film-ballots">{people.map(p=>row(p))}</ul></section>;
+    })}
+  </div>;
 }

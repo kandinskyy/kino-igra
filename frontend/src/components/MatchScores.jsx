@@ -1,3 +1,4 @@
+import { criticNameStyle } from "../config/playerSymbols";
 import AnimatedScoreList from "./AnimatedScoreList";
 import { Avatar } from "./Identity";
 import { denseRank } from "../config/places";
@@ -24,7 +25,8 @@ export default function MatchScores({ game: g, me, animation: a }) {
     >
       {visible.map((p) => (
         <div
-          className="match-score-row"
+          className={`match-score-row ${!g.hiddenMode && g.mode === "opinion" && p.id === g.criticId ? "current-critic" : ""}`}
+          style={criticNameStyle(p.color)}
           key={p.id}
           data-score-id={p.id}
         >

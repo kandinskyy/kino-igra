@@ -126,7 +126,7 @@ test("secret wire view does not expose critic identity, other ratings, scores, p
   l.state = "game_over";
   assert.equal(m.publicView(l, id, base()).history.length, 1);
 });
-test("perfect predictions earn eight even with repeated letters; critic earns zero", () => {
+test("perfect predictions earn six even with repeated letters; unanimous perfection gives critic zero", () => {
   const { l, m } = harness();
   m.start(l);
   l.repeatRatings = true;
@@ -139,8 +139,17 @@ test("perfect predictions earn eight even with repeated letters; critic earns ze
   assert.ok(
     l.players
       .filter((p) => p.id !== l.criticId)
-      .every((p) => points[p.id] === 8),
+      .every((p) => points[p.id] === 6),
   );
+});
+test('critic earns one per perfect guesser only when not everyone was perfect', () => {
+  const {l,m}=harness();m.start(l);
+  for(const p of l.players) l.ratings[p.id]=Object.fromEntries(l.movies.map(x=>[x.id,'S']));
+  const miss=l.players.find(p=>p.id!==l.criticId);
+  l.ratings[miss.id][l.movies[0].id]='A';
+  const points={};m.score(l,points);
+  assert.equal(points[l.criticId],1);assert.equal(points[miss.id],4);
+  assert.equal(points[l.players.find(p=>p.id!==l.criticId&&p!==miss).id],6);
 });
 test("each available player gets exactly one critic turn per circle and history is withheld until final", () => {
   const { l, m } = harness();

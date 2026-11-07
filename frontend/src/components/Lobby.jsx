@@ -175,6 +175,7 @@ export default function Lobby() {
             Скопировать приглашение
           </button>
           <MatchSettings settings={g} targetVP={g.targetVP} categories={g.categories} host={host} onSave={(targetVP, categories, options) => request("update_target_vp", { lobbyId: g.id, targetVP, categories, ...options })} />
+          <div id="lobby-chat" />
           {host ? (
             <button
               className="btn-primary full"

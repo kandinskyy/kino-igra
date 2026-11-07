@@ -1,4 +1,5 @@
 import { storage } from './utils/storage';
+import { reconnectSession, rememberSession, roomAddress } from './config/sessionRouting';
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { io } from 'socket.io-client';
 
@@ -72,22 +73,20 @@ export const GameProvider = ({ children }) => {
         setSocket(newSocket);
 
         newSocket.on('connect', () => {
-            setIsConnected(true);
-            setConnectionMessage('');
-
             // Пытаемся восстановить сессию, если страница была обновлена или произошло переподключение
-            const savedLobbyId = storage.getItem('kino_lobbyId');
-            const savedToken = storage.getItem('kino_sessionToken');
-            const savedNick = storage.getItem('kino_lastNickname') || '';
+            const session = reconnectSession(location.search, storage);
+            // Do not let a manual entry race the pending automatic restore.
+            setIsConnected(!session);
+            setConnectionMessage(session ? 'Восстанавливаем игру…' : '');
 
-            if (savedLobbyId && savedToken) {
-                newSocket.timeout(10000).emit('join_lobby', {
-                    lobbyId: savedLobbyId,
-                    sessionToken: savedToken,
-                    nickname: savedNick
-                }, (error, response) => {
+            if (session) {
+                newSocket.timeout(10000).emit('join_lobby', session, (error, response) => {
                     if (error) { setIsConnected(false); setConnectionMessage('Не удалось восстановить игру. Повторите подключение.'); return; }
+                    setIsConnected(true);
+                    setConnectionMessage('');
                     if (response && response.success) {
+                        rememberSession(storage, response.lobby.id, response.player);
+                        history.replaceState(null, '', roomAddress(location.href, response.lobby.id));
                         setPlayer(response.player);
                         setGameState(response.lobby);
                     } else if (response && !response.success) {
@@ -158,6 +157,7 @@ export const GameProvider = ({ children }) => {
         storage.removeItem('kino_lobbyId');
         storage.removeItem('kino_sessionToken');
 
+        history.replaceState(null, '', roomAddress(location.href, null));
         setGameState(null);
         setPlayer(null);
     };
@@ -168,6 +168,7 @@ export const GameProvider = ({ children }) => {
         }
         storage.removeItem('kino_lobbyId');
         storage.removeItem('kino_sessionToken');
+        history.replaceState(null, '', roomAddress(location.href, null));
         setGameState(null);
         setPlayer(null);
     };

@@ -5,6 +5,8 @@ import RoundReveal from "./MatchReveal";
 import MatchScores from "./MatchScores";
 import { useMatchScores } from "../hooks/useMatchScores";
 import PodiumCeremony from "./PodiumCeremony";
+import RoundAnnouncement from "./RoundAnnouncement";
+import { criticNameStyle } from "../config/playerSymbols";
 const ranks = ["S", "A", "B", "C", "D"];
 export default function GameScreen() {
   const {
@@ -17,7 +19,7 @@ export default function GameScreen() {
   } = useGame();
   const animation = useMatchScores(g);
   const opinion=g.mode==='opinion';
-  const canRate=!opinion||(g.phase==='critic'?g.isCritic:!g.isCritic);
+  const canRate=(!opinion||(g.phase==='critic'?g.isCritic:!g.isCritic)) && !g.mySaved;
   const host = g.host === player?.id,
     reveal = g.state === "reveal";
   const [clock, setClock] = useState({
@@ -174,13 +176,14 @@ export default function GameScreen() {
         </div>
       )}
       <MatchScores game={g} me={player?.id} animation={animation}/>
-      {opinion&&!reveal&&<div key={`${g.roundId}-${g.isCritic}`} className="role-announcement" role="status"><strong>{g.isCritic?'Вы критик':'Вы угадываете'}</strong><span>{g.phase==='critic'?(g.isCritic?'Составьте рейтинг и сохраните оценки':`${g.criticName||'Критик'} составляет рейтинг`):'Угадайте мнение критика'}</span></div>}
+      <RoundAnnouncement game={g} player={player} />
       {g.waitingForPlayers&&<div className="disconnect-notice">Игра на паузе. Ожидаем второго участника.</div>}
       {g.criticWait!==null&&g.criticWait!==undefined&&<div className="disconnect-notice">{g.hiddenMode?'Один из игроков потерял соединение.':'Критик потерял соединение.'} Ждём возвращения: {g.criticWait} с.</div>}
       {!g.hiddenMode&&<div className="game-roster">
         {g.players.map((p) => (
           <div
-            className={`roster-player ${!p.connected ? "offline" : ""}`}
+            className={`roster-player ${!p.connected ? "offline" : ""} ${opinion && p.id === g.criticId ? "current-critic" : ""}`}
+            style={criticNameStyle(p.color)}
             key={p.id}
           >
             <Avatar player={p} />
@@ -193,7 +196,7 @@ export default function GameScreen() {
                 {reveal
                   ? `${g.roundPoints?.[p.id] || 0} за раунд · ${animation.scores[p.id] ?? 0} всего`
                   : p.connected
-                    ? `${progress[p.id] || 0}/5 оценок`
+                    ? `${progress[p.id] || 0}/5 оценок${g.savedRatings?.[p.id] ? " · Сохранено" : ""}`
                     : "Не в сети"}
               </span>
             </div>
@@ -244,6 +247,9 @@ export default function GameScreen() {
                 <span className="movie-year">
                   {m.title.match(/\((\d{4}(?: - (?:\d{4}|\.\.\.))?)\)$/)?.[1] || ""}
                 </span>
+                {(!opinion ? host : g.isCritic && g.phase === 'critic') && <button className="reroll-button" disabled={pending || g.waitingForPlayers || g.rerolledSlots?.includes(index)} onClick={async () => { setPending(true); await request('reroll_movie', { lobbyId: g.id, movieId: m.id, roundId: g.roundId }); setPending(false); }} aria-label={`Заменить: ${m.title}`}>
+                  {g.rerolledSlots?.includes(index) ? 'Замена использована' : 'Заменить произведение'}
+                </button>}
                 <div
                   className="rank-options"
                   role="group"
@@ -276,7 +282,7 @@ export default function GameScreen() {
                 Готовы {ready} из {active.length} игроков
               </span>
             </div>
-            {opinion ? (g.isCritic&&g.phase==='critic'?<button className="btn-primary" disabled={count!==5||g.waitingForPlayers} onClick={()=>request('save_critic_ratings',{lobbyId:g.id})}>Сохранить оценки</button>:<p className="muted">{g.phase==='critic'?'Ожидаем рейтинг критика':'Оценки раскроются по окончании минуты'}</p>) : host ? (
+            {opinion ? (g.isCritic&&g.phase==='critic'?<button className="btn-primary" disabled={count!==5||g.waitingForPlayers} onClick={()=>request('save_critic_ratings',{lobbyId:g.id,roundId:g.roundId})}>Сохранить оценки</button>:g.phase==='guess'&&!g.isCritic?<button className="btn-primary" disabled={pending || (!g.mySaved && count!==5) || g.waitingForPlayers} onClick={async()=>{setPending(true);await request(g.mySaved?'edit_guesser_ratings':'save_guesser_ratings',{lobbyId:g.id,roundId:g.roundId});setPending(false);}}>{g.mySaved?'Изменить оценки':'Сохранить оценки'}</button>:<p className="muted">{g.phase==='critic'?'Ожидаем рейтинг критика':'Остальные игроки угадывают ваши оценки'}</p>) : host ? (
               <button className="btn-primary" onClick={end}>
                 {g.allVoted ? "Раскрыть оценки" : "Завершить раунд досрочно"}
               </button>
@@ -300,7 +306,7 @@ export default function GameScreen() {
               <span>
                 {g.isFinalRound
                   ? "Сначала обсудите оценки, затем откройте итоги игры."
-                  : opinion ? "Совпадение с критиком — +1, все пять — ещё +3." : "Каждое совпадение с другим игроком — одно очко."}
+                  : opinion ? "Совпадение — +1, все пять — ещё +1. Критику — по очку за идеальный ответ, если угадали не все." : "Каждое совпадение с другим игроком — одно очко."}
               </span>
             </div>
             {host ? (

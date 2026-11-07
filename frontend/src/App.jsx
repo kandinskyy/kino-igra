@@ -1,16 +1,20 @@
 import { useEffect, useState } from "react";
 import { useGame } from "./GameContext";
 import MainMenu from "./components/MainMenu";
+import SupportDevelopment from "./components/SupportDevelopment";
+import RoomChat from "./components/RoomChat";
 import Lobby from "./components/Lobby";
 import GameScreen from "./components/GameScreen";
 import RainBackground from "./components/RainBackground";
 import ModalDialog from "./components/ModalDialog";
 import { Cloud } from "./components/Identity";
+import { prepareGameAudio } from "./utils/gameAudio";
 export default function App() {
-  const { gameState, isConnected, connectionMessage, reconnect } =
+  const { gameState, player, isConnected, connectionMessage, reconnect } =
     useGame();
   const allVoted = gameState?.state === "round_start" && gameState.allVoted;
   const [slow, setSlow] = useState(false);
+  useEffect(prepareGameAudio, []);
   useEffect(() => {
     const t = setTimeout(() => setSlow(true), 12000);
     return () => clearTimeout(t);
@@ -26,11 +30,14 @@ export default function App() {
             <Cloud />
             OVERRATED
           </span>
+          <div className="header-actions">
+          {(!gameState || gameState.state === "lobby" || gameState.state === "game_over") && <SupportDevelopment />}
           {gameState && (
             <span className="room-label">
               Комната <strong>{gameState.id}</strong>
             </span>
           )}
+          </div>
         </header>
         {!isConnected && (
           <div className="connection-banner" role="status">
@@ -52,6 +59,7 @@ export default function App() {
               <GameScreen />
             )}
           </fieldset>
+          {gameState && player && <RoomChat key={gameState.id} />}
         </main>
       </div>
     </>

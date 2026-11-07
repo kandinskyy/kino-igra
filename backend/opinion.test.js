@@ -3,7 +3,7 @@ const { test } = require("node:test"),
   { spawn } = require("node:child_process");
 const { io } = require("../frontend/node_modules/socket.io-client");
 test(
-  "socket opinion round protects identities and locked votes, runs a full minute and awards eight",
+  "socket opinion round protects identities and locked votes, runs a full minute and awards six",
   { timeout: 75000 },
   async () => {
     const child = spawn(process.execPath, ["backend/server.js"], {
@@ -106,7 +106,7 @@ test(
           }
         });
       });
-      assert.equal(reveal.myRoundPoints, 8);
+      assert.equal(reveal.myRoundPoints, 6);
       assert.equal(reveal.myPerfect, true);
       assert.equal(reveal.criticId, null);
       assert.equal(reveal.isFinalRound, false);
