@@ -3,7 +3,7 @@ import { reconnectSession, rememberSession, roomAddress } from './config/session
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { io } from 'socket.io-client';
 
-const GameContext = createContext();
+export const GameContext = createContext();
 
 export const useGame = () => useContext(GameContext);
 

@@ -32,6 +32,7 @@ function publicView(l, id, view) {
   Object.assign(view, {
     mode: l.mode || "original",
     circles: l.circles || 1,
+    currentCircle: l.currentCircle || 1,
     hiddenMode: !!l.hiddenMode,
     repeatRatings: !!l.repeatRatings,
     phase: l.phase,
@@ -56,6 +57,9 @@ function publicView(l, id, view) {
     myPoints: l.players.find((p) => p.id === id)?.vp || 0,
     myRoundPoints: l.roundPoints?.[id] || 0,
     myPerfect: !!l.perfect?.[id],
+    isPerfect: opinion && revealed
+      ? secret ? { [id]: !!l.perfect?.[id] } : { ...l.perfect }
+      : {},
     matchPoints: revealed ? l.matchPoints?.[id] || {} : {},
     rerolledSlots: l.rerolledSlots || [],
     mySaved: !!l.savedRatings?.[id],
@@ -92,6 +96,7 @@ module.exports = function install({
 }) {
   function guessing(l) {
     fill(l, l.criticId);
+    (l.savedRatings ||= {})[l.criticId] = true;
     l.phase = "guess";
     l.timeLeft = 60;
     l.opinionRemaining = 60;
@@ -208,12 +213,17 @@ module.exports = function install({
         .map((id, i) => (id === p.id ? i : -1))
         .filter((i) => i >= 0);
       if (positions.length) {
-        l.criticQueue.splice(positions[0], 1);
-        const cycle = l.criticQueueCycles?.splice(positions[0], 1)[0] || l.currentCircle || 1;
-        const slots = (l.criticQueueCycles || []).map((c, i) => c <= (l.currentCircle || 1) ? i : -1).filter(i => i >= 0);
-        const insertAt = slots.length ? slots[crypto.randomInt(slots.length + 1)] ?? slots.at(-1) + 1 : 0;
-        l.criticQueue.splice(insertAt, 0, p.id);
-        l.criticQueueCycles?.splice(insertAt, 0, cycle);
+        const cycle = l.criticQueueCycles?.[positions[0]] || l.currentCircle || 1;
+        // A completed turn must not pull this player's next-circle turn forward.
+        // Only a missed turn in the current/earlier circle needs rescheduling.
+        if (cycle <= (l.currentCircle || 1)) {
+          l.criticQueue.splice(positions[0], 1);
+          l.criticQueueCycles?.splice(positions[0], 1);
+          const slots = (l.criticQueueCycles || []).map((c, i) => c <= (l.currentCircle || 1) ? i : -1).filter(i => i >= 0);
+          const insertAt = slots.length ? slots[crypto.randomInt(slots.length + 1)] ?? slots.at(-1) + 1 : 0;
+          l.criticQueue.splice(insertAt, 0, p.id);
+          l.criticQueueCycles?.splice(insertAt, 0, cycle);
+        }
         l.isFinalRound = false;
         l.winner = null;
       }

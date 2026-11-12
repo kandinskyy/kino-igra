@@ -1,0 +1,98 @@
+@font-face{font-family:Oswald;src:url('../night-club/assets/Oswald.ttf') format('truetype');font-weight:200 700;font-display:swap}
+.entrance-catalog-posters{position:absolute;inset:0;pointer-events:none}
+.entrance-catalog-poster{position:absolute;top:579px;width:100px;height:174px;background:#101521;overflow:hidden;box-shadow:inset 0 0 12px #0005}
+.entrance-catalog-poster-0{left:286px}.entrance-catalog-poster-1{left:438px}.entrance-catalog-poster-2{left:1011px}.entrance-catalog-poster-3{left:1160px}
+.entrance-catalog-poster img{display:block;width:100%;height:100%;object-fit:contain}
+:root{color-scheme:dark;font-family:Onest,sans-serif;color:#f4e7d3;background:#08111c}
+html,body,#root{min-height:100%;margin:0}body{background:#08111c}.entrance-prototype{min-height:100dvh;display:grid;place-items:center;overflow:hidden}.entrance-frame{position:relative;width:min(100vw,150dvh);aspect-ratio:3/2;overflow:hidden;background:#0a1320;isolation:isolate}.entrance-camera{position:absolute;inset:0;will-change:transform;transform:translate(0,0) scale(1)}.entrance-world{position:absolute;left:0;top:0;width:1536px;height:1024px;transform-origin:top left}.entrance-plate{position:absolute;inset:0;width:1536px;height:1024px;display:block;user-select:none}.entrance-weather{position:absolute;inset:0;width:1536px;height:1024px;pointer-events:none}.entrance-door{position:absolute;perspective:380px;transform-style:preserve-3d}.entrance-portal{position:absolute;inset:0;opacity:0;background:radial-gradient(ellipse at 50% 52%,#fff4d9 0%,#f4d59f 45%,#ad773c 83%,#4b2b18 100%);box-shadow:inset 0 0 9px 4px #613d22}.entrance-leaf{position:absolute;top:0;bottom:0;width:50%;background-size:1536px 1024px;background-repeat:no-repeat;backface-visibility:visible;will-change:transform;box-shadow:inset 0 0 1px #654323;transform:rotateY(0deg)}.entrance-leaf-left{left:0;transform-origin:left center}.entrance-leaf-right{right:0;transform-origin:right center}.entrance-door-bloom{position:absolute;inset:-12% -30% -20%;opacity:0;pointer-events:none;background:radial-gradient(ellipse,#ffecc0b0,transparent 69%);mix-blend-mode:screen;filter:blur(4px)}.entrance-light{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 58%,#fff8e9,#f7dfb7 63%,#dcc29d);opacity:0;pointer-events:none;z-index:3}.entrance-masthead{position:absolute;left:3.9%;right:3%;top:2.3%;display:flex;align-items:center;justify-content:space-between;gap:24px;z-index:5;pointer-events:none;color:#f4e7d3;text-shadow:0 2px 6px #050a12,0 0 12px #050a12}.entrance-masthead>*{pointer-events:auto}.entrance-brand{display:flex;align-items:center;gap:22px;white-space:nowrap}.entrance-brand span{font:400 clamp(21px,2.9vw,44px)/1.15 Oswald,sans-serif;letter-spacing:3.5px}.entrance-brand svg{width:clamp(29px,4vw,57px);height:clamp(29px,4vw,57px);stroke-width:1.15;filter:drop-shadow(0 2px 4px #000)}.entrance-masthead .support-trigger{display:flex;align-items:center;gap:12px;color:#f4e7d3;padding:0;border:0;background:none;border-radius:0;font:400 clamp(13px,1.9vw,29px)/1.2 Oswald,sans-serif;letter-spacing:.5px;text-shadow:0 2px 6px #050a12}.entrance-masthead .support-trigger>svg{width:clamp(20px,2.6vw,38px);height:clamp(20px,2.6vw,38px);stroke-width:1.4}.entrance-form{position:absolute;left:18%;right:18%;bottom:3.8%;display:grid;grid-template-columns:1fr 1.12fr .94fr;gap:clamp(10px,1.2vw,20px);z-index:4;align-items:center;transition:opacity .35s ease,transform .35s ease}.entrance-form.is-traveling{opacity:0;transform:translateY(10px);pointer-events:none}.entrance-form>input,.entrance-form>button,.entrance-join{width:100%;height:clamp(42px,4.15vw,64px);border-radius:9px;border:2px solid #a2adff;background:#151c25e8;box-shadow:0 5px 24px #0004;backdrop-filter:blur(7px);color:#f4e7d3}.entrance-form>input{font:400 clamp(15px,1.8vw,27px)/1.2 Oswald,sans-serif;padding:0 9%;border-color:#a2adff;min-width:0}.entrance-form>input::placeholder{color:#eee0cc}.entrance-form>button,.entrance-join>button{font:400 clamp(17px,2.05vw,31px)/1 Oswald,sans-serif;letter-spacing:1.3px;text-transform:uppercase;white-space:nowrap;padding:0 10px}.entrance-form>.entrance-create{background:#a2adff;color:#101724;border-color:#a2adff}.entrance-form .entrance-create:hover{background:#b0b9ff}.entrance-join>button{height:100%;width:100%;border-radius:7px}.entrance-code{display:flex;align-items:center;height:100%;overflow:hidden;animation:code-reveal .4s cubic-bezier(.22,.7,.3,1) both}.entrance-code input{border:0;box-shadow:none;width:100%;height:100%;min-width:0;padding:0 12px;background:none;border-radius:7px 0 0 7px;font:400 clamp(15px,1.4vw,22px)/1 Oswald,sans-serif;letter-spacing:2px}.entrance-code input::placeholder{letter-spacing:1px;color:#c6c0c1}.entrance-code>button{height:100%;flex:0 0 24%;display:grid;place-items:center;border-left:1px solid #a2adff66;color:#c2caff}.entrance-code svg{width:23px;height:23px}.entrance-player-count{grid-column:1/-1;text-align:center;color:#f4e7d3;font:400 clamp(10px,1.4vw,21px)/1.2 Oswald,sans-serif;letter-spacing:4px;text-shadow:0 2px 5px #000}.entrance-error{grid-column:1/-1;text-align:center;color:#ffc1c8;font-size:12px;text-shadow:0 2px 5px #000}.entrance-load-error{position:absolute;left:15%;right:15%;top:50%;padding:20px;background:#121b2e;text-align:center;z-index:7}.entrance-prototype .support-dialog{pointer-events:auto;text-shadow:none;font-family:Onest,sans-serif}.entrance-prototype .support-dialog .dialog-close{color:#d4d8ed}.entrance-prototype button:focus-visible{outline:2px solid #dce0ff;outline-offset:4px}
+@keyframes code-reveal{from{opacity:.2;clip-path:inset(0 10% round 7px)}to{opacity:1;clip-path:inset(0 round 7px)}}
+@media(min-aspect-ratio:3/2){.entrance-brand span{font-size:min(2.9vw,4.35dvh)}.entrance-masthead .support-trigger{font-size:min(1.9vw,2.85dvh)}.entrance-form>button,.entrance-join>button{font-size:min(2.05vw,3.08dvh)}.entrance-form>input,.entrance-form>button,.entrance-join{height:min(4.15vw,6.23dvh)}}
+@media(max-width:760px){.entrance-prototype{min-height:100dvh}.entrance-frame{width:100vw;aspect-ratio:auto;height:100dvh;overflow:hidden}.entrance-camera{width:150dvh;height:100dvh;left:50%;margin-left:-75dvh}.entrance-world{transform-origin:top left}.entrance-masthead{left:5%;right:5%;top:3%;gap:12px;align-items:flex-start}.entrance-brand{gap:9px}.entrance-brand span{font-size:23px;letter-spacing:1.2px}.entrance-brand svg{width:28px;height:28px}.entrance-masthead .support-trigger{min-height:30px;font-size:13px;max-width:120px;text-align:left;gap:7px}.entrance-masthead .support-trigger>svg{width:20px;flex-shrink:0}.entrance-form{left:8%;right:8%;bottom:6%;grid-template-columns:1fr 1fr;gap:12px}.entrance-form>input{grid-column:1/-1;padding:0 17px;font-size:20px}.entrance-form>input,.entrance-form>button,.entrance-join{height:50px}.entrance-form>button,.entrance-join>button{font-size:20px;letter-spacing:.7px}.entrance-player-count{font-size:13px;letter-spacing:3px}.entrance-code input{font-size:17px;padding:0 10px}.entrance-code>button{flex-basis:36px}.entrance-code svg{width:18px}.entrance-plate{object-fit:fill}}
+@media(max-width:380px){.entrance-brand span{font-size:20px}.entrance-masthead .support-trigger{font-size:11px;max-width:105px}.entrance-brand{gap:7px}.entrance-form{left:6%;right:6%;gap:10px}.entrance-form>button,.entrance-join>button{font-size:18px}}
+@media(prefers-reduced-motion:reduce){.entrance-form{transition:none}.entrance-code{animation:none}.entrance-camera,.entrance-leaf{will-change:auto}}
+.entrance-portal{transform:translateZ(-100px) scale(1.27)}
+
+/* Size the desktop interface from the artwork, including 16:10 and ultrawide displays. */
+.entrance-frame{container-type:inline-size}
+.entrance-brand{gap:clamp(15px,1.43cqw,31px)}
+.entrance-brand span{font-size:clamp(23px,2.9cqw,64px)}
+.entrance-brand svg{width:clamp(32px,3.7cqw,80px);height:clamp(32px,3.7cqw,80px)}
+.entrance-masthead .support-trigger{font-size:clamp(17px,1.9cqw,42px);gap:clamp(9px,.78cqw,17px)}
+.entrance-masthead .support-trigger>svg{width:clamp(24px,2.47cqw,54px);height:clamp(24px,2.47cqw,54px)}
+.entrance-form{gap:clamp(10px,1.2cqw,26px)}
+.entrance-form>input,.entrance-form>button,.entrance-join{height:clamp(42px,4.15cqw,90px)}
+.entrance-form>input{font-size:clamp(17px,1.8cqw,40px)}
+.entrance-form>button,.entrance-join>button{font-size:clamp(19px,2.05cqw,45px)}
+.entrance-code input{font-size:clamp(16px,1.45cqw,32px)}
+.entrance-code svg{width:clamp(20px,1.5cqw,32px);height:clamp(20px,1.5cqw,32px)}
+.entrance-player-count{font-size:clamp(13px,1.4cqw,30px)}
+.entrance-mobile-weather{display:none}
+
+/* Phones get their own simple rain menu; the illustrated scene is not displayed. */
+.entrance-frame[data-layout=mobile]{width:100%;height:100dvh;min-height:420px;aspect-ratio:auto;background:#101724}
+.entrance-frame[data-layout=mobile] .entrance-camera{display:none}
+.entrance-frame[data-layout=mobile] .entrance-mobile-weather{display:block;position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:.8}
+.entrance-frame[data-layout=mobile] .entrance-light{background:#101724}
+.entrance-frame[data-layout=mobile] .entrance-masthead{left:24px;right:24px;top:max(28px,env(safe-area-inset-top));gap:12px;align-items:center}
+.entrance-frame[data-layout=mobile] .entrance-brand{gap:10px}
+.entrance-frame[data-layout=mobile] .entrance-brand span{font-size:25px;letter-spacing:1.6px}
+.entrance-frame[data-layout=mobile] .entrance-brand svg{width:32px;height:32px}
+.entrance-frame[data-layout=mobile] .support-trigger{width:40px;min-height:40px;justify-content:center;flex-shrink:0}
+.entrance-frame[data-layout=mobile] .support-trigger svg{width:25px;height:25px}
+.entrance-frame[data-layout=mobile] .support-trigger span{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+.entrance-frame[data-layout=mobile] .entrance-form{left:8%;right:8%;width:auto;max-width:380px;margin:0 auto;top:50%;bottom:auto;grid-template-columns:minmax(0,1fr);gap:15px;transform:translateY(-50%)}
+.entrance-frame[data-layout=mobile] .entrance-form.is-traveling{transform:translateY(calc(-50% + 10px))}
+.entrance-frame[data-layout=mobile] .entrance-form>input{grid-column:auto;padding:0 19px;font-size:21px;background:#101724e6}
+.entrance-frame[data-layout=mobile] .entrance-form>input,.entrance-frame[data-layout=mobile] .entrance-form>button,.entrance-frame[data-layout=mobile] .entrance-join{height:56px;border-radius:9px}
+.entrance-frame[data-layout=mobile] .entrance-form>button,.entrance-frame[data-layout=mobile] .entrance-join>button{font-size:23px;letter-spacing:1.2px}
+.entrance-frame[data-layout=mobile] .entrance-join{background:#101724e6}
+.entrance-frame[data-layout=mobile] .entrance-code input{font-size:21px;padding:0 17px}
+.entrance-frame[data-layout=mobile] .entrance-code>button{flex-basis:55px}
+.entrance-frame[data-layout=mobile] .entrance-code svg{width:22px;height:22px}
+.entrance-frame[data-layout=mobile] .entrance-player-count{font-size:15px;letter-spacing:3px;margin-top:4px}
+@media(max-width:360px){.entrance-frame[data-layout=mobile] .entrance-masthead{left:18px;right:18px}.entrance-frame[data-layout=mobile] .entrance-brand{gap:8px}.entrance-frame[data-layout=mobile] .entrance-brand span{font-size:22px}.entrance-frame[data-layout=mobile] .entrance-brand svg{width:28px;height:28px}}
+@media(max-height:500px){.entrance-frame[data-layout=mobile] .entrance-form{top:59%;max-width:360px;gap:10px}.entrance-frame[data-layout=mobile] .entrance-form>input,.entrance-frame[data-layout=mobile] .entrance-form>button,.entrance-frame[data-layout=mobile] .entrance-join{height:46px}}
+
+/* Continue the night atmosphere to the viewport edges instead of letterboxing. */
+.entrance-prototype{position:relative;background:#0b1421;isolation:isolate}
+.entrance-prototype[data-layout=desktop] .entrance-frame{background:transparent}
+.entrance-prototype[data-layout=desktop] .entrance-camera{mask-image:linear-gradient(90deg,transparent,#000 7.5%,#000 92.5%,transparent),linear-gradient(0deg,transparent,#000 3.5%,#000 96.5%,transparent);mask-composite:intersect}
+.entrance-surround-weather{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:-1;mask-image:linear-gradient(90deg,#000 calc(var(--art-left) - 1px),transparent calc(var(--art-left) + var(--art-fadeX)),transparent calc(var(--art-right) - var(--art-fadeX)),#000 calc(var(--art-right) + 1px)),linear-gradient(0deg,#000 calc(100% - var(--art-bottom)),transparent calc(100% - var(--art-bottom) + var(--art-fadeY)),transparent calc(100% - var(--art-top) - var(--art-fadeY)),#000 calc(100% - var(--art-top)));mask-composite:add}
+.entrance-prototype[data-layout=mobile] .entrance-surround-weather{display:none}
+
+/* A persistent header sits outside both moving scenes and the light handoff. */
+.entrance-header-frame{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(100vw,150dvh);aspect-ratio:3/2;z-index:6;pointer-events:none;container-type:inline-size}
+.entrance-header-frame .entrance-masthead{pointer-events:none}
+.entrance-header-frame .entrance-masthead>*{pointer-events:auto}
+.entrance-frame.is-lobby{width:min(100vw,177.7778dvh);aspect-ratio:16/9}
+.entrance-frame.is-lobby .entrance-camera,.entrance-frame.is-lobby .entrance-form{display:none}
+.entrance-prototype[data-scene=lobby] .entrance-surround-weather{display:none}
+.entrance-prototype[data-traveling] .lobby-arrival .cinema-lobby,.entrance-prototype[data-traveling] .lobby-arrival .chat-dock{pointer-events:none}
+.entrance-prototype[data-layout=mobile] .entrance-header-frame{left:0;top:0;transform:none;width:100%;height:100%;aspect-ratio:auto}
+.entrance-prototype[data-layout=mobile] .entrance-masthead{left:24px;right:24px;top:max(28px,env(safe-area-inset-top));gap:12px;align-items:center}
+.entrance-prototype[data-layout=mobile] .entrance-brand{gap:10px}
+.entrance-prototype[data-layout=mobile] .entrance-brand span{font-size:25px;letter-spacing:1.6px}
+.entrance-prototype[data-layout=mobile] .entrance-brand svg{width:32px;height:32px}
+.entrance-prototype[data-layout=mobile] .support-trigger{width:40px;min-height:40px;justify-content:center;flex-shrink:0}
+.entrance-prototype[data-layout=mobile] .support-trigger svg{width:25px;height:25px}
+.entrance-prototype[data-layout=mobile] .support-trigger span{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+.entrance-prototype[data-layout=mobile] .entrance-frame.is-lobby{width:100%;height:100dvh;aspect-ratio:auto}
+@media(max-width:360px){.entrance-prototype[data-layout=mobile] .entrance-masthead{left:18px;right:18px}.entrance-prototype[data-layout=mobile] .entrance-brand{gap:8px}.entrance-prototype[data-layout=mobile] .entrance-brand span{font-size:22px}.entrance-prototype[data-layout=mobile] .entrance-brand svg{width:28px;height:28px}}
+
+/* Preserve the approved door at a distance; reveal scalable detail only during approach. */
+.entrance-leaf-photo{position:absolute;inset:0;background-size:1536px 1024px;background-repeat:no-repeat;pointer-events:none}
+
+
+/* Match the entrance's warm facade illumination, without changing texture mid-flight. */
+.entrance-leaf{filter:brightness(1.65) saturate(.78);box-shadow:none}
+
+
+/* The door canvas is outside the zoomed facade: actual viewport-resolution 3D. */
+.entrance-door-3d{position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none;visibility:hidden}
+.entrance-door-3d[data-ready=true]{visibility:visible}
+.entrance-frame.is-lobby .entrance-door-3d,.entrance-frame[data-layout=mobile] .entrance-door-3d{display:none}
+
+
+/* Composite opaque door and facade before fading to avoid a closed-door ghost. */
+.entrance-exterior{position:absolute;inset:0;isolation:isolate}
+

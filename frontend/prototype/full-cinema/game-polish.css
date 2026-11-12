@@ -1,0 +1,162 @@
+.full-cinema .full-game-screen {
+  position: relative;
+  isolation: isolate;
+  color: #f4e7d3;
+  --full-critic: #f08a94;
+  --full-guess: #8edbb5;
+  --full-perfect: #f4d483;
+}
+
+.full-cinema .full-game-screen .page-heading h1,
+.full-cinema .full-game-screen .timer > span,
+.full-cinema .full-game-screen .round-controls strong {
+  transition: color 1.1s ease;
+}
+
+.full-cinema .full-game-screen .roster-player {
+  transition: background-color .55s ease, box-shadow .55s ease, color .35s ease;
+}
+
+.full-cinema .full-game-screen .roster-player.current-critic {
+  background: #f08a9410;
+  box-shadow: inset 0 0 0 1px #f08a9430;
+}
+
+.full-cinema .full-game-screen .roster-player.current-critic strong {
+  color: #f3a0a6;
+}
+
+.full-cinema .full-game-screen .roster-player .ready-check {
+  color: #a8e6c1;
+  text-shadow: 0 0 13px #a8e6c177;
+}
+
+.full-cinema .full-game-screen .full-perfect-name {
+  color: var(--full-perfect);
+  text-shadow: 0 0 14px #f4d48355;
+}
+
+.full-cinema .full-perfect-mark {
+  margin-left: auto;
+  color: var(--full-perfect);
+  font-size: 10px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.full-cinema .full-game-screen .full-round-controls {
+  display: grid;
+  justify-items: center;
+  grid-template-columns: minmax(0,1fr);
+  justify-content: stretch;
+  gap: 12px;
+  padding-right: 0;
+  text-align: center;
+}
+
+.full-cinema .full-game-screen .full-round-summary {
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+  text-align: center;
+}
+
+.full-cinema .full-game-screen .full-round-action {
+  display: flex;
+  justify-content: center;
+  width: min(100%, 440px);
+  text-align: center;
+}
+
+.full-cinema .full-game-screen .full-round-action > .btn-primary {
+  width: 100%;
+  min-height: 46px;
+}
+
+.full-cinema .ceremony .final-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  width: min(100%, 620px);
+  margin: 24px auto 0;
+}
+
+.full-cinema .ceremony .final-actions > button {
+  flex: 1 1 220px;
+  min-height: 48px;
+  margin: 0;
+  border: 1px solid #a2adff;
+  border-radius: 9px;
+  background: #a2adff;
+  color: #111a2b;
+  font: inherit;
+  font-weight: 650;
+  box-shadow: 0 7px 22px #a2adff20;
+}
+
+.full-cinema .ceremony .final-actions > button:hover:not(:disabled) {
+  border-color: #c0c7ff;
+  background: #c0c7ff;
+}
+
+.full-cinema .full-game-screen .reveal-card .movie-poster {
+  overflow: visible;
+  background: transparent;
+  box-shadow: none;
+}
+
+.full-cinema .full-game-screen .reveal-card .movie-poster img {
+  border-radius: 5px;
+}
+
+.full-cinema .full-game-screen .reveal-card.guess-hit .movie-poster img {
+  filter: drop-shadow(0 0 6px #65dfad58) drop-shadow(0 0 14px #65dfad35);
+}
+
+.full-cinema .full-game-screen .reveal-card.guess-miss .movie-poster img {
+  filter: drop-shadow(0 0 6px #f0809254) drop-shadow(0 0 14px #f0809235);
+}
+
+.full-cinema .full-game-screen .reveal-card.perfect-reveal .movie-poster img {
+  animation: full-perfect-poster 800ms ease 1.65s forwards;
+}
+
+@keyframes full-perfect-poster {
+  to { filter: drop-shadow(0 0 9px #f4d4839a) drop-shadow(0 0 22px #f4d48360); }
+}
+
+.full-cinema .round-announcement-projector .round-announcement-content {
+  border-color: #a2adff52;
+  background: #101a2bf2;
+  box-shadow: 0 20px 70px #0008, 0 0 36px #a2adff14;
+}
+
+.full-cinema .round-announcement-projector.role-critic .round-announcement-content {
+  border-color: #f08a9470;
+  box-shadow: 0 20px 70px #0008, 0 0 40px #f08a9420;
+}
+
+.full-cinema .round-announcement-projector.role-guesser .round-announcement-content {
+  border-color: #8edbb570;
+  box-shadow: 0 20px 70px #0008, 0 0 40px #8edbb520;
+}
+
+.full-cinema .round-announcement-projector.role-critic h2 { color: #f3a0a6; }
+.full-cinema .round-announcement-projector.role-guesser h2 { color: #a8e6c1; }
+
+@media (max-width: 760px) {
+  .full-cinema .full-game-screen .full-round-action { width: 100%; }
+  .full-cinema .ceremony .final-actions { gap: 8px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .full-cinema .full-game-screen .page-heading h1,
+  .full-cinema .full-game-screen .timer > span,
+  .full-cinema .full-game-screen .round-controls strong,
+  .full-cinema .full-game-screen .roster-player { transition: none; }
+  .full-cinema .full-game-screen .reveal-card.perfect-reveal .movie-poster img {
+    animation: none;
+    filter: drop-shadow(0 0 9px #f4d4839a) drop-shadow(0 0 22px #f4d48360);
+  }
+}

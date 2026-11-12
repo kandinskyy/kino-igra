@@ -1,0 +1,71 @@
+.foyer-atmosphere {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+  isolation: isolate;
+}
+
+.foyer-atmosphere-defs {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* These portrait layers sit just inside the gold frames painted in cinema-foyer.png. */
+.foyer-poster {
+  position: absolute;
+  overflow: hidden;
+  background: #101521;
+  box-shadow: inset 0 0 0 1px rgba(248, 209, 145, .36), 0 1px 5px rgba(0, 0, 0, .45);
+  transform-origin: top left;
+  contain: paint;
+}
+
+.foyer-poster-left {
+  left: 2.7512%;
+  top: 28.9054%;
+  width: 144px;
+  height: 216px;
+  transform: scale(var(--foyer-scale,1)) matrix3d(.683938,.209845,0,.00082758,0,1,0,0,0,0,1,0,0,0,0,1);
+}
+
+.foyer-poster-right {
+  left: 87.9187%;
+  top: 32.8374%;
+  width: 126.667px;
+  height: 190px;
+  transform: scale(var(--foyer-scale,1)) matrix3d(.418901,-.165865,0,-.0006832,0,1,0,0,0,0,1,0,0,0,0,1);
+}
+
+.foyer-poster-image {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  opacity: 0;
+  transition: opacity 1.25s ease-in-out;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.foyer-poster-image.is-visible { opacity: 1; }
+.foyer-poster-image.next { z-index: 1; }
+
+.foyer-window-rain {
+  position: absolute;
+  inset: 0;
+  display: block;
+  pointer-events: none;
+  opacity: .94;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .foyer-poster-image { transition: none; }
+}

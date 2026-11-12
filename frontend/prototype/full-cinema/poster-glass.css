@@ -1,0 +1,5 @@
+.poster-glass{position:absolute;inset:0;display:block;pointer-events:none;isolation:isolate;box-shadow:inset 0 0 6px 2px #020912a6,inset 1px 0 1px #d2e3fa80,inset -1px 0 1px #a8bdde55;background:linear-gradient(101deg,#60779315,transparent 35%,#bacfe70c 80%,#0a14282c)}
+.poster-glass-reflection{position:absolute;inset:0;background:linear-gradient(112deg,transparent 9%,#d6e9ff21 10%,#c4def70b 23%,transparent 24%,transparent 72%,#b9d9f815 73%,transparent 83%);mix-blend-mode:screen}
+.poster-glass-water{position:absolute;inset:0;width:100%;height:100%}
+.full-cinema .entrance-catalog-poster:has(.poster-glass)::after{display:none}
+.full-cinema .entrance-catalog-poster:has(.poster-glass)>img{filter:brightness(.92) saturate(.93)}

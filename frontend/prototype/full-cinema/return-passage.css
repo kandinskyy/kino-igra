@@ -1,0 +1,19 @@
+.return-passage{position:fixed;inset:0;z-index:90;overflow:hidden;isolation:isolate;background:#0b1421;pointer-events:auto}
+.return-hall,.return-exterior{position:absolute;inset:0;overflow:hidden;background:#0b1421}
+.return-hall:not([data-visual-ready=true]){background:#0b1421 url('/prototype/full-cinema/assets/spiral-portal.png') center/cover no-repeat}
+.return-exterior:not([data-visual-ready=true]){background:#241a13 url('/prototype/cinema-entrance/assets/cinema-ticket-vestibule.png') center/cover no-repeat}
+.return-hall .foyer-art{mask-image:none;opacity:0}.return-hall .foyer-backdrop{opacity:0}.return-hall[data-visual-ready=true] .foyer-art,.return-hall[data-visual-ready=true] .foyer-backdrop{opacity:1;transition:opacity .12s ease}
+.return-hall .foyer-photograph{transform-origin:50% 50%}
+.return-hall .foyer-door-canvas{z-index:2;top:calc(-1 * var(--return-extra,0px));height:calc(100% + 2 * var(--return-extra,0px))}
+.return-exterior{display:grid;place-items:center;background:radial-gradient(ellipse at 50% 69%,#352316,#0b1421 65%)}
+.return-exterior-frame{position:relative;width:min(100vw,150dvh);aspect-ratio:3/2;overflow:visible;isolation:isolate}
+.return-exterior .entrance-exterior{opacity:0}
+.return-exterior .entrance-door-3d{display:block;top:calc((100% - 100dvh)/2);height:100dvh}
+.return-exterior .entrance-camera{mask-image:linear-gradient(90deg,transparent,#000 7.5%,#000 92.5%,transparent),linear-gradient(0deg,transparent,#000 3.5%,#000 96.5%,transparent);mask-composite:intersect}
+.return-masthead{position:absolute;top:2.5%;left:3.9%;right:3%;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:24px;color:#f4e7d3;text-shadow:0 2px 6px #050a12,0 0 12px #050a12;pointer-events:none}
+.return-brand{display:flex;align-items:center;gap:clamp(12px,1.5vw,24px);white-space:nowrap}.return-brand span{font:400 clamp(23px,2.9vw,44px)/1.15 Oswald,sans-serif;letter-spacing:3.5px}.return-brand>svg{width:clamp(30px,3.7vw,57px);height:clamp(30px,3.7vw,57px);stroke-width:1.15;filter:drop-shadow(0 2px 4px #000)}
+.return-masthead .support-trigger{display:flex;align-items:center;gap:12px;color:#f4e7d3;padding:0;border:0;background:none;border-radius:0;font:400 clamp(17px,1.9vw,29px)/1.2 Oswald,sans-serif;letter-spacing:.5px;text-shadow:0 2px 6px #050a12}.return-masthead .support-trigger>svg{width:clamp(24px,2.47vw,38px);height:clamp(24px,2.47vw,38px);stroke-width:1.4}
+.return-passage.is-simple{animation:return-simple .24s ease both;background:#101724}
+@keyframes return-simple{0%{opacity:0}40%{opacity:.9}100%{opacity:0}}
+@media(max-width:760px){.return-masthead{top:28px;left:24px;right:24px}.return-brand{gap:10px}.return-brand span{font-size:25px;letter-spacing:1.6px}.return-brand>svg{width:32px;height:32px}.return-masthead .support-trigger span{display:none}.return-masthead .support-trigger>svg{width:25px;height:25px}}
+@media(prefers-reduced-motion:reduce){.return-passage.is-simple{animation-duration:.2s}}

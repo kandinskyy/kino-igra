@@ -1,0 +1,142 @@
+/* Fixed panel coordinates are viewport coordinates, rather than container-query coordinates. */
+.entrance-frame.is-lobby{container-type:normal}
+.lobby-arrival{position:absolute;inset:0;color:#f4e7d3}
+.lobby-arrival-image{position:absolute;inset:0;width:100%;height:100%;object-fit:fill;display:block;pointer-events:none;user-select:none}
+.lobby-arrival .cinema-lobby{padding:0;display:block;--panel-font:clamp(11px,.95vw,15px)}
+.lobby-arrival .arch-panel{box-sizing:border-box;position:fixed;min-height:0;z-index:2;border-radius:15px;font-size:var(--panel-font)}
+.lobby-arrival .company-panel{left:var(--lobby-left-x);top:var(--lobby-left-y);width:var(--lobby-left-w);height:var(--lobby-left-h)}
+.lobby-arrival .cinema-settings{left:var(--lobby-right-x);top:var(--lobby-right-y);width:var(--lobby-right-w);height:var(--lobby-right-h)}
+.lobby-arrival .hall-plaque{position:fixed;left:var(--plaque-x);top:var(--plaque-y);width:var(--plaque-w);height:var(--plaque-h);z-index:2;border:0;border-radius:0;background:transparent;box-shadow:none}
+.lobby-arrival .hall-plaque strong{font-size:clamp(15px,1.55vw,25px)}
+.lobby-arrival .hall-plaque>span{font-size:clamp(8px,.72vw,12px)}
+.lobby-arrival .arch-heading h1,.lobby-arrival .arch-heading h2{font-size:clamp(15px,1.35vw,22px);margin:0}
+.lobby-arrival .cinema-settings{gap:8px;padding:14px;overflow-y:auto}
+.lobby-arrival .cinema-players{min-height:35px}
+.lobby-arrival .cinema-player:only-child{grid-column:1/-1}
+.lobby-arrival .arch-panel,.lobby-arrival .hall-plaque{animation:lobby-arrival-content .35s ease-out both}
+.lobby-arrival .chat-dock{z-index:12}
+@keyframes lobby-arrival-content{from{opacity:0;transform:translateY(3px)}to{opacity:1;transform:none}}
+
+/* Keep every setting and the disabled launch button visible in the 578px-high art frame. */
+.lobby-arrival[data-compact=true] .arch-panel{padding:8px 10px;--panel-font:clamp(11px,.86vw,12px)}
+.lobby-arrival[data-compact=true] .arch-heading{padding-bottom:4px;margin-bottom:6px}
+.lobby-arrival[data-compact=true] .arch-heading h1,.lobby-arrival[data-compact=true] .arch-heading h2{font-size:clamp(14px,1.3vw,17px);line-height:1.2}
+.lobby-arrival[data-compact=true] .cinema-settings{gap:4px}
+.lobby-arrival[data-compact=true] .cinema-settings .arch-heading{margin:0;padding-bottom:4px}
+.lobby-arrival[data-compact=true] .mode-row{gap:6px;flex-wrap:nowrap}
+.lobby-arrival[data-compact=true] .mode-row select{width:0;flex:1 1 0;padding-inline:5px}
+.lobby-arrival[data-compact=true] .cinema-settings select,.lobby-arrival[data-compact=true] .cinema-settings .goal-row input{height:24px;min-height:24px;font-size:inherit}
+.lobby-arrival[data-compact=true] .goal-row{gap:5px;flex-wrap:nowrap}
+.lobby-arrival[data-compact=true] .goal-row input{width:43px}
+.lobby-arrival[data-compact=true] .category-field{display:flex;align-items:center;gap:5px;min-height:24px}
+.lobby-arrival[data-compact=true] .category-field>span{flex:0 0 auto}
+.lobby-arrival[data-compact=true] .category-field>div{flex:1;min-width:0;gap:5px;flex-wrap:nowrap}
+.lobby-arrival[data-compact=true] .category-value{height:24px;min-height:24px;padding:0;border:0;background:none;flex-basis:0;font-size:inherit}
+.lobby-arrival[data-compact=true] .cinema-settings .cinema-condition{min-height:20px;gap:7px}
+.lobby-arrival[data-compact=true] .cinema-condition input[type=checkbox]{width:15px;height:15px;flex-basis:15px}
+.lobby-arrival[data-compact=true] .cinema-settings .launch-game{min-height:32px;padding:5px 3px;font-size:12px;line-height:1.2}
+.lobby-arrival[data-compact=true] .cinema-settings .lobby-help{font-size:10px;line-height:1.1;margin:0}
+.lobby-arrival[data-compact=true] .cinema-player{height:31px;gap:5px}
+.lobby-arrival[data-compact=true] .cinema-player .avatar{width:25px;height:25px;flex-basis:25px}
+.lobby-arrival[data-compact=true] .cinema-player-name{font-size:11px}
+.lobby-arrival[data-compact=true] .arch-panel>.game-character-picker{padding-top:7px}
+.lobby-arrival[data-compact=true] .game-character-picker h3{margin-bottom:5px;font-size:11px}
+.lobby-arrival[data-compact=true] .company-footer{padding-top:5px;margin-top:6px;gap:2px 8px}
+.lobby-arrival[data-compact=true] .company-footer button{font-size:10px;min-height:20px}
+.lobby-arrival[data-compact=true] .character-choice-current .character-choice-identity>.character{width:30px!important;height:35px!important}
+
+/* Phones retain the approved plain navy treatment and the existing waiting-room controls. */
+.entrance-frame.is-lobby[data-layout=mobile]{height:auto;min-height:100dvh;overflow:visible}
+.lobby-arrival.is-mobile{position:relative;inset:auto;min-height:100dvh;padding:105px 16px 90px;background:#101724;box-sizing:border-box}
+.lobby-arrival.is-mobile .cinema-lobby{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;max-width:720px;margin:auto;font-size:13px;--panel-font:13px}
+.lobby-arrival.is-mobile .hall-plaque{position:static;grid-column:1/-1;width:auto;height:auto;min-height:66px;margin:0 0 5px;padding:6px;gap:5px}
+.lobby-arrival.is-mobile .hall-plaque strong{font-size:21px}
+.lobby-arrival.is-mobile .hall-plaque>span{font-size:11px;white-space:normal}
+.lobby-arrival.is-mobile .arch-panel{position:relative;left:auto;top:auto;width:auto;height:auto;padding:16px;min-height:320px;overflow:visible;--panel-font:13px}
+.lobby-arrival.is-mobile .arch-heading{margin-bottom:12px;padding-bottom:10px}
+.lobby-arrival.is-mobile .arch-heading h1,.lobby-arrival.is-mobile .arch-heading h2{font-size:18px}
+.lobby-arrival.is-mobile .cinema-settings{gap:13px;min-height:390px}
+.lobby-arrival.is-mobile .cinema-settings .arch-heading{margin:0;padding-bottom:10px}
+.lobby-arrival.is-mobile .mode-row{flex-wrap:wrap;gap:8px}
+.lobby-arrival.is-mobile .mode-row select{height:38px;flex:1 1 100%;width:100%;padding-inline:10px}
+.lobby-arrival.is-mobile .goal-row input{height:34px;min-height:34px;width:58px}
+.lobby-arrival.is-mobile .category-field{display:grid;gap:6px;min-height:0}
+.lobby-arrival.is-mobile .category-field>div{gap:8px;flex-wrap:nowrap}
+.lobby-arrival.is-mobile .category-value{height:34px;min-height:34px;padding:0 8px;border:1px solid #85858f;background:#1219258f;flex-basis:0}
+.lobby-arrival.is-mobile .cinema-settings .cinema-condition{min-height:28px;font-size:13px}
+.lobby-arrival.is-mobile .cinema-condition input[type=checkbox]{width:19px;height:19px;flex-basis:19px}
+.lobby-arrival.is-mobile .cinema-settings .launch-game{min-height:44px;font-size:15px}
+.lobby-arrival.is-mobile .cinema-settings .lobby-help{font-size:12px;line-height:1.4}
+.lobby-arrival.is-mobile .cinema-players{min-height:90px;max-height:220px;grid-template-columns:1fr}
+.lobby-arrival.is-mobile .cinema-player{height:36px}
+.lobby-arrival.is-mobile .cinema-player-name{font-size:13px}
+.lobby-arrival.is-mobile .company-footer{margin-top:12px;padding-top:8px;gap:4px;flex-direction:column}
+.lobby-arrival.is-mobile .company-footer button{min-height:36px;font-size:12px}
+.lobby-arrival.is-mobile .game-character-picker h3{font-size:13px;margin-bottom:8px}
+.lobby-arrival.is-mobile .character-choice-current>button{min-height:40px;font-size:12px}
+@media(max-width:520px){.lobby-arrival.is-mobile .cinema-lobby{grid-template-columns:1fr;max-width:400px}.lobby-arrival.is-mobile .cinema-players{grid-template-columns:repeat(2,minmax(0,1fr))}.lobby-arrival.is-mobile .mode-row{flex-wrap:nowrap}.lobby-arrival.is-mobile .mode-row select{width:0;flex:1 1 0}.lobby-arrival.is-mobile .company-footer{flex-direction:row;gap:12px}}
+@media(prefers-reduced-motion:reduce){.lobby-arrival .arch-panel,.lobby-arrival .hall-plaque{animation:none}}
+
+/* Desktop foyer follows the approved 1672x941 composition as one proportional scene. */
+.entrance-frame.is-lobby[data-layout=desktop]{width:100vw;height:100dvh;aspect-ratio:auto;overflow:hidden;background:#1d1b1c}
+.entrance-prototype[data-scene=lobby][data-layout=desktop] .entrance-header-frame{left:0;top:0;transform:none;width:100vw;height:100dvh;aspect-ratio:auto}
+.lobby-arrival:not(.is-mobile){overflow:hidden;isolation:isolate;background:#292326}
+.foyer-backdrop{position:absolute;inset:-28px;background-size:cover;background-position:center;filter:blur(18px) brightness(.68);pointer-events:none}
+.foyer-art{position:absolute;left:50%;top:50%;width:var(--foyer-width,100%);height:var(--foyer-height,100%);transform:translate(-50%,-50%);isolation:isolate;mask-image:linear-gradient(0deg,transparent,#000 1.8%,#000 98.2%,transparent)}
+.foyer-interface{position:absolute;inset:0;width:1672px;height:941px;transform:scale(var(--foyer-scale,1));transform-origin:top left;z-index:4;pointer-events:none}
+.foyer-interface .cinema-lobby{position:absolute;inset:0;width:1672px;height:941px;display:block;padding:0;--panel-font:17px;pointer-events:none}
+.foyer-interface .arch-panel{position:absolute;height:423px;width:320px;padding:22px 24px;border-radius:22px;font-size:17px;--panel-font:17px;pointer-events:auto;overflow:hidden}
+.foyer-interface .company-panel{left:238px;top:215px}
+.foyer-interface .cinema-settings{left:1103px;top:215px;gap:10px;overflow-y:auto}
+.foyer-interface .hall-plaque{position:absolute;left:694px;top:188px;width:284px;height:70px;pointer-events:auto;gap:6px;padding:0 8px}
+.foyer-interface .hall-plaque strong{font-size:26px;letter-spacing:.6px;gap:10px}
+.foyer-interface .hall-plaque strong>svg{width:22px;height:22px}
+.foyer-interface .hall-plaque>span{font-size:12px}
+.foyer-interface .arch-heading{padding-bottom:12px;margin-bottom:14px;gap:8px;flex-shrink:0}
+.foyer-interface .arch-heading h1,.foyer-interface .arch-heading h2{font-size:24px;line-height:1.2;font-weight:600;letter-spacing:0}
+.foyer-interface .arch-heading>span{font-size:17px}
+.foyer-interface .cinema-settings .arch-heading{margin:0;padding-bottom:12px}
+.foyer-interface .mode-row{display:flex;flex-wrap:nowrap;gap:12px;align-items:center}
+.foyer-interface .mode-row select{flex:1;min-width:0;width:0;height:36px;min-height:36px;padding:0 10px;font-size:17px}
+.foyer-interface .text-link{font-size:16px;white-space:nowrap}
+.foyer-interface .goal-row{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:nowrap;min-height:36px;font-size:17px}
+.foyer-interface .goal-row input{width:78px;height:36px;min-height:36px;font-size:18px;padding:0 10px}
+.foyer-interface .category-field{display:grid;gap:6px;min-height:54px;font-size:17px}
+.foyer-interface .category-field>div{display:flex;gap:12px;flex-wrap:nowrap;align-items:center;min-width:0}
+.foyer-interface .category-value{display:flex;align-items:center;flex:1;min-width:0;min-height:32px;height:32px;padding:0 10px;font-size:17px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;border:1px solid #85858f;border-radius:8px}
+.foyer-interface .cinema-settings .cinema-condition{min-height:24px;gap:10px;font-size:17px;line-height:1.2}
+.foyer-interface .cinema-condition input[type=checkbox]{width:20px;height:20px;flex:0 0 20px;margin:0}
+.foyer-interface .cinema-settings .launch-game{min-height:46px;flex-shrink:0;font-size:22px;line-height:1.15;padding:8px 6px;margin-top:auto;border-radius:10px}
+.foyer-interface .cinema-settings .lobby-help{font-size:12px;line-height:1.1;margin:-6px 0 0;flex-shrink:0}
+.foyer-interface .cinema-players{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 12px;min-height:48px;max-height:none;padding:0 0 10px;flex:1;align-content:start}
+.foyer-interface .cinema-player{height:38px;gap:7px;flex-wrap:nowrap}
+.foyer-interface .cinema-player .avatar{width:32px;height:32px;flex:0 0 32px}
+.foyer-interface .cinema-player-name{font-size:17px}
+.foyer-interface .host-crown{width:17px;height:17px}
+.foyer-interface .game-character-picker{padding-top:14px;flex-shrink:0}
+.foyer-interface .game-character-picker h3{font-size:17px;font-weight:500;margin:0 0 10px}
+.foyer-interface .character-choice-current{gap:10px;flex-wrap:nowrap}
+.foyer-interface .character-choice-current .character-choice-identity>.character{width:56px!important;height:64px!important}
+.foyer-interface .character-choice-current>button{font-size:16px;min-height:40px;padding:0;text-align:left;white-space:nowrap}
+.foyer-interface .company-footer{margin-top:12px;padding-top:10px;gap:5px;flex-direction:column;flex-shrink:0}
+.foyer-interface .company-footer button{font-size:14px;min-height:21px;line-height:1.2}
+.foyer-interface dialog{pointer-events:auto}
+.foyer-interface .player-hover-actions>button{width:28px;height:28px}
+.foyer-door-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none;visibility:hidden}
+.foyer-door-canvas[data-ready=true]{visibility:visible}
+.foyer-photograph{position:absolute;inset:0;transform:translate(0,0) scale(1);will-change:transform}
+.lobby-arrival[data-passage=travel] .foyer-interface{opacity:0;pointer-events:none;transition:opacity .25s ease}
+.lobby-arrival[data-passage=travel] .chat-dock{visibility:hidden}
+.auditorium-preview{position:fixed;inset:0;width:100vw;height:100dvh;margin:0;padding:0;box-sizing:border-box;overflow:hidden;z-index:6;background:#080e18;animation:auditorium-arrival .55s ease both;display:grid;place-items:center}
+.auditorium-preview>img{width:100%;height:100%;object-fit:cover;object-position:center 43%;position:absolute;inset:0;pointer-events:none}
+.auditorium-preview>button{position:absolute;bottom:6%;left:50%;transform:translateX(-50%);padding:12px 24px;background:#101724dd;border:1px solid #a2adff;color:#f4e7d3}
+@keyframes auditorium-arrival{from{opacity:0}to{opacity:1}}
+@media(prefers-reduced-motion:reduce){.auditorium-preview{animation:none}}
+
+/* Keep every selected category readable; the pencil reserves only an icon's width. */
+.lobby-arrival .category-field .category-list{display:flex;flex-wrap:wrap;align-items:center;align-content:center;gap:3px 8px;height:auto;min-height:32px;white-space:normal;overflow:visible;text-overflow:clip;padding:5px 8px;line-height:1.3}
+.lobby-arrival .category-list>span{white-space:nowrap;font-size:15px}
+.lobby-arrival .category-edit{display:grid;place-items:center;flex:0 0 28px;width:28px;min-height:32px;padding:0;border:0;background:transparent;text-decoration:none}
+.lobby-arrival .mode-row select{appearance:none;padding-right:30px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath d='m4 6 4 4 4-4' fill='none' stroke='%23f4e7d3' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;background-size:16px}
+.lobby-arrival .character-choice-current>button:hover{background:transparent;border-color:transparent;box-shadow:none;outline:none;color:#d4d9ff}
+.lobby-arrival .character-choice-current>button:focus:not(:focus-visible){outline:none;box-shadow:none}

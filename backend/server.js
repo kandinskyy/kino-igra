@@ -389,6 +389,11 @@ io.on('connection', (socket) => {
                 const previous = io.sockets.sockets.get(existingPlayer.socketId);
                 previous?.emit('session_replaced', { message: 'Игра открыта в другой вкладке.' });
                 previous?.leave(lobbyId);
+                // A replaced transport cannot keep the stable identity of its successor.
+                if (previous) {
+                    previous.data.lobbyId = null;
+                    previous.data.playerId = crypto.randomUUID();
+                }
             }
             socket.data.playerId = existingPlayer.id;
             socket.data.lobbyId = lobbyId;
@@ -440,6 +445,13 @@ io.on('connection', (socket) => {
         // Choose the first unused identity from the 24 selectable variants.
         const colorObj = COLORS.find(c => !lobby.players.some(p => p.color.toLowerCase() === c.hex.toLowerCase())) || COLORS[0];
         const newToken = crypto.randomBytes(32).toString('hex');
+        // New membership always gets a fresh stable ID; only a token restores one.
+        // create_lobby reserves the creator as host before their first join.
+        const reservedHost = lobby.host === socket.data.playerId && !lobby.players.some(p => p.id === socket.data.playerId);
+        let playerId;
+        do { playerId = crypto.randomUUID(); } while (lobby.players.some(p => p.id === playerId));
+        socket.data.playerId = playerId;
+        if (reservedHost) lobby.host = playerId;
         socket.data.lobbyId = lobbyId;
         const newPlayer = {
             id: socket.data.playerId,
