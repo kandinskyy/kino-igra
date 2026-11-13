@@ -3,6 +3,7 @@ import CinemaLobby from '../night-club/CinemaLobby.jsx';
 import CinemaChat from '../night-club/CinemaChat.jsx';
 import FoyerDoor from '../cinema-entrance/FoyerDoor.jsx';
 import FoyerAtmosphere from '../cinema-entrance/FoyerAtmosphere.jsx';
+import {foyerScale} from '../../src/cinema/sceneSizing.js';
 
 const FOYER='/prototype/night-club/assets/cinema-foyer.png';
 const WIDTH=1672,HEIGHT=941;
@@ -68,7 +69,7 @@ export default function ScreenPassage({mobile=false,onReady,onEntered,onRequestS
     if(mobile)return;
     const element=root.current;
     const update=()=>{
-      const scale=Math.min(element.clientWidth/WIDTH,element.clientHeight/HEIGHT);
+      const scale=foyerScale(element.clientWidth,element.clientHeight);
       element.style.setProperty('--foyer-scale',String(scale));
       element.style.setProperty('--foyer-width',`${WIDTH*scale}px`);
       element.style.setProperty('--foyer-height',`${HEIGHT*scale}px`);

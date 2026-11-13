@@ -18,3 +18,30 @@
 .full-cinema .cinema-lobby-kinonames .company-footer{margin-top:auto}
 .full-cinema .cinema-lobby-kinonames .cinema-settings{overflow-y:auto;scrollbar-width:thin}
 @media(max-width:760px){.full-cinema .btn-primary,.full-cinema .btn-secondary{min-height:44px;padding:10px 14px}}
+
+/* Keep facade proportions, but do not clip the approaching camera to its frame. */
+.full-cinema .entrance-prototype[data-layout=desktop][data-traveling] .entrance-frame{overflow:visible}
+.full-cinema .entrance-prototype[data-layout=desktop] .entrance-header-frame{left:0;top:0;transform:none;width:100vw;height:100dvh;aspect-ratio:auto}
+
+/* Readable desktop captions; independent mobile and Kinonames layouts stay scoped. */
+@media(min-width:761px){
+ .full-cinema .full-game-screen{--game-caption:clamp(12px,.85vw,15px)}
+ .full-cinema .full-game-screen .overline,
+ .full-cinema .full-game-screen .rank-instruction,
+ .full-cinema .full-game-screen .movie-year,
+ .full-cinema .full-game-screen .roster-player span,
+ .full-cinema .full-game-screen .ballot-name,
+ .full-cinema .full-game-screen .round-controls span{font-size:var(--game-caption)}
+ .full-cinema .full-game-screen .roster-player strong,
+ .full-cinema .full-game-screen .round-controls strong,
+ .full-cinema .full-game-screen .film-average{font-size:clamp(13px,.95vw,17px)}
+ .full-cinema .full-game-screen .movie-card h2{font-size:clamp(14px,1vw,19px);line-height:1.35}
+ .full-cinema .full-game-screen .reroll-button,
+ .full-cinema .full-game-screen .timer button{font-size:clamp(12px,.8vw,14px)}
+ .full-cinema .full-game-screen .match-score-row{font-size:clamp(14px,1vw,18px)}
+ .full-cinema .full-game-screen .score-place{font-size:12px}
+ .full-cinema .full-game-screen .match-score-row .avatar{width:38px;height:38px}
+ .full-cinema .full-game-screen .roster-player .avatar{width:34px;height:34px}
+ .full-cinema .full-game-screen .film-ballots .avatar{width:28px;height:28px;flex-basis:28px}
+ .full-cinema .full-game-screen .rank-options>button{font-size:clamp(16px,1.1vw,20px);min-height:38px}
+}

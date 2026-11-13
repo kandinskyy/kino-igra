@@ -6,6 +6,7 @@ import FoyerAtmosphere from '../cinema-entrance/FoyerAtmosphere.jsx';
 import EntrancePosters from '../cinema-entrance/EntrancePosters.jsx';
 import {createEntranceWeather} from '../cinema-entrance/entrance-weather.js';
 import './return-passage.css';
+import {foyerScale} from '../../src/cinema/sceneSizing.js';
 
 const FOYER='/prototype/night-club/assets/cinema-foyer.png';
 const PLATE='/prototype/cinema-entrance/assets/cinema-clean.png';
@@ -27,7 +28,7 @@ function HallReturn({onFinished}){
   },[ready]);
   useLayoutEffect(()=>{
     const node=root.current;
-    const resize=()=>{const scale=Math.min(node.clientWidth/1672,node.clientHeight/941);node.style.setProperty('--foyer-width',`${1672*scale}px`);node.style.setProperty('--foyer-height',`${941*scale}px`);node.style.setProperty('--return-extra',`${Math.max(0,(node.clientHeight-941*scale)/2)}px`);};
+    const resize=()=>{const scale=foyerScale(node.clientWidth,node.clientHeight);node.style.setProperty('--foyer-width',`${1672*scale}px`);node.style.setProperty('--foyer-height',`${941*scale}px`);node.style.setProperty('--return-extra',`${Math.max(0,(node.clientHeight-941*scale)/2)}px`);};
     const observer=new ResizeObserver(resize);observer.observe(node);resize();return()=>observer.disconnect();
   },[]);
   useEffect(()=>{
