@@ -137,7 +137,8 @@ export default function ReturnPassage({from,to,onComplete}){
   },[simple,finish]);
   return <div className={`return-passage${simple?' is-simple':''}`} data-from={from} data-to={to} role="status" aria-label={to==='home'?'Возвращаемся к кинотеатру':'Возвращаемся в фойе'}>
     {!simple&&(part==='hall'?<HallReturn onFinished={finish}/>:<ExteriorReturn onFinished={finish}/>)}
-    <header className="return-masthead"><div className="return-brand"><CloudRain/><span>OVERRATEDKINO</span></div><SupportDevelopment/></header>
+    <header className="return-masthead"><div className="return-brand"><CloudRain/><span>OVERRATED</span></div><SupportDevelopment/></header>
     <span className="sr-only">{to==='home'?'Выходим из кинотеатра':'Выходим из кинозала'}. Escape — пропустить переход.</span>
   </div>;
 }
+

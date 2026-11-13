@@ -110,7 +110,7 @@ export default function FullEntrance(){
   useEffect(()=>{if(mobile&&gameTransitionPending)completeGameTransition?.();},[mobile,gameTransitionPending,completeGameTransition]);
   return <div className="entrance-prototype" data-layout={mobile?'mobile':'desktop'} data-scene={inLobby?'lobby':'home'} data-traveling={traveling||undefined}>
     <canvas className="entrance-surround-weather" ref={surroundCanvas} aria-hidden="true"/>
-    <section className={`entrance-frame${inLobby?' is-lobby':''}`} ref={frame} data-phase={inLobby?'lobby':'idle'} data-scene={inLobby?'lobby':'home'} data-layout={mobile?'mobile':'desktop'} aria-label={inLobby?'Лобби OverratedKino':'Главное меню OverratedKino'}>
+    <section className={`entrance-frame${inLobby?' is-lobby':''}`} ref={frame} data-phase={inLobby?'lobby':'idle'} data-scene={inLobby?'lobby':'home'} data-layout={mobile?'mobile':'desktop'} aria-label={inLobby?'Лобби OVERRATED':'Главное меню OVERRATED'}>
       <canvas className="entrance-mobile-weather" ref={mobileCanvas} aria-hidden="true"/>
       <div className="entrance-exterior" ref={exterior} aria-hidden="true">
       <div className="entrance-camera" ref={camera}><div className="entrance-world" ref={world}>
@@ -131,8 +131,9 @@ export default function FullEntrance(){
       {loadedError&&<p className="entrance-load-error" role="alert">Не удалось загрузить фон. Обновите страницу.</p>}
       {inLobby&&(mobile?<div className="lobby-arrival is-mobile"><CinemaLobby onStart={enterGame} startDisabled={!isConnected||gameState.players.filter(p=>p.connected).length<2}/><CinemaChat/></div>:<ScreenPassage onRequestStart={completeGameTransition?enterGame:undefined} autoStart={gameTransitionPending} onEntered={completeGameTransition||enterGame} startDisabled={!isConnected||gameState.players.filter(p=>p.connected).length<2} vortexTextureUrl="/prototype/full-cinema/assets/spiral-portal.png"/>)}
     </section>
-    <div className="entrance-header-frame"><header className="entrance-masthead"><div className="entrance-brand"><CloudRain aria-hidden="true"/><span>OVERRATEDKINO</span></div><SupportDevelopment/></header></div>
+    <div className="entrance-header-frame"><header className="entrance-masthead"><div className="entrance-brand"><CloudRain aria-hidden="true"/><span>OVERRATED</span></div><SupportDevelopment/></header></div>
     <ModalDialog/>
   </div>;
 }
+
 

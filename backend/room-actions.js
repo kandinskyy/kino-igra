@@ -1,4 +1,5 @@
 const crypto = require('node:crypto');
+const { selectedCatalog } = require('./catalog-selection');
 const normalize = title => (title || '').toLowerCase().replace(/ё/g, 'е').replace(/\s+/g, ' ').replace(/[.,:;!?"'«»()]/g, '').trim();
 const remember = (l, m) => {
   (l.usedMovieIds ||= []).push(m.id);
@@ -6,7 +7,7 @@ const remember = (l, m) => {
 };
 function candidates(l, catalog, excluded = []) {
   const ids = new Set(excluded.map(m => m.id)), titles = new Set(excluded.map(m => normalize(m.title)));
-  return catalog.filter(m => (l.categories || ['films']).includes(m.category) && !ids.has(m.id) && !titles.has(normalize(m.title)));
+  return selectedCatalog(catalog, l.categories || ['films']).filter(m => !ids.has(m.id) && !titles.has(normalize(m.title)));
 }
 // Finish the remaining cycle first; after exhaustion protect all cards already selected.
 function draw(l, catalog, count, protectedCards = []) {

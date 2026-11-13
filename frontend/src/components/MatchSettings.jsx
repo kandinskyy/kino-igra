@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { ChevronDown, SlidersHorizontal, X } from "lucide-react";
 
-import categoryOptions from "../../../shared/catalog-categories.json";
+import CategoryPicker from "./CategoryPicker.jsx";
 import {useGame} from "../GameContext.jsx";
 import {KinonamesSettings} from "../kinonames/KinonamesUI.jsx";
 import {defaultKinonamesSettings, mergeKinonamesSettings} from "../kinonames/settings.js";
@@ -263,26 +263,7 @@ export default function MatchSettings({
               </div>
               <fieldset className="match-categories" disabled={!host || saving}>
                 <legend>Категории</legend>
-                <div className="match-category-options">
-                  {categoryOptions.map(({ id, label }) => (
-                    <label key={id}>
-                      <input
-                        type="checkbox"
-                        checked={(host ? draftCategories : categories).includes(
-                          id,
-                        )}
-                        onChange={(event) =>
-                          setDraftCategories((current) =>
-                            event.target.checked
-                              ? [...current, id]
-                              : current.filter((value) => value !== id),
-                          )
-                        }
-                      />
-                      <span>{label}</span>
-                    </label>
-                  ))}
-                </div>
+                <CategoryPicker value={host ? draftCategories : categories} onChange={setDraftCategories} disabled={!host || saving}/>
               </fieldset>
               {host && !draftCategories.length && (
                 <p className="match-settings-error" role="alert">
@@ -290,7 +271,7 @@ export default function MatchSettings({
                 </p>
               )}
               <p className="match-field-help">
-                Можно выбрать несколько категорий.
+                Обычные категории можно сочетать. Особая категория выбирается отдельно.
               </p>
               <fieldset
                 className="match-categories match-conditions"
@@ -369,3 +350,4 @@ export default function MatchSettings({
     </div>
   );
 }
+

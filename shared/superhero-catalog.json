@@ -1,0 +1,815 @@
+{
+  "description": "Только Marvel и DC: фильмы, полнометражная анимация, игровые сериалы и мультсериалы. Подборка ссылается на исходные записи без копирования.",
+  "works": [
+    {
+      "id": "m1",
+      "title": "Весёлый маленький Бэтмен (2023)",
+      "franchise": "dc"
+    },
+    {
+      "id": "m71",
+      "title": "Сорвиголова (2003)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "m72",
+      "title": "Электра (2005)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "m76",
+      "title": "Каратель (2004)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "m78",
+      "title": "Каратель: Территория Войны (2008)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "m110",
+      "title": "Супергёрл (2026)",
+      "franchise": "dc"
+    },
+    {
+      "id": "m124",
+      "title": "Бэтмен: Падение рыцаря. Часть первая (2026)",
+      "franchise": "dc"
+    },
+    {
+      "id": "m144",
+      "title": "Крэйвен-охотник (2024)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "m190",
+      "title": "Капитан Америка: Новый мир (2025)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "m242",
+      "title": "Халк (2003)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "m254",
+      "title": "Громовержцы* (2025)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "m267",
+      "title": "Супермен (1978)",
+      "franchise": "dc"
+    },
+    {
+      "id": "m286",
+      "title": "Супермен (2025)",
+      "franchise": "dc"
+    },
+    {
+      "id": "m291",
+      "title": "Отряд самоубийц: Миссия навылет (2021)",
+      "franchise": "dc"
+    },
+    {
+      "id": "m311",
+      "title": "Фантастическая четвёрка: Первые шаги (2025)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "m338",
+      "title": "ЛЕГО Фильм: Бэтмен (2017)",
+      "franchise": "dc"
+    },
+    {
+      "id": "m364",
+      "title": "Дэдпул (2016)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "m367",
+      "title": "Люди Икс: Апокалипсис (2016)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "m370",
+      "title": "Логан (2017)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "m373",
+      "title": "Дэдпул 2 (2018)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "m376",
+      "title": "Люди Икс: Тёмный Феникс (2019)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "m380",
+      "title": "Новые мутанты (2020)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "m415",
+      "title": "Синий Жук (2023)",
+      "franchise": "dc"
+    },
+    {
+      "id": "m416",
+      "title": "Аквамен и потерянное царство (2023)",
+      "franchise": "dc"
+    },
+    {
+      "id": "m432",
+      "title": "Блэйд (1998)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "m441",
+      "title": "Блэйд 2 (2002)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "m456",
+      "title": "Планета Халка (2010)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "m469",
+      "title": "Мадам Паутина (2024)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "m477",
+      "title": "Дэдпул и Росомаха (2024)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "m507",
+      "title": "Бэтмен: Год первый (2011)",
+      "franchise": "dc"
+    },
+    {
+      "id": "m538",
+      "title": "Джокер (2019)",
+      "franchise": "dc"
+    },
+    {
+      "id": "m539",
+      "title": "Джокер: Безумие на двоих (2024)",
+      "franchise": "dc"
+    },
+    {
+      "id": "m543",
+      "title": "Человек из стали (2013)",
+      "franchise": "dc"
+    },
+    {
+      "id": "m548",
+      "title": "Бэтмен против Супермена: На заре справедливости (2016)",
+      "franchise": "dc"
+    },
+    {
+      "id": "m552",
+      "title": "Лига справедливости Зака Снайдера (2021)",
+      "franchise": "dc"
+    },
+    {
+      "id": "m559",
+      "title": "Веном: Последний танец (2024)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "m562",
+      "title": "Хранители (2009)",
+      "franchise": "dc"
+    },
+    {
+      "id": "m573",
+      "title": "Флэш (2023)",
+      "franchise": "dc"
+    },
+    {
+      "id": "m574",
+      "title": "Лига справедливости: Парадокс источника конфликта (2013)",
+      "franchise": "dc"
+    },
+    {
+      "id": "m576",
+      "title": "Невероятный Халк (2008)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "m580",
+      "title": "Человек-паук: Через вселенные (2018)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "m581",
+      "title": "Человек-паук: Паутина вселенных (2023)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "m582",
+      "title": "Бэтмен: Карающий рок над Готэмом (2023)",
+      "franchise": "dc"
+    },
+    {
+      "id": "m617",
+      "title": "Люди Икс (2000)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "m622",
+      "title": "Бэтмен (2022)",
+      "franchise": "dc"
+    },
+    {
+      "id": "m623",
+      "title": "Люди Икс: Последняя битва (2006)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "m626",
+      "title": "Люди Икс: Начало. Росомаха (2009)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "m630",
+      "title": "Люди Икс: Первый класс (2011)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "m631",
+      "title": "Капитан Марвел 2 (2023)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "m633",
+      "title": "Росомаха: Бессмертный (2013)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "m636",
+      "title": "Бэтмен: Маска фантазма (1993)",
+      "franchise": "dc"
+    },
+    {
+      "id": "m637",
+      "title": "Люди Икс: Дни минувшего будущего (2014)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "m641",
+      "title": "Бэтмен (1989)",
+      "franchise": "dc"
+    },
+    {
+      "id": "m642",
+      "title": "Бэтмен возвращается (1992)",
+      "franchise": "dc"
+    },
+    {
+      "id": "m_new_1791738450000",
+      "title": "Человек-паук: Новый день (2026)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "m645",
+      "title": "Мстители (2012)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "m646",
+      "title": "Тёмный рыцарь (2008)",
+      "franchise": "dc"
+    },
+    {
+      "id": "m649",
+      "title": "Мстители: Война бесконечности (2018)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "m650",
+      "title": "Стражи Галактики (2014)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "m651",
+      "title": "Мстители: Финал (2019)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "m652",
+      "title": "Железный человек (2008)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "m656",
+      "title": "Мстители: Эра Альтрона (2015)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "m657",
+      "title": "Тёмный рыцарь: Возрождение легенды (2012)",
+      "franchise": "dc"
+    },
+    {
+      "id": "m658",
+      "title": "Первый мститель: Противостояние (2016)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "m659",
+      "title": "Чёрная Пантера (2018)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "m660",
+      "title": "Человек-паук: Возвращение домой (2017)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "m661",
+      "title": "Доктор Стрэндж (2016)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "m664",
+      "title": "Стражи Галактики. Часть 2 (2017)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "m665",
+      "title": "Первый мститель (2011)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "m666",
+      "title": "Бэтмен: Начало (2005)",
+      "franchise": "dc"
+    },
+    {
+      "id": "m667",
+      "title": "Человек-паук: Нет пути домой (2021)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "m669",
+      "title": "Тор: Рагнарёк (2017)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "m672",
+      "title": "Человек-паук (2002)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "m675",
+      "title": "Человек-муравей (2015)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "m676",
+      "title": "Чудо-женщина (2017)",
+      "franchise": "dc"
+    },
+    {
+      "id": "m682",
+      "title": "Первый мститель: Другая война (2014)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "m701",
+      "title": "Человек-паук: Вдали от дома (2019)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "m707",
+      "title": "Человек-паук 2 (2004)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "m708",
+      "title": "Город героев (2014)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "m771",
+      "title": "Чёрная вдова (2021)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "m784",
+      "title": "Люди Икс 2 (2003)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "m789",
+      "title": "Доктор Стрэндж: В мультивселенной безумия (2022)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "m793",
+      "title": "Шан-Чи и Легенда Десяти Колец (2021)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "m840",
+      "title": "Стражи Галактики. Часть 3 (2023)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "m_batman_arkham_2014",
+      "title": "Бэтмен: Нападение на Аркхэм (2014)",
+      "franchise": "dc"
+    },
+    {
+      "id": "m_batman_ninja_2018",
+      "title": "Бэтмен-ниндзя (2018)",
+      "franchise": "dc"
+    },
+    {
+      "id": "m_batman_ninja_yakuza_2025",
+      "title": "Бэтмен-ниндзя против Лиги якудза (2025)",
+      "franchise": "dc"
+    },
+    {
+      "id": "tmdb-movie-123025",
+      "title": "Тёмный рыцарь: Возрождение легенды. Часть 1 (2012)",
+      "franchise": "dc"
+    },
+    {
+      "id": "tmdb-movie-142061",
+      "title": "Тёмный рыцарь: Возрождение легенды. Часть 2 (2013)",
+      "franchise": "dc"
+    },
+    {
+      "id": "tmdb-tv-33623",
+      "title": "Мстители: Величайшие герои Земли (2010 - 2012)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "tmdb-tv-4574",
+      "title": "Люди Икс (1992 - 1997)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "tmdb-tv-888",
+      "title": "Человек-паук (1994 - 1998)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "tmdb-tv-138502",
+      "title": "Люди Икс '97 (2024 - ...)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "tmdb-tv-668",
+      "title": "Люди Икс: Эволюция (2000 - 2003)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "tmdb-tv-6549",
+      "title": "Росомаха и Люди-Икс (2009 - 2009)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "tmdb-tv-219543",
+      "title": "Монстры-коммандос (2024 - ...)",
+      "franchise": "dc"
+    },
+    {
+      "id": "tmdb-tv-33217",
+      "title": "Юная Лига Справедливости  (2010 - 2022)",
+      "franchise": "dc"
+    },
+    {
+      "id": "tmdb-tv-84958",
+      "title": "Локи (2021 - 2023)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "tmdb-tv-67195",
+      "title": "Легион (2017 - 2019)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "tmdb-tv-110492",
+      "title": "Миротворец (2022 - 2025)",
+      "franchise": "dc"
+    },
+    {
+      "id": "tmdb-tv-194764",
+      "title": "Пингвин (2024 - 2024)",
+      "franchise": "dc"
+    },
+    {
+      "id": "tmdb-tv-60735",
+      "title": "Флэш (2014 - 2023)",
+      "franchise": "dc"
+    },
+    {
+      "id": "tmdb-tv-4604",
+      "title": "Тайны Смолвиля (2001 - 2011)",
+      "franchise": "dc"
+    },
+    {
+      "id": "tmdb-movie-76338",
+      "title": "Тор 2: Царство тьмы (2013)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "tmdb-movie-10138",
+      "title": "Железный человек 2 (2010)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "tmdb-movie-616037",
+      "title": "Тор: Любовь и гром (2022)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "tmdb-movie-10195",
+      "title": "Тор (2011)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "tmdb-movie-68721",
+      "title": "Железный человек 3 (2013)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "tmdb-movie-363088",
+      "title": "Человек-муравей и Оса (2018)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "tmdb-movie-524434",
+      "title": "Вечные (2021)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "tmdb-movie-505642",
+      "title": "Чёрная Пантера: Ваканда навеки (2022)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "tmdb-movie-640146",
+      "title": "Человек-муравей и Оса: Квантомания (2023)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "tmdb-movie-299537",
+      "title": "Капитан Марвел (2019)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "tmdb-movie-559",
+      "title": "Человек-паук 3: Враг в отражении (2007)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "tmdb-movie-1930",
+      "title": "Новый Человек-паук (2012)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "tmdb-movie-102382",
+      "title": "Новый Человек-паук: Высокое напряжение (2014)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "tmdb-movie-335983",
+      "title": "Веном (2018)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "tmdb-movie-526896",
+      "title": "Морбиус (2022)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "tmdb-movie-580489",
+      "title": "Веном 2 (2021)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "tmdb-movie-9738",
+      "title": "Фантастическая четвёрка (2005)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "tmdb-movie-71676",
+      "title": "Призрачный гонщик 2 (2011)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "tmdb-movie-166424",
+      "title": "Фантастическая Четвёрка (2015)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "tmdb-movie-1250",
+      "title": "Призрачный гонщик (2007)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "tmdb-movie-1979",
+      "title": "Фантастическая четвёрка: Вторжение Серебряного сёрфера (2007)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "tmdb-movie-287947",
+      "title": "Шазам! (2019)",
+      "franchise": "dc"
+    },
+    {
+      "id": "tmdb-movie-36648",
+      "title": "Блэйд 3: Троица (2004)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "tmdb-movie-297802",
+      "title": "Аквамен (2018)",
+      "franchise": "dc"
+    },
+    {
+      "id": "tmdb-movie-594767",
+      "title": "Шазам! Ярость Богов (2023)",
+      "franchise": "dc"
+    },
+    {
+      "id": "tmdb-movie-436270",
+      "title": "Чёрный Адам (2022)",
+      "franchise": "dc"
+    },
+    {
+      "id": "tmdb-movie-297761",
+      "title": "Отряд самоубийц (2016)",
+      "franchise": "dc"
+    },
+    {
+      "id": "tmdb-movie-464052",
+      "title": "Чудо-женщина: 1984 (2020)",
+      "franchise": "dc"
+    },
+    {
+      "id": "tmdb-movie-141052",
+      "title": "Лига справедливости (2017)",
+      "franchise": "dc"
+    },
+    {
+      "id": "tmdb-movie-44912",
+      "title": "Зелёный Фонарь (2011)",
+      "franchise": "dc"
+    },
+    {
+      "id": "tmdb-movie-414",
+      "title": "Бэтмен навсегда (1995)",
+      "franchise": "dc"
+    },
+    {
+      "id": "tmdb-movie-415",
+      "title": "Бэтмен и Робин (1997)",
+      "franchise": "dc"
+    },
+    {
+      "id": "tmdb-movie-8536",
+      "title": "Супермен 2 (1980)",
+      "franchise": "dc"
+    },
+    {
+      "id": "tmdb-movie-9531",
+      "title": "Супермен 3 (1983)",
+      "franchise": "dc"
+    },
+    {
+      "id": "tmdb-movie-11411",
+      "title": "Супермен 4: В поисках мира (1987)",
+      "franchise": "dc"
+    },
+    {
+      "id": "tmdb-movie-1452",
+      "title": "Возвращение Супермена (2006)",
+      "franchise": "dc"
+    },
+    {
+      "id": "tmdb-tv-67178",
+      "title": "Каратель (2017 - 2019)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "tmdb-tv-61889",
+      "title": "Сорвиголова (2015 - 2018)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "tmdb-tv-38472",
+      "title": "Джессика Джонс (2015 - 2019)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "tmdb-tv-85271",
+      "title": "ВандаВижн (2021 - 2021)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "tmdb-tv-88329",
+      "title": "Соколиный Глаз (2021 - 2021)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "tmdb-tv-92749",
+      "title": "Лунный рыцарь (2022 - 2022)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "tmdb-tv-88396",
+      "title": "Сокол и Зимний Солдат (2021 - 2021)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "tmdb-tv-62126",
+      "title": "Люк Кейдж (2016 - 2018)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "tmdb-tv-1403",
+      "title": "Агенты «Щ.И.Т.» (2013 - 2020)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "tmdb-tv-62285",
+      "title": "Защитники (2017 - 2017)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "tmdb-tv-202555",
+      "title": "Сорвиголова: Рождённый заново (2025 - ...)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "tmdb-tv-114472",
+      "title": "Секретное вторжение (2023 - 2023)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "tmdb-tv-122226",
+      "title": "Эхо (2024 - 2024)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "tmdb-tv-61550",
+      "title": "Агент Картер (2015 - 2016)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "tmdb-tv-62127",
+      "title": "Железный кулак (2017 - 2018)",
+      "franchise": "marvel"
+    },
+    {
+      "id": "tmdb-tv-1412",
+      "title": "Стрела (2012 - 2020)",
+      "franchise": "dc"
+    },
+    {
+      "id": "tmdb-tv-60708",
+      "title": "Готэм (2014 - 2019)",
+      "franchise": "dc"
+    },
+    {
+      "id": "tmdb-tv-62688",
+      "title": "Супергёрл (2015 - 2021)",
+      "franchise": "dc"
+    },
+    {
+      "id": "tmdb-tv-62643",
+      "title": "Легенды завтрашнего дня (2016 - 2022)",
+      "franchise": "dc"
+    },
+    {
+      "id": "tmdb-tv-75450",
+      "title": "Титаны (2018 - 2023)",
+      "franchise": "dc"
+    },
+    {
+      "id": "tmdb-tv-79501",
+      "title": "Роковой патруль (2019 - 2023)",
+      "franchise": "dc"
+    },
+    {
+      "id": "tmdb-tv-71663",
+      "title": "Черная молния (2018 - 2021)",
+      "franchise": "dc"
+    },
+    {
+      "id": "tmdb-tv-95057",
+      "title": "Супермен и Лоис (2021 - 2024)",
+      "franchise": "dc"
+    }
+  ]
+}

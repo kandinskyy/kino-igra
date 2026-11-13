@@ -2,5 +2,6 @@
   { "id": "films", "label": "Фильмы" },
   { "id": "anime", "label": "Аниме" },
   { "id": "series", "label": "Сериалы" },
-  { "id": "cartoons", "label": "Мультсериалы" }
+  { "id": "cartoons", "label": "Мультсериалы" },
+  { "id": "superheroes", "label": "Супергероика", "special": true }
 ]

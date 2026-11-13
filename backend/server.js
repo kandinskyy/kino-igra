@@ -38,7 +38,7 @@ const io = new Server(server, {
 const lobbies = new Map();
 const roomActions = require('./room-actions');
 const lifecycle = require('./room-lifecycle');
-const categoryIds = new Set(require('../shared/catalog-categories.json').map(c => c.id));
+const { validCategorySelection } = require('./catalog-selection');
 const modes = require('./match-modes')({lobbies, emit: emitLobbyUpdate, clearTimer: clearLobbyTimer, endRound});
 const roomStore = require('./room-store')(lobbies);
 const kinonames = require('./kinonames-room')({ lobbies, emit: emitLobbyUpdate, clearTimer: clearLobbyTimer, catalog: require('../shared/kinonames/catalog.json').records });
@@ -379,8 +379,8 @@ io.on('connection', (socket) => {
     socket.on('update_target_vp', ({ lobbyId, targetVP, categories, mode, circles, hiddenMode, repeatRatings }, callback) => {
         const lobby = lobbies.get(lobbyId);
         if (!lobby || lobby.host !== socket.data.playerId || lobby.state !== 'lobby') return;
-        if (mode !== 'kinonames' && lobby.mode !== 'kinonames' && categories !== undefined && (!Array.isArray(categories) || !categories.length || categories.some(c => !categoryIds.has(c)))) {
-            if (callback) callback({ success: false, message: 'Выберите хотя бы одну допустимую категорию' });
+        if (mode !== 'kinonames' && lobby.mode !== 'kinonames' && categories !== undefined && !validCategorySelection(categories)) {
+            if (callback) callback({ success: false, message: 'Выберите обычные категории или одну особую категорию отдельно' });
             return;
         }
         if (mode !== undefined && !['original','opinion','kinonames'].includes(mode)) return callback({success:false,message:'Неизвестный режим'});

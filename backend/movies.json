@@ -20526,5 +20526,951 @@
     ],
     "fromStream": false,
     "sourceUrl": "https://www.themoviedb.org/tv/61175"
+  },
+  {
+    "id": "tmdb-movie-414",
+    "title": "Бэтмен навсегда (1995)",
+    "category": "films",
+    "tmdbId": 414,
+    "mediaType": "movie",
+    "posterUrl": "/api/poster/yQumBMAuJOhr3xJ34qqoUAoOxGi.jpg",
+    "posterLanguage": "ru",
+    "rating": 5.463,
+    "voteCount": 5846,
+    "originCountries": [
+      "US"
+    ],
+    "fromStream": false,
+    "sourceUrl": "https://www.themoviedb.org/movie/414"
+  },
+  {
+    "id": "tmdb-movie-415",
+    "title": "Бэтмен и Робин (1997)",
+    "category": "films",
+    "tmdbId": 415,
+    "mediaType": "movie",
+    "posterUrl": "/api/poster/eP4xdBTyLySFVoXyrbZ4btJeH3n.jpg",
+    "posterLanguage": "ru",
+    "rating": 4.393,
+    "voteCount": 5648,
+    "originCountries": [
+      "US"
+    ],
+    "fromStream": false,
+    "sourceUrl": "https://www.themoviedb.org/movie/415"
+  },
+  {
+    "id": "tmdb-movie-559",
+    "title": "Человек-паук 3: Враг в отражении (2007)",
+    "category": "films",
+    "tmdbId": 559,
+    "mediaType": "movie",
+    "posterUrl": "/api/poster/ngNCHBZgNdbGisLbi1hImGh2SHl.jpg",
+    "posterLanguage": "ru",
+    "rating": 6.489,
+    "voteCount": 16017,
+    "originCountries": [
+      "US"
+    ],
+    "fromStream": false,
+    "sourceUrl": "https://www.themoviedb.org/movie/559"
+  },
+  {
+    "id": "tmdb-movie-1250",
+    "title": "Призрачный гонщик (2007)",
+    "category": "films",
+    "tmdbId": 1250,
+    "mediaType": "movie",
+    "posterUrl": "/api/poster/4ULbCH7RO1bkCCsBEI9gAOm9cWp.jpg",
+    "posterLanguage": "ru",
+    "rating": 5.625,
+    "voteCount": 6761,
+    "originCountries": [
+      "US"
+    ],
+    "fromStream": false,
+    "sourceUrl": "https://www.themoviedb.org/movie/1250"
+  },
+  {
+    "id": "tmdb-movie-1452",
+    "title": "Возвращение Супермена (2006)",
+    "category": "films",
+    "tmdbId": 1452,
+    "mediaType": "movie",
+    "posterUrl": "/api/poster/6C6ku1McHHOdSxWcZi830hoeaoY.jpg",
+    "posterLanguage": "ru",
+    "rating": 5.832,
+    "voteCount": 4776,
+    "originCountries": [
+      "US"
+    ],
+    "fromStream": false,
+    "sourceUrl": "https://www.themoviedb.org/movie/1452"
+  },
+  {
+    "id": "tmdb-movie-1930",
+    "title": "Новый Человек-паук (2012)",
+    "category": "films",
+    "tmdbId": 1930,
+    "mediaType": "movie",
+    "posterUrl": "/api/poster/kby3x8wic9Lx4qEfstLu2vFHTVj.jpg",
+    "posterLanguage": "ru",
+    "rating": 6.768,
+    "voteCount": 19350,
+    "originCountries": [
+      "US"
+    ],
+    "fromStream": false,
+    "sourceUrl": "https://www.themoviedb.org/movie/1930"
+  },
+  {
+    "id": "tmdb-movie-1979",
+    "title": "Фантастическая четвёрка: Вторжение Серебряного сёрфера (2007)",
+    "category": "films",
+    "tmdbId": 1979,
+    "mediaType": "movie",
+    "posterUrl": "/api/poster/vYvuKMkUWVW4UuPAE5vSmm5orBB.jpg",
+    "posterLanguage": "ru",
+    "rating": 5.639,
+    "voteCount": 8678,
+    "originCountries": [
+      "US"
+    ],
+    "fromStream": false,
+    "sourceUrl": "https://www.themoviedb.org/movie/1979"
+  },
+  {
+    "id": "tmdb-movie-8536",
+    "title": "Супермен 2 (1980)",
+    "category": "films",
+    "tmdbId": 8536,
+    "mediaType": "movie",
+    "posterUrl": "/api/poster/6xe7rhjTkVxLGRzwipL8VpXpz0l.jpg",
+    "posterLanguage": "ru",
+    "rating": 6.743,
+    "voteCount": 2661,
+    "originCountries": [
+      "US"
+    ],
+    "fromStream": false,
+    "sourceUrl": "https://www.themoviedb.org/movie/8536"
+  },
+  {
+    "id": "tmdb-movie-9531",
+    "title": "Супермен 3 (1983)",
+    "category": "films",
+    "tmdbId": 9531,
+    "mediaType": "movie",
+    "posterUrl": "/api/poster/s2p9z5CgMKLLqUejFdB4ath6qeU.jpg",
+    "posterLanguage": "ru",
+    "rating": 5.5,
+    "voteCount": 1975,
+    "originCountries": [
+      "US"
+    ],
+    "fromStream": false,
+    "sourceUrl": "https://www.themoviedb.org/movie/9531"
+  },
+  {
+    "id": "tmdb-movie-9738",
+    "title": "Фантастическая четвёрка (2005)",
+    "category": "films",
+    "tmdbId": 9738,
+    "mediaType": "movie",
+    "posterUrl": "/api/poster/vRb7EUXQZFIWNye7y661mvTVP6O.jpg",
+    "posterLanguage": "ru",
+    "rating": 5.814,
+    "voteCount": 10338,
+    "originCountries": [
+      "US"
+    ],
+    "fromStream": false,
+    "sourceUrl": "https://www.themoviedb.org/movie/9738"
+  },
+  {
+    "id": "tmdb-movie-10138",
+    "title": "Железный человек 2 (2010)",
+    "category": "films",
+    "tmdbId": 10138,
+    "mediaType": "movie",
+    "posterUrl": "/api/poster/rT3JszXFT2C3iYJtXSSL4R0DkU7.jpg",
+    "posterLanguage": "ru",
+    "rating": 6.856,
+    "voteCount": 23230,
+    "originCountries": [
+      "US"
+    ],
+    "fromStream": false,
+    "sourceUrl": "https://www.themoviedb.org/movie/10138"
+  },
+  {
+    "id": "tmdb-movie-10195",
+    "title": "Тор (2011)",
+    "category": "films",
+    "tmdbId": 10195,
+    "mediaType": "movie",
+    "posterUrl": "/api/poster/9VnGpd2rXHikIwznL9I5r9i8TQJ.jpg",
+    "posterLanguage": "ru",
+    "rating": 6.771,
+    "voteCount": 23065,
+    "originCountries": [
+      "US"
+    ],
+    "fromStream": false,
+    "sourceUrl": "https://www.themoviedb.org/movie/10195"
+  },
+  {
+    "id": "tmdb-movie-11411",
+    "title": "Супермен 4: В поисках мира (1987)",
+    "category": "films",
+    "tmdbId": 11411,
+    "mediaType": "movie",
+    "posterUrl": "/api/poster/y23Sx4XJWgEbBY3LoVPX5kFw4YD.jpg",
+    "posterLanguage": "ru",
+    "rating": 4.588,
+    "voteCount": 1479,
+    "originCountries": [
+      "US",
+      "GB"
+    ],
+    "fromStream": false,
+    "sourceUrl": "https://www.themoviedb.org/movie/11411"
+  },
+  {
+    "id": "tmdb-movie-36648",
+    "title": "Блэйд 3: Троица (2004)",
+    "category": "films",
+    "tmdbId": 36648,
+    "mediaType": "movie",
+    "posterUrl": "/api/poster/uzuKFjiWVQpU6oUkeubrePkz0KR.jpg",
+    "posterLanguage": "ru",
+    "rating": 5.86,
+    "voteCount": 4537,
+    "originCountries": [
+      "US"
+    ],
+    "fromStream": false,
+    "sourceUrl": "https://www.themoviedb.org/movie/36648"
+  },
+  {
+    "id": "tmdb-movie-44912",
+    "title": "Зелёный Фонарь (2011)",
+    "category": "films",
+    "tmdbId": 44912,
+    "mediaType": "movie",
+    "posterUrl": "/api/poster/b45kSKCLaGKol4cn3bXpOMFqUE8.jpg",
+    "posterLanguage": "ru",
+    "rating": 5.2,
+    "voteCount": 7960,
+    "originCountries": [
+      "US"
+    ],
+    "fromStream": false,
+    "sourceUrl": "https://www.themoviedb.org/movie/44912"
+  },
+  {
+    "id": "tmdb-movie-68721",
+    "title": "Железный человек 3 (2013)",
+    "category": "films",
+    "tmdbId": 68721,
+    "mediaType": "movie",
+    "posterUrl": "/api/poster/4AZco6uSdog5NbvJ6ILqnCveV8I.jpg",
+    "posterLanguage": "ru",
+    "rating": 6.932,
+    "voteCount": 24147,
+    "originCountries": [
+      "US"
+    ],
+    "fromStream": false,
+    "sourceUrl": "https://www.themoviedb.org/movie/68721"
+  },
+  {
+    "id": "tmdb-movie-71676",
+    "title": "Призрачный гонщик 2 (2011)",
+    "category": "films",
+    "tmdbId": 71676,
+    "mediaType": "movie",
+    "posterUrl": "/api/poster/pmjeSQ4NocblwnqFDxk7zXggSQ7.jpg",
+    "posterLanguage": "ru",
+    "rating": 5.019,
+    "voteCount": 4247,
+    "originCountries": [
+      "AE",
+      "US"
+    ],
+    "fromStream": false,
+    "sourceUrl": "https://www.themoviedb.org/movie/71676"
+  },
+  {
+    "id": "tmdb-movie-76338",
+    "title": "Тор 2: Царство тьмы (2013)",
+    "category": "films",
+    "tmdbId": 76338,
+    "mediaType": "movie",
+    "posterUrl": "/api/poster/rmII9fsUpfRmuNBhzHtarBOtHnQ.jpg",
+    "posterLanguage": "ru",
+    "rating": 6.504,
+    "voteCount": 18965,
+    "originCountries": [
+      "US"
+    ],
+    "fromStream": false,
+    "sourceUrl": "https://www.themoviedb.org/movie/76338"
+  },
+  {
+    "id": "tmdb-movie-102382",
+    "title": "Новый Человек-паук: Высокое напряжение (2014)",
+    "category": "films",
+    "tmdbId": 102382,
+    "mediaType": "movie",
+    "posterUrl": "/api/poster/ydQMjes6xheS1kC0lJ6DZl54Yva.jpg",
+    "posterLanguage": "ru",
+    "rating": 6.567,
+    "voteCount": 14952,
+    "originCountries": [
+      "US"
+    ],
+    "fromStream": false,
+    "sourceUrl": "https://www.themoviedb.org/movie/102382"
+  },
+  {
+    "id": "tmdb-movie-141052",
+    "title": "Лига справедливости (2017)",
+    "category": "films",
+    "tmdbId": 141052,
+    "mediaType": "movie",
+    "posterUrl": "/api/poster/e2f1GaWLkk5Sj7cZMi38mUPXYdt.jpg",
+    "posterLanguage": "ru",
+    "rating": 6.061,
+    "voteCount": 14104,
+    "originCountries": [
+      "US"
+    ],
+    "fromStream": false,
+    "sourceUrl": "https://www.themoviedb.org/movie/141052"
+  },
+  {
+    "id": "tmdb-movie-166424",
+    "title": "Фантастическая Четвёрка (2015)",
+    "category": "films",
+    "tmdbId": 166424,
+    "mediaType": "movie",
+    "posterUrl": "/api/poster/vn0OIQIDLVlCSSW3VMURUyQU57x.jpg",
+    "posterLanguage": "ru",
+    "rating": 4.4,
+    "voteCount": 6620,
+    "originCountries": [
+      "US"
+    ],
+    "fromStream": false,
+    "sourceUrl": "https://www.themoviedb.org/movie/166424"
+  },
+  {
+    "id": "tmdb-movie-287947",
+    "title": "Шазам! (2019)",
+    "category": "films",
+    "tmdbId": 287947,
+    "mediaType": "movie",
+    "posterUrl": "/api/poster/s4byZ8CP7NLfH54FV3QF6l0JLSh.jpg",
+    "posterLanguage": "ru",
+    "rating": 6.963,
+    "voteCount": 10579,
+    "originCountries": [
+      "US"
+    ],
+    "fromStream": false,
+    "sourceUrl": "https://www.themoviedb.org/movie/287947"
+  },
+  {
+    "id": "tmdb-movie-297761",
+    "title": "Отряд самоубийц (2016)",
+    "category": "films",
+    "tmdbId": 297761,
+    "mediaType": "movie",
+    "posterUrl": "/api/poster/7tJjv7vPBhG2pzcTIMgGBV1mL4w.jpg",
+    "posterLanguage": "ru",
+    "rating": 5.916,
+    "voteCount": 22622,
+    "originCountries": [
+      "US"
+    ],
+    "fromStream": false,
+    "sourceUrl": "https://www.themoviedb.org/movie/297761"
+  },
+  {
+    "id": "tmdb-movie-297802",
+    "title": "Аквамен (2018)",
+    "category": "films",
+    "tmdbId": 297802,
+    "mediaType": "movie",
+    "posterUrl": "/api/poster/hA5rapmD3Lwv4I981yh6Ct8zvIC.jpg",
+    "posterLanguage": "ru",
+    "rating": 6.858,
+    "voteCount": 15358,
+    "originCountries": [
+      "US"
+    ],
+    "fromStream": false,
+    "sourceUrl": "https://www.themoviedb.org/movie/297802"
+  },
+  {
+    "id": "tmdb-movie-299537",
+    "title": "Капитан Марвел (2019)",
+    "category": "films",
+    "tmdbId": 299537,
+    "mediaType": "movie",
+    "posterUrl": "/api/poster/khIspz4hW7RyEJag16UKYxI9fuP.jpg",
+    "posterLanguage": "ru",
+    "rating": 6.764,
+    "voteCount": 17353,
+    "originCountries": [
+      "US"
+    ],
+    "fromStream": false,
+    "sourceUrl": "https://www.themoviedb.org/movie/299537"
+  },
+  {
+    "id": "tmdb-movie-335983",
+    "title": "Веном (2018)",
+    "category": "films",
+    "tmdbId": 335983,
+    "mediaType": "movie",
+    "posterUrl": "/api/poster/8Gyl0fknqiZeCLm9XitxCXQmEL9.jpg",
+    "posterLanguage": "ru",
+    "rating": 6.819,
+    "voteCount": 17805,
+    "originCountries": [
+      "US"
+    ],
+    "fromStream": false,
+    "sourceUrl": "https://www.themoviedb.org/movie/335983"
+  },
+  {
+    "id": "tmdb-movie-363088",
+    "title": "Человек-муравей и Оса (2018)",
+    "category": "films",
+    "tmdbId": 363088,
+    "mediaType": "movie",
+    "posterUrl": "/api/poster/5r85N1iOnHFoWkyC0EeOw9aEqOW.jpg",
+    "posterLanguage": "ru",
+    "rating": 6.891,
+    "voteCount": 14695,
+    "originCountries": [
+      "US"
+    ],
+    "fromStream": false,
+    "sourceUrl": "https://www.themoviedb.org/movie/363088"
+  },
+  {
+    "id": "tmdb-movie-436270",
+    "title": "Чёрный Адам (2022)",
+    "category": "films",
+    "tmdbId": 436270,
+    "mediaType": "movie",
+    "posterUrl": "/api/poster/ebtyQ43I2QSeEJiXYNFgSp4yuYT.jpg",
+    "posterLanguage": "ru",
+    "rating": 6.743,
+    "voteCount": 7392,
+    "originCountries": [
+      "US"
+    ],
+    "fromStream": false,
+    "sourceUrl": "https://www.themoviedb.org/movie/436270"
+  },
+  {
+    "id": "tmdb-movie-464052",
+    "title": "Чудо-женщина: 1984 (2020)",
+    "category": "films",
+    "tmdbId": 464052,
+    "mediaType": "movie",
+    "posterUrl": "/api/poster/1B2YJCYyRudISmfSWCRfc95gAtq.jpg",
+    "posterLanguage": "ru",
+    "rating": 6.336,
+    "voteCount": 9365,
+    "originCountries": [
+      "US"
+    ],
+    "fromStream": false,
+    "sourceUrl": "https://www.themoviedb.org/movie/464052"
+  },
+  {
+    "id": "tmdb-movie-505642",
+    "title": "Чёрная Пантера: Ваканда навеки (2022)",
+    "category": "films",
+    "tmdbId": 505642,
+    "mediaType": "movie",
+    "posterUrl": "/api/poster/wSphEs4KKbewWC01NBtmCJnlZ7y.jpg",
+    "posterLanguage": "ru",
+    "rating": 6.98,
+    "voteCount": 7943,
+    "originCountries": [
+      "US"
+    ],
+    "fromStream": false,
+    "sourceUrl": "https://www.themoviedb.org/movie/505642"
+  },
+  {
+    "id": "tmdb-movie-524434",
+    "title": "Вечные (2021)",
+    "category": "films",
+    "tmdbId": 524434,
+    "mediaType": "movie",
+    "posterUrl": "/api/poster/r174t1SLtGamhPx3Wwj6f6YSyAi.jpg",
+    "posterLanguage": "ru",
+    "rating": 6.738,
+    "voteCount": 9567,
+    "originCountries": [
+      "US"
+    ],
+    "fromStream": false,
+    "sourceUrl": "https://www.themoviedb.org/movie/524434"
+  },
+  {
+    "id": "tmdb-movie-526896",
+    "title": "Морбиус (2022)",
+    "category": "films",
+    "tmdbId": 526896,
+    "mediaType": "movie",
+    "posterUrl": "/api/poster/887tIQVg619TdJVnlQfqPmk8Na6.jpg",
+    "posterLanguage": "ru",
+    "rating": 5.887,
+    "voteCount": 5079,
+    "originCountries": [
+      "US"
+    ],
+    "fromStream": false,
+    "sourceUrl": "https://www.themoviedb.org/movie/526896"
+  },
+  {
+    "id": "tmdb-movie-580489",
+    "title": "Веном 2 (2021)",
+    "category": "films",
+    "tmdbId": 580489,
+    "mediaType": "movie",
+    "posterUrl": "/api/poster/pZe4xYwDkmxhf3oA8DNEihOW4pW.jpg",
+    "posterLanguage": "ru",
+    "rating": 6.717,
+    "voteCount": 11578,
+    "originCountries": [
+      "US"
+    ],
+    "fromStream": false,
+    "sourceUrl": "https://www.themoviedb.org/movie/580489"
+  },
+  {
+    "id": "tmdb-movie-594767",
+    "title": "Шазам! Ярость Богов (2023)",
+    "category": "films",
+    "tmdbId": 594767,
+    "mediaType": "movie",
+    "posterUrl": "/api/poster/t2Wy2p0lLg6BjOk10pYhrIiYWrL.jpg",
+    "posterLanguage": "ru",
+    "rating": 6.374,
+    "voteCount": 3864,
+    "originCountries": [
+      "US"
+    ],
+    "fromStream": false,
+    "sourceUrl": "https://www.themoviedb.org/movie/594767"
+  },
+  {
+    "id": "tmdb-movie-616037",
+    "title": "Тор: Любовь и гром (2022)",
+    "category": "films",
+    "tmdbId": 616037,
+    "mediaType": "movie",
+    "posterUrl": "/api/poster/xWA0Av3mO7uH2bqGU7QMfckY9si.jpg",
+    "posterLanguage": "ru",
+    "rating": 6.345,
+    "voteCount": 9148,
+    "originCountries": [
+      "US"
+    ],
+    "fromStream": false,
+    "sourceUrl": "https://www.themoviedb.org/movie/616037"
+  },
+  {
+    "id": "tmdb-movie-640146",
+    "title": "Человек-муравей и Оса: Квантомания (2023)",
+    "category": "films",
+    "tmdbId": 640146,
+    "mediaType": "movie",
+    "posterUrl": "/api/poster/8BoKsen8orEAiFWCmQkwmONjuTX.jpg",
+    "posterLanguage": "ru",
+    "rating": 6.194,
+    "voteCount": 6256,
+    "originCountries": [
+      "US"
+    ],
+    "fromStream": false,
+    "sourceUrl": "https://www.themoviedb.org/movie/640146"
+  },
+  {
+    "id": "tmdb-tv-1403",
+    "title": "Агенты «Щ.И.Т.» (2013 - 2020)",
+    "category": "series",
+    "tmdbId": 1403,
+    "mediaType": "tv",
+    "posterUrl": "/api/poster/vSt6VdhvT9gUa5wc6rkYYAlJpQJ.jpg",
+    "posterLanguage": "ru",
+    "rating": 7.485,
+    "voteCount": 3948,
+    "originCountries": [
+      "US"
+    ],
+    "fromStream": false,
+    "sourceUrl": "https://www.themoviedb.org/tv/1403"
+  },
+  {
+    "id": "tmdb-tv-1412",
+    "title": "Стрела (2012 - 2020)",
+    "category": "series",
+    "tmdbId": 1412,
+    "mediaType": "tv",
+    "posterUrl": "/api/poster/8xevzZgfa6ed0vVrZ8kwf71py4w.jpg",
+    "posterLanguage": "ru",
+    "rating": 6.835,
+    "voteCount": 6550,
+    "originCountries": [
+      "US"
+    ],
+    "fromStream": false,
+    "sourceUrl": "https://www.themoviedb.org/tv/1412"
+  },
+  {
+    "id": "tmdb-tv-38472",
+    "title": "Джессика Джонс (2015 - 2019)",
+    "category": "series",
+    "tmdbId": 38472,
+    "mediaType": "tv",
+    "posterUrl": "/api/poster/7K54OG3m8AJCC9yUCOc4DHG3kmw.jpg",
+    "posterLanguage": "ru",
+    "rating": 7.5,
+    "voteCount": 2774,
+    "originCountries": [
+      "US"
+    ],
+    "fromStream": false,
+    "sourceUrl": "https://www.themoviedb.org/tv/38472"
+  },
+  {
+    "id": "tmdb-tv-60708",
+    "title": "Готэм (2014 - 2019)",
+    "category": "series",
+    "tmdbId": 60708,
+    "mediaType": "tv",
+    "posterUrl": "/api/poster/m0PtSqdeyTeeGmdkvEdMEjjTNZL.jpg",
+    "posterLanguage": "ru",
+    "rating": 7.597,
+    "voteCount": 3843,
+    "originCountries": [
+      "US"
+    ],
+    "fromStream": false,
+    "sourceUrl": "https://www.themoviedb.org/tv/60708"
+  },
+  {
+    "id": "tmdb-tv-61550",
+    "title": "Агент Картер (2015 - 2016)",
+    "category": "series",
+    "tmdbId": 61550,
+    "mediaType": "tv",
+    "posterUrl": "/api/poster/t2zWZpjdKs7UJ5n2Tn1wgkl5k2E.jpg",
+    "posterLanguage": "ru",
+    "rating": 7.518,
+    "voteCount": 2085,
+    "originCountries": [
+      "US"
+    ],
+    "fromStream": false,
+    "sourceUrl": "https://www.themoviedb.org/tv/61550"
+  },
+  {
+    "id": "tmdb-tv-61889",
+    "title": "Сорвиголова (2015 - 2018)",
+    "category": "series",
+    "tmdbId": 61889,
+    "mediaType": "tv",
+    "posterUrl": "/api/poster/c47xj2YlMKPEMbLXlLriZaRnlXu.jpg",
+    "posterLanguage": "ru",
+    "rating": 8.174,
+    "voteCount": 5502,
+    "originCountries": [
+      "US"
+    ],
+    "fromStream": false,
+    "sourceUrl": "https://www.themoviedb.org/tv/61889"
+  },
+  {
+    "id": "tmdb-tv-62126",
+    "title": "Люк Кейдж (2016 - 2018)",
+    "category": "series",
+    "tmdbId": 62126,
+    "mediaType": "tv",
+    "posterUrl": "/api/poster/2Wk2yPr4SWvIsUmn6HahPISOw5E.jpg",
+    "posterLanguage": "ru",
+    "rating": 6.908,
+    "voteCount": 2135,
+    "originCountries": [
+      "US"
+    ],
+    "fromStream": false,
+    "sourceUrl": "https://www.themoviedb.org/tv/62126"
+  },
+  {
+    "id": "tmdb-tv-62127",
+    "title": "Железный кулак (2017 - 2018)",
+    "category": "series",
+    "tmdbId": 62127,
+    "mediaType": "tv",
+    "posterUrl": "/api/poster/hu9eGudTohsMTChNbqAlXuiKeIU.jpg",
+    "posterLanguage": "ru",
+    "rating": 6.501,
+    "voteCount": 2793,
+    "originCountries": [
+      "US"
+    ],
+    "fromStream": false,
+    "sourceUrl": "https://www.themoviedb.org/tv/62127"
+  },
+  {
+    "id": "tmdb-tv-62285",
+    "title": "Защитники (2017 - 2017)",
+    "category": "series",
+    "tmdbId": 62285,
+    "mediaType": "tv",
+    "posterUrl": "/api/poster/gg2FoujYjmG2Oha24sAhd9aogvI.jpg",
+    "posterLanguage": "ru",
+    "rating": 7.03,
+    "voteCount": 1759,
+    "originCountries": [
+      "US"
+    ],
+    "fromStream": false,
+    "sourceUrl": "https://www.themoviedb.org/tv/62285"
+  },
+  {
+    "id": "tmdb-tv-62643",
+    "title": "Легенды завтрашнего дня (2016 - 2022)",
+    "category": "series",
+    "tmdbId": 62643,
+    "mediaType": "tv",
+    "posterUrl": "/api/poster/xFZSUkpgnGQx9L5jMVhSUYkHFgP.jpg",
+    "posterLanguage": "ru",
+    "rating": 7.2,
+    "voteCount": 2538,
+    "originCountries": [
+      "US"
+    ],
+    "fromStream": false,
+    "sourceUrl": "https://www.themoviedb.org/tv/62643"
+  },
+  {
+    "id": "tmdb-tv-62688",
+    "title": "Супергёрл (2015 - 2021)",
+    "category": "series",
+    "tmdbId": 62688,
+    "mediaType": "tv",
+    "posterUrl": "/api/poster/7tfFwoh5gtATf0yFloSVnlgFQdj.jpg",
+    "posterLanguage": "ru",
+    "rating": 7.253,
+    "voteCount": 4498,
+    "originCountries": [
+      "US"
+    ],
+    "fromStream": false,
+    "sourceUrl": "https://www.themoviedb.org/tv/62688"
+  },
+  {
+    "id": "tmdb-tv-67178",
+    "title": "Каратель (2017 - 2019)",
+    "category": "series",
+    "tmdbId": 67178,
+    "mediaType": "tv",
+    "posterUrl": "/api/poster/wUlX8npglxkoj8OX5eK8HpLoWSj.jpg",
+    "posterLanguage": "ru",
+    "rating": 8.158,
+    "voteCount": 3443,
+    "originCountries": [
+      "US"
+    ],
+    "fromStream": false,
+    "sourceUrl": "https://www.themoviedb.org/tv/67178"
+  },
+  {
+    "id": "tmdb-tv-71663",
+    "title": "Черная молния (2018 - 2021)",
+    "category": "series",
+    "tmdbId": 71663,
+    "mediaType": "tv",
+    "posterUrl": "/api/poster/kTzgnxJngIFxDKhoZr6mEcdASOE.jpg",
+    "posterLanguage": "ru",
+    "rating": 6.899,
+    "voteCount": 994,
+    "originCountries": [
+      "US"
+    ],
+    "fromStream": false,
+    "sourceUrl": "https://www.themoviedb.org/tv/71663"
+  },
+  {
+    "id": "tmdb-tv-75450",
+    "title": "Титаны (2018 - 2023)",
+    "category": "series",
+    "tmdbId": 75450,
+    "mediaType": "tv",
+    "posterUrl": "/api/poster/1DU4MXFZkCDn9ZjsRgjk6r07qxq.jpg",
+    "posterLanguage": "ru",
+    "rating": 7.835,
+    "voteCount": 2930,
+    "originCountries": [
+      "US"
+    ],
+    "fromStream": false,
+    "sourceUrl": "https://www.themoviedb.org/tv/75450"
+  },
+  {
+    "id": "tmdb-tv-79501",
+    "title": "Роковой патруль (2019 - 2023)",
+    "category": "series",
+    "tmdbId": 79501,
+    "mediaType": "tv",
+    "posterUrl": "/api/poster/nck5rNe9ywCB0MFHlL3KY4aMBiw.jpg",
+    "posterLanguage": "ru",
+    "rating": 7.47,
+    "voteCount": 1512,
+    "originCountries": [
+      "US"
+    ],
+    "fromStream": false,
+    "sourceUrl": "https://www.themoviedb.org/tv/79501"
+  },
+  {
+    "id": "tmdb-tv-85271",
+    "title": "ВандаВижн (2021 - 2021)",
+    "category": "series",
+    "tmdbId": 85271,
+    "mediaType": "tv",
+    "posterUrl": "/api/poster/5M5f2qGojFc6eCSXs9FITA5jF8f.jpg",
+    "posterLanguage": "ru",
+    "rating": 8.179,
+    "voteCount": 13048,
+    "originCountries": [
+      "US"
+    ],
+    "fromStream": false,
+    "sourceUrl": "https://www.themoviedb.org/tv/85271"
+  },
+  {
+    "id": "tmdb-tv-88329",
+    "title": "Соколиный Глаз (2021 - 2021)",
+    "category": "series",
+    "tmdbId": 88329,
+    "mediaType": "tv",
+    "posterUrl": "/api/poster/hniUUxofvpNdqThmPpVbLXVlff.jpg",
+    "posterLanguage": "ru",
+    "rating": 7.8,
+    "voteCount": 3914,
+    "originCountries": [
+      "US"
+    ],
+    "fromStream": false,
+    "sourceUrl": "https://www.themoviedb.org/tv/88329"
+  },
+  {
+    "id": "tmdb-tv-88396",
+    "title": "Сокол и Зимний Солдат (2021 - 2021)",
+    "category": "series",
+    "tmdbId": 88396,
+    "mediaType": "tv",
+    "posterUrl": "/api/poster/bWQjS9sPZ4H9KMGEPgF0yhrrT9C.jpg",
+    "posterLanguage": "ru",
+    "rating": 7.6,
+    "voteCount": 9076,
+    "originCountries": [
+      "US"
+    ],
+    "fromStream": false,
+    "sourceUrl": "https://www.themoviedb.org/tv/88396"
+  },
+  {
+    "id": "tmdb-tv-92749",
+    "title": "Лунный рыцарь (2022 - 2022)",
+    "category": "series",
+    "tmdbId": 92749,
+    "mediaType": "tv",
+    "posterUrl": "/api/poster/nwEVXH05W49gbiry9edl2vDMU1g.jpg",
+    "posterLanguage": "ru",
+    "rating": 7.635,
+    "voteCount": 3794,
+    "originCountries": [
+      "US"
+    ],
+    "fromStream": false,
+    "sourceUrl": "https://www.themoviedb.org/tv/92749"
+  },
+  {
+    "id": "tmdb-tv-95057",
+    "title": "Супермен и Лоис (2021 - 2024)",
+    "category": "series",
+    "tmdbId": 95057,
+    "mediaType": "tv",
+    "posterUrl": "/api/poster/fuoJC3cL9DaWU0ibgwL2arr9Wtd.jpg",
+    "posterLanguage": "ru",
+    "rating": 8.049,
+    "voteCount": 2784,
+    "originCountries": [
+      "US"
+    ],
+    "fromStream": false,
+    "sourceUrl": "https://www.themoviedb.org/tv/95057"
+  },
+  {
+    "id": "tmdb-tv-114472",
+    "title": "Секретное вторжение (2023 - 2023)",
+    "category": "series",
+    "tmdbId": 114472,
+    "mediaType": "tv",
+    "posterUrl": "/api/poster/2YJXKSlNmf9WWmic0usBIo0x5s5.jpg",
+    "posterLanguage": "ru",
+    "rating": 6.416,
+    "voteCount": 1502,
+    "originCountries": [
+      "US"
+    ],
+    "fromStream": false,
+    "sourceUrl": "https://www.themoviedb.org/tv/114472"
+  },
+  {
+    "id": "tmdb-tv-122226",
+    "title": "Эхо (2024 - 2024)",
+    "category": "series",
+    "tmdbId": 122226,
+    "mediaType": "tv",
+    "posterUrl": "/api/poster/lijlPd9qEw0GcjaczLdmK0BqVKo.jpg",
+    "posterLanguage": "ru",
+    "rating": 6.038,
+    "voteCount": 680,
+    "originCountries": [
+      "US"
+    ],
+    "fromStream": false,
+    "sourceUrl": "https://www.themoviedb.org/tv/122226"
+  },
+  {
+    "id": "tmdb-tv-202555",
+    "title": "Сорвиголова: Рождённый заново (2025 - ...)",
+    "category": "series",
+    "tmdbId": 202555,
+    "mediaType": "tv",
+    "posterUrl": "/api/poster/8WriKzjD9mx2CSuhUVhu1GW9yy6.jpg",
+    "posterLanguage": "ru",
+    "rating": 8.2,
+    "voteCount": 1179,
+    "originCountries": [
+      "US"
+    ],
+    "fromStream": false,
+    "sourceUrl": "https://www.themoviedb.org/tv/202555"
   }
 ]

@@ -27,8 +27,8 @@ export default function CinemaApp(){
   setDisplay({scene,sequence,journey:reverse?{from:previous,to:scene,id:`${previous}-${scene}-${sequence}`}:null});
  }
  return <div className="full-cinema round-study round-looks look-light motion-studies" data-scene={scene}>
-  {waiting?<><header className="study-masthead"><div className="study-brand"><CloudRain/><div><strong>OVERRATEDKINO</strong><span>Зал {g.id}</span></div></div><SupportDevelopment/></header><WaitingRoom/><ModalDialog/></>:playing?<div className={`study-run study-game ${g.state==='reveal'?'study-revealed':''} ${g.allVoted&&g.state==='round_start'?'scene-ready':''}`}>
-   <header className="study-masthead"><div className="study-brand"><CloudRain/><div><strong>OVERRATEDKINO</strong><span>Зал {g.id}</span></div></div><SupportDevelopment/></header>
+  {waiting?<><header className="study-masthead"><div className="study-brand"><CloudRain/><div><strong>OVERRATED</strong><span>Зал {g.id}</span></div></div><SupportDevelopment/></header><WaitingRoom/><ModalDialog/></>:playing?<div className={`study-run study-game ${g.state==='reveal'?'study-revealed':''} ${g.allVoted&&g.state==='round_start'?'scene-ready':''}`}>
+   <header className="study-masthead"><div className="study-brand"><CloudRain/><div><strong>OVERRATED</strong><span>Зал {g.id}</span></div></div><SupportDevelopment/></header>
    <main className="projection-screen"><div key={g.roundId} className="projection-content">{g.mode==='kinonames'?<KinonamesScreen/>:<GameScreen settledRevealTitle="Раунд завершён"/>}</div></main><CinemaChat/><ModalDialog/>
   </div>:<FullEntrance/>}
   {!isConnected&&<div className="connection-banner" role="status">{connectionMessage||'Подключаемся к игре…'} <button onClick={reconnect}>Повторить</button></div>}
@@ -36,3 +36,4 @@ export default function CinemaApp(){
   {display.journey&&<ReturnPassage key={display.journey.id} from={display.journey.from} to={display.journey.to} onComplete={()=>setDisplay(current=>({...current,journey:null}))}/>}
  </div>;
 }
+
