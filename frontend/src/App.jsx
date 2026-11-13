@@ -9,6 +9,8 @@ import RainBackground from "./components/RainBackground";
 import ModalDialog from "./components/ModalDialog";
 import { Cloud } from "./components/Identity";
 import { prepareGameAudio } from "./utils/gameAudio";
+import { KinonamesScreen } from "./kinonames/KinonamesUI.jsx";
+import WaitingRoom from './components/WaitingRoom.jsx';
 export default function App() {
   const { gameState, player, isConnected, connectionMessage, reconnect } =
     useGame();
@@ -53,10 +55,12 @@ export default function App() {
           <fieldset className="game-fieldset" disabled={!isConnected}>
             {!gameState ? (
               <MainMenu />
+            ) : gameState.waitingRoom || gameState.state === 'waiting' ? (
+              <WaitingRoom />
             ) : gameState.state === "lobby" ? (
               <Lobby />
             ) : (
-              <GameScreen />
+              gameState.mode === "kinonames" ? <KinonamesScreen /> : <GameScreen />
             )}
           </fieldset>
           {gameState && player && <RoomChat key={gameState.id} />}

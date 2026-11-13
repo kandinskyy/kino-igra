@@ -2,6 +2,9 @@ import { useRef, useState } from "react";
 import { ChevronDown, SlidersHorizontal, X } from "lucide-react";
 
 import categoryOptions from "../../../shared/catalog-categories.json";
+import {useGame} from "../GameContext.jsx";
+import {KinonamesSettings} from "../kinonames/KinonamesUI.jsx";
+import {defaultKinonamesSettings, mergeKinonamesSettings} from "../kinonames/settings.js";
 const defaultCategories = ["films"];
 
 export default function MatchSettings({
@@ -11,6 +14,7 @@ export default function MatchSettings({
   host,
   onSave,
 }) {
+  const {gameState:g,player,socket}=useGame();
   const dialog = useRef(null);
   const [draft, setDraft] = useState(String(targetVP));
   const [draftCategories, setDraftCategories] = useState(categories);
@@ -31,35 +35,41 @@ export default function MatchSettings({
     setCircles(String(settings.circles || 1));
     setHidden(!!settings.hiddenMode);
     setRepeat(!!settings.repeatRatings);
+    setKnDraft(mergeKinonamesSettings(g?.kinonames?.settings||defaultKinonamesSettings));
     dialog.current.showModal();
   }
 
   async function save(event) {
     event.preventDefault();
     if (!host || saving) return;
-    if (!draftCategories.length) return;
+    if (viewMode!=='kinonames'&&!draftCategories.length) return;
     const value = Number(draft);
-    if (
+    if (viewMode!=='kinonames'&&(
       !Number.isInteger(Number(circles)) ||
       Number(circles) < 1 ||
       Number(circles) > 999
-    ) {
+    )) {
       setError("Введите целое число кругов от 1 до 999");
       return;
     }
-    if (!Number.isInteger(value) || value < 1 || value > 999) {
+    if (viewMode!=='kinonames'&&(!Number.isInteger(value) || value < 1 || value > 999)) {
       setError("Введите целое число от 1 до 999");
       return;
     }
     setSaving(true);
     setError("");
     try {
-      await onSave(value, draftCategories, {
+      await onSave(viewMode==='kinonames'?(Number(targetVP)||10):value, viewMode==='kinonames'?['superheroes']:draftCategories, {
         mode,
         circles: Number(circles),
         hiddenMode: hidden,
         repeatRatings: repeat,
       });
+      if(viewMode==='kinonames'&&settings.mode!=='kinonames'&&canEditKinonames){
+        const store=mergeKinonamesSettings(knDraft);
+        const result=await socket.timeout(10000).emitWithAck('kinonames_settings',{lobbyId:g.id,settings:store});
+        if(!result?.success)throw Error(result?.message||'Не удалось сохранить настройки Kinonames');
+      }
       dialog.current.close();
     } catch (e) {
       setError(
@@ -71,6 +81,13 @@ export default function MatchSettings({
   }
 
   const viewMode = host ? mode : settings.mode || "original";
+  const [knDraft,setKnDraft]=useState(()=>mergeKinonamesSettings(g?.kinonames?.settings||defaultKinonamesSettings));
+  const canEditKinonames=(g?.kinonames?.creatorId||g?.creatorId||g?.host)===player?.id;
+  async function saveKinonames(next){
+    setKnDraft(next);
+    const result=await socket.timeout(10000).emitWithAck('kinonames_settings',{lobbyId:g.id,settings:next});
+    if(!result?.success)throw Error(result?.message||'Не удалось сохранить настройки Kinonames');
+  }
   return (
     <div className="match-settings">
       <button
@@ -83,12 +100,8 @@ export default function MatchSettings({
         <span>Параметры игры</span>
       </button>
       <p className="match-settings-summary">
-        {settings.mode === "opinion" ? "Мнение одного" : "До победы"}{" "}
-        <strong>
-          {settings.mode === "opinion"
-            ? `${settings.circles || 1} кругов`
-            : `${targetVP} очков`}
-        </strong>
+        {settings.mode === "kinonames" ? "Kinonames" : settings.mode === "opinion" ? "Мнение одного" : "До победы"}{" "}
+        {settings.mode === "kinonames" ? <strong>{g?.kinonames?.settings?.variant === "competitive" ? "Многопользовательский" : "Одиночный"}</strong> : <strong>{settings.mode === "opinion" ? `${settings.circles || 1} кругов` : `${targetVP} очков`}</strong>}
       </p>
       <dialog
         ref={dialog}
@@ -115,9 +128,14 @@ export default function MatchSettings({
               aria-label="Правила выбранного режима"
             >
               <h3>
-                {viewMode === "original" ? "Оригинальный" : "Мнение одного"}
+                {viewMode === "kinonames" ? "Kinonames" : viewMode === "original" ? "Оригинальный" : "Мнение одного"}
               </h3>
-              {viewMode === "original" ? (
+              {viewMode === "kinonames" ? <>
+                <p>Ведущий видит цвета 25 персонажей и даёт подсказку: одно слово и число. Угадывающие единогласно выбирают карточку; через 3 секунды она открывается. Изменение голоса отменяет подтверждение.</p>
+                <p>В одиночной игре нужно открыть все синие карточки, сохранив жизни. Чёрная карточка отнимает жизнь, нейтральная не завершает угадывание. Подсказки ограничены, время — нет.</p>
+                <p>В многопользовательской игре команды ходят по очереди. Своя карточка даёт 15 секунд; чужая или нейтральная завершает ход, чёрная означает поражение. При остатке не больше 5 секунд единогласный выбор открывается сразу.</p>
+                <p>Предатель видит карточки соперника и чёрную. Он голосует вместе со всеми, а его роль остаётся скрытой.</p>
+              </> : viewMode === "original" ? (
                 <>
                   <p>
                     В каждом раунде — пять произведений. Расставьте оценки от S
@@ -191,11 +209,14 @@ export default function MatchSettings({
                   >
                     <option value="original">Оригинальный</option>
                     <option value="opinion">Мнение одного</option>
+                    <option value="kinonames">Kinonames</option>
                   </select>
                   <ChevronDown aria-hidden="true" />
                 </div>
               </div>
-              <div className="match-target-field">
+              {viewMode==='kinonames'?<>
+                {settings.mode==='kinonames'?<KinonamesSettings value={g?.kinonames?.settings||knDraft} editable={canEditKinonames} onSave={saveKinonames}/>:<p className="match-field-help">Сначала сохраните режим Kinonames. Его параметры можно будет изменить в этой панели.</p>}
+              </>:<><div className="match-target-field">
                 <label htmlFor="match-target-vp">
                   {viewMode === "original"
                     ? "Очки до победы"
@@ -303,7 +324,7 @@ export default function MatchSettings({
                     </small>
                   </span>
                 </label>
-              </fieldset>
+              </fieldset></>}
               {!host && (
                 <p className="match-field-help">Параметры меняет ведущий</p>
               )}
@@ -326,7 +347,7 @@ export default function MatchSettings({
                     <button
                       type="submit"
                       className="btn-primary"
-                      disabled={saving || !draftCategories.length}
+                      disabled={saving || (viewMode!=='kinonames'&&!draftCategories.length)}
                     >
                       {saving ? "Сохраняем…" : "Сохранить"}
                     </button>

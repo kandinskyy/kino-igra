@@ -13,6 +13,7 @@ export default function NetworkCinemaProvider({children}) {
  let shown=presentation;
  if(shown.roomId!==(real?.id||null))shown={roomId:real?.id||null,entryCommitted:false,gameEntered:false,lobby:null};
  if(real?.state==='lobby'&&(shown.lobby!==real||shown.gameEntered))shown={...shown,lobby:real,gameEntered:false};
+ if((real?.waitingRoom||real?.state==='waiting')&&(!shown.entryCommitted||!shown.gameEntered))shown={...shown,entryCommitted:true,gameEntered:true};
  if(shown!==presentation)setPresentation(shown);
  const {entryCommitted,gameEntered}=shown;
  const cancelRoom=useCallback(()=>{
@@ -70,8 +71,9 @@ export default function NetworkCinemaProvider({children}) {
  },[]);
  const completeGameTransition=useCallback(()=>setPresentation(current=>({...current,gameEntered:true})),[]);
  const hasMembership=Boolean(real&&transport.player);
- const gameTransitionPending=Boolean(hasMembership&&entryCommitted&&real.state!=='lobby'&&!gameEntered);
- const gameState=!hasMembership||!entryCommitted?null:gameTransitionPending?
+ const waiting=Boolean(real?.waitingRoom||real?.state==='waiting');
+ const gameTransitionPending=Boolean(hasMembership&&!waiting&&entryCommitted&&real.state!=='lobby'&&!gameEntered);
+ const gameState=waiting?real:!hasMembership||!entryCommitted?null:gameTransitionPending?
   (shown.lobby||{...real,state:'lobby'}):real;
  return <GameContext.Provider value={{...transport,gameState,prepareRoom,commitRoom,cancelRoom,enterGame,beginRestoredEntry,
   entranceRequested:hasMembership&&!entryCommitted,gameTransitionPending,completeGameTransition,

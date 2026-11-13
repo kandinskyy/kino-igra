@@ -5,6 +5,7 @@ import { copyText } from "../utils/clipboard";
 import { Avatar } from "./Identity";
 
 import MatchSettings from "./MatchSettings";
+import {KinonamesTeams} from '../kinonames/KinonamesUI.jsx';
 export default function Lobby() {
   const {
     socket,
@@ -18,6 +19,17 @@ export default function Lobby() {
   const host = g.host === player?.id,
     me = g.players.find((p) => p.id === player?.id) || player;
   const [busy, setBusy] = useState(false);
+  const connected = g.players.filter(p=>p.connected);
+  const kn = g.kinonames;
+  const knTeams = kn?.settings?.variant === 'competitive' ? ['blue','red'] : ['blue'];
+  const kinonamesNotReady = g.mode === 'kinonames' && (
+    connected.some(p=>!knTeams.includes(kn?.assignments?.[p.id]?.team)) ||
+    knTeams.some(team=>{
+      const members=connected.filter(p=>kn?.assignments?.[p.id]?.team===team);
+      const minimum=kn?.settings?.variant==='competitive'&&kn.settings.competitive.traitors?4:2;
+      return members.length<minimum || members.filter(p=>kn?.assignments?.[p.id]?.leader).length!==1;
+    })
+  );
   async function request(event, data) {
     const r = await socket.timeout(10000).emitWithAck(event, data);
     if (!r.success) throw Error(r.message || "Действие недоступно");
@@ -104,7 +116,7 @@ export default function Lobby() {
               {g.players.length} из 16
             </span>
           </div>
-          <div className="players-list">
+          {g.mode !== 'kinonames' && <div className="players-list">
             {g.players.map((p) => (
               <div
                 key={p.id}
@@ -149,8 +161,9 @@ export default function Lobby() {
                 />
               </div>
             ))}
-          </div>
-          <CharacterPicker color={me?.color} players={g.players} playerId={player?.id} availableColors={g.allColors} onSave={color=>request("change_color",{lobbyId:g.id,color})}/>
+          </div>}
+          {g.mode !== 'kinonames' && <CharacterPicker color={me?.color} players={g.players} playerId={player?.id} availableColors={g.allColors} onSave={color=>request("change_color",{lobbyId:g.id,color})}/>}
+          {g.mode === 'kinonames' && <KinonamesTeams game={g.kinonames} players={g.players} player={player} settings={g.kinonames?.settings} onAssign={async role=>{try {await request('kinonames_assign',{lobbyId:g.id,...role});} catch(e) {showToast(e.message,'error');}}}/>}
         </section>
         <aside className="surface room-settings">
           <h2>Пригласить друзей</h2>
@@ -179,7 +192,7 @@ export default function Lobby() {
           {host ? (
             <button
               className="btn-primary full"
-              disabled={g.players.filter((p) => p.connected).length < 2 || busy}
+              disabled={connected.length < 2 || kinonamesNotReady || busy}
               onClick={launch}
             >
               {busy ? "Запускаем…" : "Начать игру"}

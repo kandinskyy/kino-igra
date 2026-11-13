@@ -12,6 +12,7 @@ dotenv.config();
 
 const app = express();
 const allowedOrigins = new Set(['https://overratedkino.ru', 'https://www.overratedkino.ru', 'https://kino-igra.onrender.com', 'https://serene.alwaysdata.net', 'http://localhost:5173', 'http://localhost:3001', 'http://localhost:4175']);
+if(process.env.NODE_ENV!=='production')for(const origin of ['http://localhost:5174','http://127.0.0.1:5173','http://127.0.0.1:5174'])allowedOrigins.add(origin);
 app.use(cors({ origin: (origin, cb) => cb(null, !origin || allowedOrigins.has(origin)) }));
 
 // Отключение HTTP/3 (QUIC) для предотвращения сбоев подключения в РФ (блокировки UDP 443 провайдерами)
@@ -40,6 +41,7 @@ const lifecycle = require('./room-lifecycle');
 const categoryIds = new Set(require('../shared/catalog-categories.json').map(c => c.id));
 const modes = require('./match-modes')({lobbies, emit: emitLobbyUpdate, clearTimer: clearLobbyTimer, endRound});
 const roomStore = require('./room-store')(lobbies);
+const kinonames = require('./kinonames-room')({ lobbies, emit: emitLobbyUpdate, clearTimer: clearLobbyTimer, catalog: require('../shared/kinonames/catalog.json').records });
 let saveTimer;
 function saveRooms() {
     clearTimeout(saveTimer);
@@ -48,23 +50,39 @@ function saveRooms() {
 
 function publicPlayer(p) {
     const { id, nickname, color, emoji, vp, connected } = p;
-    return { id, nickname, color, emoji, vp, connected };
+    return { id, nickname, color, emoji, vp, connected, waiting:!!p.waiting };
+}
+function roomMembers(room){return [...room.players,...(room.waitingPlayers||[])];}
+function admitWaiting(room){
+    for(const player of room.waitingPlayers||[]){player.waiting=false;room.players.push(player);}
+    room.waitingPlayers=[];
 }
 function sanitizeLobby(lobby, playerId) {
+    if(lobby.waitingPlayers?.some(p=>p.id===playerId))return {
+        id:lobby.id,host:lobby.host,state:'waiting',mode:lobby.mode||'original',waitingRoom:true,
+        players:roomMembers(lobby).map(publicPlayer),chat:lobby.chat||[],allColors:COLORS,
+    };
     const { id, host, targetVP, state, movies, timeLeft, timerRunning, roundPoints, roundDetails,
         roundAverages, isFinalRound, pausedDueToDisconnect, disconnectedPlayerName, disconnectedPlayerId, roundId } = lobby;
+    if (lobby.mode === 'kinonames') return {
+        id, host, targetVP, state, roundId, mode: 'kinonames',
+        players: lobby.players.map(publicPlayer), waitingPlayers:(lobby.waitingPlayers||[]).map(publicPlayer),allColors: COLORS,
+        categories: ['superheroes'], chat: lobby.chat || [],
+        kinonames: kinonames.publicView(lobby, playerId),
+    };
     const progress = Object.fromEntries(lobby.players.map(p => [p.id, Object.keys(lobby.ratings[p.id] || {}).length]));
     const active = lobby.players.filter(p => p.connected);
     return modes.publicView(lobby, playerId, { id, host, targetVP, state, movies, timeLeft, timerRunning, roundPoints, roundDetails,
         roundAverages, isFinalRound, pausedDueToDisconnect, disconnectedPlayerName, disconnectedPlayerId, roundId,
-        players: lobby.players.map(publicPlayer), winner: lobby.winner ? publicPlayer(lobby.winner) : null,
+        players: lobby.players.map(publicPlayer),waitingPlayers:(lobby.waitingPlayers||[]).map(publicPlayer),winner: lobby.winner ? publicPlayer(lobby.winner) : null,
         allColors: COLORS, progress, categories: lobby.categories || ['films'],
         allVoted: state === 'round_start' && active.length > 0 && active.every(p => progress[p.id] === 5),
         ratings: state === 'round_start' ? (playerId ? { [playerId]: lobby.ratings[playerId] || {} } : {}) : lobby.ratings });
 }
 function emitLobbyUpdate(lobbyId, lobby) {
+    kinonames.synchronize(lobby);
     saveRooms();
-    for (const p of lobby.players) {
+    for (const p of roomMembers(lobby)) {
         if (p.connected && p.socketId) io.to(p.socketId).emit('lobby_update', sanitizeLobby(lobby, p.id));
     }
 }
@@ -274,12 +292,15 @@ io.on('connection', (socket) => {
             if (typeof data !== 'object' || (data.nickname !== undefined && (typeof data.nickname !== 'string' || data.nickname.trim().length > 15)) || (data.sessionToken != null && (typeof data.sessionToken !== 'string' || data.sessionToken.length > 128))) return fail('Проверьте никнейм и код комнаты');
             return next();
         }
-        const player = lobby.players.find(p => p.id === socket.data.playerId && p.socketId === transportId && p.connected);
+        const player = roomMembers(lobby).find(p => p.id === socket.data.playerId && p.socketId === transportId && p.connected);
         if (!player) return fail('Вы больше не участник этой комнаты');
+        if(player.waiting&&!['send_chat_message','leave_lobby'].includes(event))return fail('Ожидаем начала новой игры');
+        if (lobby.mode === 'kinonames' && ['submit_rating','reroll_movie','save_guesser_ratings','edit_guesser_ratings','save_critic_ratings','start_timer','pause_timer','resume_timer','end_round_early','next_round','finish_game','dismiss_disconnect_pause'].includes(event)) return fail('Это действие недоступно в Kinonames');
         if (hostEvents.has(event) && lobby.host !== player.id) return fail('Это действие доступно только ведущему');
         if (['launch_game','start_timer','resume_timer','end_round_early','next_round'].includes(event) && lobby.players.filter(p=>p.connected).length<2) return fail('Ожидаем второго участника');
         if (event === 'submit_rating' && (lobby.state !== 'round_start' || !lobby.movies.some(m => m.id === data.movieId) || !['S','A','B','C','D'].includes(data.rating) || (data.roundId !== undefined && data.roundId !== lobby.roundId))) return fail('Оценка не принята: проверьте текущий раунд');
         if (event === 'change_color' && (typeof data.color !== 'string' || !COLORS.some(c => c.hex.toLowerCase() === data.color.toLowerCase()))) return fail('Выберите цвет из палитры');
+        if (event === 'kick_player' && lobby.mode === 'kinonames' && lobby.state === 'kinonames' && lobby.kinonames?.game?.roles[data.playerId]?.leader) return fail('Ведущий остаётся в своей роли до конца партии');
         if (lobby.mode === 'opinion') {
             if (['start_timer','pause_timer','resume_timer','end_round_early','dismiss_disconnect_pause'].includes(event)) return fail('В этом режиме таймер управляется автоматически');
             if (['submit_rating','save_critic_ratings','next_round','launch_game'].includes(event) && lobby.players.filter(p=>p.connected).length < 2) return fail('Ожидаем второго участника');
@@ -308,8 +329,10 @@ io.on('connection', (socket) => {
                 handler(...args);
                 if (!answered) { markActivity(); ack({ success: true }); }
             } else handler(...args);
-        } catch (error) { console.error('[EVENT]', event, error.message); if (typeof args[1] === 'function') args[1]({ success: false, message: ['reroll_movie','save_guesser_ratings','edit_guesser_ratings','send_chat_message','delete_chat_message'].includes(event) ? error.message : 'Не удалось выполнить действие' }); }
+        } catch (error) { console.error('[EVENT]', event, error.message); if (typeof args[1] === 'function') args[1]({ success: false, message: ['reroll_movie','save_guesser_ratings','edit_guesser_ratings','send_chat_message','delete_chat_message','kinonames_settings','kinonames_assign','kinonames_action','launch_game'].includes(event) ? error.message : 'Не удалось выполнить действие' }); }
     });
+
+    kinonames.register(socket);
 
     console.log('User connected:', socket.data.playerId);
 
@@ -322,6 +345,7 @@ io.on('connection', (socket) => {
             id: lobbyId,
             lastActivityAt: Date.now(),
             host: socket.data.playerId,
+            creatorId: socket.data.playerId,
             players: [],
             targetVP: Math.min(Math.max(Number(targetVP) || 30, 1), 999),
             categories: ['films'],
@@ -355,13 +379,20 @@ io.on('connection', (socket) => {
     socket.on('update_target_vp', ({ lobbyId, targetVP, categories, mode, circles, hiddenMode, repeatRatings }, callback) => {
         const lobby = lobbies.get(lobbyId);
         if (!lobby || lobby.host !== socket.data.playerId || lobby.state !== 'lobby') return;
-        if (categories !== undefined && (!Array.isArray(categories) || !categories.length || categories.some(c => !categoryIds.has(c)))) {
+        if (mode !== 'kinonames' && lobby.mode !== 'kinonames' && categories !== undefined && (!Array.isArray(categories) || !categories.length || categories.some(c => !categoryIds.has(c)))) {
             if (callback) callback({ success: false, message: 'Выберите хотя бы одну допустимую категорию' });
             return;
         }
-        if (mode !== undefined && !['original','opinion'].includes(mode)) return callback({success:false,message:'Неизвестный режим'});
+        if (mode !== undefined && !['original','opinion','kinonames'].includes(mode)) return callback({success:false,message:'Неизвестный режим'});
         if (circles !== undefined && (!Number.isInteger(circles)||circles<1||circles>999)) return callback({success:false,message:'Введите от 1 до 999 кругов'});
         if ([hiddenMode,repeatRatings].some(v=>v!==undefined&&typeof v!=='boolean')) return callback({success:false,message:'Неверные условия'});
+        if (mode === 'kinonames' || lobby.mode === 'kinonames') {
+            kinonames.ensure(lobby);
+            // Keep the rating games' category/target/toggle preset intact.
+            if (mode !== undefined) lobby.mode = mode;
+            emitLobbyUpdate(lobbyId, lobby);
+            return callback({success:true,targetVP:lobby.targetVP});
+        }
         const val = Math.min(Math.max(Number(targetVP) || 30, 1), 999);
         Object.assign(lobby,{mode:mode??lobby.mode??'original',circles:circles??lobby.circles??1,hiddenMode:hiddenMode??lobby.hiddenMode??false,repeatRatings:repeatRatings??lobby.repeatRatings??false});
         lobby.targetVP = val;
@@ -379,9 +410,9 @@ io.on('connection', (socket) => {
         const trimmedNick = (nickname || '').trim();
 
         if (socket.data.lobbyId && socket.data.lobbyId !== lobbyId) return callback({ success: false, message: 'Сначала выйдите из текущей комнаты' });
-        const existingPlayer = sessionToken ? lobby.players.find(p => p.sessionToken === sessionToken) : null;
-        if (!existingPlayer && lobby.players.some(p => p.socketId === transportId && p.connected)) return callback({ success: false, message: 'Вы уже в этой комнате' });
-        const existingNick = lobby.players.find(p => p.nickname.toLowerCase() === trimmedNick.toLowerCase());
+        const existingPlayer = sessionToken ? roomMembers(lobby).find(p => p.sessionToken === sessionToken) : null;
+        if (!existingPlayer && roomMembers(lobby).some(p => p.socketId === transportId && p.connected)) return callback({ success: false, message: 'Вы уже в этой комнате' });
+        const existingNick = roomMembers(lobby).find(p => p.nickname.toLowerCase() === trimmedNick.toLowerCase());
         if (!existingPlayer && existingNick) return callback({ success: false, message: 'Никнейм занят. Вернитесь из прежнего браузера или выберите другой.' });
         if (existingPlayer) {
             const oldSocketId = existingPlayer.id;
@@ -401,7 +432,7 @@ io.on('connection', (socket) => {
             const wasDisconnected = !existingPlayer.connected;
             existingPlayer.connected = true;
             existingPlayer.voluntarilyLeft = false;
-            modes.reconnect(lobby,existingPlayer,wasDisconnected);
+            if(!existingPlayer.waiting)modes.reconnect(lobby,existingPlayer,wasDisconnected);
             socket.join(lobbyId);
             if (!lobby.players.some(p => p.id === lobby.host && p.connected)) scheduleHostTransfer(lobby, lobbyId);
 
@@ -435,15 +466,12 @@ io.on('connection', (socket) => {
         // Если это новый игрок, никнейм обязателен
         if (!trimmedNick) return callback({ success: false, message: 'Введите никнейм' });
 
-        // Если это НОВЫЙ игрок, но игра уже началась -> вход закрыт!
-        if (lobby.state !== 'lobby') {
-            return callback({ success: false, message: 'Игра уже началась! Вход новых участников закрыт.' });
-        }
-
-        if (lobby.players.length >= 16) return callback({ success: false, message: 'Лобби заполнено (макс. 16 игроков)' });
+        // Late entrants share this room's membership, but cannot enter its active match.
+        const waiting=lobby.state!=='lobby'&&!(lobby.mode==='kinonames'&&lobby.kinonames?.game?.phase==='ready');
+        if (roomMembers(lobby).length >= 16) return callback({ success: false, message: 'Лобби заполнено (макс. 16 игроков)' });
 
         // Choose the first unused identity from the 24 selectable variants.
-        const colorObj = COLORS.find(c => !lobby.players.some(p => p.color.toLowerCase() === c.hex.toLowerCase())) || COLORS[0];
+        const colorObj = COLORS.find(c => !roomMembers(lobby).some(p => p.color.toLowerCase() === c.hex.toLowerCase())) || COLORS[0];
         const newToken = crypto.randomBytes(32).toString('hex');
         // New membership always gets a fresh stable ID; only a token restores one.
         // create_lobby reserves the creator as host before their first join.
@@ -451,7 +479,7 @@ io.on('connection', (socket) => {
         let playerId;
         do { playerId = crypto.randomUUID(); } while (lobby.players.some(p => p.id === playerId));
         socket.data.playerId = playerId;
-        if (reservedHost) lobby.host = playerId;
+        if (reservedHost) { lobby.host = playerId; lobby.creatorId = playerId; }
         socket.data.lobbyId = lobbyId;
         const newPlayer = {
             id: socket.data.playerId,
@@ -461,10 +489,11 @@ io.on('connection', (socket) => {
             socketId: transportId,
             vp: 0,
             connected: true,
-            sessionToken: newToken
+            sessionToken: newToken,waiting
         };
 
-        lobby.players.push(newPlayer);
+        if(waiting)(lobby.waitingPlayers||=[]).push(newPlayer);
+        else {lobby.players.push(newPlayer);if(lobby.mode==='kinonames')kinonames.ensure(lobby);}
         lobby.lastActivityAt = Date.now();
         socket.join(lobbyId);
 
@@ -476,6 +505,11 @@ io.on('connection', (socket) => {
     socket.on('launch_game', (lobbyId) => {
         const lobby = lobbies.get(lobbyId);
         if (lobby && lobby.host === socket.data.playerId) {
+            if (lobby.mode === 'kinonames') {
+                kinonames.start(lobby);
+                emitLobbyUpdate(lobbyId, lobby);
+                return;
+            }
             if (lobby.players.filter(p => p.connected).length < 2) {
                 return socket.emit('error_message', 'Для старта игры нужно минимум 2 игрока');
             }
@@ -524,7 +558,7 @@ io.on('connection', (socket) => {
         callback({success:true});
     });
     socket.on('send_chat_message', ({lobbyId, text}, callback) => {
-        const l = lobbies.get(lobbyId), p = l.players.find(p => p.id === socket.data.playerId);
+        const l = lobbies.get(lobbyId), p = roomMembers(l).find(p => p.id === socket.data.playerId);
         const message = roomActions.sendChat(l, p, text);
         emitLobbyUpdate(lobbyId, l); callback({success:true, messageId:message.id});
     });
@@ -697,8 +731,16 @@ io.on('connection', (socket) => {
     socket.on('restart_game', (lobbyId) => {
         const lobby = lobbies.get(lobbyId);
         if (lobby && lobby.host === socket.data.playerId) {
+            if(lobby.mode==='kinonames'){
+                const previousPlayers=lobby.players,previousWaiting=lobby.waitingPlayers||[];
+                lobby.players=roomMembers(lobby).map(p=>p.waiting?{...p,waiting:false}:p);lobby.waitingPlayers=[];
+                try{kinonames.start(lobby,true);}catch(error){lobby.players=previousPlayers;lobby.waitingPlayers=previousWaiting;throw error;}
+                emitLobbyUpdate(lobbyId,lobby);return;
+            }
+            admitWaiting(lobby);
             clearLobbyTimer(lobby);
             lobby.state = 'lobby';
+            if (lobby.kinonames) lobby.kinonames.game = null;
             lobby.criticQueue=null;lobby.history=[];lobby.criticId=null;lobby.criticPlayer=null;lobby.phase=null;lobby.autoRatings={};lobby.perfect={};lobby.matchPoints={};lobby.revealedAt=null;lobby.opinionRemaining=null;
             lobby.ratings = {};
             lobby.timeLeft = 60;
@@ -731,7 +773,7 @@ io.on('connection', (socket) => {
         }
 
         const colorObj = COLORS.find(c => c.hex.toLowerCase() === color.toLowerCase()) || { hex: color, emoji: '🌧️' };
-        const player = lobby.players.find(p => p.id === socket.data.playerId);
+        const player = roomMembers(lobby).find(p => p.id === socket.data.playerId);
         if (player) {
             player.color = colorObj.hex;
             player.emoji = colorObj.emoji;
@@ -745,23 +787,23 @@ io.on('connection', (socket) => {
         const lobby = lobbies.get(lobbyId);
         if (!lobby) return;
 
-        const player = lobby.players.find(p => p.id === socket.data.playerId);
+        const player = roomMembers(lobby).find(p => p.id === socket.data.playerId);
         if (player) {
             player.connected = false;
             player.voluntarilyLeft = true;
-            modes.disconnected(lobby,player,true);
+            if(!player.waiting)modes.disconnected(lobby,player,true);
                 io.to(lobbyId).emit('player_connection_notice', {message: lobby.hiddenMode ? 'Один из игроков покинул игру' : `Игрок «${player.nickname}» покинул игру`});
             socket.leave(lobbyId);
             socket.data.lobbyId = null;
 
-            if (lifecycle.everyoneLeft(lobby)) {
+            if (roomMembers(lobby).every(p=>!p.connected&&p.voluntarilyLeft)) {
                 closeRoom(lobbyId, 'Все игроки вышли из комнаты.');
                 if (callback) callback({ success: true });
                 return;
             }
 
             // Если идет раунд и таймер был запущен -> ставим на паузу
-            if (lobby.mode !== 'opinion' && lobby.state === 'round_start' && lobby.timerRunning) {
+            if (!player.waiting && lobby.mode !== 'opinion' && lobby.state === 'round_start' && lobby.timerRunning) {
                 clearLobbyTimer(lobby);
                 lobby.pausedDueToDisconnect = true;
                 lobby.disconnectedPlayerName = player.nickname;
@@ -793,11 +835,12 @@ io.on('connection', (socket) => {
         const lobby = lobbies.get(lobbyId);
         if (!lobby || lobby.host !== socket.data.playerId) return;
 
-        const index = lobby.players.findIndex(p => p.id === playerId);
+        const roster=lobby.players.some(p=>p.id===playerId)?lobby.players:(lobby.waitingPlayers||[]);
+        const index = roster.findIndex(p => p.id === playerId);
         if (index !== -1) {
             if (playerId === lobby.host) return callback({ success: false, message: 'Сначала передайте права ведущего' });
-            const removed = lobby.players.splice(index, 1)[0];
-            modes.disconnected(lobby,removed,true);
+            const removed = roster.splice(index, 1)[0];
+            if(!removed.waiting)modes.disconnected(lobby,removed,true);
             const kicked = io.sockets.sockets.get(removed.socketId);
             kicked?.emit('kicked', { message: 'Ведущий исключил вас из комнаты' });
             kicked?.leave(lobbyId);
@@ -871,15 +914,15 @@ io.on('connection', (socket) => {
     // Отключение
     socket.on('disconnect', () => {
         for (let [lobbyId, lobby] of lobbies.entries()) {
-            const player = lobby.players.find(p => p.id === socket.data.playerId);
+            const player = roomMembers(lobby).find(p => p.id === socket.data.playerId);
             if (player && player.socketId === transportId) {
                 player.connected = false;
-            modes.disconnected(lobby,player,false);
+            if(!player.waiting)modes.disconnected(lobby,player,false);
                 io.to(lobbyId).emit('player_connection_notice', {message: lobby.hiddenMode ? 'Один из игроков потерял соединение' : `Игрок «${player.nickname}» потерял соединение`});
                 player.previousSocketId = socket.data.playerId;
 
                 // Если идет раунд и таймер тикал -> ставим на паузу!
-                if (lobby.mode !== 'opinion' && lobby.state === 'round_start' && lobby.timerRunning) {
+                if (!player.waiting && lobby.mode !== 'opinion' && lobby.state === 'round_start' && lobby.timerRunning) {
                     clearLobbyTimer(lobby);
                     lobby.pausedDueToDisconnect = true;
                     lobby.disconnectedPlayerName = player.nickname;
@@ -893,7 +936,7 @@ io.on('connection', (socket) => {
                 }
 
                 // Если все отключились, чистим таймер
-                if (lobby.players.every(p => !p.connected)) {
+                if (roomMembers(lobby).every(p => !p.connected)) {
                     clearLobbyTimer(lobby);
                 }
 

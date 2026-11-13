@@ -30,10 +30,11 @@ export default function FullEntrance(){
   const [mobile,setMobile]=useState(()=>matchMedia(MOBILE_QUERY).matches);
   const [ready,setReady]=useState(false),[loadedError,setLoadedError]=useState(false),[traveling,setTraveling]=useState(false),[joining,setJoining]=useState(()=>new URLSearchParams(location.search).has('room')),[code,setCode]=useState(()=>new URLSearchParams(location.search).get('room')?.trim().toUpperCase()||''),[name,setName]=useState(()=>storage.getItem('kino_lastNickname')||''),[error,setError]=useState('');
   const [doorReady,setDoorReady]=useState(false);
+  const exteriorActive=!inLobby||traveling;
   const foyerReady=useRef(null);
   const reset=useCallback(()=>{clearTimeout(phaseTimer.current);cancelAnimationFrame(motionFrame.current);animations.current.forEach(a=>a.cancel());animations.current=[];doorScene.current?.setPose({zoom:1,pan:0,angle:0,angleRight:0});busy.current=false;cancelRoom();if(alive.current){setTraveling(false);frame.current.dataset.phase=frame.current.dataset.scene==='lobby'?'lobby':'idle';}},[cancelRoom]);
   useEffect(()=>{
-    if(mobile||inLobby)return;
+    if(mobile||!exteriorActive)return;
     let canceled=false,scene;
     const failed=()=>{if(!canceled){setDoorReady(false);setError('Не удалось открыть 3D-дверь. Обновите страницу или проверьте поддержку WebGL.');}};
     import('../cinema-entrance/door-scene.js').then(({createDoorScene})=>{
@@ -42,7 +43,7 @@ export default function FullEntrance(){
       try{scene=createDoorScene(doorCanvas.current,{textureUrl:DOOR_TEXTURE,interiorUrl:DOOR_INTERIOR,onReady:()=>{if(!canceled)setDoorReady(true);},onError:failed});doorScene.current=scene;}catch{failed();}
     }).catch(failed);
     return()=>{canceled=true;cancelAnimationFrame(motionFrame.current);scene?.dispose();if(doorScene.current===scene)doorScene.current=null;};
-  },[mobile,inLobby]);
+  },[mobile,exteriorActive]);
   useEffect(()=>{const image=new Image();image.src='/prototype/night-club/assets/cinema-foyer.png';foyerReady.current=image.decode().catch(()=>{});},[]);
   useLayoutEffect(()=>{const update=()=>{const w=camera.current.clientWidth;world.current.style.transform=`scale(${w/1536})`;const r=frame.current.getBoundingClientRect(),root=frame.current.parentElement;for(const[k,v]of Object.entries({left:r.left,top:r.top,right:r.right,bottom:r.bottom,fadeX:r.width*.075,fadeY:r.height*.035}))root.style.setProperty(`--art-${k}`,`${v}px`);};const resize=new ResizeObserver(update);resize.observe(camera.current);resize.observe(document.documentElement);update();return()=>resize.disconnect();},[]);
   useEffect(()=>{const query=matchMedia(MOBILE_QUERY);const update=()=>{reset();setMobile(query.matches);};query.addEventListener('change',update);return()=>query.removeEventListener('change',update);},[reset]);
@@ -56,8 +57,11 @@ export default function FullEntrance(){
     if(join&&!/^[A-Z0-9]{6}$/.test(code.trim())){setError('Введите код из 6 букв или цифр');return;}
     busy.current=true;
     const result=restored?(beginRestoredEntry?.()||{success:true}):await prepareRoom(name,join?code.trim():'');
-    if(!alive.current)return;
+    if(!alive.current||!busy.current)return;
     if(!result.success){busy.current=false;setError(result.message);return;}
+    // Decode the destination before moving so the camera never waits in an empty frame.
+    if(!mobile)await foyerReady.current;
+    if(!alive.current||!busy.current)return;
     setError('');setTraveling(true);frame.current.dataset.phase='approaching';
     const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches||mobile;
     const duration=reduced?450:3200;
@@ -85,23 +89,21 @@ export default function FullEntrance(){
       };sample();
       animate(weatherCanvas.current,[{opacity:1},{opacity:1,offset:.36},{opacity:0,offset:.72},{opacity:0}],{duration,easing:'ease-in-out'});
     }
-    // Fade the composited scene; independent fades reveal the baked closed door underneath.
-    animate(exterior.current,[{opacity:1},{opacity:1,offset:reduced?0:.82},{opacity:0}],{duration,easing:'ease-in-out'});
+    // Keep the completed doorway visible until the foyer exists underneath it.
     try{await move.finished;if(!alive.current)return;frame.current.dataset.phase='threshold';
       // Cross the threshold into the foyer. Light belongs only to the door aperture.
       if(!mobile)await foyerReady.current;
       if(!alive.current||!busy.current)return;
-      animations.current.forEach(a=>a.cancel());
-      camera.current.style.transformOrigin='50% 50%';
       let committed=false;
       flushSync(()=>{committed=commitRoom();});
       if(!committed){reset();setError('Комната закрыта или вы больше не её участник. Попробуйте войти снова.');return;}
       frame.current.dataset.phase='arriving';
       const arrival=frame.current.querySelector('.lobby-arrival');
       if(!arrival){reset();setError('Не удалось открыть комнату. Попробуйте войти снова.');return;}
+      animate(exterior.current,[{opacity:1},{opacity:0}],{duration:reduced?250:650,easing:'cubic-bezier(.2,.65,.3,1)'});
       if(!reduced)animate(arrival.querySelector('.foyer-art'),[{transform:'translate(-50%,-50%) scale(1.045)'},{transform:'translate(-50%,-50%) scale(1)'}],{duration:650,easing:'cubic-bezier(.2,.65,.3,1)'});
       const fade=animate(arrival,[{opacity:0},{opacity:1}],{duration:reduced?250:650,easing:'cubic-bezier(.2,.65,.3,1)'});
-      await fade.finished;reset();
+      await fade.finished;reset();camera.current.style.transformOrigin='50% 50%';
     }catch{ /* Escape or unmount cancels the visual preview. */ }
   }
   useEffect(()=>{if(entranceRequested&&!busy.current&&(mobile||(ready&&doorReady)))void enter(false,true);});

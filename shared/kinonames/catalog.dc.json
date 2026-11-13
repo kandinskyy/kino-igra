@@ -1,0 +1,1278 @@
+{
+  "schemaVersion": 1,
+  "sourceStatus": "partial",
+  "records": [
+    {
+      "id": "dc-2e6850838dc14814",
+      "name": "Бэтмен - Брюс Уэйн",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-2dbfec4a077f2a22",
+      "name": "Бэтмен - Томас Уэйн",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-cc8ece28b9c96024",
+      "name": "Бэтмен будущего - Терренс «Терри» Макгиннис",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-fe2098655f8a4f1d",
+      "name": "Найтвинг - Дик Грейсон",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-179ed23f13034d09",
+      "name": "Робин - Дэмиен Уэйн",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-e47740e2492c4afd",
+      "name": "Красный колпак - Джейсон Тодд",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-62ccec77b77e9fe0",
+      "name": "Робин - Келли Керри",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-f0392dc5aa8f5d89",
+      "name": "Робин - Тим Дрейк",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-7a5cd127bc61eb8d",
+      "name": "Женщина кошка - Селина Кайл",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-805527cb4fae9f79",
+      "name": "Джим Гордон",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-bc41083a4b058acb",
+      "name": "Кармайн Фальконе",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-fcd582d9d481c0e5",
+      "name": "Пингвин - Освальд Кобблпотт",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-bb27d3f94bf0c319",
+      "name": "Джокер",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-7daefc022becbd17",
+      "name": "Бэтмен который смеется",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-ae66b34b6d7b4b25",
+      "name": "Мистер Фриз - Виктор Фрис",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-c5b21017f0bcae93",
+      "name": "Светлячок - Гарфилд Линнс",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-abc7b008378b8b96",
+      "name": "Глиноликий - Базиль Карло",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-21e222680923ea39",
+      "name": "Хьюго Стрендж",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-bfa703066e8f5ed8",
+      "name": "Альфред Пенниуорт",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-82c1e16f54aa3316",
+      "name": "Бэтгерл - Барбара Гордон",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-a7c4af2bfe6654a2",
+      "name": "Бэтгерл - Кассандра Кейн",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-d4c765001dc61cdd",
+      "name": "Бэтвумен - Кетрин Кейн",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-55552e60275b11b3",
+      "name": "Двуликий - Харви Дент",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-64f88d77f60b9552",
+      "name": "Харл Квин - Харлин Квинзель",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-cf6511797cd55c9d",
+      "name": "Панчлайн",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-63cb541d020644bb",
+      "name": "Соломон Гранди",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-a1999fef28481ad7",
+      "name": "Бейн",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-2c13ddd951c3cf15",
+      "name": "Менбэт",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-72da7f31edcd64ee",
+      "name": "Мистер Пиг",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-01857325d94c6d64",
+      "name": "Пугало",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-a063df45bda565d4",
+      "name": "Загадочник",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-b76969abdc8689ff",
+      "name": "Мистер Флор",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-6b9f053627d1c0b6",
+      "name": "Доктор Смерть",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-ddc1673a8bba3e9b",
+      "name": "Убийца Крок",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-8c376462ba22135e",
+      "name": "Король Акул",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-1c954d5b3aba84e6",
+      "name": "Хаш",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-3224f1a0c3a90fa1",
+      "name": "Безумный шляпник",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-47ea0d671f40342b",
+      "name": "Доктор Фосфор",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-e133c3acc698a2cc",
+      "name": "Ласка",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-f8737f3658ea2f5a",
+      "name": "Рик Флэг",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-85caf88b17e3bf5a",
+      "name": "Эрик Франкенштейн",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-9e82224e32f29c7e",
+      "name": "Жена Франкенштейна",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-38e426d0687e4638",
+      "name": "Нина Мазурски",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-1db66fd038b5faeb",
+      "name": "G.I. Робот",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-83f280a96e1e4070",
+      "name": "Леди Шива",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-00b235e07959b4fc",
+      "name": "Ядовитый плющ",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-fdd680a7c0b61b02",
+      "name": "Коготь",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-9ac7f53ffb760cc3",
+      "name": "Виктор Засз",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-b31fcb8178ee9135",
+      "name": "Рас Аль Гул",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-6f35b021b2284fed",
+      "name": "Талия Аль Гул",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-b31c24ffcfa8b56a",
+      "name": "Анархия",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-dbe96bfd0aa10ac3",
+      "name": "Детстроук",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-4ab49840bfd00c46",
+      "name": "Дэдшот",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-9a27320d95877af3",
+      "name": "Черная Маска",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-a407f773862b4be9",
+      "name": "Роршах",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-df686f88a6dd35b2",
+      "name": "Ночная сова",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-f00bd755dcf5923a",
+      "name": "Доктор Манхэттен",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-4389fe7a02b2122e",
+      "name": "Комедиант",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-a594d1c430f9216a",
+      "name": "Озимандия",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-9c93cda7ef5a4f5d",
+      "name": "Шелковая тень (Хранители)",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-cd9dbd02d753aaaf",
+      "name": "Супермен",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-1e17127a5aef84fe",
+      "name": "Ультрамен",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-f1485b5a6b3cb9ec",
+      "name": "Супербой",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-9364c2b07b2f96bf",
+      "name": "Пауэргерл",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-8fa95d604142a045",
+      "name": "Супергерл",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-d8a8fdfd5983db9e",
+      "name": "Аманда Уоллер",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-c0777be0c65df5c2",
+      "name": "Лекс Лютор",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-c98a9278098d7969",
+      "name": "Анти-Монитор",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-8f8e5f7b8d2506e7",
+      "name": "Биззаро",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-7e3d7cbc246aa3c2",
+      "name": "Бладспорт",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-1d4589292995f650",
+      "name": "Брэйниак",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-d1627111bae7e0ec",
+      "name": "Киборг Супермен",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-e59cfa6b2c1e0699",
+      "name": "Металло",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-faccf0e7deaed1f5",
+      "name": "Дарксайд",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-f55eddfa5b397bc6",
+      "name": "Мистер Миракл",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-153f01249df139b1",
+      "name": "Генерал Зод",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-bc670d37ee9389c1",
+      "name": "Электра (livewire)",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-f3e8839cd0ff1a7d",
+      "name": "Лобо",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-1389c0fb09276ab9",
+      "name": "Мистер Мксиптлк (это реальное имя, не опечатка)",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-066b2c924929f728",
+      "name": "Паразит",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-ea0552c6101846ce",
+      "name": "Игрушечник",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-9fe27ff8cc02c022",
+      "name": "Зеленый фонарь - Хэл Джордан",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-844cc6fd399ab95b",
+      "name": "Зеленый фонарь - Джон Стюарт",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-414ff0ffbbb0ebcd",
+      "name": "Зеленый фонарь - Гай Гарднер",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-8a77cb0019368f00",
+      "name": "Зеленый фонарь - Кайл Райнер",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-08e9f20ef7b185cd",
+      "name": "Килворг",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-f35cb5cedfc973b4",
+      "name": "Синестро",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-6d1a67c8eb2e1de2",
+      "name": "Атроцитус",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-03e05fd4522f31fe",
+      "name": "Вандал Сэвэдж",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-49db2b129bc8d4d4",
+      "name": "Звездный сапфир",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-db88497b625180c0",
+      "name": "Черная рука",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-b45a08b7508f9e65",
+      "name": "Некрон",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-721181f1e884dec3",
+      "name": "Параллакс",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-4d62e7d7d09bcc63",
+      "name": "Ларфлиз",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-56b58ec881463f09",
+      "name": "Флэш - Джей Гаррик",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-49b49d5ba631301b",
+      "name": "Флэш - Барри Аллен",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-254e06b3cc143823",
+      "name": "Флэш - Уолли Уэст",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-11dfec25dad77def",
+      "name": "Флэш - Барт Аллен",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-a7938aac3723db5c",
+      "name": "Джесси Квик",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-675889d374f6338e",
+      "name": "Мыслитель - Клиффард ДеВо",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-f421fb5dff6a5b79",
+      "name": "Абра Кадабра",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-60208acef5ab70e2",
+      "name": "Доктор Алхимия",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-f77c450889c65728",
+      "name": "Волчок",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-20482602e0acb6f2",
+      "name": "Горрила Гродд",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-8d2543a3e4406aeb",
+      "name": "Золотой Глайдер",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-274d3da4b109efb1",
+      "name": "Капитан Холод",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-12fd9957539f8f42",
+      "name": "Хитвейв",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-8e3111d2d51f6c85",
+      "name": "Капитан Бумеранг",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-a7aefc94f209d76b",
+      "name": "Крысолов",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-232beaeeb3412bc9",
+      "name": "Мастер зеркал",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-1b62a51de7984a30",
+      "name": "Погодный волшебник",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-77181c723449931a",
+      "name": "Профессор Зум (Обратный Флэш)",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-e6dd3a9a38cee070",
+      "name": "Зум - Хантер Соломон",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-44e69a1d69f15b0d",
+      "name": "Савитар",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-094c86dd77457824",
+      "name": "Человек-черепаха",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-d4eda978cc90b0be",
+      "name": "Черный Флэш",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-899b45159d0e8bf9",
+      "name": "Зеленая стрела",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-02e9c31d6814522c",
+      "name": "Арсенал/Спиди",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-9945695e9524951e",
+      "name": "Черная канарейка",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-06aff6eff2c10f88",
+      "name": "Мистер Террифик",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-b47c9ad2293303a3",
+      "name": "Человек-Ястреб",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-dca915f5b688e733",
+      "name": "Орлица",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-f4fb77f169c7ce28",
+      "name": "Атом",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-2ffc7caa720e9ba4",
+      "name": "Себастьян Блад",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-1ada323839ebf674",
+      "name": "Прометей",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-2c2e15f633165f83",
+      "name": "Купидон",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-430f8209b2c15ee7",
+      "name": "Линчеватель",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-e84df23d60cbeeac",
+      "name": "Малькольм Мерлин",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-99f6448a4916c224",
+      "name": "Миротворец",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-5b5e595ea02f9bd4",
+      "name": "Человек в горошек",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-c3ac4fc15722d162",
+      "name": "Эль Диабло",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-e3141c928527a75b",
+      "name": "Чаровница",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-ee0eebe844d4869d",
+      "name": "Убийца мороз",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-b5ab1bbc216c7dfc",
+      "name": "Белый Дракон",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-bba15c009f73894f",
+      "name": "Азраил",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-5c3d1c96f5e18610",
+      "name": "Аквамен",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-58fdaf47049d716a",
+      "name": "Мера",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-7e54acc1ce39f1ed",
+      "name": "Орм",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-fe8029fdb08cc3d4",
+      "name": "Черная Манта",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-97bfb40510357200",
+      "name": "Чудо женщина",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-81986eeab60caa2e",
+      "name": "Чуда девушка",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-5c58ba4e2655b398",
+      "name": "Стив Тревор",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-c7719a59c15d7e92",
+      "name": "Марсианский охотник",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-28d36dd67d89f869",
+      "name": "Метаморфо",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-a2fa871781c20828",
+      "name": "Энимал мен",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-29eb05c34628ee15",
+      "name": "Киборг",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-524b2eae73d4da90",
+      "name": "Шазам",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-b444349c8dc65ad2",
+      "name": "Гепарда",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-a58f57336a57237e",
+      "name": "Арес",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-ef64a1dce57ddf4f",
+      "name": "Гиганта",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-23d17453a68534b0",
+      "name": "Цирцея",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-5a0a910011188bc7",
+      "name": "Степпенвульф",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-b54a276df3e06704",
+      "name": "Медуза",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-f216eb28c8cbfbc4",
+      "name": "Сон/Морфей (песочный человек)",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-f3fe264a0baef4c8",
+      "name": "Смерть (песочный человек)",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-45bb786c0ea7c5f0",
+      "name": "Судьба (песочный человек)",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-13d622dbe3a7215b",
+      "name": "Разрушение (песочный человек)",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-87ad607779e8b82b",
+      "name": "Отчаяние (песочный человек)",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-400c12c0222f4ff0",
+      "name": "Страсть (песочный человек)",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-10970c664d0da61b",
+      "name": "Безумие (песочный человек)",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-c48aaff1b3bb8393",
+      "name": "Люцифер",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-39eef13b39ae752b",
+      "name": "Коринфянин",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-856e73c22a6948cc",
+      "name": "Доктор Судьба (песочный человек)",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-f9f99fcd245b7bf2",
+      "name": "Доктор Фейт",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-15df47a5ff474595",
+      "name": "Джон константин",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-c48998570e65cee2",
+      "name": "Мертвец (Deadman)",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-ad2f2b915434f05d",
+      "name": "Затанна",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-745e319d124f82b0",
+      "name": "Болотная тварь",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-55da7987cbcbe41e",
+      "name": "Этриган",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-da5c02e639f1c015",
+      "name": "Рейвен",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-5d9c3746785908e4",
+      "name": "Бист бой",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-416f7c0f5ae696dc",
+      "name": "Папа Миднайт",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-3a1a4103f5018c32",
+      "name": "Гэбриел",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-d4d335216b614454",
+      "name": "Король вампиров",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-f32e41f820a8cd6e",
+      "name": "Первый из Падших (Сатана)",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-0e4f239bd11101d6",
+      "name": "Тригон",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-418b7cea3ebcfd29",
+      "name": "Аквалэд",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-e92acf66508a46b3",
+      "name": "Старфаер",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-f76b763c366b97d1",
+      "name": "Блэкваер",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-32bf408ab682a60b",
+      "name": "Мисс Марсианка",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-c8b8e75407711494",
+      "name": "Ларри Трейнор “Негативный человек” (Роковой патруль)",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-c24ff6697f5b6c26",
+      "name": "Клифф Стил “Роботмен” (Роковой патруль)",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-baf1b9fce82c79ff",
+      "name": "Рита Фарр “Эластичная девушка” (Роковой патруль)",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-862806f284169791",
+      "name": "Кей Чаллис “Безумная Джейн” (Роковой патруль)",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-ad8f6b236a794d76",
+      "name": "Мистер Никто (Роковой патруль)",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-706c82983f6eac18",
+      "name": "Флекс Менталло (Роковой патруль)",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-f5289d68fff7dc29",
+      "name": "Животно-растительно-минеральный-человек (Роковой патруль)",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-5d9a197c43d25cd3",
+      "name": "Удлиняющийся человек",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-f9d301067c7d787d",
+      "name": "Огненный Шторм",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-f580793832312efe",
+      "name": "Черный Адам",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-3448f6d1d6593f22",
+      "name": "Порпетуя",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-8ac6b6a1247a9078",
+      "name": "Саббак",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-047816b08c3f439c",
+      "name": "Синий жук",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-22820726569e8c94",
+      "name": "Черный жук",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-a3e237fb3880a18a",
+      "name": "Ибак",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-092dcafe4739ea34",
+      "name": "Семь смертных грехов",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-a35e6cf6373ffe91",
+      "name": "Максвелл Лорд",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-46efac3a59468a23",
+      "name": "Старгерл",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-0d29ba50e0d067f6",
+      "name": "Волчица",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-377eb33aa0626941",
+      "name": "Большая Барда",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-b159ce4074d1158f",
+      "name": "Добрая бабушка",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-6acfec7bafdaa981",
+      "name": "Дзюдомастер",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-ed61b2740385bbc2",
+      "name": "Охотница",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-9e657bad8743e68f",
+      "name": "Черная молния",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-e06b799f547a04a3",
+      "name": "Катана",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-3580c836f04bc09e",
+      "name": "Бустер Голд",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-974e72399fafddd3",
+      "name": "Красная смерть",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-06f7fb8921f20358",
+      "name": "Бэтмен Машина убийства",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-8d685cffc021aad9",
+      "name": "Бэтмен Рассветящий",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-65b60b9ce6d71185",
+      "name": "Бэтмен Беспощадный",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-67da605da400b4d9",
+      "name": "Бэтмен Разрушитель",
+      "source": "dc-personazhi.docx",
+      "image": null
+    },
+    {
+      "id": "dc-6cca0e6213643f88",
+      "name": "Статик",
+      "source": "dc-personazhi.docx",
+      "image": null
+    }
+  ]
+}

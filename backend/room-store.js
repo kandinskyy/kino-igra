@@ -11,7 +11,7 @@ module.exports = function roomStore(rooms) {
     if (snapshot.version !== 1) throw Error('Unsupported room snapshot');
     for (const room of snapshot.rooms) {
       if (isExpired(room)) continue;
-      room.players.forEach(p => { p.connected = false; p.socketId = null; });
+      [...room.players,...(room.waitingPlayers||[])].forEach(p => { p.connected = false; p.socketId = null; });
       if (room.timerRunning && room.deadline) room.timeLeft = Math.max(0, Math.ceil((room.deadline - room.updatedAt) / 1000));
       room.timerRunning = false; room.timerInterval = null; room.hostGraceTimer = null;
       room.allOfflineSince = Date.now(); rooms.set(room.id, room);

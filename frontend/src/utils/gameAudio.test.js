@@ -32,9 +32,13 @@ test('game sound unlocks from an app gesture, ignores old mute preferences and n
     assert.ok(oscillators.every(o=>o.stopsAt<14));
     assert.equal(sound.playRoundCue('role'),true);
     assert.equal(oscillators.length,6);
+    assert.equal(sound.playClockTick(),true);
+    assert.equal(oscillators.length,8);
+    assert.ok(oscillators.slice(-2).every(o=>o.stopsAt<12.1));
     audio.state='suspended';
     assert.equal(sound.playRoundCue(),false);
-    assert.equal(oscillators.length,6);
+    assert.equal(sound.playClockTick(),false);
+    assert.equal(oscillators.length,8);
     cleanup(); assert.equal(listeners.size,0);
   } finally { Object.assign(globalThis,originals); }
 });

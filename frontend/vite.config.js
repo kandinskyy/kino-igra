@@ -1,10 +1,11 @@
 import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
 import {cinemaBuild} from './cinema-build.js'
+import {kinonamesDemoPlugin} from './kinonames-demo-plugin.js'
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(),cinemaBuild()],
+  plugins: [react(),cinemaBuild(),kinonamesDemoPlugin()],
   base: '/',
   server: {
     host: '0.0.0.0',

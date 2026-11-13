@@ -1,0 +1,6564 @@
+{
+  "schemaVersion": 1,
+  "generatedFrom": [
+    "source-user-list.txt",
+    "DC персонажи.docx"
+  ],
+  "recordCount": 819,
+  "imageCount": 0,
+  "records": [
+    {
+      "id": "kn-1db66fd038b5faeb",
+      "name": "G.I. Робот",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-f421fb5dff6a5b79",
+      "name": "Абра Кадабра",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-c206be06e624f0bc",
+      "name": "Агата Харкнесс",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-010f9849479c51dc",
+      "name": "Агент Веном (Флэш Томпсон)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-b90a526b4a833e1b",
+      "name": "Агент США (Джон Уокер)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-ed1fe731f7cc1b71",
+      "name": "Адам Уорлок",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-802a387f7b6ff048",
+      "name": "Азазель",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-bba15c009f73894f",
+      "name": "Азраил",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-418b7cea3ebcfd29",
+      "name": "Аквалэд",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-5c3d1c96f5e18610",
+      "name": "Аквамен",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-b5fb3b3c655d5034",
+      "name": "Алая Ведьма (Ванда Максимофф)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-abfcc137e43f7cfe",
+      "name": "Алая Скарабей (Лейла Эль-Фаули)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-2eca2a3260c75f6c",
+      "name": "Аллен — инопланетянин",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-1ac3103dfd23dc36",
+      "name": "Алмазбек (Уиллис Страйкер)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-f8bad3518cf65f03",
+      "name": "Алый Паук (Бен Рейли)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-593063b0667edbc7",
+      "name": "Алый Паук (Каин Паркер)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-df0da2a7c7049720",
+      "name": "Альбедо",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-04e3414fc6b4bdf2",
+      "name": "Альтрон",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-bfa703066e8f5ed8",
+      "name": "Альфред Пенниуорт",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-d8a8fdfd5983db9e",
+      "name": "Аманда Уоллер",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-68b4344338643f3f",
+      "name": "Америка Чавес",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-b31c24ffcfa8b56a",
+      "name": "Анархия",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-81635866d3c1a284",
+      "name": "Ангел (Уоррен Уортингтон III)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-4cd2855ddb9336ea",
+      "name": "Ангстром Леви",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-33e35c0a1859e2fa",
+      "name": "Андре Андерсон",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-d20a361e9170c427",
+      "name": "Аннигилус",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-6526a4cc89174e68",
+      "name": "Аннисса",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-c98a9278098d7969",
+      "name": "Анти-Монитор",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-96f83825d87ff9ac",
+      "name": "Антиплащ (Джим Старлинг)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-784072f9f8417e12",
+      "name": "Апокалипсис (Эн Сабах Нур)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-a58f57336a57237e",
+      "name": "Арес",
+      "sources": [
+        "dc-personazhi.docx",
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-be81f1c0fdd89629",
+      "name": "Арним Зола",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-02e9c31d6814522c",
+      "name": "Арсенал/Спиди",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-2212d55d24883a68",
+      "name": "Артур Хэрроу",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-f9d2aea674230769",
+      "name": "Артур Эверест",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-f4fb77f169c7ce28",
+      "name": "Атом",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-f404e7a55cc2f5a4",
+      "name": "Атомная Ева (Саманта Ив Уилкинс)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-85f76737ef83c452",
+      "name": "Атомный Самурай",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-6d1a67c8eb2e1de2",
+      "name": "Атроцитус",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-470e70058c92562f",
+      "name": "Аяк",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-786b76e3a0327be0",
+      "name": "Бакстер Стокман",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-bf4619a37c1a7d9c",
+      "name": "Банши (Шон Кэссиди)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-312fce2a3d6af43c",
+      "name": "Барнаби Брукс-младший",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-daedd40fa1e73060",
+      "name": "Барон Земо (Гельмут Земо)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-a83a35c1f39d1189",
+      "name": "Барон Земо (Генрих Земо)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-a2ef3876ef51d13a",
+      "name": "Барон Мордо (Карл Мордо)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-574eeddb91d54ab0",
+      "name": "Барон Штрукер (Вольфганг фон Штрукер)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-9c79d06d5a7e6fbc",
+      "name": "Бастион",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-10970c664d0da61b",
+      "name": "Безумие (песочный человек)",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-3524821b1b8c7265",
+      "name": "Безумный Мыслитель",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-3224f1a0c3a90fa1",
+      "name": "Безумный шляпник",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-a1999fef28481ad7",
+      "name": "Бейн",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-b5ab1bbc216c7dfc",
+      "name": "Белый Дракон",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-f2377316e3f60c07",
+      "name": "Бен Даймио",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-a2797121f87c2858",
+      "name": "Бен Теннисон",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-18b4b63f170c8a39",
+      "name": "Бен Харгривз",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-e79562afd6160a7d",
+      "name": "Бессмертный",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-7bcdedc2fc26b056",
+      "name": "Бета Рэй Билл",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-6a463e0ec84f4c2d",
+      "name": "Бибоп",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-8f8e5f7b8d2506e7",
+      "name": "Биззаро",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-afae4eaed47b2891",
+      "name": "Билл Конский Череп",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-45402cdae3dd0f66",
+      "name": "Билли Бутчер",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-5d9c3746785908e4",
+      "name": "Бист бой",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-d8f66b18d5bfe96a",
+      "name": "Бишоп (Лукас Бишоп)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-7e3d7cbc246aa3c2",
+      "name": "Бладспорт",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-50a491da2e5cdc3e",
+      "name": "Бласт",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-14f8f26e696313a2",
+      "name": "Бластаар",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-9298346384961e97",
+      "name": "Близнец Маулер (второй)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-5d0061aa7e745cd8",
+      "name": "Близнец Маулер (первый)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-a4b27f735a1f2e70",
+      "name": "Блинк (Кларис Фергюсон)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-5e37a20f33205a1b",
+      "name": "Блэйд (Эрик Брукс)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-f76b763c366b97d1",
+      "name": "Блэкваер",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-f68a16734f245611",
+      "name": "Блэкхарт",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-12f442792a7090b3",
+      "name": "Боевой Зверь (Трагг)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-bbdb0842486faf84",
+      "name": "Боливар Траск",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-745e319d124f82b0",
+      "name": "Болотная тварь",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-377eb33aa0626941",
+      "name": "Большая Барда",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-835d20ac718aaf4c",
+      "name": "Борос",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-29f4acd2c18deae4",
+      "name": "Бражник (Габриэль Агрест)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-8467337d26bded43",
+      "name": "Брат Вуду (Джерико Драмм)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-83f946f47e10473b",
+      "name": "Брит",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-75e8fd7d5dc6ca35",
+      "name": "Бродяга (Аарон Дэвис)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-125176bcee11fe72",
+      "name": "Бродяга (Хоби Браун)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-1d4589292995f650",
+      "name": "Брэйниак",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-f9a72790fe27f933",
+      "name": "Бум-Бум (Табита Смит)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-3580c836f04bc09e",
+      "name": "Бустер Голд",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-b60cfbbf3ecd53c9",
+      "name": "Бушмастер (Джон МакАйвер)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-a86b03303b5a804d",
+      "name": "Бушмен (Рауль Бушмен)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-54deba7c0ea34cfe",
+      "name": "Бушрут (Реджинальд Бушрут)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-28626069b7f5cbda",
+      "name": "Бэнг",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-d4c765001dc61cdd",
+      "name": "Бэтвумен - Кетрин Кейн",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-82c1e16f54aa3316",
+      "name": "Бэтгерл - Барбара Гордон",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-a7c4af2bfe6654a2",
+      "name": "Бэтгерл - Кассандра Кейн",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-2e6850838dc14814",
+      "name": "Бэтмен - Брюс Уэйн",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-2dbfec4a077f2a22",
+      "name": "Бэтмен - Томас Уэйн",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-65b60b9ce6d71185",
+      "name": "Бэтмен Беспощадный",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-06f7fb8921f20358",
+      "name": "Бэтмен Машина убийства",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-67da605da400b4d9",
+      "name": "Бэтмен Разрушитель",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-8d685cffc021aad9",
+      "name": "Бэтмен Рассветящий",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-cc8ece28b9c96024",
+      "name": "Бэтмен будущего - Терренс «Терри» Макгиннис",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-7daefc022becbd17",
+      "name": "Бэтмен который смеется",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-253dca65b572267c",
+      "name": "Валерия Ричардс",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-ac6c567513286dae",
+      "name": "Валькирия (Брунгильда)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-03e05fd4522f31fe",
+      "name": "Вандал Сэвэдж",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-c7524ec4ed11fe82",
+      "name": "Варпатч (Джеймс Праудстар)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-970830b72c90a62b",
+      "name": "Венера де Мило",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-819766ff7034514f",
+      "name": "Веном (Эдди Брок)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-46a3dec5ed09dbb7",
+      "name": "ВерАнке",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-d369b53659c44b48",
+      "name": "Весперия (Зои Ли)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-ba13d901cb42b0aa",
+      "name": "Вижн",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-ed3e6b80f40b8e1e",
+      "name": "Виккан (Билли Каплан)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-9ac7f53ffb760cc3",
+      "name": "Виктор Засз",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-93d7ba96d75e2d9a",
+      "name": "Виктор Харгривз",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-88ad9b22e8df0aea",
+      "name": "Виктория Ньюман",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-a997c06e1e7b6403",
+      "name": "Вилгакс",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-b72e0ff3867080dc",
+      "name": "Влад Плазмиус (Влад Мастерс)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-cfe9890c84d0f2ee",
+      "name": "Воитель (Джеймс Роудс)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-4ca1940c80315689",
+      "name": "Войд (Карен)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-0d29ba50e0d067f6",
+      "name": "Волчица",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-dfa12de12f388ede",
+      "name": "Волчица (Рэйчел Синклер)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-f77c450889c65728",
+      "name": "Волчок",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-5e2a858f9bc55e70",
+      "name": "Вонг",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-d2bc3de4495ad078",
+      "name": "Ворон (Эрик Дрейвен)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-986ba0defe460242",
+      "name": "Все За Одного",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-78a7e103668af376",
+      "name": "Высший Разум",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-d5fbe6b76b326c87",
+      "name": "Высший Эволюционер",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-917c261433ea840f",
+      "name": "Вэньву",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-e1c6124617078860",
+      "name": "Гадюка (Офелия Саркисян)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-90af071cc674e929",
+      "name": "Галактус",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-1f0aa926e444565a",
+      "name": "Гамбит (Реми Лебо)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-02b4cf5018eb0bb6",
+      "name": "Гамора",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-3eefe0d26a2fba70",
+      "name": "Гароу",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-adc8644f5c1ee856",
+      "name": "Гвен Теннисон",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-b7e119ddfdf10d94",
+      "name": "Гвен-паук (Гвен Стейси)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-e97deb44b4e72fa7",
+      "name": "Гвенпул (Гвендолин Пул)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-153f01249df139b1",
+      "name": "Генерал Зод",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-a3c1b4d821b86d8c",
+      "name": "Генос",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-b444349c8dc65ad2",
+      "name": "Гепарда",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-67a71fc373fb77a9",
+      "name": "Геркулес",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-e0953415141c250d",
+      "name": "Гертруда Йоркс",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-ef64a1dce57ddf4f",
+      "name": "Гиганта",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-24fc27c11b8f061e",
+      "name": "Гильгамеш",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-abc7b008378b8b96",
+      "name": "Глиноликий - Базиль Карло",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-809be16008691ba9",
+      "name": "Говард-утка",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-aa85727a8a4dc67d",
+      "name": "Голдар",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-f3065d3889dfcf96",
+      "name": "Голиаф (Билл Фостер)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-f3e53d66ae971840",
+      "name": "Голубая Роза (Карина Лайл)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-85a0de495bece409",
+      "name": "Горгон",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-1edd56757a31be9d",
+      "name": "Горр Убийца богов",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-20482602e0acb6f2",
+      "name": "Горрила Гродд",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-3d9acff0a65c02c2",
+      "name": "Грандмастер (Эн Дви Гаст)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-8314d095359381c6",
+      "name": "Григач",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-de4db21308d6c83a",
+      "name": "Грут",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-3a1a4103f5018c32",
+      "name": "Гэбриел",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-8f9bd2ed9ff80134",
+      "name": "Даби (Тоя Тодороки)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-1748e48034509972",
+      "name": "Давос",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-b14f34054492a090",
+      "name": "Даззлер (Элисон Блэр)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-ef38358163ef8cfc",
+      "name": "Дайши",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-7c4a513bc18de574",
+      "name": "Дакен (Акихиро)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-e7d387176f6c8b5f",
+      "name": "Дарвин (Армандо Муньос)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-64452e70380b12a3",
+      "name": "Дарк Дэнни",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-faccf0e7deaed1f5",
+      "name": "Дарксайд",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-1ebc62692b20cea4",
+      "name": "Дважды (Дзин Бубайгавара)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-55552e60275b11b3",
+      "name": "Двуликий - Харви Дент",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-5713cdfd3b134edd",
+      "name": "Девушка-белка (Дорин Грин)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-1bb25a93acec9591",
+      "name": "Девушка-паук (Мэйдэй Паркер)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-dbe96bfd0aa10ac3",
+      "name": "Детстроук",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-795bb3f44bf4b2cd",
+      "name": "Джаггернаут (Кейн Марко)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-6c1b8c0bedb71dba",
+      "name": "Джастин Хаммер",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-52ec31303010d4c3",
+      "name": "Джейк Лонг",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-de384e84ced870ca",
+      "name": "Джек Флаг (Джек Харрисон)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-1def5c07d1ab3c98",
+      "name": "Джек-Джек Парр",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-881579dd03b6f504",
+      "name": "Дженни Уэйкмен (XJ-9)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-3ea3cba94e16b25b",
+      "name": "Дженника",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-a7938aac3723db5c",
+      "name": "Джесси Квик",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-e36b15271ef6c9c2",
+      "name": "Джессика Джонс",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-805527cb4fae9f79",
+      "name": "Джим Гордон",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-bb16b2e4d76f48a2",
+      "name": "Джин Грей",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-bb27d3f94bf0c319",
+      "name": "Джокер",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-15df47a5ff474595",
+      "name": "Джон константин",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-70428d973888be15",
+      "name": "Джордан Ли",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-6d4d4960cccd385f",
+      "name": "Джубили (Джубилейшн Ли)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-6acfec7bafdaa981",
+      "name": "Дзюдомастер",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-6c350d67b91cd3a7",
+      "name": "Диабло (Эстебан Коразон де Абло)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-e403d3cc4600dd28",
+      "name": "Диего Харгривз",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-8120d14ec5470859",
+      "name": "Динозавр (Дэвид Андерс)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-0df93ee94955d194",
+      "name": "Длинный Шанс",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-b159ce4074d1158f",
+      "name": "Добрая бабушка",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-cc32126cc5ec447c",
+      "name": "Док Сейсмик",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-60208acef5ab70e2",
+      "name": "Доктор Алхимия",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-df2c7c11671fe958",
+      "name": "Доктор Драккен (Дрю Теодор Липски)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-755f16f25df68f76",
+      "name": "Доктор Дум (Виктор фон Дум)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-f00bd755dcf5923a",
+      "name": "Доктор Манхэттен",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-4a5242dee5410e00",
+      "name": "Доктор Осьминог (Отто Октавиус)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-6b9f053627d1c0b6",
+      "name": "Доктор Смерть",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-3e3e39acb1b94532",
+      "name": "Доктор Стрэндж (Стивен Стрэндж)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-856e73c22a6948cc",
+      "name": "Доктор Судьба (песочный человек)",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-f9f99fcd245b7bf2",
+      "name": "Доктор Фейт",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-47ea0d671f40342b",
+      "name": "Доктор Фосфор",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-3da3614d8b96b5bd",
+      "name": "Домино (Нина Турман)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-544ed449e0b00f15",
+      "name": "Дональд Пирс",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-a4f23bad5e37c02b",
+      "name": "Донателло",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-24fc5f6650251529",
+      "name": "Дориан Тайрелл",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-0e44fa55c12e9345",
+      "name": "Дормамму",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-e97ba9d0ded80f12",
+      "name": "Доспех (Хисако Итики)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-d129c808ac7e6eb7",
+      "name": "Дракон (Сэвидж Дрэгон)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-13bbe912b2692078",
+      "name": "Дракс Разрушитель",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-5834446742396602",
+      "name": "Дракула (Влад Дракула)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-e402ca96e1938335",
+      "name": "Древняя",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-83f820de725624a6",
+      "name": "Друиг",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-6e6b55ad4d69c24a",
+      "name": "Дубликейт (Кейт Ча)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-6e83dd323f346fed",
+      "name": "Дьявольский динозавр",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-d3780ca832af2ce8",
+      "name": "Дьякон Фрост",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-b518951b6436237f",
+      "name": "Дэдпул (Уэйд Уилсон)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-4ab49840bfd00c46",
+      "name": "Дэдшот",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-a8b3bc9eef7b0e94",
+      "name": "Дэнни-призрак (Дэнни Фентон)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-4bb6f1e3f720fc35",
+      "name": "Жаба (Мортимер Тойнби)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-76b35c6622de0474",
+      "name": "Железное сердце (Рири Уильямс)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-c612dde31537aa28",
+      "name": "Железный Кулак (Дэнни Рэнд)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-93bc8a667e043718",
+      "name": "Железный Торговец (Обадия Стейн)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-804493cf2dfb47d1",
+      "name": "Железный человек (Тони Старк)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-9e82224e32f29c7e",
+      "name": "Жена Франкенштейна",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-7a5cd127bc61eb8d",
+      "name": "Женщина кошка - Селина Кайл",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-e6c231818c26057f",
+      "name": "Женщина-Халк (Дженнифер Уолтерс)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-2c4f000c373e1821",
+      "name": "Женщина-Халк (Лайра)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-68ae19255df3aad7",
+      "name": "Женщина-паук (Джессика Дрю)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-01fa61d9fbdcf1cd",
+      "name": "Женщина-паук (Джулия Карпентер)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-f5289d68fff7dc29",
+      "name": "Животно-растительно-минеральный-человек (Роковой патруль)",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-a80c156277e2a21e",
+      "name": "Жёлтый рейнджер (Трини Кван)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-a063df45bda565d4",
+      "name": "Загадочник",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-ad2f2b915434f05d",
+      "name": "Затанна",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-49db2b129bc8d4d4",
+      "name": "Звездный сапфир",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-c740eb5f016e2948",
+      "name": "Зверь (Хэнк Маккой)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-2aabab8408c71a32",
+      "name": "Звёздный Лис (Эрос)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-b0a98a14d80c79f0",
+      "name": "Звёздный Лорд (Питер Квилл)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-899b45159d0e8bf9",
+      "name": "Зеленая стрела",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-414ff0ffbbb0ebcd",
+      "name": "Зеленый фонарь - Гай Гарднер",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-844cc6fd399ab95b",
+      "name": "Зеленый фонарь - Джон Стюарт",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-8a77cb0019368f00",
+      "name": "Зеленый фонарь - Кайл Райнер",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-9fe27ff8cc02c022",
+      "name": "Зеленый фонарь - Хэл Джордан",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-6af9bf38cf3bd497",
+      "name": "Зелёный Гоблин (Гарри Озборн)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-9085eca55e325c4b",
+      "name": "Зелёный Гоблин (Норман Озборн)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-729b60851cebbb51",
+      "name": "Зелёный рейнджер (Томми Оливер)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-5a5a5fa55abeacc7",
+      "name": "Зигзаг Маккряк",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-56523b185ba3c2bf",
+      "name": "Зимний солдат (Баки Барнс)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-3a7d6ea2d0de2776",
+      "name": "Злая Лин (Эвил-Лин)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-8d2543a3e4406aeb",
+      "name": "Золотой Глайдер",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-d4d2ae258a917254",
+      "name": "Золотой Мальчик (Люк Риордан)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-e6dd3a9a38cee070",
+      "name": "Зум - Хантер Соломон",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-a3e237fb3880a18a",
+      "name": "Ибак",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-ea0552c6101846ce",
+      "name": "Игрушечник",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-71640f14862f920c",
+      "name": "Идзуку Мидория (Деку)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-11e545c1cf672f54",
+      "name": "Икарис",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-33dbd0d793f0c3b8",
+      "name": "Икс-О Мановар (Арик из Дакии)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-18fc830f2c4f8920",
+      "name": "Индийский Человек-паук (Павитр Прабхакар)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-61329bd1db143b0d",
+      "name": "Иоганн Краус",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-bc34b524eefb7f31",
+      "name": "Искупитель (Эдди Фрэнк)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-323476c3bb197d7b",
+      "name": "Йон-Рогг",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-7348e2bf3a854976",
+      "name": "Йонду Удонта",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-f2992ce16172eabf",
+      "name": "Кай Тисаки (Оверхол)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-cc42a8730745ea1a",
+      "name": "Каллисто",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-7e13d1fcc6b4ae6d",
+      "name": "Камен Райдер W (Сётаро Хидари и Филипп)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-f4fc35fa8cb2eea9",
+      "name": "Камен Райдер Дэн-О (Рётаро Ногами)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-be0f04da330e4279",
+      "name": "Камен Райдер Итиго (Такэси Хонго)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-3a1b2a67c7d03a3a",
+      "name": "Камен Райдер Куга (Юсукэ Годай)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-7122e94f33b2b1c3",
+      "name": "Канг Завоеватель (Натаниэль Ричардс)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-716504e7718a1656",
+      "name": "Капитан Америка (Стив Роджерс)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-174d684a8d9fbf72",
+      "name": "Капитан Америка (Сэм Уилсон)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-3a9c126b4fe7169e",
+      "name": "Капитан Британия (Брайан Брэддок)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-8e3111d2d51f6c85",
+      "name": "Капитан Бумеранг",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-4613d035b4d27864",
+      "name": "Капитан Марвел (Кэрол Дэнверс)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-475dee1fcb4c8ba2",
+      "name": "Капитан Марвел (Мар-Велл)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-274d3da4b109efb1",
+      "name": "Капитан Холод",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-b1f00e91e75a35f2",
+      "name": "Карай",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-2958e668d9843492",
+      "name": "Карапас (Нино Леиф)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-1ec25b9680b881e4",
+      "name": "Каратель (Фрэнк Касл)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-ec77d7c821470d8a",
+      "name": "Карл Рупрехт Крёнен",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-bc41083a4b058acb",
+      "name": "Кармайн Фальконе",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-85b34dfa441071de",
+      "name": "Карнаж (Клетус Кэседи)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-c9c19f8ef2b13494",
+      "name": "Карнак",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-8419cb3c6c9992a9",
+      "name": "Каролина Дин",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-f4bae498522ce047",
+      "name": "Кассандра Нова",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-e06b799f547a04a3",
+      "name": "Катана",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-a627accaf0d8f2f4",
+      "name": "Кацуюки Бакуго (Динамайт)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-33e0096de4f8ee46",
+      "name": "Квага (Бад Флад)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-f97c96ab6da8b776",
+      "name": "Квазар (Венделл Вон)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-134e1497c02c6c1a",
+      "name": "Кевин Левин",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-862806f284169791",
+      "name": "Кей Чаллис “Безумная Джейн” (Роковой патруль)",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-72b5beb531200ed5",
+      "name": "Кейбл (Нейтан Саммерс)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-1537032d81660b42",
+      "name": "Кейси Джонс",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-4e3d63d1a9676a68",
+      "name": "Кейт Данлэп",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-1f714391b570aadc",
+      "name": "Кецилий",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-29eb05c34628ee15",
+      "name": "Киборг",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-d1627111bae7e0ec",
+      "name": "Киборг Супермен",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-08e9f20ef7b185cd",
+      "name": "Килворг",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-bd7c4a451c91b530",
+      "name": "Килгрейв (Зебедайя Килгрейв)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-feda8595bde71af6",
+      "name": "Киллмонгер (Н’Джадака)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-af4f69d03625a191",
+      "name": "Ким Пять-с-плюсом",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-c205c992a9c73ef4",
+      "name": "Кимико Миясиро",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-0606e0da363ab2aa",
+      "name": "Кинг",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-73005a219ea903ad",
+      "name": "Кинго",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-ab7d4a16a6004b09",
+      "name": "Кингпин (Уилсон Фиск)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-7c6acc8b766949c9",
+      "name": "Кинжал (Тэнди Боуэн)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-9175dd534ef11314",
+      "name": "Клаус Харгривз",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-bfbbd59a86326aeb",
+      "name": "Клеа",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-2a5b9bdc63ffb816",
+      "name": "Клинок ведьм (Сара Пеццини)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-c24ff6697f5b6c26",
+      "name": "Клифф Стил “Роботмен” (Роковой патруль)",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-640e35d06883cef3",
+      "name": "Кло (Улисс Кло)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-3b2ec0348b4101aa",
+      "name": "Кнулл",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-fdd680a7c0b61b02",
+      "name": "Коготь",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-abb08d47ed9146b5",
+      "name": "Коллекционер (Танелиир Тиван)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-7c897bc3ef14aeb5",
+      "name": "Коллин Винг",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-15ed66cf3db0a9b6",
+      "name": "Колосс (Пётр Распутин)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-4389fe7a02b2122e",
+      "name": "Комедиант",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-76091310e47ed363",
+      "name": "Комета (Ричард Гилмор)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-fb827a3485fbc43d",
+      "name": "Конквест",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-8c9de30201e69b95",
+      "name": "Корвус Глэйв",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-39eef13b39ae752b",
+      "name": "Коринфянин",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-8d81f51ae1ea037a",
+      "name": "Королева Берилл",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-819fe573e728f7a4",
+      "name": "Королева Мэйв (Мэгги Шоу)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-e001b7e6aa4cfbaa",
+      "name": "Королева Пчёл (Хлоя Буржуа)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-8c376462ba22135e",
+      "name": "Король Акул",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-1b04a915e8bc34b8",
+      "name": "Король Теней (Амал Фарук)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-d4d335216b614454",
+      "name": "Король вампиров",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-f357913739c94a1a",
+      "name": "Космический Призрачный гонщик (Фрэнк Касл)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-5f2a41defe5d067a",
+      "name": "Космо",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-f7f0dd5eb9c573b7",
+      "name": "Кошмар",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-c0e8c073665147ad",
+      "name": "Красная Женщина-Халк (Бетти Росс)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-974e72399fafddd3",
+      "name": "Красная смерть",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-aa05e9df38ca4406",
+      "name": "Красный Страж (Алексей Шостаков)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-f6bb9c89cec61c82",
+      "name": "Красный Туман (Крис Д’Амико)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-8f9333bd07e441d6",
+      "name": "Красный Халк (Таддеус Росс)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-10baabaa6e79cd82",
+      "name": "Красный Череп (Иоганн Шмидт)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-e47740e2492c4afd",
+      "name": "Красный колпак - Джейсон Тодд",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-49ae6d85950ae6fb",
+      "name": "Красный рейнджер (Андрос)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-38a799a8054c692f",
+      "name": "Красный рейнджер (Джейден Шиба)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-ab30bfcace1ac5c7",
+      "name": "Красный рейнджер (Джейсон Ли Скотт)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-9dab652fa88a506d",
+      "name": "Красный рейнджер (Рокки Де Сантос)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-89195faa0704f362",
+      "name": "Красный рейнджер (Уэс Коллинз)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-e385affeaed337da",
+      "name": "Крик (Донна Диего)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-7ef84c1c53e09539",
+      "name": "Кристалл (Кристалия Амаквелин)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-edef1a5bd133435d",
+      "name": "Кровавая королева (Нимуэ)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-9e1bbb18f5d5c2c3",
+      "name": "Кровавый Угар (Рэй Гаррисон)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-79ebd8de4f6330a1",
+      "name": "Кроссбоунс (Брок Рамлоу)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-97a647df0447ec38",
+      "name": "Крутая (Блоссом)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-3bae8119186df4ec",
+      "name": "Крысиный Король",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-a7aefc94f209d76b",
+      "name": "Крысолов",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-82d6bc7a5d33a839",
+      "name": "Крэйвен-охотник (Сергей Кравинов)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-26fb365c4f0d569a",
+      "name": "Крэнг",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-a0cb187de2a873db",
+      "name": "Кувалда (Джозеф)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-320d1ddc7011ef59",
+      "name": "Кукловод (Филлип Мастерс)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-31919e43eb6feb08",
+      "name": "Кулл Обсидиан",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-2c2e15f633165f83",
+      "name": "Купидон",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-1f9947c68d59018e",
+      "name": "Кэйго Таками (Ястреб)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-603f77fc892285ec",
+      "name": "Кэмерон Ходж",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-0c6a51d9eef0bdc2",
+      "name": "Лавина (Доминик Петрос)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-9755808cf9ccd4ac",
+      "name": "Лайла Питтс",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-650ab80a8570eadb",
+      "name": "Ламплайтер",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-c8b8e75407711494",
+      "name": "Ларри Трейнор “Негативный человек” (Роковой патруль)",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-4d62e7d7d09bcc63",
+      "name": "Ларфлиз",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-e133c3acc698a2cc",
+      "name": "Ласка",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-2e361ade86fe8cb7",
+      "name": "Лауфей",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-a1f5b8235b3ffbb2",
+      "name": "Лев-О (Лайон-О)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-2d112e2e239c27c5",
+      "name": "Легион (Дэвид Хэллер)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-bfe7f308d5c3f025",
+      "name": "Леди Баг (Маринетт Дюпен-Чен)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-2d30083c587d665b",
+      "name": "Леди Сиф",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-14133e235bd99599",
+      "name": "Леди Смертельный Удар (Юрико Ояма)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-83f280a96e1e4070",
+      "name": "Леди Шива",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-c0777be0c65df5c2",
+      "name": "Лекс Лютор",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-86cd991877bcf3ac",
+      "name": "Леонардо",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-1aa3e8c90a20f3aa",
+      "name": "Леший (Тед Саллис)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-e822074508215dfa",
+      "name": "Лидер (Сэмюэл Стернс)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-d2d5d8559c306610",
+      "name": "Лиз Шерман",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-430f8209b2c15ee7",
+      "name": "Линчеватель",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-f3e8839cd0ff1a7d",
+      "name": "Лобо",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-7d90c0a0623645d4",
+      "name": "Лобстер Джонсон",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-155ed62c0c194e8b",
+      "name": "Локджо",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-c12fdda346bf0a11",
+      "name": "Локи",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-26ca5c01b20f3769",
+      "name": "Лорд Драккон (Томми Оливер)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-44e5689d922b4669",
+      "name": "Лорд Зедд",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-01ce666a3333ba2f",
+      "name": "Лунная девочка (Лунелла Лафайет)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-9cfd20fdb9b754df",
+      "name": "Лунный рыцарь (Марк Спектор)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-06314007f26877d7",
+      "name": "Люк Кейдж",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-87cc56e39eb02243",
+      "name": "Лютер Харгривз",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-c48aaff1b3bb8393",
+      "name": "Люцифер",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-5c6856f2f50078ab",
+      "name": "МОДОК (Даррен Кросс)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-80d60e8fb408c8c4",
+      "name": "МОДОК (Джордж Тарлтон)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-5a9b9b6805a7b2e3",
+      "name": "Магнето (Эрик Леншерр)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-ab2d21a4ec73a0a0",
+      "name": "Мадам Гао",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-6f120261770655ee",
+      "name": "Мадам Паутина (Кассандра Уэбб)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-8296bcf58d2b0fd3",
+      "name": "Маккари",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-a35e6cf6373ffe91",
+      "name": "Максвелл Лорд",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-fbdcb722fcad73a3",
+      "name": "Максимус Болтагон",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-1708af21b08fee18",
+      "name": "Малеболгия",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-7b6f9f897c0989b1",
+      "name": "Малекит",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-e84df23d60cbeeac",
+      "name": "Малькольм Мерлин",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-fd38ceb86d2499a5",
+      "name": "Мамм-Ра",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-6e0f01fac943e034",
+      "name": "Мандарин",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-e465d01d57e97dde",
+      "name": "Мантис",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-a57d81366f235ada",
+      "name": "Мари Моро",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-c7719a59c15d7e92",
+      "name": "Марсианский охотник",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-23801c3e2eecb9c6",
+      "name": "Мартинекс",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-9b6e0021e26070da",
+      "name": "Маска (Стэнли Ипкисс)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-232beaeeb3412bc9",
+      "name": "Мастер зеркал",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-965bf4466e9fb433",
+      "name": "Маюра (Натали Санкёр)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-90706d3c25564982",
+      "name": "Мегавольт (Элмо Спуттерспарк)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-51b7c6d6431de446",
+      "name": "Мегамозг",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-b54a276df3e06704",
+      "name": "Медуза",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-79f6f8ce1794bc85",
+      "name": "Медуза (Медузалит Амаквелин)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-2c13ddd951c3cf15",
+      "name": "Менбэт",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-58fdaf47049d716a",
+      "name": "Мера",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-32b1fa8715a42933",
+      "name": "Мерзость (Эмиль Блонски)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-c48998570e65cee2",
+      "name": "Мертвец (Deadman)",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-366cdb89088a9287",
+      "name": "Металлическая Бита",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-e59cfa6b2c1e0699",
+      "name": "Металло",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-96a09b3fbe3a0b82",
+      "name": "Металхэд",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-28d36dd67d89f869",
+      "name": "Метаморфо",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-32b12b27559704d8",
+      "name": "Метромэн",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-2402bb5ef8aab476",
+      "name": "Мефисто",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-8063c8feff1e6cd2",
+      "name": "Меченый (Бенджамин Пойндекстер)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-adedb97ea870f6ea",
+      "name": "Микеланджело",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-e2814bec50b102b6",
+      "name": "Мираж (Даниэль Мунстар)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-99f6448a4916c224",
+      "name": "Миротворец",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-87820eb6bace6775",
+      "name": "Мисс Марвел (Камала Хан)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-32bf408ab682a60b",
+      "name": "Мисс Марсианка",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-0cb6110fba904a34",
+      "name": "Мистер Исключительный (Боб Парр)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-f55eddfa5b397bc6",
+      "name": "Мистер Миракл",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-1389c0fb09276ab9",
+      "name": "Мистер Мксиптлк (это реальное имя, не опечатка)",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-cce4ffc79625f2f9",
+      "name": "Мистер Негатив (Мартин Ли)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-ad8f6b236a794d76",
+      "name": "Мистер Никто (Роковой патруль)",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-72da7f31edcd64ee",
+      "name": "Мистер Пиг",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-2d4de7c3a34154af",
+      "name": "Мистер Синистер (Натаниэль Эссекс)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-06aff6eff2c10f88",
+      "name": "Мистер Террифик",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-8080cbdbd5a463bf",
+      "name": "Мистер Фантастик (Рид Ричардс)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-b76969abdc8689ff",
+      "name": "Мистер Флор",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-ae66b34b6d7b4b25",
+      "name": "Мистер Фриз - Виктор Фрис",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-bb4eebd0f1927b2f",
+      "name": "Мистерио (Квентин Бек)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-621784c00e249add",
+      "name": "Мисти Найт",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-36bca3363e50803d",
+      "name": "Мистик (Рейвен Даркхолм)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-251208aed6441957",
+      "name": "Множественный человек (Джейми Мэдрокс)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-922df4bf1808ee33",
+      "name": "Могучий Тор (Джейн Фостер)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-a423a1d9bc14e66d",
+      "name": "Моджо",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-4c2fc3f78e22fe1b",
+      "name": "Моджо Джоджо",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-ed78d76e589e0522",
+      "name": "Мозговой Центр (Джейсон Уингард)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-9b836c8f460e4e74",
+      "name": "Молли Хейз",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-7607a1a3db2daeb3",
+      "name": "Молоко Матери (Марвин Милк)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-adb33994d4c30bff",
+      "name": "Момо Яоёродзу (Креати)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-dc5dbf68ad937f9b",
+      "name": "Монстр-девочка (Аманда)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-53aff2568a4cbdc6",
+      "name": "Морбиус (Майкл Морбиус)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-0c89c0eb317843fc",
+      "name": "Моргана Маккабр",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-568f59a8472e16be",
+      "name": "Морлан",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-7b0741c11f8e0075",
+      "name": "Мумен Райдер",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-c30778146b532515",
+      "name": "Мундрэгон (Хизер Дуглас)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-675889d374f6338e",
+      "name": "Мыслитель - Клиффард ДеВо",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-e135a673bb12c382",
+      "name": "Мэджик (Ильяна Распутина)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-10e26cb5e00a7d05",
+      "name": "Мэри Эмбри",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-5a014ca89869351c",
+      "name": "М’Баку",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-910024c5572a234f",
+      "name": "Надгробие (Лонни Линкольн)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-fe2098655f8a4f1d",
+      "name": "Найтвинг - Дик Грейсон",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-a37c9206d2ea0b78",
+      "name": "Накия",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-8287371fe31dfc80",
+      "name": "Небесный Высотник (Кит Гудман)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-538b67c0a59400cf",
+      "name": "Небула",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-01379827150595ee",
+      "name": "Невидимая Леди (Сьюзан Шторм)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-137158bef8a42123",
+      "name": "Негасоник (Элли Фимистер)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-b2fb68139adb1815",
+      "name": "Нейт Грей",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-b45a08b7508f9e65",
+      "name": "Некрон",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-2e9330cf7e0d140f",
+      "name": "Неуязвимый (Марк Грейсон)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-716416bfde647550",
+      "name": "Нико Минору",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-536c1d7b40ed5de3",
+      "name": "Нимрод",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-38e426d0687e4638",
+      "name": "Нина Мазурски",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-5093ab743147807d",
+      "name": "Ниндзяк (Колин Кинг)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-b6e785a1829d8a94",
+      "name": "Нова (Ричард Райдер)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-2f6c9ca03917d2e4",
+      "name": "Нова (Сэм Александр)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-76c56436f6817674",
+      "name": "Номер Пять",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-d323b1af7eee9f39",
+      "name": "Носорог (Алексей Сицевич)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-df686f88a6dd35b2",
+      "name": "Ночная сова",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-a97e55504847dc42",
+      "name": "Ночной Змей (Курт Вагнер)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-c9605eb58f8ba5cc",
+      "name": "Ночной оборотень (Джек Расселл)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-5fee48963dd3c3cd",
+      "name": "Нэмор",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-dab6c84cbe655110",
+      "name": "Нэмора",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-810837459c7cdceb",
+      "name": "Огненная Эмблема (Нейтан Сеймур)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-f9d301067c7d787d",
+      "name": "Огненный Шторм",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-c5cffb9e60232cdf",
+      "name": "Один",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-a594d1c430f9216a",
+      "name": "Озимандия",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-a4b683ea292a63d3",
+      "name": "Окойе",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-51a551914ef588ff",
+      "name": "Оливер Грейсон",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-d2cfaa334d19c4ea",
+      "name": "Омега Красный (Аркадий Россович)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-c66429c3a9d6fe15",
+      "name": "Омни-Мэн (Нолан Грейсон)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-9baea27b3e71b776",
+      "name": "Он (HIM)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-6414a19e73242c42",
+      "name": "Онслот",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-dca915f5b688e733",
+      "name": "Орлица",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-7e54acc1ce39f1ed",
+      "name": "Орм",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-e14ede6e911ca8a7",
+      "name": "Оса (Джанет ван Дайн)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-73ae65a6c9520072",
+      "name": "Оса (Хоуп ван Дайн)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-9e5855de5844df47",
+      "name": "Осквернитель",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-87ad607779e8b82b",
+      "name": "Отчаяние (песочный человек)",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-ed61b2740385bbc2",
+      "name": "Охотница",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-82d33b01382fc83f",
+      "name": "Очако Урарака (Уравити)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-f4f1a5b97deda3dc",
+      "name": "Пазл (Билли Руссо)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-3813db008af885f7",
+      "name": "Палач (Скурдж)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-1079eb16c6fc8de1",
+      "name": "Пантро",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-cf6511797cd55c9d",
+      "name": "Панчлайн",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-416f7c0f5ae696dc",
+      "name": "Папа Миднайт",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-1b8a56b104b311f0",
+      "name": "Папаня (Деймон Маккриди)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-066b2c924929f728",
+      "name": "Паразит",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-721181f1e884dec3",
+      "name": "Параллакс",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-277b2a7487091d83",
+      "name": "Патриот (Элайджа Брэдли)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-4141e0e438954eaf",
+      "name": "Паук-панк (Хоби Браун)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-9364c2b07b2f96bf",
+      "name": "Пауэргерл",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-7dc12a71dd97f817",
+      "name": "Пени Паркер",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-f32e41f820a8cd6e",
+      "name": "Первый из Падших (Сатана)",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-0cef9829ee52201d",
+      "name": "Пересмешница (Бобби Морс)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-ad07683bba691ec6",
+      "name": "Песочный человек (Флинт Марко)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-93f48e6557ee2ae0",
+      "name": "Пестик (Баттеркап)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-650f9bff377f5c9f",
+      "name": "Пикси (Меган Гвинн)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-fcd582d9d481c0e5",
+      "name": "Пингвин - Освальд Кобблпотт",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-8ebdbb17ba6bbb11",
+      "name": "Пипец (Дэйв Лизевски)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-86152596d1d820b2",
+      "name": "Пиро (Сент-Джон Аллердайс)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-80ad5cdcfe9aec47",
+      "name": "Плащ (Тайрон Джонсон)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-1b28583876b2a5d0",
+      "name": "Поглотитель (Карл Крил)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-1b62a51de7984a30",
+      "name": "Погодный волшебник",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-57dd5d444805987d",
+      "name": "Подводный (Кевин Московиц)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-db1406d9a9fb00c5",
+      "name": "Подрывашкер",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-4a827f09d6cf99e1",
+      "name": "Поезд-А (Реджи Франклин)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-db0dd6a6a528fc85",
+      "name": "Полковник Америка (Сэл Бертолинни)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-e5a1b4a67228342d",
+      "name": "Полярис (Лорна Дэйн)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-3448f6d1d6593f22",
+      "name": "Порпетуя",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-30ad671fbfc786c0",
+      "name": "Призрачная Кошка (Китти Прайд)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-b443443540e75d44",
+      "name": "Призрачный гонщик (Джонни Блейз)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-b4d602818433a919",
+      "name": "Призрачный гонщик (Дэнни Кетч)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-1ee902e1452445e3",
+      "name": "Призрачный гонщик (Робби Рейес)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-15c2186e1ade6912",
+      "name": "Прозрачный",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-aeca19f9f6ec240d",
+      "name": "Проксима Миднайт",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-1ada323839ebf674",
+      "name": "Прометей",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-77181c723449931a",
+      "name": "Профессор Зум (Обратный Флэш)",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-ee69ecc955cc5ad4",
+      "name": "Профессор Икс (Чарльз Ксавьер)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-c9489e6c84397aac",
+      "name": "Псайлок (Бетси Брэддок)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-8607775522bb67c3",
+      "name": "Псайлок (Кваннон)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-c37e87dbb236b0ed",
+      "name": "Птичья Песня (Тереза Кэссиди)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-01857325d94c6d64",
+      "name": "Пугало",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-834ddc5ee72a1c56",
+      "name": "Пузырь (Фред Дьюкс)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-ccf267769d978bb7",
+      "name": "Пузырёк (Бабблз)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-1f9afb37907e044d",
+      "name": "Пуленепробиваемый (Зандейл Рэндольф)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-c3b55fba86aefcf9",
+      "name": "Пушечное Ядро (Сэм Гатри)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-e37501e8fb509c7a",
+      "name": "Пятно (Джонатан Онн)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-bfa6ae82ac2f3646",
+      "name": "Пятно (Тидзомэ Акагуро)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-13d622dbe3a7215b",
+      "name": "Разрушение (песочный человек)",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-d0a9d06e38788d66",
+      "name": "Разрушитель (Дирк Гартуэйт)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-a47b79dd75ab4938",
+      "name": "Разрушитель (асгардский доспех)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-d521b0e5d8ddc740",
+      "name": "Райан Бутчер",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-f8e61ea3d761b30f",
+      "name": "Райот (Тревор Коул)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-6e6699792f09f602",
+      "name": "Ракета",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-b31fcb8178ee9135",
+      "name": "Рас Аль Гул",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-484fd91da99d6680",
+      "name": "Распутин (Григорий Распутин)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-1f9fb6280e549690",
+      "name": "Рафаэль",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-da5c02e639f1c015",
+      "name": "Рейвен",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-c66926463fdd285e",
+      "name": "Рекс Сплоуд (Рекс Слоун)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-97e3371f76514289",
+      "name": "Рена Руж (Аля Сезер)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-f8737f3658ea2f5a",
+      "name": "Рик Флэг",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-59d9571cc37201ce",
+      "name": "Рита Репульса",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-baf1b9fce82c79ff",
+      "name": "Рита Фарр “Эластичная девушка” (Роковой патруль)",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-179ed23f13034d09",
+      "name": "Робин - Дэмиен Уэйн",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-62ccec77b77e9fe0",
+      "name": "Робин - Келли Керри",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-f0392dc5aa8f5d89",
+      "name": "Робин - Тим Дрейк",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-e7811b1e3559a65b",
+      "name": "Робот (Рудольф Коннерс)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-1ca6ac36f3d2af76",
+      "name": "Розовый рейнджер (Кимберли Харт)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-45280c23cf69cde1",
+      "name": "Розовый рейнджер (Кэтрин Хиллард)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-4bbba2ea451441a5",
+      "name": "Рокстеди",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-b7437ee25974f71c",
+      "name": "Ронан Обвинитель",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-a407f773862b4be9",
+      "name": "Роршах",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-848f38adab1693b9",
+      "name": "Росомаха (Логан)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-e1ffb5431842e249",
+      "name": "Росомаха (Лора Кинни)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-8a6692ebabf10407",
+      "name": "Ртуть (Пьетро Максимофф)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-ed64cabb439f6b1e",
+      "name": "Руми Усагияма (Мирко)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-d435bd9f05c56e8d",
+      "name": "Рэй (Shrinking Rae)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-493744458338de8f",
+      "name": "Рэйчел Саммерс",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-30f058dbbb5827f2",
+      "name": "Рэнди Каннингем",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-68ae426668aa0b21",
+      "name": "Рэнсик",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-8ac6b6a1247a9078",
+      "name": "Саббак",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-3358e63f5bf589d6",
+      "name": "Саблезубый (Виктор Крид)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-44e69a1d69f15b0d",
+      "name": "Савитар",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-636f105b5514aec1",
+      "name": "Сайтама",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-2c47a7bb204292cb",
+      "name": "Санфайр (Широ Ёсида)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-f952b5aec0db7626",
+      "name": "Саурон (Карл Лайкос)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-c5b21017f0bcae93",
+      "name": "Светлячок - Гарфилд Линнс",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-88cd0c7d7ee805da",
+      "name": "Свин-паук (Питер Поркер)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-2ffc7caa720e9ba4",
+      "name": "Себастьян Блад",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-73a41e4e3e71e893",
+      "name": "Себастьян Шоу",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-f93a03e4ff6b27c2",
+      "name": "Сейлор Венера (Минако Айно)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-821ddc31cb346a79",
+      "name": "Сейлор Галаксия",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-9632d94791672203",
+      "name": "Сейлор Марс (Рэй Хино)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-4152dad97bd1fa85",
+      "name": "Сейлор Меркурий (Ами Мидзуно)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-7f4117e11b3735fd",
+      "name": "Сейлор Мун (Усаги Цукино)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-5a40d92c2a5dd0d9",
+      "name": "Сейлор Нептун (Митиру Кайо)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-a0d2c7921f0bd738",
+      "name": "Сейлор Плутон (Сэцуна Мэйо)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-0ffe68b86140c96b",
+      "name": "Сейлор Сатурн (Хотару Томоэ)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-8f4f62ba06511d09",
+      "name": "Сейлор Уран (Харука Тэно)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-5e75b1be8815ca2c",
+      "name": "Сейлор Чиби Мун (Чибиуса)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-0f2cc55234968460",
+      "name": "Сейлор Юпитер (Макото Кино)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-092dcafe4739ea34",
+      "name": "Семь смертных грехов",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-e3ecc65d0a55e7b9",
+      "name": "Сентри (Роберт Рейнольдс)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-80ee2425c88cebdd",
+      "name": "Серебряный Самурай (Кенуити Харада)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-d1f5c0eabf8fce46",
+      "name": "Серебряный Соболь (Сильвия Саблинова)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-518b59a28b73197d",
+      "name": "Серебряный Сёрфер (Норрин Радд)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-ecd01f6fc20206d8",
+      "name": "Серебряный Сёрфер (Шалла-Бал)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-c729a285f737579d",
+      "name": "Серси",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-cbe81e779a8744b9",
+      "name": "Сестра Сэйдж",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-a5b7b1f6f18f0dfd",
+      "name": "Силач (Гвидо Кароселла)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-0452644d9dc96abc",
+      "name": "Силач (Крейг Холлис)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-c377770fb9fe5f17",
+      "name": "Сильвермейн (Сильвио Манфреди)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-40f12360ed228276",
+      "name": "Синдром (Бадди Пайн)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-f35cb5cedfc973b4",
+      "name": "Синестро",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-047816b08c3f439c",
+      "name": "Синий жук",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-300b70605dbacba4",
+      "name": "Синий рейнджер (Билли Крэнстон)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-c406c6eed8ba1e47",
+      "name": "Скаар",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-e3bfac9752972ab4",
+      "name": "Скелетор",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-61062f71693ca7b0",
+      "name": "Скорость (Томми Шеперд)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-91d40d9ad26d95f9",
+      "name": "Скорпион (Мак Гарган)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-8a478d1da27db24b",
+      "name": "Слэш",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-f3fe264a0baef4c8",
+      "name": "Смерть (песочный человек)",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-87bebd16bc5446bf",
+      "name": "Сова (Лиланд Оулсли)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-e910a9dda141ccbf",
+      "name": "Соколиный глаз (Кейт Бишоп)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-a5f7546a3f2bd007",
+      "name": "Соколиный глаз (Клинт Бартон)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-1e26f32e31d1edb8",
+      "name": "Солар (Фил Селески)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-a601b5eeeb41a756",
+      "name": "Солдатик (Бен)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-aa3b0deec21f436c",
+      "name": "Солнечное Пятно (Роберто да Коста)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-63cb541d020644bb",
+      "name": "Соломон Гранди",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-f216eb28c8cbfbc4",
+      "name": "Сон/Морфей (песочный человек)",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-7c641f5a308c4267",
+      "name": "Соник",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-ad2fa394943a4481",
+      "name": "Сорвиголова (Мэтт Мёрдок)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-468052456af44a3a",
+      "name": "Спасительница (Пеппер Поттс)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-bbe64387176fd4a5",
+      "name": "Спаун (Эл Симмонс)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-1dd399c3754b6560",
+      "name": "Спираль (Рита Уэйворд)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-8212de093f26aa72",
+      "name": "Сплинтер",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-2e14c2843f96309b",
+      "name": "Спрайт",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-46e8df16b161b316",
+      "name": "Средневековый Спаун (сэр Джон Йорк)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-09c6747602eca189",
+      "name": "Старая Кружевница",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-46efac3a59468a23",
+      "name": "Старгерл",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-f8332e757e4cf12f",
+      "name": "Старлайт (Энни Дженьюэри)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-e92acf66508a46b3",
+      "name": "Старфаер",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-8b04bfe74cbdf1dc",
+      "name": "Стархок (Стакар Огорд)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-6cca0e6213643f88",
+      "name": "Статик",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-5a0a910011188bc7",
+      "name": "Степпенвульф",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-e540bdc5d8c08510",
+      "name": "Степфордские кукушки (Софи Куку)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-93758f7c43a8878f",
+      "name": "Степфордские кукушки (Эсме Куку)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-042cba34f5f5dd34",
+      "name": "Стервятник (Эдриан Тумс)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-5c58ba4e2655b398",
+      "name": "Стив Тревор",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-1ed13453bfa8e32d",
+      "name": "Стингер (Кэсси Лэнг)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-400c12c0222f4ff0",
+      "name": "Страсть (песочный человек)",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-45bb786c0ea7c5f0",
+      "name": "Судьба (песочный человек)",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-b4d0ad0573c293ee",
+      "name": "Супер-Кот (Адриан Агрест)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-b5c248193922ec08",
+      "name": "Супер-Скрулл (Кл’рт)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-f1485b5a6b3cb9ec",
+      "name": "Супербой",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-8fa95d604142a045",
+      "name": "Супергерл",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-23d3d95ac968d24b",
+      "name": "Суперзлодей Террор",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-cd9dbd02d753aaaf",
+      "name": "Супермен",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-9727993244234b46",
+      "name": "Суртур",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-c23ddd715fac4d07",
+      "name": "Существо (Бен Гримм)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-d7f9dda9f8db1a43",
+      "name": "Сэм Риордан",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-a7b8c4d8990f5906",
+      "name": "Сёта Айдзава (Сотриголова)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-eb1bf39954928227",
+      "name": "Сёто Тодороки",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-eb39b9bb0dc1c37a",
+      "name": "Такседо Маск (Мамору Тиба)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-6f35b021b2284fed",
+      "name": "Талия Аль Гул",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-edf245dd86ec6904",
+      "name": "Танос",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-48f505f57b9a3e57",
+      "name": "Таскмастер (Антония Дрейкова)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-dfa9bfb7debc2315",
+      "name": "Таскмастер (Тони Мастерс)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-fbcbf3111ba47043",
+      "name": "Тацумаки",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-3b7f6d0e424facb6",
+      "name": "Тена",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-4dec8c3ad2bb9ab1",
+      "name": "Тень (Джек Бонифейс)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-17065c9cc65172b5",
+      "name": "Терракс (Тайрос)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-563dc08f2f029c96",
+      "name": "Технокуртка (Зак Томпсон)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-1cf99113396f409d",
+      "name": "Тигр (Котэцу Кабураги)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-662e790d62be2df0",
+      "name": "Тигра (Грир Нельсон)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-f9ac13854eb215a2",
+      "name": "Тик",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-f3503c5c42e77d44",
+      "name": "Титан",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-269a9d0f5270c3a2",
+      "name": "Титан (Хэл Стюарт)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-02e7655d76e1f10e",
+      "name": "Титания (Мэри Макферран)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-f40981b98d0d6dcc",
+      "name": "Тифозная Мэри (Мэри Уокер)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-bfa897d096bb610f",
+      "name": "Токсин (Патрик Маллиган)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-93e46378ee8ff270",
+      "name": "Томура Сигараки",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-2c9391e6d32889d5",
+      "name": "Тор (Тор Одинсон)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-5dd4cc6235a89b40",
+      "name": "Тосинори Яги (Всемогущий)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-0e4f239bd11101d6",
+      "name": "Тригон",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-3cddeb8ddccff9e1",
+      "name": "Тритон",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-8228cb5ec36a1f3e",
+      "name": "Трэгг (Великий регент)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-6221d9cb48d3b0bc",
+      "name": "Тьма (Джеки Эстакадо)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-a469c9eb11ba1d48",
+      "name": "Тэнъя Иида (Ингениум)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-fb27e0a859d28ed9",
+      "name": "Тёмный Плащ (Кряк Лапчатый)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-0037dc1078ac2a33",
+      "name": "Убивашка (Минди Маккриди)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-ddc1673a8bba3e9b",
+      "name": "Убийца Крок",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-ee0eebe844d4869d",
+      "name": "Убийца мороз",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-5d9a197c43d25cd3",
+      "name": "Удлиняющийся человек",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-25fa1dae35460832",
+      "name": "Уильям Страйкер",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-1e17127a5aef84fe",
+      "name": "Ультрамен",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-9e69f21ca42ba82b",
+      "name": "Ультрамен (Шин Хаята)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-80ccaef5746a6918",
+      "name": "Ультрамен Белиал",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-ba2e01a39d5823d4",
+      "name": "Ультрамен Зеро",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-8e5b9e4dd6fb9608",
+      "name": "Ультрамен Тига (Дайго Мадока)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-09f539441d7603f0",
+      "name": "Ультрасевен (Дан Моробоси)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-7584b6dc2fdec248",
+      "name": "Файла-Велл",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-3e2c4f6e98c90ae6",
+      "name": "Фантомекс (Чарли Кластер-7)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-e1b25e8fb8757867",
+      "name": "Фастос",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-0dae68058257d044",
+      "name": "Фейерверк (Мисти Такер Грей)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-1c8e38f363746ad1",
+      "name": "Фиалка Парр",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-706c82983f6eac18",
+      "name": "Флекс Менталло (Роковой патруль)",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-49b49d5ba631301b",
+      "name": "Флэш - Барри Аллен",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-11dfec25dad77def",
+      "name": "Флэш - Барт Аллен",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-56b58ec881463f09",
+      "name": "Флэш - Джей Гаррик",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-254e06b3cc143823",
+      "name": "Флэш - Уолли Уэст",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-c5dba77fd702513e",
+      "name": "Фордж",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-79dd5c33f8b4b327",
+      "name": "Фотон (Моника Рамбо)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-abc5da5928cc66b1",
+      "name": "Франклин Ричардс",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-1e92dd074b1a8a17",
+      "name": "Французик (Серж)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-9f682b46a3d3f617",
+      "name": "Фреон (Люциус Бест)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-5646fe12904928d8",
+      "name": "Фубуки",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-9310dff0fc6c9b5b",
+      "name": "Фумикагэ Токоями (Цукуёми)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-e382fda81209a505",
+      "name": "Фэйт (Фэйт Герберт)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-d3a41b9aced8dba2",
+      "name": "Хавок (Алекс Саммерс)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-29341a8d686e299d",
+      "name": "Халк (Брюс Бэннер)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-44999ed9df690c75",
+      "name": "Халклинг (Тедди Альтман)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-be847241132d56f9",
+      "name": "Хамелеон (Дмитрий Смердяков)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-64f88d77f60b9552",
+      "name": "Харл Квин - Харлин Квинзель",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-1c954d5b3aba84e6",
+      "name": "Хаш",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-4aa04a3894d5c154",
+      "name": "Хеймдалль",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-8d427949db9b3e7e",
+      "name": "Хела",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-23a284e92f9ee8d6",
+      "name": "Хеллбой (Анунг Ун Рама)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-4f34384b94f82ba3",
+      "name": "Хи-Мэн (принц Адам)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-1de69aee8f27fb4b",
+      "name": "Химико Тога",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-12fd9957539f8f42",
+      "name": "Хитвейв",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-68af54c7b6dc6cb1",
+      "name": "Хлыст (Иван Ванко)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-d1ead61647ab7d53",
+      "name": "Хобгоблин (Родерик Кингсли)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-eedd965b290245cf",
+      "name": "Хордак",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-6d97a330c929dcee",
+      "name": "Хоумлендер (Джон)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-eb1d5c874c8d062d",
+      "name": "Хоуп Саммерс",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-21e222680923ea39",
+      "name": "Хьюго Стрендж",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-aa851f57b05c2ca0",
+      "name": "Хьюи Кэмпбелл",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-b4f9f68d874547e9",
+      "name": "Хэнкок (Джон Хэнкок)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-8218849112d2b3fd",
+      "name": "Циклоп (Скотт Саммерс)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-23d17453a68534b0",
+      "name": "Цирцея",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-81f9d30ff655f253",
+      "name": "Цую Асуи (Фроппи)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-cbdec8e517ce735f",
+      "name": "Чарли-27",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-24c79943b064a585",
+      "name": "Чармкастер",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-e3141c928527a75b",
+      "name": "Чаровница",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-35fe633245dafec3",
+      "name": "Чейз Стейн",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-5b5e595ea02f9bd4",
+      "name": "Человек в горошек",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-b47c9ad2293303a3",
+      "name": "Человек-Ястреб",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-37268650b4ab18d0",
+      "name": "Человек-крот (Харви Элдер)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-7815669598e136f3",
+      "name": "Человек-лёд (Бобби Дрейк)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-5210e2426d7a85b9",
+      "name": "Человек-муравей (Скотт Лэнг)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-553432543c080113",
+      "name": "Человек-муравей (Хэнк Пим)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-6b4b247ddc51ce44",
+      "name": "Человек-паук (Майлз Моралес)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-eb8d17723c8000ea",
+      "name": "Человек-паук (Питер Паркер)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-077e476e665c6394",
+      "name": "Человек-паук 2099 (Мигель О’Хара)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-a048d8f8ee9dcf67",
+      "name": "Человек-паук Нуар (Питер Паркер)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-9d2bc9b7c794eb2b",
+      "name": "Человек-факел (Джим Хэммонд)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-dc2403d342215e67",
+      "name": "Человек-факел (Джонни Шторм)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-094c86dd77457824",
+      "name": "Человек-черепаха",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-fe8029fdb08cc3d4",
+      "name": "Черная Манта",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-9a27320d95877af3",
+      "name": "Черная Маска",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-9945695e9524951e",
+      "name": "Черная канарейка",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-9e657bad8743e68f",
+      "name": "Черная молния",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-db88497b625180c0",
+      "name": "Черная рука",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-f580793832312efe",
+      "name": "Черный Адам",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-d4eda978cc90b0be",
+      "name": "Черный Флэш",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-22820726569e8c94",
+      "name": "Черный жук",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-581850ce19ce5345",
+      "name": "Читара",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-81986eeab60caa2e",
+      "name": "Чуда девушка",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-97bfb40510357200",
+      "name": "Чудо женщина",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-54ebe90969e693e9",
+      "name": "Чудо-человек (Саймон Уильямс)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-935777bd0569c31c",
+      "name": "Чёрная Пантера (Т’Чалла)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-0625040aeeaec432",
+      "name": "Чёрная Пантера (Шури)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-f82824440e879efd",
+      "name": "Чёрная вдова (Елена Белова)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-d06aace3493083af",
+      "name": "Чёрная вдова (Наташа Романофф)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-8bc389247a580039",
+      "name": "Чёрная кошка (Фелиция Харди)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-2f3d350dfa50aaf7",
+      "name": "Чёрный Гром (Блэкагар Болтагон)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-8071159988e301c4",
+      "name": "Чёрный Нуар (Эрвинг)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-4a8245b92aac1379",
+      "name": "Чёрный Самсон (Маркус Гримшоу)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-36e899c2c47c2026",
+      "name": "Чёрный Том Кэссиди",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-7e217620e5a9b341",
+      "name": "Чёрный рейнджер (Зак Тейлор)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-e8ab42df13e184f4",
+      "name": "Чёрный рыцарь (Джизмо Утка / Фентон Крякшелл)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-0093ff8498f08ecf",
+      "name": "Чёрный рыцарь (Дэйн Уитмен)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-524b2eae73d4da90",
+      "name": "Шазам",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-dd83248c99d75cc2",
+      "name": "Шакал (Майлз Уоррен)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-8bed960ec035100d",
+      "name": "Шан-Чи",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-d509f173500fa5bf",
+      "name": "Шастик Парр",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-9c93cda7ef5a4f5d",
+      "name": "Шелковая тень (Хранители)",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-d3efa50524ccee41",
+      "name": "Шельма (Анна-Мария)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-1b5cc7af74a7350d",
+      "name": "Ши-Ра (Адора)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-dca9ffbfc66a1a82",
+      "name": "Шиго",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-b82f225378012e29",
+      "name": "Шокер (Герман Шульц)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-6ed8447d99d1efcc",
+      "name": "Шреддер (Ороку Саки)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-dd51639390702984",
+      "name": "Шрик (Фрэнсис Бэррисон)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-181b57c1cc06032f",
+      "name": "Шторм (Ороро Монро)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-07be88ac3f26b640",
+      "name": "Штормфронт (Клара Райзингер)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-129ad5159a0022df",
+      "name": "Шёлк (Синди Мун)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-620ab7f6266db06e",
+      "name": "Щитомордник (Корнелл Стоукс)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-84287670ea04e0cf",
+      "name": "Эбеновый Зоб",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-17e952b0786d1305",
+      "name": "Эвелин Девор",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-fdacace9110b7c39",
+      "name": "Эго, Живая планета",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-ef3d20e6d9aff5f5",
+      "name": "Эйб Сапиен (Лэнгдон Кол)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-cc3a73552a982fa0",
+      "name": "Эйдзиро Кирисима (Ред Райот)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-b9650a2970dc6ba7",
+      "name": "Эйприл О’Нил",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-e12b57a787a7e55f",
+      "name": "Эластика (Хелен Парр)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-bc670d37ee9389c1",
+      "name": "Электра (livewire)",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-b7e03c48d6e1eb8c",
+      "name": "Электра (Электра Начиос)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-939af48f126ff59d",
+      "name": "Электро (Макс Диллон)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-40e901b8daf3c8cd",
+      "name": "Эллисон Харгривз",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-c3ac4fc15722d162",
+      "name": "Эль Диабло",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-cf7a639214ce87ee",
+      "name": "Эльза Бладстоун",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-9e62658aef8aef6a",
+      "name": "Эмма Мейер",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-3806b5b1b5f7ed93",
+      "name": "Эмма Фрост",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-1d961dfdceaa0131",
+      "name": "Эндзи Тодороки (Старатель)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-a2fa871781c20828",
+      "name": "Энимал мен",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-85caf88b17e3bf5a",
+      "name": "Эрик Франкенштейн",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-55da7987cbcbe41e",
+      "name": "Этриган",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-3add6bbc4c301130",
+      "name": "Эхо (Майя Лопес)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-df7e806b0486c2b4",
+      "name": "Юнион Джек (Джозеф Чепмен)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-00b235e07959b4fc",
+      "name": "Ядовитый плющ",
+      "sources": [
+        "dc-personazhi.docx"
+      ],
+      "image": null
+    },
+    {
+      "id": "kn-fc2e73eb34f3280b",
+      "name": "Ящер (Курт Коннорс)",
+      "sources": [
+        "user-prompt"
+      ],
+      "image": null
+    }
+  ]
+}

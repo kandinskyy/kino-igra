@@ -19,3 +19,12 @@ test('explicit departures close a room, temporary disconnects remain reconnectab
   room.players[1].voluntarilyLeft = true;
   assert.equal(everyoneLeft(room), true);
 });
+
+test('connected Kinonames has no idle thinking timeout; offline retention and legacy games stay bounded', () => {
+  const room = {mode:'kinonames',state:'kinonames',lastActivityAt:1000,players:[{connected:true}]};
+  assert.equal(isExpired(room,1000+IDLE_LIMIT_MS*2),false);
+  room.players[0].connected=false;
+  assert.equal(isExpired(room,1000+IDLE_LIMIT_MS*2),true);
+  room.players[0].connected=true;room.state='lobby';
+  assert.equal(isExpired(room,1000+IDLE_LIMIT_MS*2),true);
+});

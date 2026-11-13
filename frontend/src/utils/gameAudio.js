@@ -42,6 +42,25 @@ export function playRoundCue(kind = 'minute') {
   return true;
 }
 
+// A compact mechanical tick for the final five seconds of a game clock.
+export function playClockTick() {
+  if (context?.state !== 'running') return false;
+  const start = context.currentTime;
+  [1460, 920].forEach((frequency, index) => {
+    const oscillator = context.createOscillator(), gain = context.createGain();
+    oscillator.type = 'sine';
+    oscillator.frequency.setValueAtTime(frequency, start);
+    oscillator.frequency.exponentialRampToValueAtTime(frequency * .72, start + .035);
+    gain.gain.setValueAtTime(0, start);
+    gain.gain.linearRampToValueAtTime(.045 / (index + 1), start + .002);
+    gain.gain.exponentialRampToValueAtTime(.0001, start + .04);
+    oscillator.connect(gain).connect(context.destination);
+    oscillator.start(start); oscillator.stop(start + .045);
+    oscillator.onended = () => { oscillator.disconnect(); gain.disconnect(); };
+  });
+  return true;
+}
+
 export function playChatCue() {
   if (context?.state !== 'running') return false;
   const start = context.currentTime, oscillator = context.createOscillator(), gain = context.createGain();
